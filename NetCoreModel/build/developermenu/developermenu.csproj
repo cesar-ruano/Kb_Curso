@@ -1,16 +1,31 @@
-<Project Sdk="Microsoft.NET.Sdk.Web" ToolsVersion="Current">
+<Project Sdk="Microsoft.NET.Sdk">
 	
 	
 	<PropertyGroup>
+		<EnableDefaultCompileItems>False</EnableDefaultCompileItems>
+		<TargetFramework>netcoreapp2.1</TargetFramework>
+		<OutputPath>..\..\web\bin</OutputPath>
+		<DefineConstants>TRACE</DefineConstants>
+		<ErrorReport>prompt</ErrorReport>
+		<WarningLevel>0</WarningLevel>
 		<AssemblyName>developermenu</AssemblyName>
 		<OutputType>Library</OutputType>
+		<NoWarn>NU1603;CS2008</NoWarn>
+		<RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+		<UseHostCompilerIfAvailable>true</UseHostCompilerIfAvailable>
+		<OutDir>$(OutputPath)</OutDir>
+		<WebDirectory>$(MSBuildProjectDirectory)\..\..\web</WebDirectory>
+		<WebBinDirectory>$(WebDirectory)\bin</WebBinDirectory>
+		<Configuration>Release</Configuration>
+		<Prefer32Bit>false</Prefer32Bit>
+		<PlatformTarget>AnyCPU</PlatformTarget>
 		<GenerateDependencyFile>false</GenerateDependencyFile>
 		<PostgresqlSupport>false</PostgresqlSupport>
-		<OfficeSupport>false</OfficeSupport>
-		<MailSupport>false</MailSupport>
+		<GenerateAssemblyInfo>false</GenerateAssemblyInfo>
 	</PropertyGroup>
 	
 	<ItemGroup>
+		<ProjectReference Include=".\..\ms_empleados\ms_empleados.csproj" />
 		<ProjectReference Include=".\..\appmasterpage\appmasterpage.csproj" />
 		<ProjectReference Include=".\..\recentlinks\recentlinks.csproj" />
 		<ProjectReference Include=".\..\promptmasterpage\promptmasterpage.csproj" />
@@ -19,21 +34,54 @@
 		<ProjectReference Include=".\..\rwdpromptmasterpage\rwdpromptmasterpage.csproj" />
 		<ProjectReference Include=".\..\gx0010\gx0010.csproj" />
 		<ProjectReference Include=".\..\gx0020\gx0020.csproj" />
+		<ProjectReference Include=".\..\gx0030\gx0030.csproj" />
 		<ProjectReference Include=".\..\templeado\templeado.csproj" />
 		<ProjectReference Include=".\..\tpuestos\tpuestos.csproj" />
+		<ProjectReference Include=".\..\tsueldo\tsueldo.csproj" />
 		<ProjectReference Include=".\..\GeneXus.Programs.Common\GeneXus.Programs.Common.csproj" />
 
 	</ItemGroup>
 
 	<ItemGroup>
+		<Reference Include="GxClasses">
+			<HintPath>$(WebBinDirectory)\GxClasses.dll</HintPath>
+		</Reference>
+		<Reference Include="GxMail">
+			<HintPath>$(WebBinDirectory)\GxMail.dll</HintPath>
+		</Reference>
+		<Reference Include="GxClasses.Web">
+			<HintPath>$(WebBinDirectory)\GxClasses.Web.dll</HintPath>
+		</Reference>
+		<Reference Include="GxExcel">
+			<HintPath>$(WebBinDirectory)\GxExcel.dll</HintPath>
+		</Reference>
 
 	</ItemGroup>
 	<ItemGroup>
 
 	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.All" Version="2.1.1" />
+	</ItemGroup>
 	<ItemGroup Condition="'$(PostgresqlSupport)'=='true'">
 		<PackageReference Include="Npgsql" Version="3.2.7" PrivateAssets="All"/>
 	</ItemGroup>
-
-	<Import Project="..\DotNetCoreBaseProject.targets"/>	
+	
+	<ItemGroup>
+	  <None Remove="*\**;*" />
+	</ItemGroup>
+	
+	<Target Name="CopyConfig" AfterTargets="Build">
+		<ItemGroup>
+			<ConfigFiles Include="$(WebDirectory)\client.exe.config"/>
+			<ConfigFiles Include="$(WebDirectory)\reorgpgm.gen"/>
+		</ItemGroup>
+		<Copy SkipUnchangedFiles="true" SourceFiles="@(ConfigFiles)" DestinationFiles="@(ConfigFiles->'$(WebBinDirectory)\%(Filename)%(Extension)')"  Condition="Exists('%(ConfigFiles.FullPath)')" />
+	</Target>
+	
+	<Target Name="Info">
+		<Message Text="Configuration is $(Configuration)" />
+		<Message Text="MSBuildToolsPath is $(MSBuildToolsPath)" />
+	</Target>
+	
 </Project>

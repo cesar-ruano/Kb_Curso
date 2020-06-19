@@ -1,8 +1,8 @@
 /*
                File: GxModelInfoProvider
         Description: No description for object
-             Author: GeneXus .NET Core Generator version 16_0_9-140712
-       Generated on: 6/19/2020 8:26:54.27
+             Author: GeneXus .NET Core Generator version 16_0_2-131213
+       Generated on: 6/19/2020 10:6:40.85
        Program type: Callable routine
           Main DBMS: SQL Server
 */

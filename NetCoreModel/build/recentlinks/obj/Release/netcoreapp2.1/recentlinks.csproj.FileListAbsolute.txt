@@ -1,0 +1,10 @@
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\recentlinks.runtimeconfig.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\recentlinks.runtimeconfig.dev.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\recentlinks.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\recentlinks.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\recentlinks\obj\Release\netcoreapp2.1\recentlinks.csprojAssemblyReference.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\recentlinks\obj\Release\netcoreapp2.1\recentlinks.csproj.CoreCompileInputs.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\recentlinks\obj\Release\netcoreapp2.1\recentlinks.csproj.CopyComplete
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\recentlinks\obj\Release\netcoreapp2.1\recentlinks.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\recentlinks\obj\Release\netcoreapp2.1\recentlinks.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\recentlinks\obj\Release\netcoreapp2.1\recentlinks.genruntimeconfig.cache

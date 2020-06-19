@@ -1,4 +1,4 @@
-spec_i([ web,1,'Application Master Page ','AppMasterPage',0,spa,'16_0_9-140712' ]).
+spec_i([ web,1,'Application Master Page ','AppMasterPage',0,spa,'16_0_2-131213' ]).
  
 struct_i(2,1,[],[]).
  
@@ -52,9 +52,9 @@ rule_i(0,datastore(1,'JRN400','QSQJRN')).
 rule_i(0,datastore(1,'CREATE_SAVF','Yes')).
 rule_i(0,datastore(1,'PGMLIB','')).
 rule_i(0,datastore(1,'DTALIB','')).
-rule_i(0,datastore(1,'CC_USER_PASS','Vyãu|Ñèlêo')).
+rule_i(0,datastore(1,'CC_USER_PASS',äãnyv)).
 rule_i(0,datastore(1,'CC_USER_ID',sa)).
-rule_i(0,datastore(1,'CC_SERVER','DESKTOP-URMRLQ4\MSSQLSERVER2016')).
+rule_i(0,datastore(1,'CC_SERVER','DESKTOP-LH23KFE')).
 rule_i(0,datastore(1,'CC_DBNAME','Curso2BD')).
 rule_i(0,datastore(1,'RecycleRWMin','30')).
 rule_i(0,datastore(1,'RecycleRWType','1')).
@@ -67,12 +67,12 @@ rule_i(0,datastore(1,'CS_RPCPGML','')).
 rule_i(0,datastore(1,'JDBC_DATASOURCE','')).
 rule_i(0,datastore(1,'USE_JDBC_DATASOURCE','0')).
 rule_i(0,datastore(1,'DS_DBMS_ADDINFO','')).
-rule_i(0,datastore(1,'USER_PASSWORD','‹Dek]ähOêRo')).
+rule_i(0,datastore(1,'USER_PASSWORD',psnet)).
 rule_i(0,datastore(1,'USER_ID',sa)).
 rule_i(0,datastore(1,'TRUSTED_CONNECTION','No')).
 rule_i(0,datastore(1,'CS_CONNECT','First')).
 rule_i(0,datastore(1,'DBMS_PORT','')).
-rule_i(0,datastore(1,'CS_SERVER','DESKTOP-URMRLQ4\MSSQLSERVER2016')).
+rule_i(0,datastore(1,'CS_SERVER','DESKTOP-LH23KFE')).
 rule_i(0,datastore(1,'CS_DBNAME','Curso2BD')).
 rule_i(0,datastore(1,'CS_FLEDSNAME','')).
 rule_i(0,datastore(1,'CS_DRVNAME','sql server')).
@@ -112,7 +112,6 @@ rule_i(0,prop(idUSE_WEB_DATEPICKER,'UMPV')).
 rule_i(0,prop('WebUX','SMOOTH')).
 rule_i(0,prop('STD_FUNC_OBJECT','Yes')).
 rule_i(0,prop('SPC_WARNINGS_DISABLED','spc0096 spc0107 spc0142')).
-rule_i(0,prop('WebApplication',idDefault)).
 rule_i(0,prop('COMPRESS_HTML','UMPV')).
 rule_i(0,prop('AUTO_REFRESH','VARS_CHANGE')).
 rule_i(0,prop('CACHE_EXPIRES','')).
@@ -177,12 +176,12 @@ b_group_i(2,2,lit,0,2,30).
 b_group_i(2,3,lit,0,31,0).
  
 b_line_i(1,2,1,cmd,1,[ t('',146,1,0),t('Start',3,1,7) ]).
-b_line_i(2,2,2,cmd,1,[ t('',107,2,0),t([ t('Pipe',3,1,0),t('Caption',3,1,0) ],29,1,0),t(=,10,1,0),t('"|"',3,1,0) ]).
-b_line_i(3,2,2,cmd,1,[ t('',107,3,0),t([ t('Pipe2',3,1,0),t('Caption',3,1,0) ],29,1,0),t(=,10,1,0),t('"|"',3,1,0) ]).
-b_line_i(28,2,2,cmd,1,[ t('',147,28,0) ]).
-b_line_i(30,2,2,cmd,1,[ t('',146,30,0),t('Refresh',3,30,7) ]).
-b_line_i(33,2,3,cmd,1,[ t('',107,33,0),t([ t('Wcrecentlinks',3,1,0),t('Object',3,1,0) ],29,1,0),t(=,10,1,0),t('create(',1,1,0),t(o(13,'RecentLinks'),28,1,0),t(',',7,1,0),t([ t('Form',3,1,0),t('Caption',3,1,0) ],29,1,0),t(',',7,1,0),t([ t('Contentholder',3,1,0),t('Pgmname',3,1,0) ],29,1,0),t(')',4,1,0) ]).
-b_line_i(34,2,3,cmd,1,[ t('',147,34,0) ]).
+b_line_i(2,2,2,cmd,1,[ t('',107,1,0),t([ t('Pipe',3,1,0),t('Caption',3,1,0) ],29,1,0),t(=,10,1,0),t('"|"',3,1,0) ]).
+b_line_i(3,2,2,cmd,1,[ t('',107,1,0),t([ t('Pipe2',3,1,0),t('Caption',3,1,0) ],29,1,0),t(=,10,1,0),t('"|"',3,1,0) ]).
+b_line_i(28,2,2,cmd,1,[ t('',147,1,0) ]).
+b_line_i(30,2,2,cmd,1,[ t('',146,1,0),t('Refresh',3,30,7) ]).
+b_line_i(33,2,3,cmd,1,[ t('',107,1,0),t([ t('Wcrecentlinks',3,1,0),t('Object',3,1,0) ],29,1,0),t(=,10,1,0),t('create(',1,1,0),t(o(13,'RecentLinks'),28,1,0),t(',',7,1,0),t([ t('Form',3,1,0),t('Caption',3,1,0) ],29,1,0),t(',',7,1,0),t([ t('Contentholder',3,1,0),t('Pgmname',3,1,0) ],29,1,0),t(')',4,1,0) ]).
+b_line_i(34,2,3,cmd,1,[ t('',147,1,0) ]).
 b_line_i(1000,2,3,cmd,0,[ t('',146,0,0),t('Load',3,0,0) ]).
 b_line_i(1001,2,3,cmd,0,[ t('',155,0,0) ]).
 b_line_i(1002,2,3,cmd,0,[ t('',147,0,0) ]).
@@ -558,7 +557,7 @@ lit_i(1,1,window,[ rect(0,0,1000,1000),ctlname('Form') ]).
  
  
 sub_info_i(146,'Start',1,28,[ [],[ [ t('Pipe',3),t('Caption',3) ],[ t('Pipe2',3),t('Caption',3) ] ] ]).
-sub_info_i(146,'Refresh',30,34,[ [ [ t('Form',3),t('Caption',3) ],[ t('Contentholder',3),t('Pgmname',3) ] ],[ [ t('Wcrecentlinks',3),t('Object',3) ] ] ]).
+sub_info_i(146,'Refresh',30,34,[ [ [ t('Contentholder',3),t('Pgmname',3) ],[ t('Form',3),t('Caption',3) ] ],[ [ t('Wcrecentlinks',3),t('Object',3) ] ] ]).
  
 pgm_parm_i(web,2,'RECENTLINKS',[ [ char,100,0,0 ],[ svchar,256,0,0 ] ],[ [ 'FormCaption',in,[] ],[ 'FormPgmName',in,[] ] ]).
  

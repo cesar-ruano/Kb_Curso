@@ -1,8 +1,8 @@
 /*
                File: RwdMasterPage
         Description: Responsive Master Page
-             Author: GeneXus .NET Core Generator version 16_0_9-140712
-       Generated on: 6/19/2020 8:27:53.59
+             Author: GeneXus .NET Core Generator version 16_0_2-131213
+       Generated on: 6/19/2020 10:23:26.84
        Program type: Callable routine
           Main DBMS: SQL Server
 */
@@ -141,7 +141,7 @@ namespace GeneXus.Programs {
          {
             WebComp_Wcrecentlinks.componentjscripts();
          }
-         context.AddJavascriptSource("rwdmasterpage.js", "?20206198275361", false, true);
+         context.AddJavascriptSource("rwdmasterpage.js", "?202061910232685", false, true);
          context.WriteHtmlTextNl( "</body>") ;
          context.WriteHtmlTextNl( "</html>") ;
          if ( context.isSpaRequest( ) )
@@ -506,7 +506,6 @@ namespace GeneXus.Programs {
          if ( context.isAjaxRequest( ) )
          {
             dynload_actions( ) ;
-            before_start_formulas( ) ;
          }
       }
 
@@ -568,15 +567,10 @@ namespace GeneXus.Programs {
       {
       }
 
-      protected void before_start_formulas( )
-      {
-         context.Gx_err = 0;
-      }
-
       protected void STRUP040( )
       {
          /* Before Start, stand alone formulas. */
-         before_start_formulas( ) ;
+         context.Gx_err = 0;
          /* Execute Start event if defined. */
          context.wbGlbDoneStart = 0;
          /* Execute user event: Start */
@@ -586,9 +580,9 @@ namespace GeneXus.Programs {
          if ( StringUtil.StrCmp(context.GetRequestMethod( ), "POST") == 0 )
          {
             /* Read saved SDTs. */
+            /* Read variables values. */
             /* Read saved values. */
             (getDataAreaObject() == null ? Form : getDataAreaObject().GetForm()).Caption = cgiGet( "FORM_MPAGE_Caption");
-            /* Read variables values. */
             /* Read subfile selected row values. */
             /* Read hidden variables. */
             GXKey = Decrypt64( context.GetCookie( "GX_SESSION_ID"), Crypto.GetServerKey( ));
@@ -697,7 +691,7 @@ namespace GeneXus.Programs {
          idxLst = 1;
          while ( idxLst <= (getDataAreaObject() == null ? Form : getDataAreaObject().GetForm()).Jscriptsrc.Count )
          {
-            context.AddJavascriptSource(StringUtil.RTrim( ((String)(getDataAreaObject() == null ? Form : getDataAreaObject().GetForm()).Jscriptsrc.Item(idxLst))), "?20206198275369", true, true);
+            context.AddJavascriptSource(StringUtil.RTrim( ((String)(getDataAreaObject() == null ? Form : getDataAreaObject().GetForm()).Jscriptsrc.Item(idxLst))), "?20206191023276", true, true);
             idxLst = (int)(idxLst+1);
          }
          if ( ! outputEnabled )
@@ -712,7 +706,7 @@ namespace GeneXus.Programs {
 
       protected void include_jscripts( )
       {
-         context.AddJavascriptSource("rwdmasterpage.js", "?20206198275369", false, true);
+         context.AddJavascriptSource("rwdmasterpage.js", "?20206191023276", false, true);
          /* End function include_jscripts */
       }
 

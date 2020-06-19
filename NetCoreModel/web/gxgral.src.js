@@ -1,5 +1,5 @@
 ﻿/* START OF FILE - ..\GenCommon\js\version.js - */
-/**@preserve GeneXus 16.0.9.140424*/
+/**@preserve GeneXus 16.0.2.130871*/
 /* END OF FILE - ..\GenCommon\js\version.js - */
 /* START OF FILE - ..\GenCommon\js\mustache.js - */
 /*!
@@ -727,21 +727,6 @@ var gx = (function ($) {
 		emptyFn: function () { },
 		falseFn: falseFn,
 		trueFn: trueFn,
-		numericLenDec:function( picture) {
-			var decPicturePart = picture.split('.'),
-				integerPicturePart = decPicturePart.length === 2 ? decPicturePart[0] : picture,
-				decPicturePart = decPicturePart.length === 2 ?decPicturePart[1] : "",
-				integers = (integerPicturePart.match(/9|Z/g) || []).length,
-				decimals = (decPicturePart.match(/9|Z/g) || []).length;
-			return(	{
-						Integers:integers, 
-						Decimals:decimals
-					});		
-		},
-
-		rtPicture:function(vStruct, Ctrl) {
-			return (Ctrl && Ctrl.getAttribute('data-gx-rt-picture')) || vStruct && vStruct.pic || "";
-		},
 
 		dom: {
 			_form: null,
@@ -806,26 +791,6 @@ var gx = (function ($) {
 				}
 				return [];
 			},
-
-			getIntersectionObserver: function (callback) {
-				var callbackCallFn = function () {
-					if (callback) {
-						callback(window.IntersectionObserver);
-					}
-				};
-
-				if ('IntersectionObserver' in window &&
-					'IntersectionObserverEntry' in window &&
-					'intersectionRatio' in window.IntersectionObserverEntry.prototype) {
-					callbackCallFn();
-				}
-				else {
-					gx.http.loadScript(gx.util.resourceUrl(gx.basePath + gx.staticDirectory + 'intersection-observer.js' , false), function() { 
-						callbackCallFn();
-					});
-				}
-			},
-
 			_init: function () {
 
 				gx.evt.on_ready(this, function () {
@@ -1017,20 +982,6 @@ var gx = (function ($) {
 					});
 				});
 			},
-
-			onready: function (event) {
-				if (gx.lang.emptyObject(event)) {
-					if (document.readyState == 'complete')
-						gx.evt.onload();
-					else
-						setTimeout(function () { gx.evt.onready(null); }, 250);
-				}
-				else if (gx.util.browser.isIE()) {
-					if (document.readyState == 'complete')
-						gx.evt.onload();
-				}
-			},
-
 			_init: function () {
 				document.gxReadyState = 'loading';
 				if (gx.util.browser.isIE() && (gx.util.browser.isCompatMode() || document.documentMode <= 8 || gx.util.browser.ieVersion() <= 8 && !gx.util.browser.isWinCE())) {
@@ -1094,21 +1045,18 @@ var gx = (function ($) {
 		},
 
 		setExecutableComponent: function (ObjType) {
-			if (!gx.spa || !gx.spa.started) {
-				gx.wi(function () {
-					if (gx.pO == null) {
-						gx.setParentObj(gx.createComponent(ObjType, ""));
-						gx.fn.objectOnload(undefined, true);
-					}
-				},this);
-			}
+			gx.wi(function () {
+				if (gx.pO == null) {
+					gx.setParentObj(gx.createComponent(ObjType, ""));
+					gx.fn.objectOnload(undefined, true);
+				}
+			},this);
 		},
 
 		setMasterPage: function (MPage) {
 			gx.wpo( function() {
 				if (gx.pO != null) {
 					gx.pO.MasterPage = MPage;
-					gx.fx.obs.notify(gx.SETMASTERPAGE_EVT);
 				}
 			});
 		},
@@ -1116,14 +1064,12 @@ var gx = (function ($) {
 		createMasterPage: function (MPageClass) {
 			gx.wpo( function() {
 				var GxObj;
-				if (!gx.spa.isNavigating()) {
-					if (!(MPageClass instanceof gx.GxObject)) {
-						GxObj = new MPageClass();
-					}
-
-					if (GxObj) {
-						this.setMasterPage(GxObj);
-					}
+				if (!(MPageClass instanceof gx.GxObject)) {
+					GxObj = new MPageClass();
+				}
+				
+				if (GxObj) {
+					this.setMasterPage(GxObj);
 				}
 			}, this);
 		},
@@ -1267,9 +1213,8 @@ var gx = (function ($) {
 			if (newTheme && newTheme != this.theme) {
 				this.theme = newTheme;
 				var theme_el = gx.getThemeElement();
-				if (theme_el && theme_el.href.search("/" + this.theme + '.css') < 0) {
+				if (theme_el && theme_el.href.search(this.theme + '.css') < 0)
 					theme_el.href = theme_el.href.replace(new RegExp("[^/]*\.css"), this.theme + '.css');
-				}
 			}
 		},
 
@@ -1367,14 +1312,6 @@ var gx = (function ($) {
 			isRuby: falseFn,
 			isJava: function () {
 				return !this.net;
-			},
-			resolveObjClass: function (objUrl) {
-				var objClass = objUrl;
-				if (gx.gen.isDotNet())
-					objClass = objUrl.replace(/\.aspx$/, "");
-				if (gx.gen.isJava() && gx.pO && gx.pO.PackageName && gx.text.startsWith(objUrl, gx.pO.PackageName))
-					objClass = objUrl.substring(gx.pO.PackageName.length + 1);
-				return objClass;
 			}
 		},
 
@@ -1967,7 +1904,10 @@ var gx = (function ($) {
 
 		guid: {
 			generate: function() {
-				return ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g, function(c) {(c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)});		
+				return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+					var r = Math.random()*16|0, v = c == 'x' ? r : (r&0x3|0x8);
+    				return v.toString(16);
+    			});
 			}
 		},
 
@@ -2465,7 +2405,7 @@ var gx = (function ($) {
 			},
 
 			arrayToJson: function (arr) {
-				if ($.isArray(arr)) {
+				if (typeof (arr) != 'function' && typeof (arr.length) == 'number') {
 					var res = [];
 					var len = arr.length;
 					for (var i = 0; i < len; i++) {
@@ -2482,7 +2422,7 @@ var gx = (function ($) {
 			objFromJson: function (obj, value, messages) {
 				try {
 					var jObj = this.evalValidJSON(value);
-					if ($.isArray(obj) && $.isArray(jObj)) {
+					if (obj instanceof Array && jObj instanceof Array) {
 						while (obj.length > jObj.length) obj.shift();
 					}
 					else {
@@ -2868,7 +2808,7 @@ var gx = (function ($) {
 
 					gx.evt.attach(window, 'load', gx.http.applyDeferredStyles);
 					gx.fn.objectOnload();
-					gx.goReady();
+					gx.fx.obs.notify('gx.onready');
 					document.gxReadyState = 'complete';
 					gx.util.autoRefresh.install();
 					gx.fn.setOpacity("reset", 'body');
@@ -2902,7 +2842,6 @@ var gx = (function ($) {
 			gx.fx.obs.notify('gx.onunload');
 			gx.http.saveState(true);
 			gx.evt.clearHooks();
-			gx.fx.notifications.deinit();
 			gx.fx.obs.removeAll();
 			gx.util.autoRefresh.destroy();
 			gx.fn.objectOnUnload(unloadMasterPage);
@@ -3036,14 +2975,6 @@ gx.plugdesign = (function($) {
 			registeredTemplates[t.name] = t;
 		},
 
-		unRegisterTemplate:function( templateName) {
-			delete registeredTemplates[templateName];
-			var templates = gx.plugdesign.definition.templates;
-			gx.plugdesign.definition.templates = $.grep(templates, function(value) {
-				return value !== templateName;
-			});
-		},
-
 		getDOMContext:function(el, context, outerHTML, innerHTML, setContextFn) {
 			var i, att, len;
 
@@ -3095,14 +3026,6 @@ gx.plugdesign = (function($) {
 			return $elements;
 		},
 		
-		shouldApplyOnElement: function (el, t) {
-			if (typeof t.selector == "function") {
-				return this.getElements(t).is(el);
-			}
-			else {
-				return $(el).is(t.selector);
-			}
-		},
 		applyTemplateOnElement: function (t, el, checkInclusion) {
 			var deferred = $.Deferred();
 			gx.lang.requestAnimationFrame((function () {
@@ -3111,7 +3034,7 @@ gx.plugdesign = (function($) {
 					if (!t)
 						return;
 				}
-				if ((checkInclusion === true) && !this.shouldApplyOnElement(el, t)) {
+				if ((checkInclusion === true) && !this.getElements(t).is(el)) {
 					return;
 				}
 				var context = gx.plugdesign.getDOMContext(el, context, t.outerHTML, t.innerHTML, t.setContext);
@@ -3432,8 +3355,7 @@ gx.plugdesign = (function($) {
 				this.apply = function (el, context) {
 					var t = this,
 						outputHtml,
-						isIE = gx.util.browser.isIE(),
-						restoreFocus = false;
+						isIE = gx.util.browser.isIE();
 
 					if (!compiledTemplate && t.template)
 					{
@@ -3452,16 +3374,12 @@ gx.plugdesign = (function($) {
 							el.innerHTML = outputHtml;
 						}
 						else {
-							restoreFocus = (el === document.activeElement);
 							if (el.parentNode && !isIE)
 								el.outerHTML = outputHtml;
 							else 
 								$(el).replaceWith(outputHtml);
 						}
 						t.postProcessTemplate(context);
-						if (restoreFocus) {
-							gx.fn.setFocus(el);
-						}
 					}
 				};
 				
@@ -3612,12 +3530,14 @@ gx.plugdesign.definition = {
 		// Attributes and variables
 		{
 			selector:'.gx-attribute > input:not(.GeoLocOption):not([type="image"]):not([type="checkbox"]), .gx-attribute > select, .gx-attribute > textarea',
-			cssClass:'form-control'
+			cssClass:'form-control',
+			first: true
 		},
 		// Attributes and variables with prompt
 		{
 			selector:'.gx-attribute > .input-group > input, .gx-attribute > .input-group > select, .gx-attribute > .input-group > textarea, .gx-attribute > .dp_container input',
-			cssClass:'form-control'
+			cssClass:'form-control',
+			first: true
 		},
 		// Form
 		{
@@ -3851,14 +3771,14 @@ gx.html = (function ($) {
 
 		onTypeAvailable: function (cName, callback, callbackParms) {
 			try {
-				var typeObj = eval(gx.gen.resolveObjClass(cName));
+				var typeObj = eval(cName);
 				if (callbackParms instanceof Array)
 					callback.apply(this, callbackParms);
 				else
 					callback();
 			}
 			catch (e) {
-				setTimeout(function () { gx.html.onTypeAvailable(cName, callback, callbackParms); }, 150);
+				setTimeout(function () { gx.html.onTypeAvailable(cName, callback, callbackParms); }, 250);
 			}
 		},
 
@@ -4023,7 +3943,7 @@ gx.html = (function ($) {
 				getInfo.sync = true;
 				var scrRemoteQty = remoteScripts.length;
 				for (var i = 0; i < scrRemoteQty; i++) {
-					getInfo.url = remoteScripts[i].url; // GET remote scripts from server
+					getInfo.url = remoteScripts[i]; // GET remote scripts from server
 					gx.http.doCall(getInfo);
 				}
 			}
@@ -4073,17 +3993,8 @@ gx.html = (function ($) {
 		getFieldLabel: function (field, scope) {
 			var label,
 				labelFor,
-				id = field.id,
-				previousSibling = field.previousSibling;
+				id = field.id;
 
-			// Check optimistically if the previous sibling is in fact the label
-			// If not, try a DOM query using the for attribute in the selector.
-			if (previousSibling 
-				&& previousSibling.tagName === "LABEL"
-				&& previousSibling.htmlFor === id) {
-					labelEl = previousSibling;
-			}
-			else {
 			if (field.tagName == "INPUT" || field.tagName == "SELECT" || field.tagName == "TEXTAREA") {
 				labelFor = field.id;
 			}
@@ -4102,7 +4013,6 @@ gx.html = (function ($) {
 
 			if (labelFor) {
 				return $("label[for='" + labelFor + "']", scope).get(0);
-				}
 			}
 		},
 
@@ -4467,7 +4377,7 @@ gx.html = (function ($) {
 
 			var templates = {},
 				templatesSource = {
-					'label': '<label class="gx-label {{className}} control-label" {{{additionalAtts}}} for="{{relatedElement}}">{{caption}}</label>',
+					'label': '<label class="gx-label {{className}} control-label" {{additionalAtts}} for="{{relatedElement}}">{{caption}}</label>',
 					'radio': [
 						'<span class="{{className}}" style="{{style}}">',
 						'{{#values}}',
@@ -4546,15 +4456,16 @@ gx.html = (function ($) {
 						var gridInfo = '';
 						if (gridObj && rowObj)
 							gridInfo = ',\'' + gridObj.gridName + '\',\'' + rowObj.gxId + '\'';
-						sEventJsCode = 'gx.evt.execCliEvt( ' + eventName + gridInfo + ',this);';
+						sEventJsCode = 'gx.evt.execCliEvt(' + eventName + gridInfo + ',this);';
 					}
 					else if (jsScrCode == 6 || jsScrCode == 5)
 						sEventJsCode = "gx.evt.execEvt(" + eventName + ",this," + gridObj.gridId + ");";
 					return sEventJsCode;
 				},
 
-				onJsEventAttributes: function (nJScriptCode, sGXOnClickCode, sUserOnClickCode) {
-					var gxObject = gx.GxObject,
+				startAnchor: function (parentCtrl, nJScriptCode, sGXOnClickCode, sUserOnClickCode, sLinkURL, sLinkTarget, sClassName) {
+					var classAttribute = sClassName ? ' class="' + sClassName + '"' : "",
+						gxObject = gx.GxObject,
 						eventAttribute = ' ' + gxObject.GX_EVENT_DATA_ATTR + '="' + nJScriptCode + '"';
 						scriptAttribute = "";
 					if (nJScriptCode === 4) {
@@ -4562,26 +4473,13 @@ gx.html = (function ($) {
 					}
 					if (sUserOnClickCode) {
 						if (sGXOnClickCode)
-							eventAttribute += " " + gxObject.GX_EVENT_CONDITION_DATA_ATTR + '="' +  sUserOnClickCode + '"' + scriptAttribute;
+							parentCtrl.append('<a href="#"' + eventAttribute + " " + gxObject.GX_EVENT_CONDITION_DATA_ATTR + '="' +  sUserOnClickCode + '"' + scriptAttribute + classAttribute + '>');
 						else
-							eventAttribute += scriptAttribute;
+							parentCtrl.append('<a href="#"' + eventAttribute + scriptAttribute + classAttribute + '>');
 					}
 					else {
 						if (sGXOnClickCode)
-							eventAttribute += scriptAttribute;
-					}
-					return eventAttribute + ' ';
-				},
-				startAnchor: function (parentCtrl, nJScriptCode, sGXOnClickCode, sUserOnClickCode, sLinkURL, sLinkTarget, sClassName) {
-					var classAttribute = sClassName ? ' class="' + sClassName + '"' : "",
-						gxObject = gx.GxObject,
-						eventAttribute = this.onJsEventAttributes( nJScriptCode, sGXOnClickCode, sUserOnClickCode);
-					if (sUserOnClickCode) {
-						parentCtrl.append('<a href="#"' + eventAttribute + classAttribute + '>');
-					}
-					else {
-						if (sGXOnClickCode)
-							parentCtrl.append('<a href="#"' + eventAttribute + classAttribute + '>');
+							parentCtrl.append('<a href="#"' + eventAttribute + scriptAttribute + classAttribute + '>');
 						else {
 							if (sLinkURL) {
 								var safeLink = sLinkURL.replace(/(\\")/ig, '\\u0022');
@@ -4715,7 +4613,7 @@ gx.html = (function ($) {
 					this.isPassword = false;
 					//this.valueIndex = 1;
 					this.setProperties = function (sCtrlName, sFormatedValue, sTags, sEventName, sLinkURL, sLinkTarget, sTooltipText, sPlaceholder, sUserOnClickCode, nJScriptCode, sClassString, sStyleString, sROClassString, sColumnClass, sColumnHeaderClass, nVisible, nEnabled, nRTEnabled, sType, sStep, nWidth, nWidthUnit, nHeight, nHeightUnit, nLength, nIsPassword, nFormat, nParentId, bHasTheme,
-									 nAutoComplete, nAutoCorrection, bSendHidden, sDomType, sAlign, bIsTextEdit, rtPicture, sValue) {
+									 nAutoComplete, nAutoCorrection, bSendHidden, sDomType, sAlign, bIsTextEdit, sValue) {
 						this.id = sCtrlName;
 						this.inputType = sType;
 						this.step = sStep;
@@ -4742,7 +4640,7 @@ gx.html = (function ($) {
 						if (bIsTextEdit && (this.rtEnabled || this.enabled)) {
 							sFormatedValue = sValue;
 						}
-						this.formattedValue = (sValue === "") ? "" : (!gx.lang.emptyObject(sFormatedValue)) ? gx.html.encodeCaseFormat(sFormatedValue, nFormat) : gx.applyPicture(this.vStruct, gx.html.encodeCaseFormat(sValue || "", nFormat));
+						this.formattedValue = (!gx.lang.emptyObject(sFormatedValue)) ? gx.html.encodeCaseFormat(sFormatedValue, nFormat) : gx.applyPicture(this.vStruct, gx.html.encodeCaseFormat(sValue || "", nFormat));
 						this.extraAttributes = sTags;
 						this.jsScrCode = nJScriptCode;
 						this.usrOnclick = sUserOnClickCode;
@@ -4753,7 +4651,6 @@ gx.html = (function ($) {
 						this.autoCorrection = (nAutoCorrection != 0);
 						this.value = sValue || "";
 						this.domainName = sDomType;
-						this.rtPicture = rtPicture;
 					}
 				
 					this._getHtml = function () {
@@ -4824,8 +4721,6 @@ gx.html = (function ($) {
 								this.tagAtt('maxlength', this.maxLength);
 							if (this.cssClass != '')
 								this.tagAtt('class', this.cssClass);
-							if (this.rtPicture != '')
-								this.tagAtt('data-gx-rt-picture', this.rtPicture);
 							var rowStyle = this.style;
 							if (this.column.align != '')
 								rowStyle += ";text-align:" + this.column.align;
@@ -4834,10 +4729,6 @@ gx.html = (function ($) {
 							if (rowStyle != '')
 								this.tagAtt('style', rowStyle);
 							this.append(this.extraAttributes);
-							if (gx.fn.controlFiresEvent(vStruct)) {
-									this.tagAtt(gx.GxObject.GX_EVENT_CONTROL_DATA_ATTR, vStruct.fld);
-									this.tagAtt(gx.GxObject.GX_EVENT_CONTEXT_DATA_ATTR, this.getEventContext())
-								}
 							this.append('>');
 							if ((this.dataType == gx.types.date) || (this.dataType == gx.types.dateTime)) {
 								var validStruct = this.grid.parentObject.getValidStructFld(this.id);
@@ -5266,7 +5157,6 @@ gx.html = (function ($) {
 						this.eventName = sEventName;
 						this.extraAttributes = sTags;
 						this.value = sValue;
-						this.rawValue = cmbCObjCtrl;
 					}
 
 					this._getHtml = function () {
@@ -5277,9 +5167,8 @@ gx.html = (function ($) {
 						if (this.height > 0)
 							this.style = this.style + ';height: ' + this.height + this.heightUnit;
 						var sOStyle = this.style + ' ;overflow:hidden;';
-						var enabledAny = this.enabled || this.rtEnabled;
 						this.style = this.style + ((!this.visible || !this.enabled && this.rtEnabled) ? ';display:none;' : '');
-						if (enabledAny) {
+						if (this.enabled || this.rtEnabled) {
 							var sEventJsCode = gx.html.controls.eventJSCode(this.jsScrCode, this.eventName, null, this.grid, this.row);
 							this.append('<select');
 							if (this.rows > 1)
@@ -5329,8 +5218,6 @@ gx.html = (function ($) {
 								this.tagAtt('class', ClassHTML);
 							if (sOStyle != '')
 								this.tagAtt('style', sOStyle);
-							if (!enabledAny)
-								this.tagAtt(gx.GxObject.GX_DATA_RAW_VALUE_ATTR, gx.json.serializeJson(this.rawValue));
 							this.append(this.extraAttributes);
 							this.append('>');
 							var len = this.possibleValues.length;
@@ -5621,7 +5508,7 @@ gx.html = (function ($) {
 						
 						var anchorClassName = " gx-multimedia-ro";
 						
-						if (gx.text.startsWith(gx.util.getContentTypeFromExt(blobUrl), "image") || (!ro && blobUrl === '') ) {
+						if (gx.text.startsWith(gx.util.getContentTypeFromExt(blobUrl), "image") || !ro) {
 							html = ['<a' /*, (blobUrl)? ' download': ''*/, ' class="',anchorClassName, '"', ' target ="_blank"', href, '>',
 											'<img id = "Object_', this.id, '" class = "', className, '" alt = "', this.alt, '" src = "', blobUrl, '" />',
 											'<span id="', id, '" class="', this.placeHolderClass, '"></span>',
@@ -5850,15 +5737,11 @@ gx.html = (function ($) {
 
 					this.type = gx.html.controls.types.label;
 
-					this.setProperties = function (sReferencedEl, sLabelCaption, sLabelClass, labelPosition, bDataAttSupported, sExtraStyle) {
+					this.setProperties = function (sReferencedEl, sLabelCaption, sLabelClass, labelPosition) {
 						this.referencedEl = sReferencedEl;
 						this.labelCaption = sLabelCaption;
 						this.labelClass = sLabelClass;
-						this.extraStyle = sExtraStyle;
-						this.addAttributes = ([
-							(labelPosition === 0) ? 'data-gx-sr-only' : '',
-							this.extraStyle ? 'style="' + this.extraStyle + '"' : ""
-						]).join(" ");
+						this.addAttributes = ( labelPosition === 0) ? 'data-gx-sr-only':'';
 					}
 
 					this._getHtml = function () {
@@ -5899,7 +5782,6 @@ gx.html = (function ($) {
 					}
 
 					this._getHtml = function () {
-						var vStruct = this.getVStruct();
 						this.style = this.style + ((this.visible) ? '' : ';display:none;');
 						var sClassRoundedBtn = 'BaseRBtn ' + 'R' + this.cssClass;
 						if (this.buttonStyle == 'rounded') {
@@ -5936,14 +5818,13 @@ gx.html = (function ($) {
 						this.tagAtt('class', this.cssClass);
 						if (this.style != '')
 							this.tagAtt('style', this.style);
+						this.tagAtt('gxevent', this.eventName);
 						if (!this.enabled)
 							this.append(' disabled');
-						this.append(gx.html.controls.onJsEventAttributes(this.jsScrCode, this.jsCode, this.usrOnclick));
+						var sEventJsCode = gx.html.controls.eventJSCode(this.jsScrCode, this.eventName, this.jsDynCode, this.grid, this.row);
+						sEventJsCode = this.jsCode + sEventJsCode;
+						gx.html.controls.onJSEvent(this, 'onclick', sEventJsCode + 'return false;', this.usrOnclick);
 						this.append(this.extraAttributes);
-						if (gx.fn.controlFiresEvent(vStruct)) {
-							this.tagAtt(gx.GxObject.GX_EVENT_CONTROL_DATA_ATTR, vStruct.fld);
-							this.tagAtt(gx.GxObject.GX_EVENT_CONTEXT_DATA_ATTR, this.getEventContext())
-						}
 						this.append('>');
 						if (this.buttonStyle == 'rounded')
 							this.append('</span></span></span></span>');
@@ -6646,47 +6527,44 @@ gx.util.Observable = function(){
 		
 		notify_count: 0,
 
-		notify: function( evtName, parms, callback) {
-			if (!parms) {
+		notify: function( evtName, parms) {
+			if (!parms)
+			{
 				parms = [];
 			}
 			var len = this.observers.length;
 			var removedObs = false;
 			this.notify_count += 1;
-			var promises = [];
-			var returnedValue;
-			for (var i=0; i<len; i++) {
+			for (var i=0; i<len; i++)
+			{
 				var obs = this.observers[i];
-				if (obs && obs.e == evtName && !obs.removed) {
-					try {
-						if (obs.cfg && obs.cfg.single) {
+				if (obs && obs.e == evtName && !obs.removed)
+				{
+					try
+					{
+						if (obs.cfg && obs.cfg.single)
+						{
 							obs.removed = true;
 							removedObs = true;
 						}
-						returnedValue = obs.f.apply(obs.o, parms);
-						if (obs.cfg && obs.cfg.async) {
-							// If an observer is async, it must return a promise
-							promises.push(returnedValue);
-						}
+						obs.f.apply( obs.o, parms);
 					}
-					catch(e) {
+					catch(e)
+					{
 						gx.dbg.logEx(e, 'gxfx.js', 'gx.obs.notify');
 					}
 				}
 			}
-			gx.$.when.apply($, promises).then((function () {
-				this.notify_count -= 1;
-				if (removedObs && this.notify_count === 0) {
-					for (var i=this.observers.length-1; i>=0; i--) {
-						if (this.observers[i].removed) {
-							this.observers.splice(i, 1);
-						}
+			this.notify_count -= 1;
+			if (removedObs && this.notify_count === 0)
+			{
+				for (var i=this.observers.length-1; i>=0; i--)
+				{
+					if (this.observers[i].removed) {
+						this.observers.splice(i, 1);
 					}
 				}
-				if (callback) {
-					callback();
-				}
-			}).closure(this));
+			}
 		}
 	};
 };
@@ -7603,37 +7481,29 @@ gx.fx = {
 		}
 	},
 
-	notifications: {
+	notifications: {			
 		queuedEvents: [],
-		initialize: function (gxObj) {
+		addTracker: function (gxObj, groupName, evtName, sTypes, handler, noWait) {		
 			if (!gxObj.notifications) {
-				gxObj.notifications = [];
+				gxObj.notifications = [];				
 				gx.fx.obs.addObserver('gx.ws.onMessage.notifications', gxObj, gx.fx.notifications.notify.closure(gxObj), { single: false, doNotDelete: gxObj.IsMasterPage });
 				gx.fx.obs.addObserver('gx.onafterevent', gxObj, gx.fx.notifications.fireQueuedEvents.closure(gxObj), { single: false, doNotDelete: gxObj.IsMasterPage });
 			}
+			gxObj.notifications[groupName || ""] = { gxO: gxObj, handler: handler, eventName: evtName, type: sTypes, noWait: noWait };
 			if (!this.webSocket) {
 				if (!gxObj.fullAjax)
 					gx.dbg.write('Warning: WebNotifications are not supported with "Web User Experience": "Previous versions". You must use Smooth.');
-				var port = gx.fn.getHidden("GX_WEBSOCKET_PORT");
-				this.webSocket = new gx.webSocket({
-					'port': port,
-					'clientId': gx.fn.getHidden("GX_WEBSOCKET_ID"),
-					'wsProtocol': (location.protocol === 'https:')? "wss://": "ws://",
-					'host': (port)? location.hostname + ":" + port + "/" : location.host + "/",
-					'resourceUrl': (gx.gen.isDotNet())? "/gxwebsocket.svc?": "/gxwebsocket?",
-					'basePath': gx.basePath,
-					'namespace': "notifications"
-				});
+				var wsOpts = {};
+				wsOpts.port = gx.fn.getHidden("GX_WEBSOCKET_PORT");			
+				wsOpts.clientId = gx.fn.getHidden("GX_WEBSOCKET_ID");
+				wsOpts.wsProtocol = (location.protocol === 'https:')? "wss://": "ws://";
+				wsOpts.host = (wsOpts.port)? location.hostname + ":" + wsOpts.port + "/" : location.host + "/";
+				wsOpts.resourceUrl = (gx.gen.isDotNet())? "/gxwebsocket.svc?": "/gxwebsocket?";				
+				wsOpts.wsURL = gx.config.websocket.URL;
+				wsOpts.basePath = gx.basePath;
+				wsOpts.namespace = "notifications";
+				this.webSocket = new gx.webSocket(wsOpts);
 			}
-		},
-
-		deinit: function() {
-			gx.fx.notifications.queuedEvents = [];
-		},
-
-		addTracker: function (gxObj, groupName, evtName, sTypes, handler, noWait) {		
-			gx.fx.notifications.initialize(gxObj);
-			gxObj.notifications[groupName || ""] = { gxO: gxObj, handler: handler, eventName: evtName, type: sTypes, noWait: noWait };
 		},
 
 		notify: function (msg) {			
@@ -7652,7 +7522,7 @@ gx.fx = {
 		
 		fireQueuedEvents: function() {
 			for (var i = 0; i <gx.fx.notifications.queuedEvents.length; i++) {
-				var obj = gx.fx.notifications.queuedEvents[i];
+				var obj = gx.fx.notifications.queuedEvents[i];							
 				if (!obj.executed) {
 					gx.fx.notifications.queuedEvents.splice(i--, 1);
 					var gxO = obj.notifObj.gxO;	
@@ -7846,11 +7716,6 @@ gx.date = (function () {
 			return d.toISOString();
 		},
 
-		jsonNullFormat: {
-			Default: 0,
-			YearOne: 1
-		},
-
 		gxdate: function (SDate, XSFmt) {
 			this.json = function () {
 				var oldTFmt = this.TimeFmt;
@@ -7893,20 +7758,10 @@ gx.date = (function () {
 				if (this.Value - EMPTY_DATE_VALUE === 0)
 					return this.emptyDateString(sDateFormat);
 				var sDate = sDateFormat;
-				var sDay;
-				var sMonth;
-				var sYear;
+				var sDay = gx.text.padl(this.Value.getDate().toString(), 2, '0');
+				var sMonth = gx.text.padl((this.Value.getMonth() + 1).toString(), 2, '0');
+				var sYear = gx.text.padl(this.Value.getFullYear().toString(), 4, '0');
 				var Pos = this.FormatPos(sDateFormat);
-				if (this.JsonNullFormat === gx.date.jsonNullFormat.YearOne) {
-					sDay = "01";
-					sMonth = "01";
-					sYear = "0001";
-				}
-				else {
-					sDay = gx.text.padl(this.Value.getDate().toString(), 2, '0');
-					sMonth = gx.text.padl((this.Value.getMonth() + 1).toString(), 2, '0');
-					sYear = gx.text.padl(this.Value.getFullYear().toString(), 4, '0');
-				}
 				sDate = sDate.replace('D', sDay + ((Pos.DPos < 3) ? '/' : ''));
 				sDate = sDate.replace('M', sMonth + ((Pos.MPos < 3) ? '/' : ''));
 				if (sDateFormat.indexOf("Y4") == -1) {
@@ -8227,7 +8082,7 @@ gx.date = (function () {
 					}
 				}
 			}
-			this.JsonNullFormat = gx.date.jsonNullFormat.Default;
+			
 			this.TimeFmt = gx.timeFormat || 12;
 			this.SFmt = XSFmt || gx.dateFormat;
 			this.FYearOfCentury = gx.centuryFirstYear || 40;
@@ -9041,7 +8896,7 @@ gx.text = {
 		var xlen = val.length;
 		var diff = len - xlen;
 		if (diff < 1)
-			return val.substring( 0, len);
+			return val;
 		var xval = val;
 		for (var i = 0; i < diff; i++)
 			xval += padc;
@@ -9052,18 +8907,13 @@ gx.text = {
 		var xlen = val.length;
 		var diff = len - xlen;
 		if (diff < 1)
-			return val.substring( 0, len);
+			return val;
 		var xval = '';
 		for (var i = 0; i < diff; i++)
 			xval += padc;
 		xval = xval + val;
 		return xval;
 	},
-	
-	ltrimstr: function (num, len, dec) {
-		return this.ltrim(gx.num.str(num, len, dec));
-	},
-	
 	ltrim: function (str) {
 		return str.toString().replace(/^ */, '');
 	},
@@ -9220,28 +9070,6 @@ gx.num = function () {
 			return sNum.length <= len ? gx.text.padl(sNum, len, ' ') : gx.text.padr('', len, '*');
 		},
 
-		compare: function(num1, num2) {
-			if (typeof(num1) === 'number' && typeof(num2) === 'number') {
-				if (num1 > num2)
-					return 1;
-				if (num1 === num2)
-					return 0;
-				return -1;
-			}
-
-			if (typeof(num1) === 'number') {
-				num1 = new gx.num.dec.bigDecimal(num1.toString());
-			}
-
-			if (typeof(num2) === 'number') {
-				num2 = new gx.num.dec.bigDecimal(num2.toString());
-			}
-			if (gx.lang.instanceOf(num1, gx.num.dec.bigDecimal) && gx.lang.instanceOf(num2, gx.num.dec.bigDecimal))
-				return num1.compareTo(num2);
-			else
-				return num1 - num2; //error?
-		},
-
 		maxNumericPrecision: function () {
 			return 15;
 		},
@@ -9270,14 +9098,11 @@ gx.num = function () {
 		formatNumber: function (number, decimals, picture, digits, sign, errorOnBadNumber) {
 			if (gx.lang.emptyObject(number))
 				number = '0';
-			var thSep = picture.indexOf(',') != -1 ? gx.thousandSeparator : '',
-				decSep = gx.decimalPoint,
-				psplit,
-				blankWhenZero = false,
-				LenDec = gx.numericLenDec( picture),
-				integers = LenDec.Integers;
+			var thSep = picture.indexOf(',') != -1 ? gx.thousandSeparator : '';
+			var decSep = gx.decimalPoint;
+			var psplit;
+			var blankWhenZero = false;
 
-			decimals = LenDec.Decimals;
 			if (typeof (number) == "string" && thSep)
 				number = gx.text.replaceAll(number, thSep, '');
 			if (typeof (number) == "string")
@@ -9286,7 +9111,7 @@ gx.num = function () {
 			if (gx.num.overflowNumber(number))
 				return number;
 			try {
-				number = (decimals === 0) ? gx.num.trunc(number, 0).toString() : gx.num.setScale(number, decimals);
+				number = gx.num.setScale(number, decimals);
 			} catch (e) { number = number.toString(); }
 			var f = number.split('.');
 			var i, j;
@@ -9298,13 +9123,13 @@ gx.num = function () {
 					throw "InvalidNumber";
 				}
 				else {
-					if ((sign && f[0].charAt(0) == '-' && f[0].replace(/0*/, '').length > integers) ||
+					var totalDigits = (decimals === 0) ? digits : (digits - decimals - 1);
+					if ((sign && f[0].charAt(0) == '-' && f[0].replace(/0*/, '').length > totalDigits) ||
 						(!sign && f[0].charAt(0) == '-') ||
-						(f[0].replace(/[+]?0*/, '').length > integers))
+						(f[0].replace(/[+]?0*/, '').length > totalDigits))
 						throw "InvalidNumber";
 				}
 			}
-			var integerInput = f[0].substring(0, integers);
 			if (number < 0)
 				sign = true;
 			if (f[1].length < decimals) {
@@ -9315,19 +9140,19 @@ gx.num = function () {
 				f[1] = g;
 			}
 			var signChar = '';
-			if (sign && integerInput.charAt(0) == '-') {
+			if (sign && f[0].charAt(0) == '-') {
 				signChar = '-';
-				integerInput = integerInput.substring(1);
+				f[0] = f[0].substring(1);
 			}
-			if (thSep && integerInput.length > 3) {
-				var h = integerInput;
-				integerInput = '';
+			if (thSep && f[0].length > 3) {
+				var h = f[0];
+				f[0] = '';
 				for (j = 3; j < h.length; j += 3) {
 					i = h.slice(h.length - j, h.length - j + 3);
-					integerInput = thSep + i + integerInput + '';
+					f[0] = thSep + i + f[0] + '';
 				}
 				j = h.substr(0, (h.length % 3 === 0) ? 3 : (h.length % 3));
-				integerInput = j + integerInput;
+				f[0] = j + f[0];
 			}
 			decSep = (!f[1]) ? '' : decSep;
 
@@ -9364,21 +9189,21 @@ gx.num = function () {
 			//parte entera
 			var intPart = '';
 			var epic = psplit[0];
-			nidx = integerInput.length - 1;
+			nidx = f[0].length - 1;
 			for (i = epic.length - 1; i >= 0; i--) {
 				var ch = epic.charAt(i);
 				if (ch == '9' || ch == 'Z')
 					if (nidx >= 0) {
-						if (!(ch == 'Z' && integerInput.charAt(nidx) === "0" && nidx === 0))
-							intPart = integerInput.charAt(nidx) + intPart;
+						if (!(ch == 'Z' && f[0].charAt(nidx) === "0" && nidx === 0))
+							intPart = f[0].charAt(nidx) + intPart;
 						nidx--;
 					}
 					else
 						intPart = (ch == '9' ? '0' : '') + intPart;
 				else if (ch != 'Z' && ch != ',')
 					intPart = ch + intPart;
-				else if (ch == ',' && integerInput.charAt(nidx) == thSep) {
-					intPart = integerInput.charAt(nidx) + intPart;
+				else if (ch == ',' && f[0].charAt(nidx) == thSep) {
+					intPart = f[0].charAt(nidx) + intPart;
 					nidx--;
 				}
 			}
@@ -9608,25 +9433,17 @@ gx.num = function () {
 			return result;
 		},
 
-		normalize_decimal_sep: function(Picture, ThSep, DecPoint, Value){			
-			var pointIdx = Value.lastIndexOf(DecPoint);
-			if (Picture.indexOf('.') >= 0 && DecPoint == ',' && pointIdx == -1 && Value.lastIndexOf('.') == Value.indexOf('.')) {
-				Value = Value.replace('.', DecPoint);
-			} else if (Picture.indexOf(ThSep) == -1 &&  DecPoint == '.' && pointIdx == -1 && Value.lastIndexOf(',') == Value.indexOf(',')) {
-				Value = Value.replace(',', DecPoint);
-			}
-			return Value;
-		},
-		
 		valid_decimal: function (Elem, ThSep, DecPoint, Dec) {
 			var ctrlValue = Elem.value;
 			var pointIdx = ctrlValue.lastIndexOf(DecPoint);
 			var validNumber = true;
-			
+			if (DecPoint == ',' && pointIdx == -1 && ctrlValue.lastIndexOf('.') == ctrlValue.indexOf('.')) {
+				ctrlValue = ctrlValue.replace('.', DecPoint);
+			}
+
 			var validStruct = gx.O.getValidStructFld(Elem);
-			ctrlValue = this.normalize_decimal_sep(gx.rtPicture(validStruct, Elem), ThSep, DecPoint, ctrlValue);
 			if (!gx.lang.emptyObject(validStruct))
-				ctrlValue = gx.num.extractValue(gx.rtPicture(validStruct, Elem), ctrlValue);
+				ctrlValue = gx.num.extractValue(validStruct.pic, ctrlValue);
 
 			var gx_DecRegExp = new RegExp("^[ ]*((([+-]{1}[0-9]+)||([0-9]*))(\\" + ThSep + "[0-9]{3})*(\\" + DecPoint + "[0-9]*)?)?[ ]*$");
 			if (ctrlValue) {
@@ -9637,7 +9454,7 @@ gx.num = function () {
 						newvalue = ctrlValue.slice(0, pointIdx + parseInt(Dec, 10) + 1);
 					try {
 						if (!gx.lang.emptyObject(validStruct))
-							newvalue = gx.num.formatNumber(newvalue, validStruct.dec, gx.rtPicture(validStruct, Elem), validStruct.len, validStruct.sign, true);
+							newvalue = gx.num.formatNumber(newvalue, validStruct.dec, validStruct.pic, validStruct.len, validStruct.sign, true);
 						if (DecPoint != '.' && Elem.tagName == 'SELECT')
 							newvalue = gx.num.toInvariant(newvalue, ThSep, DecPoint);
 					} catch (e) { validNumber = false; }
@@ -9668,9 +9485,9 @@ gx.num = function () {
 			var vStructEO = gx.lang.emptyObject(vStruct);
 			ctrlValue = Elem.value;
 			if (!vStructEO)
-				ctrlValue = gx.num.extractValue(gx.rtPicture(vStruct, Elem), ctrlValue);
+				ctrlValue = gx.num.extractValue(vStruct.pic, ctrlValue);
 				
-			if (!vStructEO && gx.rtPicture(vStruct, Elem).indexOf(',') != -1)				
+			if (!vStructEO && vStruct.pic.indexOf(',') != -1)				
 				gx_IntRegExp = new RegExp("^[ ]*([+-]{1}[0-9]+||[0-9]*)(\\" + ThSep + "[0-9]{3})*[ ]*$");
 			else
 				gx_IntRegExp = new RegExp("^[ ]*(([+-]{1}[0-9]+)||([0-9]*))[ ]*$");
@@ -9680,7 +9497,7 @@ gx.num = function () {
 				if (gx_IntRegExp.test(ctrlValue)) {
 					try {
 						if (!vStructEO)
-							ctrlValue = gx.num.formatNumber(ctrlValue, vStruct.dec, gx.rtPicture(vStruct, Elem), vStruct.len, vStruct.sign, true);
+							ctrlValue = gx.num.formatNumber(ctrlValue, vStruct.dec, vStruct.pic, vStruct.len, vStruct.sign, true);
 					} catch (e) { validNumber = false; }
 					if (ctrlValue != gx.text.trim(Elem.value)) {
 						Elem.value = ctrlValue;
@@ -10408,8 +10225,6 @@ gx.grid = (function ($) {
 				newCol.gxControl = new gx.html.controls.userControl();
 				newCol.gxControl.column = newCol;
 				newCol.gxControl.dataType = newCol.type;
-				newCol.htmlName = ControlName.toUpperCase();
-				newCol.isUserControl = true;
 				this.grid.addColumn(newCol);
 			}
 
@@ -10998,25 +10813,12 @@ gx.grid = (function ($) {
 				}
 			}
 			
-			this.infinite_scrolling_ensure_loading_scroll = function() {
-				if (!this.mock_element) {
-					var $gridTable = $('#' + this.getGridInnerTableId());
-					this.mock_element = $('<div class="gx-grid-loading" style="visibility:hidden;">' + gx.getMessage("GXM_Loading") + '</div>');						
-					this.mock_element.insertAfter($gridTable);
-				}
-			}
-
 			this.infinite_scrolling_before_scroll = function() {
-				this.infinite_scrolling_ensure_loading_scroll();
 				if (this.isScrolling !== true) {
-					this.mock_element.css('visibility', 'visible');
+					this.mock_element = $('<div class="gx-grid-loading">' + gx.getMessage("GXM_Loading") + '</div>');
+					var gridTblid = this.gxComponentContext + this.containerName + "Tbl";
+					this.mock_element.insertAfter($('#' + gridTblid));
 					this.isScrolling = true;
-				}
-			}
-
-			this.hide_loading_message = function() {
-				if (this.mock_element) {
-					this.mock_element.css('visibility', 'hidden');
 				}
 			}
 			
@@ -11028,17 +10830,17 @@ gx.grid = (function ($) {
 			}
 			
 			this.infinite_scrolling_after_scroll = function() {
-				var gridTblid = this.getGridInnerTableId(),
+				var gridTblid = this.gxComponentContext + this.containerName + "Tbl",
 					$table = $('#' + gridTblid);
 				this.fixColumnsWidth( this.fixedColumnsWidth); 
 				this.isScrolling = false;
-				this.hide_loading_message();
+				this.remove_loading_message();
 			}
 			
 			this.fixColumnsWidth = function( colWidth) {
 				if (this.isFreestyle)
 					return;
-				var gridTblid = this.getGridInnerTableId(),
+				var gridTblid = this.gxComponentContext + this.containerName + "Tbl",
 					$table = $('#' + gridTblid);
 					rows = $table.find('tbody tr[data-gxrendering_row]'); 
 				$.each( rows, 
@@ -11055,7 +10857,6 @@ gx.grid = (function ($) {
 			this.unInstallScrollListener = function() {
 				if (this.ScrollingElement) {
 					$(this.ScrollingElement).scrollTop(0);
-					this.remove_loading_message();
 					this.ScrollingElement.removeEventListener("scroll", this.ScrollingHandler,  {passive: true});
 				}
 			}
@@ -11127,17 +10928,16 @@ gx.grid = (function ($) {
 						}
 					});
 				};
-				this.infinite_scrolling_ensure_loading_scroll();
 				ScrollingElement.addEventListener('scroll', this.ScrollingHandler, {passive: true});
 			}
 
 			this.installFixedGridHeader = function() {		
 				if (!this.usePaging && !this.InfiniteScrolling && !this.isFreestyle && this.grid.gxHeight && this.grid.rows.length > 0) {
 					var containerControl =  this.getContainerControl();
-					if (containerControl) {
-						var $containerControl = $(containerControl);
+					if (containerControl) {						
+						var $containerControl = $(containerControl);						
 						var _this = this,
-							gridTblid = this.getGridInnerTableId(),
+							gridTblid = this.gxComponentContext + this.containerName + "Tbl",							
 							$table = $('#' + gridTblid),
 							$bodyCells = $table.find('tbody tr:first').children(),
 							$body = $('#' + gridTblid + '> tbody'),
@@ -11208,9 +11008,11 @@ gx.grid = (function ($) {
 						$containerControl.removeClass( GRID_INFINITE_SCROLLING_CONTAINER_CLASS);
 						if ( this.grid.rows.length > 0) {
 							var _this = this,
-								gridTblid = this.getGridInnerTableId();
+								gridTblid = this.gxComponentContext + this.containerName + "Tbl",
+								last_selector = this.grid.scroll_last_row_selector( this.gridRows),
+								first_selector = this.grid.scroll_first_row_selector( this.gridRows);
 								
-							var ScrollingElement;
+							var ScrollingElement;						
 							if (this.ScrollType == SCROLL_FORM) {
 								ScrollingElement = window;
 								this.fixedColumnsWidth = [];
@@ -11246,14 +11048,16 @@ gx.grid = (function ($) {
 							}
 							this.ScrollingElement = ScrollingElement;
 							this.infinitScrollingInstalled = true;				
+							this.grid.firstItemSelector = '#' + gridTblid + first_selector;
+							this.grid.lastItemSelector = '#' + gridTblid + last_selector;
 							var selector = this.InverseLoading ? this.grid.firstItemSelector : this.grid.lastItemSelector;
 							var before_scroll = this.infinite_scrolling_before_scroll.closure(this),
 								ScrollingHeight;
-								if (!this.ScrollingHeight && (this.isFreestyle || (this.grid.rows.length >= this.grid.pageSize && this.grid.pageSize > 0))) {
-								if (this.ScrollType != SCROLL_FORM) {
-									ScrollingHeight = $(ScrollingElement).height() - 2;
-									$(ScrollingElement).css({"height": ScrollingHeight});
-								}
+							if (this.ScrollType != SCROLL_FORM) {
+								ScrollingHeight = $(ScrollingElement).height() - 2;
+								$(ScrollingElement).css({"height": ScrollingHeight});
+							}
+							if (!this.ScrollingHeight) {
 								this.ScrollingHeight = ScrollingHeight;
 							}
 							if (ScrollingElement) {
@@ -11564,13 +11368,6 @@ gx.grid = (function ($) {
 				}
 			}
 			
-			this.refreshParms = [];
-			this.addRefreshingParm = function (validStruct) {
-				if (gx.lang.emptyObject(validStruct))
-					return;
-				this.refreshParms[this.refreshParms.length] = validStruct;
-			}
-
 			this.doRefresh = function() {
 				var refreshParms = this.getRefreshParmsUrl();
 				this.callAsyncRefresh(refreshParms);
@@ -11596,7 +11393,7 @@ gx.grid = (function ($) {
 					if (typeof (vStruct.rfrVar) == 'undefined') {
 						var oldValue = gx.fn.getHidden(this.gxComponentContext + 'GXH_' + vStruct.fld);
 						var newValue = vStruct.val();
-						if (oldValue !== undefined && oldValue != newValue) {
+						if (oldValue != newValue) {
 							return true;
 						}
 					}
@@ -11605,7 +11402,7 @@ gx.grid = (function ($) {
 			}
 
 			this.getRefreshParmsUrl = function (firstTime) {
-				var refreshUrl = this.getParmsValues(firstTime, this.refreshParms).join(',');
+				var refreshUrl = this.getParmsValues(firstTime, this.refreshVars).join(',');
 				if (this.pageSizeParm)
 					refreshUrl = this.grid.pageSize + "," + refreshUrl;
 				return refreshUrl;
@@ -11640,7 +11437,7 @@ gx.grid = (function ($) {
 						}
 					}
 					if (typeof (vStruct.rfrVar) != 'undefined') {
-						var filterValue = ctrlName = colVStruct = undefined;
+						var filterValue = ctrlName = colVStruct = undefined;						
 						if (typeof (vStruct.rfrProp) != 'undefined') {
 							var col;
 							if (typeof (vStruct.gxAttId) != 'undefined')
@@ -11651,7 +11448,7 @@ gx.grid = (function ($) {
 
 							if (col) {
 								var propName = vStruct.rfrProp.toLowerCase();
-								filterValue = col.hasOwnProperty(propName) ? col[propName] : col.gxControl[propName];
+								filterValue = col[propName];
 								if (propName == 'value' && col.gxControl.type == gx.html.controls.types.image)
 									filterValue = gx.util.removeBaseUrl(filterValue);
 								colVStruct = this.parentObject.getValidStruct(col.gxId);
@@ -12022,10 +11819,7 @@ gx.grid = (function ($) {
 							this.addRows(postProps);
 						this.updateOldComponents();
 						this.initRefreshParms();
-						var gridTblid = this.getGridInnerTableId();
-						var isEmpty = $("#" + gridTblid).attr("data-gx-grid-nodata") !== undefined;
 						deferred = this.refreshGrid({
-								addRows: addRows && !isEmpty,
 								loadChildGrids:null, 
 								fromAutoRefresh:this.autoRefreshing
 							});
@@ -12384,9 +12178,8 @@ gx.grid = (function ($) {
 				this.GridUserControls = [];
 				this.GridComponents = [];
 				this.GridControls = [];
-				this.ColumnPropertiesAfterRender = [];
 
-				if (!this.additiveResponse && !ops.addRows) {
+				if (!this.additiveResponse) {
 					this.clearDefaultEventHandlers();
 				}
 				this.clearHiddens();
@@ -12413,36 +12206,14 @@ gx.grid = (function ($) {
 					this.setupGridUsercontrols(this.GridUserControls);
 					this.installFixedGridHeader();
 					var _this = this;
-					var gridTblid = this.getGridInnerTableId(),
-						last_selector = this.grid.scroll_last_row_selector( this.gridRows),
-						first_selector = this.grid.scroll_first_row_selector( this.gridRows)
-					this.grid.firstItemSelector = '#' + gridTblid + first_selector;
-					this.grid.lastItemSelector = '#' + gridTblid + last_selector;
 					var applyInfiniteScrolling = function(arrCmpObj) {
 						var fnc = function() {
-							if (!_this.InfiniteScrolling) {
-								deferred.resolve();
-								return;
-							}
 							if (immediateApplyInfiniteScroll) {
 								_this.handleInfiniteScrolling();
 							}
 							else {
-								var containerControl = _this.getContainerControl();
 								if (gx.spa.isNavigating()) {
 									gx.spa.addObserver('onnavigatecomplete', _this, _this.handleInfiniteScrolling, { single: true });
-								}
-								else if (!gx.fn.isVisible(containerControl)) {
-									gx.dom.getIntersectionObserver(function (IntersectionObserver) {
-										var observer = new IntersectionObserver(function () {
-											if (gx.fn.isVisible(containerControl)) {
-												observer.disconnect()
-												_this.handleInfiniteScrolling();
-											}
-										}, { root: document.body });
-
-										observer.observe(containerControl);
-									})
 								}
 								else {
 									gx.pO.addObserver('onafterload', _this, _this.handleInfiniteScrolling, { single: true });
@@ -12461,7 +12232,7 @@ gx.grid = (function ($) {
 						});
 					
 						if (_this.isFreestyle) {
-							_this.loadRowsGrids(firstTime, ops);
+							_this.loadRowsGrids(firstTime);
 						}
 						gx.fx.obs.notify('grid.onafterrender', [_this.grid, _this.isNestedLoad]);
 						if (_this.isNestedLoad) {
@@ -12496,19 +12267,15 @@ gx.grid = (function ($) {
 				afterRender = afterRender.closure(this);
 				this.grid.doSort();
 				if (loadChildGrids == false) {
-					this.grid.render(firstTime, false, fromCollection, afterRender, ops);
+					this.grid.render(firstTime, false, fromCollection, afterRender);
 				}
 				else {
 					firstTime = true;
-					this.grid.render(firstTime, fromAutoRefresh, fromCollection, afterRender, ops);
+					this.grid.render(firstTime, fromAutoRefresh, fromCollection, afterRender);
 				}
 				return deferred;
 			};
-
-			this.getGridInnerTableId = function () {
-				return this.gxComponentContext + this.containerName + "Tbl";
-			},
-
+			
 			this.applyTemplateObject = function () {
 				var excludedSelector = (this.isFreestyle && !this.parentObject.IsComponent ? "." + gx.GxObject.WEBCOMPONENT_CLASS_NAME + " *" : "");
 				return gx.plugdesign.applyTemplateObject({
@@ -12712,13 +12479,9 @@ gx.grid = (function ($) {
 					userControl.DesignContainerName = col.gxUCContainerName;
 					userControl.setC2ShowFunction(col.gxShowFunc);
 					var len1 = col.gxC2VFuncs.length;
-					for (var j = 0; j < len1; j++) {
-						userControl.addC2VFunction(col.gxC2VFuncs[j]);
-					};
+					for (var j = 0; j < len1; j++) { userControl.addC2VFunction(col.gxC2VFuncs[j]); };
 					var len2 = col.gxV2CFuncs.length;
-					for (var j = 0; j < len2; j++) {
-						userControl.addV2CFunction(col.gxV2CFuncs[j], col.gxUCFieldName);
-					};
+					for (var j = 0; j < len2; j++) { userControl.addV2CFunction(col.gxV2CFuncs[j]); };
 					userControl.setGridProperties();
 					userControl.setGridEventHandlers();
 					this.parentObject.setUserControl(userControl);
@@ -12786,11 +12549,9 @@ gx.grid = (function ($) {
 				this.GridControls.push(ctrl);
 			}
 
-			this.loadRowsGrids = function (firstTime, opts) {
-				opts = opts || {};
-				var addRows = this.additiveResponse || opts.addRows;
+			this.loadRowsGrids = function (firstTime) {
 				var len = this.grid.rows.length;
-				var i = addRows ? this.firstAdditiveRow : 0;
+				var i = (this.additiveResponse) ? this.firstAdditiveRow : 0;
 				for (; i < len; i++) {
 					this.loadRowGrids(this.grid.rows[i], firstTime);
 				}
@@ -12939,7 +12700,7 @@ gx.grid = (function ($) {
 
 			this.expandCollapse = function (imgCtrl, event) {
 				gx.evt.cancel(event, true);
-				var gridTbl = gx.dom.byId(this.getGridInnerTableId());
+				var gridTbl = gx.dom.byId(this.gxComponentContext + this.containerName + "Tbl");
 				if (gridTbl != null) {
 					if (this.collapsed) {
 						$(gridTbl).removeAttr("data-gx-sr-only");
@@ -13527,10 +13288,7 @@ gx.grid.impl = (function ($) {
 		}
 
 		this.scroll_last_row_selector = function(rows) {
-			if (this.ownerGrid.additiveResponse) {
-				return ' tbody tr:nth-last-child('+ Math.min(rows / 2, 1) +')';
-			}
-			return ' tbody tr:last-child';
+			return ' tbody tr:nth-last-child('+ Math.min(rows / 2, 1) +')';
 		}
 		
 		this.scroll_first_row_selector = function() {
@@ -13548,7 +13306,9 @@ gx.grid.impl = (function ($) {
 			}
 
 			var rowClass = baseRowClass;
+			if (!this.gxIsFreestyle) {
 				rowClass += (rowClass ? " " : "") + (even ? this.evenRowClass : this.oddRowClass) + (rowDeleted ? ' RowDeleted' : '');
+			}
 
 			return {
 				cls: rowClass,
@@ -13794,7 +13554,7 @@ gx.grid.impl = (function ($) {
 		
 		this.drawEmptyContent = function() {
 			var ownerGrid = this.ownerGrid;
-			var gridTblid = ownerGrid.getGridInnerTableId();
+			var gridTblid = ownerGrid.gxComponentContext + ownerGrid.containerName + "Tbl";
 			if (ownerGrid.emptyText) {
 				if ($('#' + gridTblid + ' + .gx-text-gridnodata').length === 0) {					
 					var el = $(document.createElement('div'))
@@ -13832,19 +13592,14 @@ gx.grid.impl = (function ($) {
 				gx.dom.purgeElement(imgs[i], events);
 		};
 
-		this.render = function (firstTime, fromAutoRefresh, fromCollection, afterRenderCallback, ops) {
+		this.render = function (firstTime, fromAutoRefresh, fromCollection, afterRenderCallback) {
 			firstTime = !!firstTime;
 
-			var tableId = this.ownerGrid.getGridInnerTableId(),
-				container = this.container;
+			var tableId = this.gxCmpContext + this.gxGridObject + "Tbl";
 
 			this.beforeRender();
 
-			if (this.ownerGrid.additiveResponse) {
-				this.doSort();
-			}
-
-			var gridHtml = this.drawGrid(tableId, firstTime, fromAutoRefresh, fromCollection, ops);
+			var gridHtml = this.drawGrid(tableId, firstTime, fromAutoRefresh, fromCollection);
 
 			if (gx.dom.shouldPurge()) {
 				this.purgeGrid();
@@ -13855,20 +13610,12 @@ gx.grid.impl = (function ($) {
 				restoreActiveEl = activeEl && 
 									(activeEl.id || activeEl.name) && 
 									activeElTagName != "FORM" && 
-									gx.dom.isChildNode(activeEl, container),
+									gx.dom.isChildNode(activeEl, this.container),
 				caretOffset = gx.dom.getCaretOffset( activeEl);
-			
-			this.setGridHtml(this.container, gridHtml, ops);
-			
-			if (!this.gxIsFreestyle)
-				this.ownerGrid.instanciateRow(gx.fn.currentGridRowImpl(this.ownerGrid.gridId));  //We restore current active row because if we do not do it, all struct values are lost.
 
-			if (this.ownerGrid.additiveResponse) {
-				if (this.sortColumn != -1) {
-					this.ownerGrid.handleInfiniteScrolling();
-				}
-			}
-			if (restoreActiveEl) {
+			this.setGridHtml(this.container, gridHtml);
+
+			if (restoreActiveEl && gx.lang.emptyObject(gx.usrFocusControl)) {
 				setTimeout(function () {
 					var newActiveEl = gx.dom.el(activeEl.id || activeEl.name, false, true);
 					if (newActiveEl) {
@@ -13891,73 +13638,64 @@ gx.grid.impl = (function ($) {
 			this.rendered = true;
 		};
 
-		this.setGridHtml = function (container, gridHtml, opts) {
-			opts = opts || {};
+		this.setGridHtml = function (container, gridHtml) {
 			gx.csv.IgnoreBlur = true;
-
+			
 			var newRows, $newRows;
 			var inverseLoading = this.ownerGrid.InverseLoading;
 			var hook;
 			var $children;
-			var addRowsOnly = this.ownerGrid.additiveResponse || opts.addRows;
-			if (addRowsOnly) {
-				if ( this.sortColumn !== -1) {
-					container.innerHTML = gridHtml;					
-					gx.plugdesign.applyTemplateObject({
-						selector: container
-					});
-				}
-				else {
-					if (this.gxIsFreestyle) {
-						newRows = document.createElement("div");
-						newRows.className = "gx-sr-only";
-						newRows.innerHTML = gridHtml;
-						newRows.setAttribute("data-gx-grid-rendering-additive-rows", "");
-						$newRows = $(newRows);
-						if (inverseLoading) {
-							hook = this.firstItemSelector;
-						}
-						else {
-							hook = this.lastItemSelector;
-						}
-						if (inverseLoading) {
-							$newRows.insertBefore(hook);
-						}
-						else {
-							$newRows.insertAfter(hook);
-						}
+			if (this.ownerGrid.additiveResponse) {
+				if (this.gxIsFreestyle) {
+					newRows = document.createElement("div");
+					newRows.className = "gx-sr-only";
+					newRows.innerHTML = gridHtml;
+					newRows.setAttribute("data-gx-grid-rendering-additive-rows", "");
+					$newRows = $(newRows);
+					if (inverseLoading) {
+						hook = this.firstItemSelector;
 					}
 					else {
+						hook = this.lastItemSelector;
+					}
+					if (inverseLoading) {
+						$newRows.insertBefore(hook);
+					}
+					else {
+						$newRows.insertAfter(hook);
+					}
+				}
+				else {
+					if (inverseLoading) {
+						$newRows = $(gridHtml).insertBefore(this.firstItemSelector);
+					}
+					else {
+						newRows = $(gridHtml).insertAfter(this.lastItemSelector);
+					}					
+				}
+				this.newAdditiveRows = $newRows;
+				gx.plugdesign.applyTemplateObject({
+					selector: $newRows, 
+					deferred:true
+				}).then((function () {
+					if (this.newAdditiveRows) {
+						$children = this.newAdditiveRows.children();
 						if (inverseLoading) {
-							$newRows = $(gridHtml).insertBefore(this.firstItemSelector);
+							$children.insertBefore(this.newAdditiveRows);
 						}
 						else {
-							newRows = $(gridHtml).insertAfter(this.lastItemSelector);
+							$children.insertAfter(this.newAdditiveRows);
 						}
+						this.newAdditiveRows.trigger("gx-grid:after-additive-rows-render");
+						this.newAdditiveRows.remove();
+						delete this.newAdditiveRows;
 					}
-					this.newAdditiveRows = $newRows;
-					gx.plugdesign.applyTemplateObject({
-						selector: $newRows, 
-						deferred:true
-					}).then((function () {
-						if (this.newAdditiveRows) {
-							$children = this.newAdditiveRows.children();
-							if (inverseLoading) {
-								$children.insertBefore(this.newAdditiveRows);
-							}
-							else {
-								$children.insertAfter(this.newAdditiveRows);
-							}
-							this.newAdditiveRows.trigger("gx-grid:after-additive-rows-render");
-							this.newAdditiveRows.remove();
-							delete this.newAdditiveRows;
-						}
-					}).closure(this));
-				}
+				}).closure(this));
 			}
 			else {
 				container.innerHTML = gridHtml;
 			}
+
 			gx.csv.IgnoreBlur = false;
 		};
 
@@ -13968,25 +13706,22 @@ gx.grid.impl = (function ($) {
 
 		};
 
-		this.drawGrid = function (tableId, firstTime, fromAutoRefresh, fromCollection, opts) {
-			opts = opts || {};
+		this.drawGrid = function (tableId, firstTime, fromAutoRefresh, fromCollection) {
 			var isGxTrn = this.isGxTrn();
 			var hasRowBreaks = this.gxIsFreestyle && (this.gxGridCols > 1);
 
 			var buffer = new gx.text.stringBuffer();
 			var visibleColumnsArray = this.columns;
 			var renderedColumnCount = visibleColumnsArray.length;
-			var i, row, column, colHtmlCode, vAlign, columnDefaultVisible, columnProps, gxCtrl;
-
-			var addRowsOnly = this.ownerGrid.additiveResponse || opts.addRows;
+			var i, column, colHtmlCode, vAlign;
 
 			if (!this.gxIsFreestyle && isGxTrn) {
 				renderedColumnCount++;
 			}
 
 			var firstRow, lastRow, maxPage;
-			if (addRowsOnly || opts.immediateApplyInfiniteScroll) {
-				firstRow = (this.firstRecordOnPage == '0' || this.sortColumn != -1) ? 0 : this.lastRenderedRow;
+			if (this.ownerGrid.additiveResponse) {
+				firstRow = (this.firstRecordOnPage == '0') ? 0 : this.lastRenderedRow;
 				lastRow = this.rows.length;
 				this.ownerGrid.firstAdditiveRow = firstRow;
 			}
@@ -14013,29 +13748,7 @@ gx.grid.impl = (function ($) {
 			}
 
 			var colsLen = visibleColumnsArray.length;
-			if (!this.gxIsFreestyle && (lastRow > firstRow)) {
-				for (var j = 0; j < colsLen; j++) {
-					column = visibleColumnsArray[j];
-					columnDefaultVisible = gx.lang.gxBoolean(column.visible);
-					if (columnDefaultVisible) {
-						var rtVisible = false;
-						for (i = firstRow; i < lastRow && !rtVisible; i++) {
-							row = this.rows[i];
-							gxCtrl = column.gxControl;
-							columnProps = row.gxProps[column.index];
-							if (!fromCollection) {
-								gxCtrl.setProperties.apply(gxCtrl, columnProps);
-							}
-							if (gxCtrl.visible) {
-								rtVisible = true;
-							}
-						}
-						if (!rtVisible) 
-							column.visible = false;
-					}
-				}
-			}
-			if (!addRowsOnly || this.sortColumn != -1) {
+			if (!this.ownerGrid.additiveResponse) {
 				this.appendContainerStart(tableId, buffer);
 				this.appendHeaderText(renderedColumnCount, buffer);
 				if (!this.gxIsFreestyle) {
@@ -14047,7 +13760,7 @@ gx.grid.impl = (function ($) {
 
 			var renderRow = function() {
 				even = !even;
-				row = this.rows[i];
+				var row = this.rows[i];
 				if (firstTime && i === firstRow && !gx.fn.currentGridRowImpl(this.gxId)) {
 					gx.fn.setCurrentGridRow(this.gxId, row.gxId);
 				}
@@ -14119,11 +13832,11 @@ gx.grid.impl = (function ($) {
 				this.appendCellPrefixStart(buffer, i, firstRow, lastRow, row, rowProps);
 				for (var j = 0; j < colsLen; j++) {
 					column = visibleColumnsArray[j];
-					columnDefaultVisible = gx.lang.gxBoolean(column.visible);
-					columnProps = row.gxProps[column.index];
+					var columnDefaultVisible = gx.lang.gxBoolean(column.visible);
+					var columnProps = row.gxProps[column.index];
 					var columnValue = row.values[column.index];
 
-					gxCtrl = column.gxControl;
+					var gxCtrl = column.gxControl;
 					if (this.gxIsFreestyle && gxCtrl.type == gx.html.controls.types.row) {
 						if (column.index === 0) {
 							gxCtrl.isFreestyleRow = true;
@@ -14137,9 +13850,6 @@ gx.grid.impl = (function ($) {
 					});
 					if (!fromCollection) {
 						gxCtrl.setProperties.apply(gxCtrl, columnProps);
-						if (gxCtrl.isFreestyleRow) {
-							gxCtrl.cssClass = rowProps.cls;
-						}
 					}
 					else {
 						delete gxCtrl.formattedValue;
@@ -14242,12 +13952,14 @@ gx.grid.impl = (function ($) {
 				for (i = firstRow; i < lastRow; i++)
 					renderRow.apply(this);
 			}
+			if (!this.gxIsFreestyle)
+				this.ownerGrid.instanciateRow(gx.fn.currentGridRowImpl(this.ownerGrid.gridId));  //We restore current active row because if we do not do it, all struct values are lost.
 			
 			if (this.gxIsFreestyle && (this.gxGridCols > 0) && hasRowBreaks) {
 				this.appendRowEnd(buffer);
 			}
 			this.lastRenderedRow = lastRow;
-			if (!addRowsOnly) {
+			if (!this.ownerGrid.additiveResponse) {
 				this.appendBodyWrapperEnd(buffer);
 
 				this.appendFooterWrapperStart(buffer);
@@ -14444,8 +14156,7 @@ gx.grid.impl = (function ($) {
 						if (updateUI) {
 							if (!gx.runtimeTemplates) {
 								rowCtrl.gxSBackcolor = (rowCtrl.gxOriginalBackcolor !== undefined) ? rowCtrl.gxOriginalBackcolor : rowCtrl.style.backgroundColor;
-								if (this.gxSelectionColor)
-									rowCtrl.style.backgroundColor = this.gxSelectionColor.Html;
+								rowCtrl.style.backgroundColor = this.gxSelectionColor.Html;
 							}
 							gx.dom.addClass(rowCtrl, this.selectedRowClass);
 							$(rowCtrl).attr(SELECTED_ROW_ATTR, '');
@@ -14477,15 +14188,8 @@ gx.grid.impl = (function ($) {
 			this.setSelectedRowVars(row);
 			if (this.gxOnLineActivate && !this.ownerGrid.isLoading) {
 				gx.csv.instanciatedRowGrid = this.ownerGrid;
-				if (!skipEventFire) {
-					var gxO = this.parentGxObject;
-					if (gxO.fullAjax) {
-						var isServerEvent = gxO.isServerEvent(this.gxOnLineActivate);						
-						gx.evt.dispatcher.dispatch(gxO.getServerEventName(this.gxOnLineActivate), gxO, this.ownerGrid.gridId, row.gxId, isServerEvent);
-					}
-					else
-						gxO[this.gxOnLineActivate].call(gxO, row.gxId);
-				}
+				if (!skipEventFire)
+					this.parentGxObject[this.gxOnLineActivate].call(this.parentGxObject, row.gxId);
 			}
 		}
 
@@ -14496,9 +14200,12 @@ gx.grid.impl = (function ($) {
 				var column = this.columns[i];
 				var validStruct = gxObj.GXValidFnc[column.gxId];
 				if (validStruct != null) {
-					if (validStruct.c2v) {
-						validStruct.c2v(row.gxId);
+					var varValue = row.values[i];
+					if (this.ownerGrid.useUserControlModelValues()) {
+						varValue = this.properties[row.id][column.index].value;
 					}
+					if (validStruct.v2v)
+						validStruct.c2v(varValue);
 				}
 			}
 		}
@@ -15045,9 +14752,8 @@ gx.grid.responsiveGrid = (function ($) {
 		};
 
 		grid.appendCellPrefixStart = function (buffer, i, firstRow, lastRow, row) {
-			var rowDeletedClass = row.gxDeleted() ? " RowDeleted" : "";
 			if (this.gxGridCols == 1) {
-				buffer.append('<div id="' + this.gxCmpContext + this.gxGridObject + "Row_" + row.gxId + '" data-gxrow="' + row.gxId.toString() + '" class="row' + rowDeletedClass + '"><div class="col-xs-12">');
+				buffer.append('<div id="' + this.gxCmpContext + this.gxGridObject + "Row_" + row.gxId + '" data-gxrow="' + row.gxId.toString() + '" class="row"><div class="col-xs-12">');
 				this.appendDeleteImage(buffer, row, gx.grid.deletePositions.left);
 			}
 		};
@@ -15194,8 +14900,6 @@ gx.GxObject = (function($) {
 	GX_EVENT_CONTEXT_DATA_ATTR = "data-gx-context",
 	GX_EVENT_CONTROL_DELAYED_ATTR = "data-gx-click-delay",
 	GX_EVENT_EXCLUDED_CTRLTYPES = ['dyncombo', 'combo'],
-	GX_EVENT_EVENT_IN_PROGRESS = "data-gx-evt-inprogress",
-	GX_DATA_RAW_VALUE_ATTR = "data-gx-raw-value",
 	WEBCOMPONENT_CLASS_NAME = 'gxwebcomponent',
 	WEBCOMPONENT_LOADING_CLASS_NAME = 'gxwebcomponent-loading',
 	WEBCOMPONENT_BODY_CLASS_NAME = 'gxwebcomponent-body';
@@ -15254,7 +14958,6 @@ gx.GxObject = (function($) {
 	gxObject.GX_EVENT_CONTEXT_DATA_ATTR = GX_EVENT_CONTEXT_DATA_ATTR;
 	gxObject.GX_EVENT_CONTROL_DELAYED_ATTR = GX_EVENT_CONTROL_DELAYED_ATTR;
 	gxObject.GX_EVENT_EXCLUDED_CTRLTYPES = GX_EVENT_EXCLUDED_CTRLTYPES;
-	gxObject.GX_EVENT_EVENT_IN_PROGRESS = GX_EVENT_EVENT_IN_PROGRESS;
 
 	gxObject.WEBCOMPONENT_CLASS_NAME = WEBCOMPONENT_CLASS_NAME;
 	gxObject.WEBCOMPONENT_LOADING_CLASS_NAME = WEBCOMPONENT_LOADING_CLASS_NAME;
@@ -15285,7 +14988,7 @@ gx.fn = (function($) {
 		};
 
 		return function (elems) {
-			return gx.fn.toArray(elems).sort(comparisonFn);
+			return Array.prototype.slice.call(elems, 0).sort(comparisonFn);
 		};
 	})();
 
@@ -15331,10 +15034,8 @@ gx.fn = (function($) {
 					gx.spa.redirect(url);
 					gx.ajax.enableForm(gxO);
 				}
-				else {
-					gx.evt.redirecting = true;
+				else
 					location.href = url;
-				}
 			}
 			else {
 				this.closeWindowImpl();
@@ -15373,7 +15074,7 @@ gx.fn = (function($) {
 			gx.evt.execLoad=false;
 			if (cliNavSupported) {
 				gx.evt.clinav = true;
-				gx.ajax.pushReferer(gx.popup.popuplvl());
+				gx.ajax.pushReferer(gx.popup.popuplvl());		
 			}
 			this.closeWindow(Parms, { parmsMetadata: ParmsMetadata });
 		},
@@ -15438,7 +15139,7 @@ gx.fn = (function($) {
 			if (Ctrl) {
 				var ControlId = Ctrl.id;
 				var vStruct = gx.O.getValidStructFld(ControlId);
-				Value = gx.applyPicture(vStruct, Value, Ctrl);
+				Value = gx.applyPicture(vStruct, Value);
 				if (vStruct && vStruct.gxgrid) {					
 					vStruct.gxgrid.IsValidState[ControlId] = vStruct.gxgrid.IsValidState[ControlId] || {};
 					vStruct.gxgrid.IsValidState[ControlId][gx.csv.GX_OLD_VALUE_ATTRIBUTE] = Value;					
@@ -15497,8 +15198,8 @@ gx.fn = (function($) {
 				if (!gx.lang.emptyObject(validStruct))
 					Value = gx.date.formatDateTime(validStruct.dec, validStruct.len, gx.dateFormat, Value);
 			} else if (gx.lang.instanceOf(Value, Number) || (typeof (gx.num.dec) != "undefined" && Value instanceof gx.num.dec.bigDecimal)) {
-				if (!gx.lang.emptyObject(validStruct) && gx.rtPicture(validStruct, Control) != undefined) {
-					Value = gx.num.formatNumber(Value, validStruct.dec, gx.rtPicture(validStruct, Control), validStruct.len, validStruct.sign, false);
+				if (!gx.lang.emptyObject(validStruct) && validStruct.pic != undefined) {
+					Value = gx.num.formatNumber(Value, validStruct.dec, validStruct.pic, validStruct.len, validStruct.sign, false);
 				}
 			} else if (typeof (Value) == 'string' && !gx.lang.emptyObject(validStruct)) {
 				isPwd = (validStruct.isPwd != undefined);
@@ -15507,7 +15208,7 @@ gx.fn = (function($) {
 						Value = gx.text.formatString(Value, validStruct.len, validStruct.isPwd);
 				} else
 				{
-					Value = gx.text.formatString(Value, validStruct.len, validStruct.isPwd, gx.rtPicture(validStruct, Control));
+					Value = gx.text.formatString(Value, validStruct.len, validStruct.isPwd, validStruct.pic);
 				}
 			}
 			this.persistGridControlValue(ControlId, Value);
@@ -15526,7 +15227,7 @@ gx.fn = (function($) {
 			else
 				isMultiline = ((Control != null) && (Control.tagName == 'TEXTAREA'));
 			if (isPwd) {
-				this.setControlValue_span_safe(spanCtrl, gx.text.formatString(Value, validStruct.len, validStruct.isPwd, gx.rtPicture(validStruct, Control), GXCtrlFormat, isMultiline));
+				this.setControlValue_span_safe(spanCtrl, gx.text.formatString(Value, validStruct.len, validStruct.isPwd, validStruct.pic), GXCtrlFormat, isMultiline);
 			} else {
 				this.setControlValue_span_safe(spanCtrl, Value, GXCtrlFormat, isMultiline);
 			}
@@ -16008,7 +15709,7 @@ gx.fn = (function($) {
 
 				vStruct = vStruct || (gxO ? gxO.getValidStructFld(ControlId) : null);
 				
-				if (!vStruct || !vStruct.gxgrid || !vStruct.gxgrid.grid || !vStruct.gxgrid.grid.useHiddensForControlValues)
+				if ((vStruct && vStruct.gxgrid && !vStruct.gxgrid.grid.useHiddensForControlValues) || !vStruct || !vStruct.gxgrid)
 				{
 					var Control;
 					if (vStruct && (vStruct.ctrltype == "edit" || vStruct.ctrltype == 'checkbox' || vStruct.ctrltype == 'combo'))
@@ -16131,11 +15832,11 @@ gx.fn = (function($) {
 				var CtrlId = gx.dom.id(Control);
 				if (gx.O) {
 					var vStruct = gx.O.getValidStructFld(CtrlId);
-					if (vStruct && typeof (gx.rtPicture(vStruct, Control)) != 'undefined') {
+					if (vStruct && typeof (vStruct.pic) != 'undefined') {
 						if (vStruct.type == 'int')
-							return this.getIntegerValue(CtrlId, gx.rtPicture(vStruct, Control).indexOf(',') != -1 ? gx.thousandSeparator : '');
+							return this.getIntegerValue(CtrlId, vStruct.pic.indexOf(',') != -1 ? gx.thousandSeparator : '');
 						if (vStruct.type == 'decimal')
-							return this.getDecimalValue(CtrlId, gx.rtPicture(vStruct, Control).indexOf(',') != -1 ? gx.thousandSeparator : '', gx.decimalPoint);
+							return this.getDecimalValue(CtrlId, vStruct.pic.indexOf(',') != -1 ? gx.thousandSeparator : '', gx.decimalPoint);
 					}
 				}
 			}
@@ -16200,15 +15901,15 @@ gx.fn = (function($) {
 			var validStruct = gx.O ? gx.O.getValidStructFld(ControlId) : null;
 			var controlValue = this.getControlValue(ControlId, mode, undefined, validStruct);
 			if (validStruct && controlValue)
-				controlValue = gx.num.extractValue(gx.rtPicture(validStruct), controlValue);
+				controlValue = gx.num.extractValue(validStruct.pic, controlValue);
 			if ( gx.lang.isArray(controlValue))
 				return controlValue;
-			controlValue = (typeof(controlValue) != 'undefined') ? controlValue.toString() : '';
-
-			if (controlValue.length === 0 && validStruct && validStruct.emptyAsNull === 'Blank') {
-				return controlValue;
+			if (typeof (controlValue) != 'undefined') {
+				controlValue = controlValue.toString();
 			}
-
+			else {
+				controlValue = '';
+			}
 			if (controlValue.length < gx.num.maxNumericPrecision() || typeof (gx.num.dec) == "undefined") {
 				nIntVal = gx.num.parseInt(controlValue, 10, ThSep);
 			}
@@ -16221,14 +15922,8 @@ gx.fn = (function($) {
 		getDecimalValue: function (ControlId, ThSep, DecPoint, mode) {
 			var validStruct = gx.O ? gx.O.getValidStructFld(ControlId) : null;
 			var ctrlValue = this.getControlValue(ControlId, mode, undefined, validStruct);
-			var Control = gx.dom.el(ControlId, (validStruct && (validStruct.ctrltype == "edit" || validStruct.ctrltype == 'checkbox' || validStruct.ctrltype == 'combo')));
 			if (validStruct && ctrlValue)
-				ctrlValue = gx.num.extractValue(gx.rtPicture(validStruct, Control), ctrlValue);
-
-			if (typeof(ctrlValue) !== 'undefined' && ctrlValue.length === 0 && validStruct && validStruct.emptyAsNull === 'Blank') {
-				return '';
-			}
-			
+				ctrlValue = gx.num.extractValue(validStruct.pic, ctrlValue);
 			if ( gx.lang.isArray(ctrlValue))
 				return ctrlValue;
 			var nDecVal = gx.num.parseFloat(ctrlValue || "", ThSep, DecPoint);
@@ -16272,12 +15967,12 @@ gx.fn = (function($) {
 			return null;
 		},
 
-		v2c: function (vStruct, value, resetControl, row) {
-			vStruct.v2c(row);
+		v2c: function (vStruct, value, resetControl) {
+			vStruct.v2c();
 			if (typeof(value) === 'undefined') {
-				value = vStruct.val(row);
+				value = vStruct.val();
 			}
-			var ctrl = gx.fn.getControlGridRef(vStruct.fld, vStruct.grid, row);
+			var ctrl = gx.fn.getControlGridRef(vStruct.fld, vStruct.grid);    
 			gx.plugdesign.controlValueChanged(ctrl, value);
 			if (resetControl) {
 				ctrl.value = "";
@@ -16317,50 +16012,45 @@ gx.fn = (function($) {
 			}
 		},
 
-		verticalFormula: function (VarName, Default, GridId, Row, CondsFunc, RowFunc, Deps) {
+		verticalFormula: function (VarName, Default, GridId, CondsFunc, RowFunc, Deps) {
 			var validStruct = gx.fn.vStructForVar(VarName);
 			if (!gx.lang.emptyObject(validStruct))
-				validStruct.v2c(Row);
+				validStruct.v2c();
 			else
 				this.v2cMap(VarName);
 			var oldRow = gx.fn.currentGridRowImpl(GridId);
-			var gridObj = gx.fn.getGridObj(GridId, Row);
+			var gridObj = gx.fn.getGridObj(GridId);
 			var retVal = 0;
 			var anyWithCond = false;
-			if (gridObj) {
-				var len = gridObj.grid.rows.length;
-				for (var i = 0; i < len; i++) {
-					var rowObj = gridObj.grid.rows[i];
-					var IsRemoved = rowObj.gxDeleted();
-					var RecordExists = rowObj.gxExists();
-					var RecordIsMod = rowObj.gxIsMod();
-					if (!IsRemoved && (RecordExists || RecordIsMod)) {
-						gx.fn.setCurrentGridRow(GridId, rowObj.gxId);
-						if (Deps && Deps.length > 0)
-							this.depsToVars(Deps);
-						else if (!gx.lang.emptyObject(validStruct) && typeof (validStruct.c2v) == 'function')
-							validStruct.c2v();
-						else
-							this.c2vMap(VarName);
-						if (CondsFunc.call(gx.O)) {
-							anyWithCond = true;
-							retVal = RowFunc(i, retVal);
-						}
+			var len = gridObj.grid.rows.length;
+			for (var i = 0; i < len; i++) {
+				var rowObj = gridObj.grid.rows[i];
+				var IsRemoved = rowObj.gxDeleted();
+				var RecordExists = rowObj.gxExists();
+				var RecordIsMod = rowObj.gxIsMod();
+				if (!IsRemoved && (RecordExists || RecordIsMod)) {
+					gx.fn.setCurrentGridRow(GridId, rowObj.gxId);
+					if (Deps && Deps.length > 0)
+						this.depsToVars(Deps);
+					else if (!gx.lang.emptyObject(validStruct) && typeof (validStruct.c2v) == 'function')
+						validStruct.c2v();
+					else
+						this.c2vMap(VarName);
+					if (CondsFunc.call(gx.O)) {
+						anyWithCond = true;
+						retVal = RowFunc(i, retVal);
 					}
 				}
-				gx.fn.setCurrentGridRow(GridId, oldRow);
-				if (Deps && Deps.length > 0)
-					this.depsToVars(Deps);
-				else if (!gx.lang.emptyObject(validStruct) && typeof (validStruct.c2v) == 'function')
-					validStruct.c2v(Row);
-				else
-					this.c2vMap(VarName);
-				if (!anyWithCond)
-					retVal = Default;
 			}
-			else {
-				gx.dbg.write('verticalFormula: can´t find grid ' + GridId + ' at row ' + Row);
-			}
+			gx.fn.setCurrentGridRow(GridId, oldRow);
+			if (Deps && Deps.length > 0)
+				this.depsToVars(Deps);
+			else if (!gx.lang.emptyObject(validStruct) && typeof (validStruct.c2v) == 'function')
+				validStruct.c2v();
+			else
+				this.c2vMap(VarName);
+			if (!anyWithCond)
+				retVal = Default;
 			return retVal;
 		},
 
@@ -16392,7 +16082,7 @@ gx.fn = (function($) {
 			}
 		},
 		
-		maxFrm: function(VarName, Default, ThSep, DecPoint, GridId, Row, CondsFunc, Deps)
+		maxFrm: function(VarName, Default, ThSep, DecPoint, GridId, CondsFunc, Deps)
 	    {
 			var boolHandler = function (VarName, Row, LastValue) {
 				return LastValue || gx.O[VarName];
@@ -16400,13 +16090,13 @@ gx.fn = (function($) {
 			var floatHandler = function (VarName, Row, LastValue, NewValue) {
 				return (NewValue > LastValue) ? NewValue : LastValue;
 			}
-	        return gx.fn.verticalFormula(VarName, Default, GridId, Row, CondsFunc, function(row, val)
+	        return gx.fn.verticalFormula(VarName, Default, GridId, CondsFunc, function(row, val)
 	        {				
 				return gx.fn.rowValueHandler(VarName, row, val,boolHandler, floatHandler, ThSep, DecPoint);				
 	        }, Deps);
 	    },
 		
-		sumFrm: function(VarName, Default, ThSep, DecPoint, GridId, Row, CondsFunc, Deps)
+		sumFrm: function(VarName, Default, ThSep, DecPoint, GridId, CondsFunc, Deps)
 	    {
 			var boolHandler = function (VarName, Row, LastValue) {
 				return LastValue || gx.O[VarName];
@@ -16414,13 +16104,13 @@ gx.fn = (function($) {
 			var floatHandler = function (VarName, Row, LastValue, NewValue) {
 				return NewValue + LastValue;
 			}
-	        return gx.fn.verticalFormula(VarName, Default, GridId, Row, CondsFunc, function(row, val)
+	        return gx.fn.verticalFormula(VarName, Default, GridId, CondsFunc, function(row, val)
 	        {
 				return gx.fn.rowValueHandler(VarName, row, val,boolHandler, floatHandler, ThSep, DecPoint);							           
 	        }, Deps);
 	    },
 	   
-	    minFrm: function(VarName, Default, ThSep, DecPoint, GridId, Row, CondsFunc, Deps)
+	    minFrm: function(VarName, Default, ThSep, DecPoint, GridId, CondsFunc, Deps)
 	    {
 			var boolHandler = function (VarName, Row, LastValue) {
 				return LastValue && gx.O[VarName];
@@ -16428,15 +16118,15 @@ gx.fn = (function($) {
 			var floatHandler = function (VarName, Row, LastValue, NewValue) {
 				return (NewValue < LastValue) ? NewValue : LastValue;
 			}
-	        return gx.fn.verticalFormula(VarName, Default, GridId, Row, CondsFunc, function(row, val)
+	        return gx.fn.verticalFormula(VarName, Default, GridId, CondsFunc, function(row, val)
 	        {
 				return gx.fn.rowValueHandler(VarName, row, val,boolHandler, floatHandler, ThSep, DecPoint);			    
 	        }, Deps);
 	    },
 
-	    averageFrm: function(VarName, Default, ThSep, DecPoint, GridId, Row, CondsFunc, Deps)
+	    averageFrm: function(VarName, Default, ThSep, DecPoint, GridId, CondsFunc, Deps)
 	    {
-	        return gx.fn.verticalFormula(VarName, Default, GridId, Row, CondsFunc, function(row, val)
+	        return gx.fn.verticalFormula(VarName, Default, GridId, CondsFunc, function(row, val)
 	        {
 	            var v = gx.num.parseFloat(gx.O[VarName], ThSep, DecPoint);
 	            if (row == 0) return v;
@@ -16444,9 +16134,9 @@ gx.fn = (function($) {
 	        }, Deps);
 	    },
 
-	    countFrm: function(VarName, Default, GridId, Row, CondsFunc, Deps)
+	    countFrm: function(VarName, Default, GridId, CondsFunc, Deps)
 	    {
-	        return gx.fn.verticalFormula(VarName, Default, GridId, Row, CondsFunc, function(row, val)
+	        return gx.fn.verticalFormula(VarName, Default, GridId, CondsFunc, function(row, val)
 	        {	            
 	            return (row == 0)? 1: val + 1;
 	        }, Deps);
@@ -16506,16 +16196,16 @@ gx.fn = (function($) {
 									}
 									if (vStruct) {
 										var ctrl = gx.fn.screen_CtrlRef(gx.csv.ctxControlId(vStruct.fld));
+										if (gx.fn.isAccepted(ctrl)) {
+											lastCtrl = ctrl;
+											gx.evt.execOnchange(ctrl);
+										}
 										if (vStruct.v2v) {
 											vStruct.v2v(varValue);
 											gx.fn.v2c(vStruct, varValue);										
 										}
 										if (typeof (vStruct.v2bc) === 'function')
 											vStruct.v2bc.call(gxObj);
-										if (gx.fn.isAccepted(ctrl)) {
-											lastCtrl = ctrl;
-											gx.evt.onchange_impl(ctrl);
-										}
 										gxObj.refreshDependantGrids(vStruct);
 									}
 									else {
@@ -16576,8 +16266,7 @@ gx.fn = (function($) {
 			if (Control == null)
 				return;
 			this.persistControlProperty(ControlId, Property, PValue);
-					var vStruct = gx.O.getValidStructFld(ControlId);
-			this.setCtrlPropertyImpl(Control, Property, PValue, vStruct);
+			this.setCtrlPropertyImpl(Control, Property, PValue);
 		},
 
 		setGridCtrlProperty: function (ControlId, Property, PValue) {
@@ -16606,7 +16295,7 @@ gx.fn = (function($) {
 			return $(controls);
 		},
 		
-		setCtrlPropertyImpl: function (Control, Property, PValue, vStruct) {
+		setCtrlPropertyImpl: function (Control, Property, PValue) {
 			if (Control == null)
 				return;
 			if (Control == document) {
@@ -16615,7 +16304,7 @@ gx.fn = (function($) {
 					this.setCtrlPropertyImpl(gx.dom.form(), Property, PValue);
 				}
 			}
-			vStruct = vStruct || gx.O.getValidStructFld(Control.id);
+			var vStruct = gx.O.getValidStructFld(Control.id);
 			if ((Property === "Enabled" || Property === "Visible") && vStruct && vStruct.grid > 0 && gx.fn.rowIsRemoved(vStruct.grid, gx.fn.controlRowId(Control)))
 				return;
 
@@ -16630,16 +16319,8 @@ gx.fn = (function($) {
 				return;
 			}
 
-			var $controls, 
-				$relatedControls = $();
+			var $controls;
 			switch (Property) {
-				case "Picture":
-					Control.setAttribute('data-gx-rt-picture', PValue);
-					if (vStruct) {
-						vStruct.v2c();
-						vStruct.c2v();
-					}
-					break;
 				case "Caption":
 					this.setCtrlCaption(Control, PValue);
 					break;
@@ -16654,12 +16335,8 @@ gx.fn = (function($) {
 						this.setButtonVisibility(Control, !this.propertyValueFalse(PValue));
 					}
 					else {
-						var isCheckbox = Control.type === 'checkbox';
-						if (Control.nodeName == 'INPUT') {
-							if (isCheckbox && $(Control).parent().is('span:not(.gx-checkbox-wrapper)')) { //Checkbox is always wrapped inside SPAN element. gx-checkbox-wrapper is handled by Templates.
-								$relatedControls = $(Control).parent();
-							}
-							else if (Control.type == 'radio') {
+						if (Control.nodeName == 'INPUT') {							
+							if (Control.type == 'radio') {
 								var $parent = $(Control).parent().closest('.gx-radio-button');
 								if ($parent.length > 0) {
 									Control = $parent[0];
@@ -16671,7 +16348,7 @@ gx.fn = (function($) {
 							}
 						}
 						var pValueFalse = this.propertyValueFalse(PValue);
-						var disabled = (Control.gxusrdisabled && !isCheckbox) ? Control.gxusrdisabled : false;
+						var disabled = (Control.gxusrdisabled) ? Control.gxusrdisabled : false;
 						if (pValueFalse) {
 							var spanVal = gx.dom.byId('span_' + Control.id);
 							this.setVisible(Control, !pValueFalse);
@@ -16684,9 +16361,6 @@ gx.fn = (function($) {
 							if (spanVal)
 								this.setVisible(spanVal, disabled);
 							this.setVisible(Control, !disabled);
-						}
-						for (var i = 0; i < $relatedControls.length; i++) {
-							this.setVisible($relatedControls[i], !disabled);
 						}
 						gx.fn.setDateCtrlProperties(Control, !disabled, !pValueFalse );
 					}
@@ -16743,10 +16417,6 @@ gx.fn = (function($) {
 					else {
 						$controls = this.getControls(Control);
 						$controls.attr('class', PValue);
-						if (PValue.indexOf('Readonly') <= 0 ) {
-							//For compatibility reasons, we keep adding Main base class.
-							$(this.getRONode(Control.id, false)).attr('class', PValue + ' Readonly' + PValue);
-						}
 					}
 					break;
 				case "Columnclass":
@@ -17103,11 +16773,9 @@ gx.fn = (function($) {
 			Control = this.screen_CtrlRef(ControlId);
 			if (!Control)
 				return;
-			if (Property === "Picture")
-				return gx.rtPicture(vStruct, Control);
 			if (Property === "Text")
 				return this.getControlValue(ControlId, "screen", undefined, vStruct);
-			else if (Property == "Visible" && gx.fn.getRONode(Control.id)) //Un control es visible si el control o su span estan visibles
+			else if (Property == "Visible" && gx.fn.getRONode(ControlId)) //Un control es visible si el control o su span estan visibles
 				return (this.getCtrlProperty_impl(Control, Property) || this.getCtrlProperty_impl(gx.fn.getRONode(ControlId), Property));
 			else if (Property == "Enabled" && gx.fn.getRONode(Control.id))  //Un control esta disable si su RONode esta visible
 				return !this.getCtrlProperty_impl(gx.fn.getRONode(Control.id), 'Visible');
@@ -17489,14 +17157,13 @@ gx.fn = (function($) {
 			return Control;
 		},
 
-		checkboxClick: function (Id, Control, CheckedValue, UnCheckedValue, gxWCP) {
-			var checked = Control.checked,
-				gxO = (gxWCP)? gx.getObj(gxWCP): null,
-				vStruct = (typeof Id === "object") ? Id : gx.fn.validStruct(Id, gxO),
-				gridIdx = (vStruct && vStruct.gxgrid)? vStruct.gxgrid.grid.firstRecordOnPage: 0,
-				gridId = (vStruct && vStruct.grid)? vStruct.grid: 0;
+		checkboxClick: function (Id, Control, CheckedValue, UnCheckedValue) {
+			var checked = Control.checked;
+			var vStruct = (typeof Id === "object") ? Id : gx.fn.validStruct(Id);
+			var gridIdx = (vStruct && vStruct.gxgrid)? vStruct.gxgrid.grid.firstRecordOnPage: 0;
+			var gridId = (vStruct && vStruct.grid)? vStruct.grid: 0;
 			
-			var afterValidationFn = (function (forced) {	
+			var afterValidationFn = function (forced) {	
 				if (!forced && gx.csv.validatingGrid !== gridId)
 					return;
 				Control = this.restoreLostCtrlOnGridRefresh(gridIdx, Control, checked);
@@ -17510,24 +17177,19 @@ gx.fn = (function($) {
 					vStruct.c2v();
 				if (typeof (vStruct.v2bc) == 'function')
 					vStruct.v2bc.call(gx.O);
-			}).closure(this);
+			}
 
 			if (gx.pO.supportAjaxEvents) {
 				gx.fx.obs.addObserver('gx.onaftervalidate', this, function( gxEvtKind) { if(gxEvtKind !== gx.evt.types.VALUECHANGED) afterValidationFn();}, { single: true });
 			}
 
-			//Calls pending validations.
-			gx.fx.obs.notify('gx.validation', null, function () {
-				if (gx.evt.fixWebKitOnFocus()) {
-					Control.onfocus();
-				}
+			gx.fx.obs.notify('gx.validation'); //Calls pending validations.
 
-				afterValidationFn.call(this, true);
-			});
+			if (gx.evt.fixWebKitOnFocus())
+				Control.onfocus();
 
-			if (!gx.pO.fullAjax) {
-				afterValidationFn.call(this, true);	
-			}			
+			afterValidationFn.call(this, true);
+
 		},
 
 
@@ -17611,10 +17273,10 @@ gx.fn = (function($) {
 			if (gx.dom.hasClass(Control, "gx-invisible")) {
 				return false;
 			}
-			if (Control.tagName.toUpperCase() === "INPUT" && Control.type === "hidden") {
+			if (Control.tagName.toUpperCase() == "INPUT" && Control.type == "hidden") {
 				return false;
 			}
-			if (Control.style.display === "none") {
+			if (Control.style.display == "none") {
 				return false;
 			}
 			try {
@@ -17689,15 +17351,12 @@ gx.fn = (function($) {
 				gx.csv.invalidForcedCtrl = Ctrl;
 			}
 			catch (e) {
-				gx.util.alert.showError(Message);
+				alert(Message);
 			}
 		},
-		
-		getGridRowMode: function (GXLvl, GridId) {			
-			return this.getGridRowModeImpl(GXLvl, GridId, this.currentGridRow(GridId));
-		},
-		
-		getGridRowModeImpl: function (GXLvl, GridId, CurrentRow) {			
+
+		getGridRowMode: function (GXLvl, GridId) {
+			var CurrentRow = this.currentGridRow(GridId);
 			var IsRemoved = this.rowIsRemoved(GridId, CurrentRow);
 			var RecordExists = this.getControlValue("nRcdExists_" + GXLvl + '_' + CurrentRow);
 			if (IsRemoved == "1")
@@ -17706,7 +17365,6 @@ gx.fn = (function($) {
 				return "INS";
 			return "UPD";
 		},
-		
 
 		rowIsRemoved: function (GridId, CurrentRow) {
 			var gridCtrl = this.getGridObj(GridId);
@@ -17718,8 +17376,8 @@ gx.fn = (function($) {
 			return false;
 		},
 
-		getGridObj: function (GridId, row) {
-			return gx.O.getGridById(GridId, row);
+		getGridObj: function (GridId) {
+			return gx.O.getGridById(GridId);
 		},
 
 		changeCmpContext: function () {
@@ -17815,33 +17473,36 @@ gx.fn = (function($) {
 			}
 		},
 
-		setFocusSafe: function(Control, callback) {
-			var setFocusOnload = gx.csv.setFocusOnload;
+		setFocusSafe: function( Control, callback) {
 			if (Control)
 			{
-				var doSetFocusFn = function(Control, callback) {
+				var doSetFocus = function(Control, callback) {
 					try {
 						if (setFocusOnload && callback) {
-							gx.fx.obs.addObserver('gx.onafterfocus', this, callback.closure(this, [Control]), { single: true });
+							gx.fx.obs.addObserver('gx.onafterfocus', this, callback.closure(this, [Control]), { single: true });											
 						}
 						$(Control).focus();
 					}
 					catch(e) {}
-
 					if (!setFocusOnload && callback) {
 						callback(Control);
 					}
 				};
-
-				if (gx.spa.isNavigating()) {
-					gx.spa.addObserver('onnavigatecomplete', window, function() {
-						doSetFocusFn.call(this, Control, callback);
-					}, { single: true });
-				}
-				else {
-					var timeout = setFocusOnload ? 500 : 0;
-					gx.lang.doCallTimeout(doSetFocusFn, this, [Control, callback], timeout);
-				}
+				var setFocusOnload = gx.csv.setFocusOnload;
+					if (setFocusOnload || !gx.util.browser.isIE()) {
+						if (gx.spa.isNavigating()) {
+							gx.spa.addObserver('onnavigatecomplete', window, function() {
+								doSetFocus.call(this, Control, callback);
+							});
+						}
+						else {
+							var timeout = setFocusOnload ? 500 : 0;
+							gx.lang.doCallTimeout(doSetFocus, this, [Control, callback], timeout);
+						}
+					}
+					else {
+						doSetFocus(Control, callback);
+					}
 			} 
 		},
 
@@ -17862,8 +17523,7 @@ gx.fn = (function($) {
 			return Control;
 		},
 
-		setFocusOnload: function ( isLoading) {
-			isLoading = isLoading === undefined ? true : false; 
+		setFocusOnload: function () {
 			gx.wpo( function() {
 				if (gx.pO.focusOnlyNEmb && top !== self && !gx.popup.ispopup())
 					return;
@@ -17902,7 +17562,7 @@ gx.fn = (function($) {
 							gx.csv.setFocusOnload = false;
 						}
 						gx.csv.lastControl = Control;
-						gx.csv.setFocusOnload = isLoading;
+						gx.csv.setFocusOnload = true;
 						if (gx.fn.isAccepted(Control))
 							gx.fn.setFocus(Control, disableFocusonLoad);
 						else {
@@ -17939,19 +17599,12 @@ gx.fn = (function($) {
 		},
 
 		isAccepted: function (Control, triggerNac, gxO) {
-			var triggerNac = triggerNac === undefined || triggerNac,
-				gxO = gxO || gx.O,
-				notAccNodeName = ['FIELDSET'],
-				accepted = Control != null 
-					&& Control.type
-					&& Control.type !== "hidden" 
-					&& !Control.disabled
-					&& !Control.readOnly
-					&& !gx.util.inArray(Control.nodeName, notAccNodeName) 
-					&& gx.fn.isVisible(Control);
-			if (!accepted) {
-				return false;
-			}
+			var triggerNac = triggerNac == undefined || triggerNac,
+				accepted = true,
+				gxO = gxO || gx.O;
+			var notAccNodeName = ['FIELDSET'];
+			if (Control != null && Control.type != undefined && !gx.util.inArray(Control.nodeName, notAccNodeName) && Control.type != "hidden" && gx.fn.isVisible(Control)
+					&& Control.disabled == false && (Control.readOnly == null || Control.readOnly == false)) {
 				if (triggerNac) {
 					var ControlId = gx.dom.id(Control),
 						vStruct = gxO.getValidStructFld(ControlId),
@@ -17959,12 +17612,15 @@ gx.fn = (function($) {
 					if (gx.csv.lastGrid > 0)
 						gxO.setVariable("Gx_mode", gx.fn.getGridRowMode(gx.fn.gridLvl(gx.csv.lastGrid), gx.csv.lastGrid));
 					if (!gx.lang.emptyObject(vStruct) && vStruct.nac)
-					accepted = !vStruct.nac.call(gxO);
+						accepted = (vStruct.nac.call(gxO) == false);
 					else
 						accepted = true;
 					gxO.setVariable("Gx_mode", sMode);
+				}
 			}
-
+			else {
+				accepted = false;
+			}
 			return accepted;
 		},
 
@@ -17974,8 +17630,8 @@ gx.fn = (function($) {
 			return gx.evt.isEnterEvtCtrl(gx.csv.lastControl);
 		},
 
-		skipFocus: function (skiponenter, lastControl) {
-			lastControl = lastControl || gx.csv.lastControl;
+		skipFocus: function (skiponenter) {
+			var lastControl = gx.csv.lastControl;
 			var startEl = gx.fn.getControlIndex(lastControl), el = startEl;
 			var gridId = this.controlGridId(lastControl.id || lastControl.name);
 
@@ -18083,23 +17739,13 @@ gx.fn = (function($) {
 			return gx.fn.rowGridId(ctrl.parentNode);
 		},
 
-		controlRowIdImpl: function (ctrl) {
+		controlRowId: function (ctrl) {
 			if (!ctrl || !ctrl.getAttribute)
 				return null;
 			var id = ctrl.getAttribute("data-gxrow");
 			if (id != null)
 				return id;
-			return gx.fn.controlRowIdImpl(ctrl.parentNode);
-		},
-		
-		controlRowId: function (ctrl) {			
-			var rowId = gx.fn.controlRowIdImpl(ctrl);
-			if (rowId === null && ctrl && ctrl.id && ctrl.id.lastIndexOf("_") > 0) { 
-				//WA for returning no Abstract grid row. Remove in the future. 
-				var _idx = ctrl.id.lastIndexOf("_");
-				rowId = ctrl.id.substring(_idx + 1);
-			}
-			return rowId;
+			return gx.fn.controlRowId(ctrl.parentNode);
 		},
 
 		controlGridId: function (Fld) {
@@ -18379,9 +18025,8 @@ gx.fn = (function($) {
 			return vStruct && (vStruct.evt || vStruct.evt2);
 		},
 		
-		controlIds: function (gxO) {
-			gxO = gxO || gx.O;
-			return gxO.getControlIds();
+		controlIds: function () {
+			return gx.O.getControlIds();
 		},
 
 		validStruct: function (Ctrl, gxO) {
@@ -18599,85 +18244,61 @@ gx.fn = (function($) {
 			return !gx.lang.emptyObject(gx.csv.autoRefreshing) && (gx.csv.lastControl != null && gx.csv.lastControl.id == (cmpCtx + ControlId));
 		},
 
-		setJsonValues: function (gxValuesArr, isValidation, gridId, row) {
+		setJsonValues: function (gxValuesArr) {
 			if (!gxValuesArr)
 				return [];
 			var oldObj = gx.O,
 				len = gxValuesArr.length,
-				updatedUCs = [],				
-				control,				
-				cRow,
-				gRow;
-			
-			var getRow = function(vStruct, evtGridId, evtGridRow) {
-				return (vStruct.grid == gridId) ? evtGridRow: gx.fn.currentGridRow(vStruct.grid);
-			};
-			
+				updatedUCs = [],
+				row,
+				control;
 			for (var i = 0; i < len; i++) {
-				var gxValues = gxValuesArr[i],
-					cmpCtx = gxValues.CmpContext,
-					isMPage = gx.lang.booleanValue(gxValues.IsMasterPage),
-					gxO = gx.setGxO(cmpCtx, isMPage);
+				var gxValues = gxValuesArr[i];
+				var cmpCtx = gxValues.CmpContext;
+				var isMPage = gx.lang.booleanValue(gxValues.IsMasterPage);						
+				gx.setGxO(cmpCtx, isMPage);
 				if (!gx.lang.emptyObject(gx.O)) {
 					for (var Property in gxValues) {
+						
 						if (Property == 'CmpContext' || Property == 'IsMasterPage')
 							continue;
-						var value = gxValues[Property];
-						if (typeof (value) == 'object') {
+						if (typeof (gxValues[Property]) == 'object') {
 							if (gx.fn.refreshBC(Property, gxValues[Property]))
 								continue;
 						}
-						if (typeof (value) != "function") {
+						if (typeof (gxValues[Property]) != "function") {
 							var validStruct = gx.fn.vStructForVar(Property) || gx.O.getValidStructFld(Property);
 							if (validStruct) {
 								if (validStruct.v2v && !gx.fn.autoRefreshingControl(validStruct.fld, cmpCtx)) {
 									var grid = gx.O.getGridById(validStruct.grid);
 									var additiveResponse = (grid && grid.InfiniteScrolling);
 									if (validStruct.grid != 0 ) {
-										control = gx.dom.el(Property, false, false);
-										cRow = gx.fn.controlRowId(control) || getRow(validStruct, gridId, row);
+										if (validStruct.ctrltype == "edit" || validStruct.ctrltype == 'checkbox' || validStruct.ctrltype == 'combo')
+											control = gx.dom.byId(Property);
+										else
+											control = gx.dom.el(Property, false, true);
+										row = gx.fn.controlRowId(control) || gx.fn.currentGridRowImpl(validStruct.grid);
 									}
 									if (!additiveResponse) {
-										validStruct.v2v(value);
-										validStruct.v2c(cRow);										
+										validStruct.v2v(gxValues[Property]);
+										validStruct.v2c(row);
 									}
 								}
 							}
-							else if (Property == "GX_FocusControl" && !isValidation) {
+							else if (Property == "GX_FocusControl") {
 								if ((oldObj.CmpContext == cmpCtx) && (oldObj.IsMasterPage == isMPage))
-									gx.usrFocusControl = value;
-							}													
-							else {								
-								//Hide Code
-								var validStruct = gx.fn.vStructForHC(Property);
-								if (!gx.lang.emptyObject(validStruct) && !gx.lang.emptyObject(validStruct.hc) && !validStruct.grid) {
-									if (validStruct.hc == Property) {
-										gxO[validStruct.hc] = value;
-										gx.fn.setHidden(cmpCtx + "GXH_" + validStruct.fld, value);
-									}
-									else if (validStruct.hd == Property) {
-										gxO[validStruct.hd] = value;
-									}
-								}
-								//HC en grid
-								validStruct = gx.fn.vStructForHC(Property);								
-								if (!gx.lang.emptyObject(validStruct)) {
-									gRow = '';
-									if (validStruct.grid != 0) {										
-										gRow = getRow(validStruct, gridId, row);
-									}
-									gx.fn.setHidden(cmpCtx + "GXHC" + validStruct.fld + "_" + gRow, value);									
-								}
-														
-								var ctrlMap = gx.fn.getVarControlMap(gxO, Property);
+									gx.usrFocusControl = gxValues[Property];
+							}
+							else {
+								var ctrlMap = gx.fn.getVarControlMap(gx.O, Property);
 								if (!gx.lang.emptyObject(ctrlMap))
-									gx.setVar(ctrlMap, value);
+									gx.setVar(ctrlMap, gxValues[Property]);
 								else
-									gx.setVar(Property, value);
-								gx.fn.setGridHidden(Property, value);
+									gx.setVar(Property, gxValues[Property]);
+								gx.fn.setGridHidden(Property, gxValues[Property]);
 
 								if (gx.O.UCBindings[Property]) {
-									updatedUCs = updatedUCs.concat(gxO.UCBindings[Property].uc);
+									updatedUCs = updatedUCs.concat(gx.O.UCBindings[Property].uc);
 								}
 							}
 						}
@@ -18702,7 +18323,7 @@ gx.fn = (function($) {
 
 		setJsonProperties: function (gxPropertiesArr, rowId) {
 			//Critical function, changes here impact performance
-			var domCtrl, vStruct, GridColumn, isBlob, ControlInGrid;
+			var domCtrl, vStruct, GridColumn, isBlob;
 			if (!gxPropertiesArr)
 				return [];
 			var oldObj = gx.O,
@@ -18737,13 +18358,9 @@ gx.fn = (function($) {
 							if ( !ptyHandled)
 							{
 								GridColumn = gxO.getGridColumn(Control, rowId);
-								if (((domCtrl == null || Grid) && gx.uc.isUserControl(Control, gxO)) || (GridColumn && GridColumn.isUserControl)) {
-									ControlInGrid = Control;
-									if (GridColumn && GridColumn.isUserControl) {
-										ControlInGrid = Control + "_" + rowId;
-									}
-									gx.uc.setProperties(ControlInGrid, gxPropValue);
-									updatedUCs.push(gx.uc.getUserControlObj(gx.uc.userControlContainerId(ControlInGrid)));
+								if ((domCtrl == null || Grid) && gx.uc.isUserControl(Control, gxO)) {
+									gx.uc.setProperties(Control, gxPropValue);
+									updatedUCs.push(gx.uc.getUserControlObj(gx.uc.userControlContainerId(Control)));
 								}
 								else {
 									if (domCtrl == null && GridColumn == null)
@@ -18759,11 +18376,11 @@ gx.fn = (function($) {
 												
 											if (isObjValue) {
 												for (var InProperty in gxPropValue[Property]) {
-													gx.fn.setCtrlPropertyImpl(domCtrl, InProperty, gxPropValue[Property][InProperty], vStruct);
+													gx.fn.setCtrlPropertyImpl(domCtrl, InProperty, gxPropValue[Property][InProperty]);
 												}
 											}
 											else {
-												gx.fn.setCtrlPropertyImpl(domCtrl, Property, gxPropValue[Property], vStruct);
+												gx.fn.setCtrlPropertyImpl(domCtrl, Property, gxPropValue[Property]);
 											}
 											
 										}
@@ -18836,14 +18453,11 @@ gx.fn = (function($) {
 									if (grid.isUsercontrol) {
 										updatedUCs.push(grid.grid);
 									}
-										if (isPostback) {
-										if (!gx.O.Grids[grid.gridName] || !gx.O.Grids[grid.gridName].parentGrid)
-										{	
-											grid.loadGrid({
-												rowProps:gGridProps, 
-												isPostback:isPostback
-											});
-										}
+									if (isPostback) {
+										grid.loadGrid({
+											rowProps:gGridProps, 
+											isPostback:isPostback
+										});
 									}
 									else {
 										grid.updatePropsHidden(gGridProps);
@@ -18874,8 +18488,7 @@ gx.fn = (function($) {
 			return gxErrorViewers;
 		},
 
-		setErrorViewer: function (Messages, clearMessages) {
-			clearMessages = (clearMessages === undefined) || clearMessages;
+		setErrorViewer: function (Messages) {
 			gx.O.AnyError = 0;
 			if (!Messages)
 				return;
@@ -18922,9 +18535,7 @@ gx.fn = (function($) {
 							}
 							if (!gx.lang.emptyObject(ObjMessage.text)) {
 								if (typeof (ObjMessage) != "function") {
-									var attCtrl = gx.fn.screen_CtrlRef(ObjMessage.att);
-									var inHiddenGrid = attCtrl && $(attCtrl).is("[data-gxgridid].gx-invisible " + attCtrl.tagName);
-									if (ObjMessage.att != "" && ((inHiddenGrid && gx.fn.isVisible(attCtrl, 0)) || gx.fn.isVisible(attCtrl))) {
+									if (ObjMessage.att != "" && gx.fn.isVisible(gx.fn.screen_CtrlRef(ObjMessage.att))) {
 										var b = balloons[ObjMessage.att];
 										if (!b) {
 											b = gx.util.balloon.getNew(ObjMessage.att, undefined, sourceElements);
@@ -18958,17 +18569,9 @@ gx.fn = (function($) {
 							var errViewer = errViewers[i];
 							if (errViewer && errViewer.getAttribute('data-gx-id') == (cmpCtx + 'gxErrorViewer')) {
 								if (errViewer.innerHTML != html) {
-									if (gx.dom.shouldPurge()) {
+									if (gx.dom.shouldPurge())
 										gx.dom.purge(errViewer, true);
-									}
-
-									if (clearMessages) {
-										errViewer.innerHTML = html;
-									}
-									else {
-										errViewer.innerHTML += html;
-									}
-
+									errViewer.innerHTML = html;
 									if (html != '') {
 										var ef = gx.fx.dom.highlight(errViewer, [255, 255, 165], 2500);
 										ef.play();
@@ -19105,7 +18708,7 @@ gx.fn = (function($) {
 				var cmpHiddens = gx.fn.filterHiddens(gx.fn.getCmpRegex(cmpType), hiddens);
 				if (!gx.cache.codeLoaded(cmpType + cmpName)) {
 					gx.cache.addInlineCode(cmpType + cmpName);
-					gx.html.processCode(cmpHtml, false, gx.html.onTypeAvailable, [cmpName, gx.fn.processCodeCallback, [cmpName, cmpType, cmpHiddens, cmpContainer, gxO, deferred]], cmpName);					
+					gx.html.processCode(cmpHtml, false, gx.fn.processCodeCallback, [cmpName, cmpType, cmpHiddens, cmpContainer, gxO, deferred], cmpName);
 				}
 				else {
 					gx.fn.createComponentObj(cmpName, cmpType, cmpContainer);
@@ -19290,9 +18893,12 @@ gx.fn = (function($) {
 			var $body = $(document.body),
 				HasEnter = $body.attr('data-HasEnter') === 'true',
 				Skiponenter = $body.attr('data-Skiponenter') === 'true';
-			$(document).keydown( function(event) {				
-				gx.evt.onkeypress(event, HasEnter, Skiponenter);				
-			});			
+			$(document).keydown( function(event) {
+				gx.evt.onkeypress( null, HasEnter, Skiponenter);
+			});
+			$(document).keypress( function(event) {
+				gx.evt.onkeypress( event, HasEnter, Skiponenter);
+			});
 			$(document).keyup( function(event) {
 				gx.evt.onkeyup(event);
 			});
@@ -19415,7 +19021,7 @@ gx.fn = (function($) {
 			return DPTF + TimeFmt + AMPM;
 		},
 
-		installDatePicker: function (ControlId, validStruct, gxo, Flat, ShowsTime, WeekNumbers, MondayFirst, Format, DateLength, TimeLength) {
+			installDatePicker: function (ControlId, validStruct, gxo, Flat, ShowsTime, WeekNumbers, MondayFirst, Format, DateLength, TimeLength) {
 			var dateType = (!ShowsTime)? 'date': 'datetime';
 			var dPicker = new gx.ui.controls.datePicker({ 
 				inputId: ControlId,
@@ -19648,44 +19254,12 @@ gx.thread = {
 
 gx.INTERACTIVE_EVT = 'gx.onInteractive';
 gx.PARENT_OBJECT_EVT = 'gx.onCreateParentObject';
-gx.SETMASTERPAGE_EVT = 'gx.onSetMasterPage';
-gx.ONREADY_EVT = 'gx.onready';
-
 gx.isInteractive = false;
-gx.isReady = false;
 
 gx.goInteractive = function()
 {
 	gx.isInteractive = true;
 	gx.fx.obs.notify(gx.INTERACTIVE_EVT);
-};
-
-gx.goReady = function()
-{
-	gx.isReady = true;
-	gx.fx.obs.notify(gx.ONREADY_EVT);
-};
-
-gx.wr = function(fnc, ctx, args)
-{	
-	var args = args || [];
-	if (gx.isReady) {
-		fnc.apply( ctx, args);
-	}
-	else {
-		gx.fx.obs.addObserver(gx.ONREADY_EVT, ctx, fnc.closure(ctx, args), { single: true});
-	}
-};
-
-gx.wmp = function(fnc, ctx, args)
-{	
-	var args = args || [];
-	if (gx.pO && gx.pO.MasterPage) {
-		fnc.apply( ctx, args);
-	}
-	else {
-		gx.fx.obs.addObserver(gx.SETMASTERPAGE_EVT, ctx, fnc.closure(ctx, args), { single: true});
-	}
 };
 
 gx.wi = function(fnc, ctx, args)
@@ -19840,23 +19414,23 @@ gx.uc = (function ($) {
 			}
 			return false;
 		},
-
-		StartRender: function() {
-			PostRenderScripts = {};
+		
+		StartRender: function()
+		{
+			PostRenderScripts = {};				
 		},
 
-		pushPostRenderScripts: function(uc) {
-			$.each((uc && uc.Scripts) || [], function (i, script) {
-				PostRenderScripts[script] = script;
-			});
+		pushPostRenderScripts: function( uc)
+		{
+			$.each( (uc && uc.Scripts) || [], function (i, script) {
+					PostRenderScripts[script] = script;
+				});
 		},
-
-		EndRender: function() {
+		
+		EndRender: function()
+		{
 			var arrScripts = gx.lang.objToArray(PostRenderScripts);
-			var normalizedScripts = $.map(arrScripts, function (item) {
-				return gx.util.resourceUrl(gx.basePath + gx.staticDirectory + item, false);
-			});
-			gx.http.loadScripts(normalizedScripts, gx.emptyFn, 0, true);
+			gx.http.loadScripts(arrScripts, function() {}, 0, true);
 		},
 
 		UserControl: function () {
@@ -19914,32 +19488,18 @@ gx.uc = (function ($) {
 				this.GridId = (GridId != undefined) ? GridId : 0;
 				this.GridRow = (GridRow != undefined) ? GridRow : "";
 				gx.util.pushOnce( this.ControlId, this.ParentObject.GXCtrlIds);
-				var ctx_gridRow = GridRow || "_norow";
-				
-				var vStruct = this.ParentObject.GXValidFnc[this.ControlId];
-				if (!vStruct)
+				this.ParentObject.GXValidFnc[this.ControlId] = 
 				{
-					this.ParentObject.GXValidFnc[this.ControlId] = 
-					{
-						id: this.ControlId,
-						lvl: this.ControlLvl,
-						fld: FieldName,
-						grid: this.GridId,
-						op: [],
-						ip: [],
-						isuc: true,
-						uc: this,
-						fnc: this.validateControl
-					};
-					vStruct = this.ParentObject.GXValidFnc[this.ControlId];
-				}
-				vStruct = this.ParentObject.GXValidFnc[this.ControlId];
-				vStruct.ucInstances = vStruct.ucInstances || {};
-				vStruct.ucInstances[ctx_gridRow] = this;
-				vStruct.getUCInstance = function( sRow) {
-					var sRow = sRow || ctx_gridRow;
-					return vStruct.ucInstances[sRow];
-				} 
+					id: this.ControlId,
+					lvl: this.ControlLvl,
+					fld: FieldName,
+					grid: this.GridId,
+					op: [],
+					ip: [],
+					isuc: true,
+					uc: this,
+					fnc: this.validateControl
+				};
 			}
 
 			this.addValidFunction = function (Func, VarName, CtrlName) {
@@ -20034,24 +19594,14 @@ gx.uc = (function ($) {
 			}
 
 			this.addV2CFunction = function () {
-				var varName,
-					ctrlName,
-					method,
-					member,
-					prop;
-				if (typeof(arguments[0]) == "function") {
-					ctrlName = arguments[1]
+				if (arguments.length == 1 && typeof(arguments[0]) == "function") {
 					this.V2CFunctions.push(arguments[0]);
-					varName = gx.fn.getVarControlMap(this.ParentObject, ctrlName);
-					if (varName !== undefined) {
-						this.ParentObject.addUsercontrolBinding(varName, ctrlName, this);
-					}
 				}
 				else {
-					varName = arguments[0];
-					ctrlName = arguments[1];
-					method = arguments[2];
-					member = arguments[3];
+					var varName = arguments[0],
+						ctrlName = arguments[1],
+						method = arguments[2],
+						member = arguments[3];
 					this.ParentObject.addUsercontrolBinding(varName, ctrlName, this);
 					this.V2CFunctions.push(function(UC, gRow, readControlValue){
 						var control = ctrlName;
@@ -20066,21 +19616,7 @@ gx.uc = (function ($) {
 								UC.ParentObject[varName] = gx.fn.getControlValue(control);
 							}
 						}
-						var value = UC.ParentObject[varName];
-						if (UC.useGxDateForBindings) {
-							var varControlMap = gx.fn.getVarControlMapForVar(varName);
-							if (varControlMap.type === "date" || varControlMap.type === "dtime") {
-								if (typeof value === "string") {
-									if (UC.IsPostBack) {
-										value = (new gx.date.gxdate(value));
-									}
-									else {
-										value = (new gx.date.gxdate(value, "Y4MD"));
-									}
-								}
-							}
-						}
-						UC[method](value);
+						UC[method](UC.ParentObject[varName]);
 					});
 				}
 			}
@@ -20291,7 +19827,7 @@ gx.uc = (function ($) {
 						gx.fx.obs.addObserver('webcom.render', this, webComRenderHandler);
 					}
 					else {
-						gx.wr(doSetDynProp, this);						
+						gx.fx.obs.addObserver('gx.onready', this, doSetDynProp, { single: true });
 					}
 				}
 			}
@@ -20313,16 +19849,14 @@ gx.uc = (function ($) {
 			};
 
 			this.setGridProperties = function () {
-				var hiddenPropValue;
 				var props = this.ParentObject.getGridUCProperties(this.ControlName);
 				var len = props.length;
 				for (var i = 0; i < len; i++) {
 					var prop = props[i];
 					var propValue = prop.v;
-					var hiddenName = this.getHiddenName(prop.h);
-					hiddenPropValue = gx.fn.getHidden(hiddenName);
-					if (propValue === undefined || hiddenPropValue !== undefined) {
-						propValue = hiddenPropValue;
+					if (typeof (propValue) == 'undefined') {
+						var hiddenName = this.getHiddenName(prop.h);
+						propValue = gx.fn.getHidden(hiddenName);
 						if (prop.t == 'color') {
 							propValue = gx.color.html(propValue);
 						}
@@ -20369,6 +19903,8 @@ gx.uc = (function ($) {
 		}
 	};
 })(gx.$);
+
+
 /* END OF FILE - ..\js\gxfrmutl.js - */
 /* START OF FILE - ..\js\gxlast.js - */
 gx._init();
@@ -20781,13 +20317,13 @@ gx.spa = (function ($) {
 			if (gx.util.browser.isFirefox()) {
 				// This is to avoid a FF bug. If location is set in a callback of an AJAX request to the same url,
 				// the AJAX response is loaded, instead of the server response to the standard request.
-				gx.lang.doCallTimeout( function () {
-					this.setStopNavigating(url);
+				setTimeout(function () {
+					navigating = false;
 					window.location.href = url;
-				}, this, [url], 100);						
+				}, 100);
 			}
 			else {
-				this.setStopNavigating(url);
+				navigating = false;
 				window.location = url;
 			}
 		},
@@ -20799,17 +20335,11 @@ gx.spa = (function ($) {
 		isNavigating: function () {
 			return !this.canNavigate();
 		},
-		
-		setStopNavigating: function (url) {
-			navigating = false;
-			this.notify('onnavigate', [url]);
-		},
 
 		navigate: function (options) {
 			var timeoutTimer,
 				request,
-				url = options.url,
-				cancelled = false;
+				url = options.url;
 
 			if (!this.canNavigate()) {
 				this.setLocation(url);
@@ -20820,7 +20350,7 @@ gx.spa = (function ($) {
 			this.notify('onbeforenavigate', [url]);
 
 			request = this.request;
-			
+
 			// Current request is cancelled if we're already retrieving a page.
 			if (request && request.readyState < 4) {
 				request.onreadystatechange = gx.emptyFn;
@@ -20828,8 +20358,6 @@ gx.spa = (function ($) {
 				request.abort();
 			}
 
-			gx.evt.dispatcher.initialize();
-			
 			request = gx.http.doCall({
 				method: 'GET',
 				url: url,
@@ -20837,13 +20365,8 @@ gx.spa = (function ($) {
 					var redirectUrl = req.getResponseHeader(GX_SPA_REDIRECT_URL),
 						gxObjectClass = req.getResponseHeader(GX_SPA_GXOBJECT_RESPONSE_HEADER);
 
-					if (cancelled) {
-						return;
-					}
-
-					if (timeoutTimer) {
+					if (timeoutTimer)
 						clearTimeout(timeoutTimer);
-					}
 
 					if (req.status == SPA_NOT_SUPPORTED_STATUS_CODE) {
 						this.setLocation(url);
@@ -20851,7 +20374,7 @@ gx.spa = (function ($) {
 					}
 
 					if (redirectUrl) {
-						this.setStopNavigating(redirectUrl);
+						navigating = false;
 						setTimeout(gx.spa.redirect.closure(gx.spa, [redirectUrl]), 100);
 						return;
 					}
@@ -20870,12 +20393,6 @@ gx.spa = (function ($) {
 					this.notify('onbeforesend', [this.createEvent(req, url), GX_SPA_REQUEST_HEADER, GX_SPA_MASTERPAGE_HEADER]);
 					timeoutTimer = setTimeout(this.timeoutHandler.closure(this, [req, url]), this.timeout);
 					req.setRequestHeader(GX_SPA_REQUEST_HEADER, '1');
-				},
-				offline: function () {
-					if (timeoutTimer)
-						clearTimeout(timeoutTimer);
-					cancelled = true;
-					navigating = false;
 				},
 				error: function (req) {
 					var eventObject = this.createEvent(req, url);
@@ -20903,7 +20420,6 @@ gx.spa = (function ($) {
 				var parsedUrl = this.parseUrl(url),
 					hash = parsedUrl.hash,
 					direction = options.direction,
-					responseStatus = req.status,
 					gxObjectClass = req.getResponseHeader(GX_SPA_GXOBJECT_RESPONSE_HEADER),
 					gxReturnCmd = req.getResponseHeader(GX_SPA_RETURN),
 					gxReturnCmdMetadata = req.getResponseHeader(GX_SPA_RETURN_METADATA),
@@ -20916,13 +20432,6 @@ gx.spa = (function ($) {
 
 				if (gxReturnCmd !== null) {					
 					gx.fn.closeWindowServerScript(gxReturnCmd, gxReturnCmdMetadata, true);	
-					return;
-				}
-
-				// Do not retry redirect when a server http 500 error ocurrs.
-				if (responseStatus === 500) {
-					window.history.pushState(null, "", url);
-					gx.dom.writeError( req.responseText, gx.getMessage("GXM_runtimeappsrv"), responseStatus);
 					return;
 				}
 
@@ -21067,7 +20576,8 @@ gx.spa = (function ($) {
 				}
 			}
 
-			this.setStopNavigating(url);
+			navigating = false;
+			this.notify('onnavigate', [url]);
 
 			if (recoverScrollPosition) {
 				this.recoverScrollPosition(options);
@@ -21166,11 +20676,6 @@ gx.spa = (function ($) {
 				if (initialPop && initialUrl == state.url)
 					return;
 				/* jshint ignore:end */
-
-				// When coming from a URL with hash to the same URL without hash
-				if (this.state.url === state.url) {
-					return;
-				}
 
 				var direction = this.state.id < state.id ? 'forward' : 'back';
 
@@ -21567,32 +21072,6 @@ gx.core.audio = (function($) {
 		}*/
 	}
 })(gx.$);
-
-gx.core.pwa = (function ($) {
-	var deferredPrompt;
-
-	window.addEventListener('beforeinstallprompt', function (e) {
-		deferredPrompt = e;
-
-		deferredPrompt.userChoice.then(function (choiceResult) {
-			gx.fx.obs.notify('gx.pwa.onpromptchoice', [choiceResult.outcome]);
-			deferredPrompt = null;
-		});
-
-		gx.fx.obs.notify('gx.pwa.onbeforeinstallprompt');
-	});
-
-	function showPrompt() {
-		if (deferredPrompt) {
-			deferredPrompt.prompt();
-		}
-	}
-
-	return {
-		showPrompt: showPrompt
-	};
-})(gx.$);
-
 /* END OF FILE - ..\GenCommon\js\genexus-core.js - */
 /* START OF FILE - ..\GenCommon\js\templates-helper.js - */
 (function ($) {
@@ -21601,7 +21080,7 @@ gx.core.pwa = (function ($) {
 		LABEL_CLASS_SUFIX = "Label",
 		FORM_CONTROL_CLASS = "form-control",
 		NAVBAR_TEXT_CLASS = "navbar-text",
-		LABEL_CLASS_REGEX = /(gx-form-item|col-(?:xs|sm|md|lg)-\d{1,2})/g;
+		LABEL_CLASS_REGEX = /(col-(?:xs|sm|md|lg)-\d{1,2})/g;
 		
 	var registerTemplate = function (cfg) {
 		gx.plugdesign.registerTemplate(new gx.plugdesign.Template(cfg));
@@ -21625,10 +21104,7 @@ gx.core.pwa = (function ($) {
 	};
 	var editVisibleHelper = function (control, value) {
 		var $formGroup = $(".gx-form-group[data-gx-for='" + gx.dom.id(control) + "']");
-		if ($formGroup.length === 0) {
-			$formGroup = $(control).parent("div.gx-attribute");
-		}
-		
+
 		if  (gx.lang.gxBoolean(value)) {
 			$formGroup.show();
 		}
@@ -21945,25 +21421,24 @@ gx.core.pwa = (function ($) {
 		return $(ctrl).parent().closest("span");
 	}
 	
-	var radioCheckedHelper = function(rootRadio) {
-		rootRadio.find(':checked').parent('label').button('toggle');
+	var radioCheckedHelper = function(rootRadio) {		
+		rootRadio.find(':checked').parent('label').button('toggle');		
 	}
 	
 	var radioValueHelper = function (control) {
-		radioCheckedHelper(getRootRadioCtrl(control));
+		radioCheckedHelper(getRootRadioCtrl(control));		
 	};
 	
 	var radioSetEnabled = function (rootRadio, enabled){
 		var radioLabels = rootRadio.find('label');
 		if (!enabled) {
-			radioLabels.attr('disabled', 'disabled');
-			rootRadio.find('input, label').css('pointer-events', 'none');
+			radioLabels.attr('disabled', 'disabled');	
+			rootRadio.find('input, label').css('pointer-events', 'none');			
 			radioLabels.addClass('disabled');
 		}
 		else {
 			radioLabels.removeAttr('disabled');
 			radioLabels.removeClass('disabled');
-			rootRadio.find('input, label').css('pointer-events', '');
 		}
 	};
 	var radioEnabledHelper = function (el, enabled){
@@ -21976,7 +21451,7 @@ gx.core.pwa = (function ($) {
 	//Radio Buttons
 	registerTemplate({
 		name: 'radio-button',
-		selector: '.gx-radio-button:not(.gx-tpl-ignore) label',
+		selector: '.gx-radio-button label',
 		setContext: function (context, el) {
 			var rootCtrl = getRootRadioCtrl(el);
 			context.name = $(el).children('input').attr('name');
@@ -22353,10 +21828,11 @@ gx.core.pwa = (function ($) {
 	});
 
 	var imageIsScaled = function ($imgEl) {
-		var el = $imgEl.get(0),
-			computedStyle = gx.dom.getComputedStyle(el),
-			imageScaling = computedStyle.getPropertyValue('--gx-image-scaling');
-		return imageScaling.trim() === "on";
+		return ($imgEl.css('box-sizing') === 'border-box' && $imgEl.css('display') === 'block') && 
+				($imgEl.css('background-size') === 'contain' || 
+					$imgEl.css('background-size') === 'cover' ||
+					$imgEl.css('background-size') === '100% 100%' ||
+					$imgEl.css('background-repeat') === 'repeat');
 	};
 
 	var setImageAlignAttr = function ($imgEl) {
@@ -23103,13 +22579,13 @@ gx.parentGridRow = function (GridId, gxO) {
 	return curRow;
 };
 
-gx.applyPicture = function (vStruct, value, Ctrl) {			
-	if (!gx.lang.emptyObject(vStruct) && !gx.lang.emptyObject(gx.rtPicture(vStruct, Ctrl)) && !gx.lang.emptyObject(vStruct.type)) {
+gx.applyPicture = function (vStruct, value) {			
+	if (!gx.lang.emptyObject(vStruct) && !gx.lang.emptyObject(vStruct.pic) && !gx.lang.emptyObject(vStruct.type)) {
 		try {
 			switch (vStruct.type) {
 				case 'int':
 				case 'decimal':
-					return gx.num.formatNumber(value, vStruct.dec, gx.rtPicture(vStruct, Ctrl), vStruct.len, vStruct.sign, true);
+					return gx.num.formatNumber(value, vStruct.dec, vStruct.pic, vStruct.len, vStruct.sign, true);
 				case 'char':
 					return value;
 					//case 'date':
@@ -23375,15 +22851,12 @@ gx.dom_i =(function($){
 	},
 
 	indexElements: function () {
-		try {
+		if (!document.all) {
 			var els = this.form().elements;
 			var len = els.length;
 			for (var i = 0; i < len; i++) {
 				els[i].gxIndex = i;
 			}
-		}		
-		catch (e) {
-			gx.dbg.logEx(e, 'gxapi.js', 'indexElements');
 		}
 	},
 
@@ -23638,19 +23111,6 @@ gx.dom_i =(function($){
 		return false;
 	},
 
-	isImageWithLink: function (el) {
-		var childElement;
-		if (el && el.tagName === "A" && el.href) {
-			childElement = el.firstElementChild;
-			if (!gx.dom.hasClass(childElement, "gx-prompt")) {
-				if (childElement && childElement.tagName === "IMG") {
-					return true;
-				}
-			}
-		}
-		return false;
-	},
-
 	isChildNode: function (Child, Parent) {
 		if (Child.frameElement)
 			Child = Child.frameElement;
@@ -23884,30 +23344,12 @@ gx.dom_i =(function($){
 		}
 	},
 
-	radioToObj: function (Ctrl, value) {
-		var obj = { s: '', v: [] };
-		var items;
-		if (!Ctrl)
-			return obj;
-		if (gx.dom.isRadio(Ctrl)) {
-			obj.s = Ctrl.value;
-			items = gx.dom.byName(Ctrl.name);
-			var len = items.length;
-			for (var i = 0; i < len; i++) {
-				var $option = $(items[i]);
-				var $label = $("label[for='" + items[i].id + "']").first();
-				obj.v.push([$option.val(), $label.text().trim()]);
-			}
-		}
-		return obj;
-	},
-
 	comboBoxToObj: function (Ctrl, value) {
 		try {
 			var obj = { s: '', v: [] }
 			if (!Ctrl)
 				return obj;
-			if (Ctrl.tagName === 'SELECT') {
+			if (Ctrl.tagName == 'SELECT') {
 				obj.s = Ctrl.value;
 				var len = Ctrl.options.length;
 				for (var i = 0; i < len; i++) {
@@ -23915,16 +23357,11 @@ gx.dom_i =(function($){
 					obj.v.push([$option.val(), $option.text()]);
 				}
 			}
-			else if (Ctrl.tagName === 'SPAN') //Combo readonly
+			else if (Ctrl.tagName == 'SPAN')//Combo readonly
 			{
-				if (Ctrl.hasAttribute(gx.GxObject.GX_DATA_RAW_VALUE_ATTR)) {
-					return gx.json.evalJSON(Ctrl.getAttribute(gx.GxObject.GX_DATA_RAW_VALUE_ATTR));
-				}
-				else {
-					var text = gx.fn.getControlValue_span(Ctrl);
-					obj.v.push([value, text]);
-					obj.s = value;
-				}
+				var text = gx.fn.getControlValue_span(Ctrl);
+				obj.v.push([value, text]);
+				obj.s = value;
 			}
 			return obj;
 		}
@@ -24057,9 +23494,7 @@ gx.dom_i =(function($){
 		else
 		{
 			for (var i = 0, len = el.childNodes.length; i < len; i++) {
-				if (el.childNodes[i].tagName == 'DIV' && 
-						this.hasClass(el.childNodes[i], this.MASK_CLASS) &&
-						!this.hasClass(el.childNodes[i], this.UNMASK_CLASS)) {
+				if (el.childNodes[i].tagName == 'DIV' && this.hasClass(el.childNodes[i], this.MASK_CLASS)) {
 					maskEl = el.childNodes[i];
 					break;
 				}
@@ -24791,11 +24226,11 @@ gx.evt_i = (function($) {
 		}
 	},
 
-	executeOnblur: function (gxCurrentFocusControlId,  gxCurrentFocusControl) {
+	executeOnblur: function (gxCurrentFocusControl) {
 		var gxLastFocusCtrl = gx.csv.lastId;
 		var gxFocusCtrl = gx.O.focusControl;
 
-		gx.O.focusControl = gxCurrentFocusControlId;
+		gx.O.focusControl = gxCurrentFocusControl;
 		this.onblur(gxCurrentFocusControl, gx.O.focusControl);
 
 		gx.O.focusControl = gxFocusCtrl;
@@ -24833,35 +24268,26 @@ gx.evt_i = (function($) {
 
 	onfocus: function () {
 		var fun = function () {
-			var deferred = $.Deferred();
 			gx.fx.obs.notify('gx.onbeforefocus', arguments);
-			gx.evt.onfocus_impl.apply(gx.evt, arguments).then(function () {
-				gx.fx.obs.notify('gx.onafterfocus');
-				deferred.resolve();
-			});
-			return deferred.promise();
-		};
-
-		if (gx.evt.is_button_mouse_event === true || gx.fx.delayedValidation) {
-			gx.fx.obs.addObserver('gx.validation', this, fun.closure(this, arguments), { single: true, async: true });
+			gx.evt.onfocus_impl.apply(gx.evt, arguments);
+			gx.fx.obs.notify('gx.onafterfocus');
 		}
-		else {
+		if (gx.evt.is_button_mouse_event === true || gx.fx.delayedValidation)
+			gx.fx.obs.addObserver('gx.validation', this, fun.closure(this, arguments), { single: true });
+		else
 			fun.apply(gx.evt, arguments);
-		}
 	},
 
 	onfocus_impl: function (Ctrl, gxFocusCtrl, gxWCP, gxInMasterPage, gxCurrentRow, gxCurrentGrid, gxAddLines) {
-		var onfocusDeferred = $.Deferred();
-		var CtrlValue;
 		try {
 			gx.grid.clearActiveGrid();
 			if (gx.spa.isNavigating()) {
-				return onfocusDeferred.resolve(false).promise();
+				return false;
 			}
 			gx.evt.setReady(false);
 			if (!gx.fn.checkPopupFocus(Ctrl)) {
 				gx.evt.setReady(true);
-				return onfocusDeferred.resolve(false).promise();
+				return false;
 			}
 			var NewComponentContext = false;
 			if (gx.csv.cmpCtx != gxWCP) {
@@ -24869,10 +24295,6 @@ gx.evt_i = (function($) {
 				gx.O.fromValid = 0;
 			}
 			gx.setGxO(gxWCP, gxInMasterPage);
-			if ($(Ctrl).attr(gx.csv.GX_OLD_VALUE_ATTRIBUTE) !== undefined) {
-				var CtrlValue = gx.fn.getControlValue(Ctrl.type == "radio" ? Ctrl.name : gx.dom.id(Ctrl));
-				gx.fn.setControlOldValue(Ctrl, CtrlValue);
-			}
 			if (NewComponentContext)
 				gx.fn.changeCmpContext();
 			gx.fn.initOld(Ctrl);
@@ -24916,17 +24338,17 @@ gx.evt_i = (function($) {
 			if (gx.csv.disableFocus) {
 				gx.csv.disableFocus = false;
 				gx.evt.setReady(true);
-				return onfocusDeferred.resolve(true).promise();
+				return true;
 			}
 			try {
 				var cMode = gx.fn.getControlValue("Mode");
 				if (cMode == 'DLT' || cMode == 'DSP') {
 					gx.evt.setReady(true);
-					return onfocusDeferred.resolve(true).promise();
+					return true;
 				}
 				if (gx.O.isTransaction() && gx.dom.isButton(Ctrl) && !gx.evt.isEnterEvtCtrl(Ctrl) && !gx.evt.isCheckEvtCtrl(Ctrl) && !gxAddLines) {
 					gx.evt.setReady(true);
-					return onfocusDeferred.resolve(true).promise();
+					return true;
 				}
 			}
 			catch (e) {
@@ -24941,12 +24363,12 @@ gx.evt_i = (function($) {
 						if (NextFocus != null) {
 							gx.fn.setFocus(NextFocus);
 							gx.evt.setReady(true);
-							return onfocusDeferred.resolve(true).promise();;
+							return true;
 						}
 					}
 					gx.fn.setFocus(gx.csv.lastControl);
 					gx.evt.setReady(true);
-					return onfocusDeferred.resolve(true).promise();
+					return true;
 				}
 			}
 
@@ -24954,18 +24376,17 @@ gx.evt_i = (function($) {
 				gx.fn.setFocusOnError(gx.csv.invalidForcedCtrl.id)
 				gx.csv.invalidForcedCtrl = null;
 				gx.evt.setReady(true);
-				return onfocusDeferred.resolve(true).promise();
+				return true;
 			}
 			if (gx.csv.invalidControl != null && gx.csv.invalidControl != Ctrl && gx.O.focusControl >= gx.csv.invalidId) {
 				if (gx.csv.invalidControl == Ctrl) {
-					gx.csv.validate(gx.csv.invalidControl, gx.csv.invalidId, false, gx.O, gxCurrentRow).done(function (isValid) {
+					gx.csv.validate(gx.csv.invalidControl, gx.csv.invalidId, false).done(function (isValid) {
 						if (isValid) {
 							gx.csv.invalidControl = null;
 							gx.evt.setReady(true);
 						}
-						onfocusDeferred.resolve(true);
 					});
-					return onfocusDeferred.promise();
+					return true;
 				}
 			}
 			if (gxAddLines) {
@@ -24994,9 +24415,9 @@ gx.evt_i = (function($) {
 				gx.csv.rowChanged = true;
 				gx.csv.lastRow[gxCurrentGrid] = gxCurrentRow;
 			}
-			var gxO = gx.O,
+			var gxO = gx.O,						
 				lastId = gx.csv.lastId;
-			var vStruct = gx.fn.validStruct(lastId, gxO);
+			var vStruct = gx.fn.validStruct(lastId, gxO);	
 			if (vStruct) {
 				var lastRow = gx.csv.lastRow[vStruct.grid];
 			}
@@ -25018,7 +24439,6 @@ gx.evt_i = (function($) {
 					}
 					gx.csv.disableFocusCondition();
 					gx.evt.setReady(true);
-					onfocusDeferred.resolve(true);
 				};
 				
 				if (!gx.lang.emptyObject(lastRow) && !gx.lang.emptyObject(gxCurrentRow) && lastRow.length > gxCurrentRow.length) {
@@ -25055,17 +24475,16 @@ gx.evt_i = (function($) {
 				}
 			});
 			if (gxCurrentGrid && gxCurrentRow) {
-				var grid = gx.O.getGridById(gxCurrentGrid, gxCurrentRow);
-				if (grid && grid.allowSelection) {
+				var grid = gx.O.getGridById(gxCurrentGrid, gxCurrentRow);						
+				if (grid && grid.allowSelection) {							
 					grid.setSelection(parseInt(gxCurrentRow, 10) - 1);
-				}
+				}		
 			}
-			return onfocusDeferred.promise();
 		}
 		catch (e) {
 			gx.dbg.logEx(e, 'gxapi.js', 'onfocus');
 		}
-		return onfocusDeferred.resolve(false).promise();
+		return false;
 	},
 
 	userOnload: function () {
@@ -25141,6 +24560,19 @@ gx.evt_i = (function($) {
 		});
 	},
 
+	onready: function (event) {
+		if (gx.lang.emptyObject(event)) {
+			if (document.readyState == 'complete')
+				gx.evt.onload();
+			else
+				setTimeout(function () { gx.evt.onready(null); }, 250);
+		}
+		else if (gx.util.browser.isIE()) {
+			if (document.readyState == 'complete')
+				gx.evt.onload();
+		}
+	},
+
 	onunload: function (unloadMasterPage) {
 		gx.objectUnload(unloadMasterPage);
 		gx.spa.stop();
@@ -25197,7 +24629,7 @@ gx.evt_i = (function($) {
 		gx.evt.mouse.update(evt);
 		var dnd = gx.fx.dnd;
 		var isIE = gx.util.browser.isIE();
-		if (gx.popup.ispopup() && gx.popup.ext.compatMode()) {
+		if (gx.popup.ispopup()) {
 			var pExt = gx.popup.ext;
 			pExt.movepopup();
 			if ((pExt.currIDb != null) || (pExt.currRS != null)) {
@@ -25281,15 +24713,16 @@ gx.evt_i = (function($) {
 		var deferred = $.Deferred();
 		if (!gxO || !Ctrl) {
 			//This should be an error..
-			return deferred.resolve();
+			return deferred.resolve();					
 		}
 		var vStruct = gxO.getValidStructFld(Ctrl);
 		if (vStruct && vStruct.evt_cvc) {
-			gx.evt.startValidation(vStruct.gxgrid);
+			gx.evt.startValidation(vStruct.gxgrid);	
 			gx.evt.stopPropagation(evt);
-			return gxO[vStruct.evt_cvc].call(gxO).always( function () {
+			return gxO[vStruct.evt_cvc].call(gxO).always( function () {						
+				gx.fx.delayedValidation = true;	
 				gx.evt.endValidation(vStruct.gxGrid, gx.evt.types.VALUECHANGED);
-			});
+			});					
 		}
 		return $.Deferred().resolve();
 	},
@@ -25298,7 +24731,7 @@ gx.evt_i = (function($) {
 		var deferred = $.Deferred();
 		if (!gxO || !Ctrl) {
 			//This should be an error..
-			return deferred.resolve();
+			return deferred.resolve();				
 		}
 		var vStruct = gxO.getValidStructFld(Ctrl);
 		if (vStruct && vStruct.evt_cvcing && !vStruct.gxsgprm) { //Not supported when Suggest is ON.
@@ -25326,13 +24759,13 @@ gx.evt_i = (function($) {
 		gx.evt.fireControlValueChanging(gx.O, Ctrl);
 	},
 
-	onkeypress: function (event, hasenter, skiponenter) {		
-		event = event || window.event;
-		if (!event)
-			return;
-		
-		var isEnterKey = event.keyCode === 13;
-		if (event.keyCode === 27) //ESC
+	onkeypress: function (xevent, hasenter, skiponenter) {
+		if ((xevent == null) && (!window.event)) { return; }
+		if ((xevent != null) && (window.event)) { return; }
+		var event = (xevent == null ? window.event : xevent),
+			isEnterKey = event.keyCode === 13;
+
+		if (event.keyCode == 27) //ESC
 		{
 			if (gx.evt.shouldIgnoreEscKey()) {
 				gx.evt.cancel(event, true);
@@ -25348,7 +24781,7 @@ gx.evt_i = (function($) {
 				cancel: false
 			};
 
-		if (event.keyCode === 27) //ESC
+		if (event.keyCode == 27) //ESC
 		{
 			if (gx.popup.ispopup()) {
 				fn.cancelWindow();
@@ -25404,22 +24837,22 @@ gx.evt_i = (function($) {
 			if (skiponenter) {
 				if (fn.enterHasFocus())
 					return;
-				if (this.shiftPressed && Ctrl.nodeName === 'TEXTAREA')
+				if (this.shiftPressed && (Ctrl.nodeName == 'TEXTAREA') && browser.isIE())
 					return;
-				if (ctrlPressed && Ctrl.nodeName === 'TEXTAREA') {
+				if (ctrlPressed && (Ctrl.nodeName == 'TEXTAREA')) {
 					gx.dom.replaceAtCaretPosition(Ctrl, '\n');
-					this.cancel(event, true); //some browsers  (ff, ie) fire this event twice.
 					return;
 				}
 				else {
 					if (browser.isIE() && Ctrl.type != 'file') {
-						if (gx.evt.isEnterEvtCtrl(Ctrl)) {
+						if (gx.evt.isEnterEvtCtrl(Ctrl))
 							gx.O.executeEnterEvent(event, Ctrl);
+						event.keyCode = 9;
+						this.lastKey = event.keyCode;
+						if (browser.ieVersion() >= 11) {
+							event.preventDefault();
+							fn.setFocus(fn.searchFocus(fn.getControlIndex(Ctrl) + 1, true));
 						}
-						this.lastKey = 9;
-						event.keyCode = this.lastKey;
-						this.cancel(event, true);
-						fn.skipFocus(skiponenter, Ctrl);						
 					}
 					else {
 						if (Ctrl.value && browser.isIE() && Ctrl.tagName != 'SELECT') {
@@ -25445,12 +24878,11 @@ gx.evt_i = (function($) {
 		var evel = gx.evt.source(event);
 		var maxlen = evel.getAttribute("maxlength") || (evel.getAttribute("max") ? evel.getAttribute("max").length : 0);
 		var value = typeof (evel.value) == "undefined" ? "" : evel.value;
-		if ((evel.type == "" && event.keyCode == 9) || (this.autoSkip && evel.type != "" && !this.isControlKey(this.lastKey) && value.length >= maxlen && maxlen > 0)) {
-			if (!this.skipPromptCtrl) {
+		if ((evel.type == "" && this.lastKey == 9) || (this.autoSkip && evel.type != "" && !this.isControlKey(this.lastKey) && value.length >= maxlen && maxlen > 0)) {
+			if (!this.skipPromptCtrl)
 				return;
-			}
 
-			if (gx.dom.isTextWithLink(evel) || gx.dom.isImageWithLink(evel)) {
+			if (gx.dom.isTextWithLink(evel)) {
 				var controlId = evel.id || (evel.tagName == 'A' && evel.parentNode ? evel.parentNode.id : "");
 				if (controlId) {
 					var vStructId = gx.O.getValidStructId(controlId);
@@ -25490,10 +24922,7 @@ gx.evt_i = (function($) {
 		}
 		var vStruct = gx.O.getValidStructFld(Ctrl);
 		if (vStruct) {
-			var pic = gx.rtPicture(vStruct, Ctrl),
-			LenDec = gx.numericLenDec( pic),
-			decimals = LenDec.Decimals,
-			integers = LenDec.Integers,
+			var pic = vStruct.pic,
 			type = vStruct.type,
 			value = Ctrl.value;
 			if (type == 'int' || type == 'decimal') {
@@ -25501,29 +24930,17 @@ gx.evt_i = (function($) {
 				if (selLen === undefined) {
 					return true;
 				}
-				if (gx.util.browser.isFirefox() && Ctrl.type == "number" && decimals === 0) {
+				dec = vStruct.dec || 0,
+				len = vStruct.len - ((dec > 0) ? dec + 1 : 0),
+				picinputs = 0;
+				if (gx.util.browser.isFirefox() && dec === 0) {
 					//WA Firefox wont return selection for input type=number controls v63.0.3
-					if (!Ctrl.gxoninput && Ctrl.max && Ctrl.min ) {
-						Ctrl.gxoninput = true;
-						var fnc = function(Ctrl) {
-							if (Ctrl.max && Ctrl.min ) {
-								var nVal = Number(Ctrl.value);
-								if (( nVal > Ctrl.max ) || (nVal < Ctrl.min )) {
-									Ctrl.value = Ctrl.value.substr(0,Ctrl.max.length);
-								}
-							}
-						};
-						gx.evt.attach( Ctrl, "input", fnc.closure(this,[Ctrl]));
-					}
+					return true;
 				}
-				else
-				{
-					if (!isNaN(Number(event.key))) {
-						digits = value.split("").filter(function(c){ return c>='0' && c<='9'}).length;							
-						value = gx.num.normalize_decimal_sep(pic, gx.thousandSeparator, gx.decimalPoint, value);
-						picinputs = integers + (value.indexOf(gx.decimalPoint) == -1 ? 0 : decimals);
-						return ((digits - selLen) < picinputs);
-					}	
+				if (!isNaN(Number(event.key))) {
+					digits = value.split("").filter(function(c){ return c>='0' && c<='9'}).length;							
+					picinputs = len + (value.indexOf(gx.decimalPoint) == -1 ? 0 : dec);
+					return ((digits - selLen) < picinputs);
 				}	
 			}
 		}
@@ -25574,32 +24991,31 @@ gx.evt_i = (function($) {
 
 	onchange: function () {
 		var fun = function () {
-			return gx.evt.onchange_impl.apply(gx.evt, arguments);
+			gx.evt.onchange_impl.apply(gx.evt, arguments);
 		}
 		if (gx.fx.delayedValidation)
-			gx.fx.obs.addObserver('gx.validation', this, fun.closure(this, arguments), { single: true, async: true });
+			gx.fx.obs.addObserver('gx.validation', this, fun.closure(this, arguments), { single: true });
 		else
 			fun.apply(gx.evt, arguments);
 	},
 
 	onchange_impl: function(Ctrl, event, preventValid) {
-		var onChangeDeferred = $.Deferred();
 		gx.evt.setReady(false);
 		gx.evt.lastControl = Ctrl;
 		var CtrlValue = gx.fn.getControlValue(Ctrl.type == "radio" ? Ctrl.name : gx.dom.id(Ctrl));
 
 		var fixWebKitOnfocus = (gx.evt.fixWebKitOnFocus() && Ctrl.type == "radio");
-		if (fixWebKitOnfocus) {
+		if (fixWebKitOnfocus)
 			Ctrl.onfocus();
-		}
 		var vStruct = gx.O.getValidStructFld(Ctrl);
 		var changed = false;
-		var finallyCallback = function() {
+		var finallyCallback = function() {					
 			delete gx.fx.delayedValidation;
+			gx.evt.execUsrOnchange(Ctrl);
 			gx.evt.setReady(true);
 
-			var fireOnblur = (gx.util.browser.isWebkit() && (Ctrl.type == "radio" || Ctrl.type == "checkbox" || Ctrl.type == "file"));
-			var doValidControls = false;
+			var fireOnblur = (gx.util.browser.isWebkit() && (Ctrl.type == "radio" || Ctrl.type == "checkbox" || Ctrl.type == "file")),
+				doValidControls = false;
 
 			if (changed && vStruct && (gx.fn.lastMainLevelCtrlId(gx.O.focusControl, vStruct.grid) || vStruct.gxsgprm)) {
 				fireOnblur = true;
@@ -25609,32 +25025,22 @@ gx.evt_i = (function($) {
 				doValidControls = false;
 			}
 
-			if (fireOnblur && Ctrl.onblur) {
+			if (fireOnblur && Ctrl.onblur)
 				Ctrl.onblur();
-			}
-
-			var endCallback = function () {
-				gx.evt.execUsrOnchange(Ctrl);
-				gx.fx.obs.notify('gx.validation');
-				onChangeDeferred.resolve();
-			};
-
-			if (doValidControls && (typeof(Ctrl.GXFormatError) == 'undefined' || Ctrl.GXFormatError == false)) {//doValidControls solo si onblur valida ok
-				gx.csv.validControls(gx.O.focusControl, gx.O.focusControl + 1, true, gx.O).then(endCallback);
-			}
-			else {
-				endCallback();
-			}
+			if (doValidControls && (typeof(Ctrl.GXFormatError) == 'undefined' || Ctrl.GXFormatError == false)) //doValidControls solo si onblur valida ok
+				gx.csv.validControls(gx.O.focusControl, gx.O.focusControl + 1, true, gx.O);
+								
+			gx.fx.obs.notify('gx.validation');
 		};
 
-		if (gx.csv.controlValueHasChanged(Ctrl, CtrlValue, vStruct)) {
+		if (gx.csv.controlValueHasChanged(Ctrl, CtrlValue, vStruct)) {					
 			changed = true;
 			gx.fn.setControlValue("IsModified", "1");
 			gx.fn.setControlValue("IsConfirmed", "0");
 			gx.csv.invalidateGXCtrl(Ctrl);
 			var jsCode = '',
 				execOnChange = true,
-				gxO = gx.O;
+				gxO = gx.O;					
 			if (vStruct) {
 				if (typeof(vStruct.c2v) == 'function')
 					vStruct.c2v();
@@ -25645,12 +25051,10 @@ gx.evt_i = (function($) {
 				gx.fn.setControlOldValue(Ctrl, CtrlValue);
 			}
 			var validationCallback = function() {
-				var deferred = $.Deferred();
 				if (Ctrl.type == "select-one" || Ctrl.type == "checkbox" || Ctrl.type == "radio") {
 					execOnChange = false;
 					gx.evt.setReady(false);
-					var ctrlRow = (vStruct) ? gx.fn.currentGridRowImpl(vStruct.grid) : null;
-					gx.csv.validate(Ctrl, vStruct.id || gx.O.focusControl, true, gx.O, ctrlRow).done(function(isValid) {
+					gx.csv.validate(Ctrl, vStruct.id || gx.O.focusControl, true, gx.O).done(function(isValid) {
 						if (isValid) {
 							if (gx.csv.invalidControl == Ctrl) {
 								gx.csv.invalidControl = null;
@@ -25658,28 +25062,22 @@ gx.evt_i = (function($) {
 						}
 						gx.evt.execOnchange(Ctrl, isValid);
 						gx.evt.setReady(true);
-						deferred.resolve();
 					}).fail(function() {
 						gx.evt.setReady(true);
-						deferred.resolve();
 					});
 				}			
 				if (execOnChange) {
 					gx.evt.execOnchange(Ctrl, false);
-					deferred.resolve();
 				}
-				return deferred.promise();
 			};
 			var doAll = function() {
-				validationCallback
-					.call(this)
-					.then(finallyCallback.closure(this));
+				validationCallback.call(this);
+				finallyCallback.call(this);
 			};
 			gx.evt.fireControlValueChange(gxO, Ctrl, event).always(doAll.closure(this));
 		} else {
 			finallyCallback.call(this);
 		}
-		return onChangeDeferred.promise();
 	},
 
 	execOnchange: function (Ctrl, validated, notModified) {
@@ -25929,8 +25327,7 @@ gx.evt_i = (function($) {
 		if (!gx.lang.emptyObject(ctrl)) {
 			if (ctrl == gx.evt.dummyCtrl)
 				return true;
-			var triggersEvtNodes = gx.config.evt.triggersEvtNodes;
-			if ((ctrl.nodeName === 'A' || ctrl.nodeName === 'TEXTAREA' || (ctrl.nodeName === 'SELECT')) && (!triggersEvtNodes || triggersEvtNodes[ctrl.nodeName]))
+			if (ctrl.nodeName === 'A' || ctrl.nodeName === 'TEXTAREA')
 				return true;
 			else if (ctrl.nodeName === 'INPUT') {
 				if (ctrl.type === 'button' || ctrl.type === 'image')
@@ -25948,9 +25345,6 @@ gx.evt_i = (function($) {
 			if (!gx.evt.redirecting) {
 				gx.evt.processing = value;
 				gx.evt.setReady(!gx.evt.processing);
-				if (!gx.evt.processing) {
-					gx.fx.obs.notify('gx.endprocessing');
-				}
 			}
 		}
 	},
@@ -25995,103 +25389,68 @@ gx.evt_i = (function($) {
 		}					
 	},
 
-	canExecuteEvent: function(evt, force) {
-		return !(!force && ((gx.spa.isNavigating() || gx.evt.redirecting) || !gx.csv.validating && (gx.lang.emptyObject(evt) || gx.evt.processing ))); 
-	},
-
-	execEvt: function ( cmpCtx, inMaster, evt, ctrl, gridId, sync, srvCommand, disableForm, callback, force, failCallback) {
+	execEvt: function ( cmpCtx, inMaster, evt, ctrl, gridId, sync, srvCommand, disableForm, callback, force) {
 		gx.dbg.logPerf('execEvt');
-		if ( gx.text.contains( evt, 'EENTER')) {
 		gx.ajax.saveFormForAutoComplete();
-		}
-		var callFailCallback = function () {
-			if (failCallback) {
-				failCallback.call();
-			}
-		};
-
-		if (!this.canExecuteEvent(evt, force)) {
-			callFailCallback();
+		if (!force && (gx.lang.emptyObject(evt) || !gx.isInputEnabled() || !gx.ajax.isFormEnabled()))
 			return;
-		}
 
 		var gxObj = gx.setGxObyCtx(cmpCtx, inMaster);
 		var rowGridId = gridId;
 		var rowId_res = this.EVT_ROW_ID_REGEXP.exec(evt);
 		var rowId = (rowId_res && rowId_res.length > 1) ? rowId_res[1] : null;
-		if (rowId_res && rowId_res.length > 2) {
+		if (rowId_res && rowId_res.length > 2)
 			gx.evt.setCurrentGridRows(rowGridId, rowId);
-		}
-		if (! rowId) {
+		if (! rowId)
 			rowId = gx.fn.currentGridRowImpl(rowGridId);
-		}
 
-		if (!force && gxObj && gxObj.inputHasFormatErrors(evt, gridId, rowId)) {
-			callFailCallback();
+		if (!force && gxObj && gxObj.inputHasFormatErrors(evt, gridId, rowId))
 			return;
-		}
 
-		var doNotifyValidation = true;
-		var notifyValidation = function () {
-			gx.fx.obs.notify('gx.validation', null, (function () {
-				gx.setGxObyCtx(cmpCtx, inMaster);
-				if (srvCommand) {
-					gx.evt.srvCommand = true;
-					if (ctrl) {
-						rowGridId = gx.fn.rowGridId(ctrl);
-						rowId = gx.fn.controlRowId(ctrl);
-						if (!gx.lang.emptyObject(rowGridId) && !gx.lang.emptyObject(rowId)) {
-							gx.csv.lastGrid = rowGridId;
-							gx.fn.setCurrentGridRow(rowGridId, rowId);
-						}
-					}
-				}
-				if (gx.csv.lastId > 0 && !gx.csv.validatingAll) {
-					
-					var vStruct = gx.O.getValidStruct(gx.csv.lastId);
-					var CtrlId = (gx.evt.isEnterEvtCtrl(ctrl) && ctrl.id > 0) ? gx.O.getValidStructId(ctrl.id) : gx.O.focusControl;
-					var goForward = CtrlId < gx.csv.lastId; 
-					if ((goForward && (gx.evt.isEnterEvtCtrl(ctrl) || (vStruct && vStruct.isuc)))  || gx.evt.enter)
-					{
-						gx.csv.validatingAll = true;
-						gx.O.fromValid = gx.csv.lastId;
-						gx.O.toValid = gx.csv.lastId + 1;
-						gx.csv.validateAll();		
-						gx.csv.validatingAll = false;
-					}
-				}
-				this.setEvtName(evt, ctrl);
-				this.lastEvent = evt;
-				if (!srvCommand && (gx.grid.drawAtServer || (ctrl && ctrl.nodeName == 'INPUT' && ctrl.type == 'submit'))) {
-					this.execEvtSubmit(evt, ctrl);
-				}
-				else {
-					gx.evt.setProcessing(true);
-					var oldDoPost = function() {
-						gx.ajax.doPost(gx.ajax.encryptParms(gx.pO, 'gxajaxEvt'), sync, disableForm, callback);
-					};
-					if (gx.pO.supportAjaxEvents) {
-						gx.evt.dispatcher.dispatch(evt, gx.O, rowGridId, rowId, true, undefined, disableForm)
-							.done(function(success) {  
-								(!success && callFailCallback());
-								(callback && callback(success)); 
-							}).fail(oldDoPost);
-					}
-					else {
-						gx.evt.execNonFullAjaxEvent(oldDoPost);
-					}
-				}
-			}).closure(this));
-		};
-
-		if (gx.evt.fixWebKitOnFocus() && gx.dom.isButtonLike(ctrl) && ctrl != gx.csv.lastControl && ctrl.onfocus != undefined) {
-			doNotifyValidation = false;
-			gx.fx.obs.addObserver('gx.onafterfocus', this, notifyValidation, { single: true });
+		if (gx.evt.fixWebKitOnFocus() && gx.dom.isButtonLike(ctrl) && ctrl != gx.csv.lastControl && ctrl.onfocus != undefined)
 			ctrl.onfocus();
+		gx.fx.obs.notify('gx.validation');		
+		gx.setGxObyCtx(cmpCtx, inMaster);
+		if (srvCommand) {
+			gx.evt.srvCommand = true;
+			if (ctrl) {
+				rowGridId = gx.fn.rowGridId(ctrl);
+				rowId = gx.fn.controlRowId(ctrl);
+				if (!gx.lang.emptyObject(rowGridId) && !gx.lang.emptyObject(rowId)) {
+					gx.csv.lastGrid = rowGridId;
+					gx.fn.setCurrentGridRow(rowGridId, rowId);
+				}
+			}
 		}
-
-		if (doNotifyValidation) {
-			notifyValidation.call(this);
+		if (gx.csv.lastId > 0 && !gx.csv.validatingAll) {
+			
+			var vStruct = gx.O.getValidStruct(gx.csv.lastId);
+			var CtrlId = (gx.evt.isEnterEvtCtrl(ctrl) && ctrl.id > 0) ? gx.O.getValidStructId(ctrl.id) : gx.O.focusControl;
+			var goForward = CtrlId < gx.csv.lastId; 
+			if ((goForward && (gx.evt.isEnterEvtCtrl(ctrl) || (vStruct && vStruct.isuc)))  || gx.evt.enter)
+			{
+				gx.csv.validatingAll = true;
+				gx.O.fromValid = gx.csv.lastId;
+				gx.O.toValid = gx.csv.lastId + 1;
+				gx.csv.validateAll();		
+				gx.csv.validatingAll = false;
+			}
+		}
+		this.setEvtName(evt, ctrl);
+		this.lastEvent = evt;
+		if (!srvCommand && (gx.grid.drawAtServer || (ctrl && ctrl.nodeName == 'INPUT' && ctrl.type == 'submit'))) {
+			this.execEvtSubmit(evt, ctrl);
+		}
+		else {
+			gx.evt.setProcessing(true);
+			var oldDoPost = function() {
+				gx.ajax.doPost(gx.ajax.encryptParms(gx.pO, 'gxajaxEvt'), sync, disableForm, callback);
+			};
+			if (gx.pO.supportAjaxEvents) {
+				gx.evt.dispatcher.dispatch(evt, gx.O, rowGridId, rowId, true, undefined, disableForm).done(callback).fail(oldDoPost);
+			}
+			else
+				oldDoPost();
 		}
 	},
 
@@ -26119,14 +25478,10 @@ gx.evt_i = (function($) {
 		form.submit();
 	},
 
-	execCliEvt: function ( cmpCtx, inMaster, cliEvtName, evtGridName, gridRow, parms) {
-		var deferred = $.Deferred();
-		
-		if (!this.canExecuteEvent(true, false)) {
-			return deferred.reject();
-		}
-
-		gx.fx.obs.notify('gx.validation');
+	execCliEvt: function (cmpCtx, inMaster, cliEvtName, evtGridName, gridRow, parms) {
+		if (!gx.isInputEnabled() || !gx.ajax.isFormEnabled())
+			return;
+		gx.fx.obs.notify('gx.validation');				
 		parms = (parms != undefined) ? parms : [];
 		var gxObj = gx.getObj(cmpCtx, inMaster),
 			gridId;
@@ -26138,44 +25493,34 @@ gx.evt_i = (function($) {
 				gridId = grid.gridId;
 			}
 			if (gxObj.inputHasFormatErrors(gxObj.getServerEventName(cliEvtName), gridId, gridRow))
-				return deferred.reject();
+				return;
 
 			var isServerEvent = gxObj.isServerEvent(cliEvtName);
 			gx.evt.setProcessing(true, !isServerEvent);
 			gxObj.execC2VFunctions();
 			var callback = function () {
-				gx.popup.waitCallback(function () {
-					gx.evt.setProcessing(false, (!gx.csv.validating && !isServerEvent));
-				});
-				if (gxObj.conditionsChanged) {
-					gxObj.executeServerEvent('RFR', true);
-				}
-				else {
-					gx.fx.obs.notify('gx.onafterevent', []);
-				}
-				deferred.resolve();
-			};
-
-			var oldCall = function() {
-				gxObj[cliEvtName](parms);
-				callback();
-			};
+					gx.popup.waitCallback(function () {
+						gx.evt.setProcessing(false, (!gx.csv.validating && !isServerEvent));
+					});
+					if (gxObj.conditionsChanged) {
+						gxObj.executeServerEvent('RFR', true);
+					}
+					else {
+						gx.fx.obs.notify('gx.onafterevent', []);
+					}
+				},
+				oldCall = function() {
+					gxObj[cliEvtName](parms);
+					callback();
+				};
 
 			if (gx.pO.supportAjaxEvents) {
-				gx.evt.dispatcher.dispatch(gxObj.getServerEventName(cliEvtName), gxObj, gridId, gridRow, false, parms)
-					.done(callback)
-					.fail(oldCall);
+				gx.evt.dispatcher.dispatch(gxObj.getServerEventName(cliEvtName), gxObj, gridId, gridRow, false, parms).done(callback).fail(oldCall);
 			}
 			else {
-				gx.evt.execNonFullAjaxEvent(oldCall);
+				oldCall();
 			}
-			return deferred.promise();
 		}
-		return deferred.reject();
-	},
-	
-	execNonFullAjaxEvent: function (fn) {
-		fn.call();
 	},
 
 	fixWebKitOnFocus: function () {
@@ -26192,51 +25537,24 @@ gx.evt_i = (function($) {
 	dispatcherTimeout: 100,
 	
 	dispatcher: function () {
-		var removeRepeatedEvents = function (arr, messageType) {
+		var removeRepeatedEvents = function (arr) {
 			var result = [];
-			var i, j;
-			var evt;
-			var eventDeferredsMap = {};
-			var deferreds;
-
-			for (i=0; i<arr.length; i++) {
-				evt = arr[i];
-				if (!eventDeferredsMap[evt.eventName]) {
-					eventDeferredsMap[evt.eventName] = [];
-				}
-				eventDeferredsMap[evt.eventName].push(evt.deferred);
-
-				if (result.length === 0 || evt.eventName !== result[result.length-1].eventName) {
-					result.push(evt);
+			for (var i=0; i<arr.length; i++) {
+				if (!(arr[i + 1] && arr[i].eventName === arr[i+1].eventName)) {
+					result.push(arr[i]);
 				}
 			}
-
-			// Make sure to fire all the deferreds, event those from
-			// removed events that were repeated.
-			for (i=0; i<result.length; i++) {
-				evt = result[i];
-				deferreds = eventDeferredsMap[evt.eventName];
-				for (j=0; j<deferreds.length; j++) {
-					if (evt.deferred !== deferreds[j]) {
-						evt.deferred.then((function () {
-							this.resolve.apply(this, arguments);
-						}).closure(deferreds[j]));
-					}
-				}
-			}
-
 			return result;
 		};
-
 		var serialRunner = function() {
 			this.pendingRun = [];
 			this.addTask = function( fnc) {
 				this.pendingRun.push( fnc);
-				if (this.pendingRun.length  === 1) {
+				if ( this.pendingRun.length  === 1) {
 					this.pendingRun[0]();
 				}
 			};
-
+		
 			this.signalEndTask = function () {
 				this.pendingRun.shift();
 				if (this.pendingRun.length > 0) {
@@ -26244,20 +25562,15 @@ gx.evt_i = (function($) {
 				}
 			};
 		};
-
 		return {
 			dispatchedEvents: {},
-
 			serialRunner: new serialRunner(),
-
-			getContextKey: function (gxO, grid, row, type) {
-				return type + (gxO.CmpContext + gxO.ServerClass) + (grid || "") + (row || "");
+			getContextKey: function (gxO, grid, row) {
+				return (gxO.CmpContext + gxO.ServerClass) + (grid || "") + (row || "");
 			},
-
 			getEventParmsMetadata: function (eventName, gxO, type) {
 				return gxO.EvtParms[eventName][type == "input" ? 0 : 1];
 			},
-
 			eventDepends: function(dependantEvent, dependencieEvent, gxO) {
 				var dependencies = this.getEventParmsMetadata(dependencieEvent, gxO, "output"),
 					dependants = this.getEventParmsMetadata(dependantEvent, gxO, "input"),
@@ -26274,51 +25587,31 @@ gx.evt_i = (function($) {
 				}
 				return false;
 			},
-
-			initialize: function() {
-				this.t && clearTimeout(this.t);
-				this.serialRunner = new serialRunner();
-				this.dispatchedEvents = {};
-			},
-
+			
 			beforeDispatch: function(gxO) {
 				var secToken = gx.ajax.getSecurityToken(gxO);
 				if (secToken) {
 					gxO.InternalParms[secToken.id] = secToken.value;
 				}
 			},
-
-			types: {
-				event: "event",
-				validation: "validation"
-			},
-
-			dispatch: function(dirtyEventName, gxO, grid, row, serverSide, evtArguments, disableForm, type) {
-				type = type || gx.evt.dispatcher.types.event;
+			
+			dispatch: function(dirtyEventName, gxO, grid, row, serverSide, evtArguments, disableForm) {
 				serverSide = (serverSide === undefined) || serverSide;
 				var deferred = $.Deferred();
 				var cleanEventName = gxO.cleanEventName(dirtyEventName);
 				var clientSideEventName = gxO.getClientEventName(dirtyEventName);
-
-				if (type === gx.evt.dispatcher.types.validation) {
-					cleanEventName = dirtyEventName.toUpperCase();
-					clientSideEventName = dirtyEventName;
-				}
-				else {
-					cleanEventName = gxO.cleanEventName(dirtyEventName);
-					clientSideEventName = gxO.getClientEventName(dirtyEventName);
-				}
-
 				this.beforeDispatch(gxO);
 				
 				if (!gxO.EvtParms[cleanEventName]) {
 					deferred.reject();
 					return deferred.promise();
 				}
-				var contextKey = this.getContextKey(gxO, grid, row, type),
+				var contextKey = this.getContextKey(gxO, grid, row),
 					dispatchedEvts = this.dispatchedEvents[contextKey],
+					cleanEventName = cleanEventName,
 					eventObj = {
 						eventName: cleanEventName,
+						dirtyEventName: dirtyEventName,
 						clientSideEventName: clientSideEventName,
 						serverSide: serverSide,
 						deferred: deferred,
@@ -26334,82 +25627,67 @@ gx.evt_i = (function($) {
 						gxO: gxO,
 						grid: grid,
 						row: row,
-						type: type,
 						events: [eventObj]
 					};
 					this.dispatchedEvents[contextKey] = dispatchedEvts;
-					this.t = setTimeout(
-						this.serialRunner.addTask.closure(this.serialRunner, [this.dispatchTimeoutCallback.closure(this, [contextKey])]), 
-						gx.evt.dispatcherTimeout
-					);
-				}
-				return deferred.promise();
-			},
-
-			dispatchTimeoutCallback: function(contextKey) {
-				var dispatchedEvts = this.dispatchedEvents[contextKey],
-					messageType = dispatchedEvts.type,
-					gxO = dispatchedEvts.gxO,
-					grid = dispatchedEvts.grid,
-					row = dispatchedEvts.row,
-					clientSideIndependentEvents = [],
-					restOfEvents = [],
-					eventsToRun,
-					eventObj,
-					isIndependent,
-					messages = [],
-					message,
-					previousIsServerSide,
-					eventsDeferreds = {},
-					eventName;
+							setTimeout( this.serialRunner.addTask.closure(this.serialRunner, [this.dispatchTimeoutCallback.closure( this, [contextKey])]), gx.evt.dispatcherTimeout);
+						}
+						return deferred.promise();
+					},
+					
+					dispatchTimeoutCallback: function(contextKey) {
+						var dispatchedEvts = this.dispatchedEvents[contextKey],
+							gxO = dispatchedEvts.gxO,
+							grid = dispatchedEvts.grid,
+							row = dispatchedEvts.row,
+							clientSideIndependentEvents = [],
+							restOfEvents = [],
+							eventsToRun,
+							eventObj,
+							isIndependent,
+							messages = [],
+							message,
+							previousIsServerSide,
+							eventsDeferreds = {};
 
 				delete this.dispatchedEvents[contextKey];
 
-				if (messageType !== gx.evt.dispatcher.types.validation) {
-					// Order events according to dependencies. Independent client side events go first. The rest are executed
-					// in the same order as they were dispatched.
-					for (var i=0, len=dispatchedEvts.events.length; i<len; i++) {
-						eventObj = dispatchedEvts.events[i];
-						if (!eventObj.serverSide) {
-							isIndependent = true;
-							for (var j=0; j<i; j++) {
-								if (this.eventDepends(eventObj.eventName, dispatchedEvts.events[j].eventName, gxO)) {
-									isIndependent = false;
-									break;
-								}
+				// Order events according to dependencies. Independent client side events go first. The rest are executed
+				// in the same order as they were dispatched.
+				for (var i=0, len=dispatchedEvts.events.length; i<len; i++) {
+					eventObj = dispatchedEvts.events[i];
+					if (!eventObj.serverSide) {
+						isIndependent = true;
+						for (var j=0; j<i; j++) {
+							if (this.eventDepends(eventObj.eventName, dispatchedEvts.events[j].eventName, gxO)) {
+								isIndependent = false;
+								break;
 							}
-							if (isIndependent) {
-								clientSideIndependentEvents.push(eventObj);
-							}
-							else {
-								restOfEvents.push(eventObj);
-							}
+						}
+						if (isIndependent) {
+							clientSideIndependentEvents.push(eventObj);
 						}
 						else {
 							restOfEvents.push(eventObj);
 						}
 					}
+					else {
+						restOfEvents.push(eventObj);
+					}
 				}
-				else {
-					// No re-ordering of validations. The order has already been resolved and must remain unchanged.
-					restOfEvents = dispatchedEvts.events;
-				}
-				eventsToRun = removeRepeatedEvents(clientSideIndependentEvents, messageType)
-								.concat(removeRepeatedEvents(restOfEvents, messageType));
+				eventsToRun = clientSideIndependentEvents.concat(restOfEvents);
+				
+				eventsToRun = removeRepeatedEvents(eventsToRun);
 
 				// Create event blocks
 				previousIsServerSide = false;
 				for (var i=0, len=eventsToRun.length; i<len; i++) {
-					eventName = eventsToRun[i].eventName;
-					if (!eventsDeferreds[eventName]) {
-						eventsDeferreds[eventName] = [];
-					}
-					eventsDeferreds[eventName].push(eventsToRun[i].deferred);
+					eventsDeferreds[eventsToRun[i].eventName] = eventsToRun[i].deferred;
 					if (previousIsServerSide && eventsToRun[i].serverSide) {
-						message.addMethod(eventName);
+						message.addMethod(eventsToRun[i].eventName);
 					}
 					else {
-						message = this.createMessage(messageType, eventName, gxO, grid, row, eventsToRun[i].serverSide, eventsToRun[i].disableForm);
+						message = new gx.ajax.message(eventsToRun[i].eventName, gxO, grid, row, eventsToRun[i].serverSide, eventsToRun[i].disableForm);
 						if (!eventsToRun[i].serverSide) {
 							message.callback = gxO[eventsToRun[i].clientSideEventName].closure(gxO, eventsToRun[i].evtArguments || []);
 						}
@@ -26418,50 +25696,32 @@ gx.evt_i = (function($) {
 					previousIsServerSide = eventsToRun[i].serverSide;
 				}
 
-				var endMessage = function (message, success, result) {
+						var endMessage = function (message, success, isLastMsg, serialRunner) {
 					for (var i=0, len=message.methods.length; i<len; i++) {
-						var deferredsList = eventsDeferreds[message.methods[i]];
-						for (var j=0; j<deferredsList.length; j++) {
-							var deferred = deferredsList[j];
-							if (deferred) {
-								success ? deferred.resolve(result) : deferred.reject(result);
-							}
+						var deferred = eventsDeferreds[message.methods[i]];
+						if (deferred) {
+							success ? deferred.resolve(isLastMsg) : deferred.reject(isLastMsg);
 						}
 					}
+							serialRunner.signalEndTask();
 				};
 
 				// Run each block after the previous has finished
 				runCount = 0;
-				var serialRunner = this.serialRunner;
-				var runner = function () {
+						var serialRunner = this.serialRunner;
+				var runner = function(){
 					if (runCount < messages.length) {
 						var message = messages[runCount++],
 							isLastMsg = runCount == messages.length;
-						message.call().done(function (result) {							
-							endMessage(message, true, result);
+						message.call().done(function () {
+									endMessage(message, true, isLastMsg, serialRunner);
 							runner();
-							if (isLastMsg) {
-								serialRunner.signalEndTask();
-							}
-						}).fail(function (result) {
-							endMessage(message, false, result);							
-							for (var j = runCount; j < messages.length; j++) {
-								endMessage(messages[j], false, result);
-							}
-							serialRunner.signalEndTask();
+						}).fail(function () {
+									endMessage(message, false, isLastMsg, serialRunner);
 						});
-
 					}
 				};
 				runner();
-			},
-
-			createMessage: function (messageType, method, gxO, grid, row, serverSide, disableForm) {
-				if (messageType === gx.evt.dispatcher.types.validation) {
-					return new gx.ajax.validationMessage(method, gxO, grid, row, serverSide, disableForm);
-				}
-
-				return new gx.ajax.message(method, gxO, grid, row, serverSide, disableForm);
 			}
 		};
 	}(),
@@ -26505,14 +25765,6 @@ gx.evt_i = (function($) {
 })(gx.$);
 	
 gx.csv_i =  (function($) {
-	var runControlValidation = function (controlsToValidate, scope, callback, returns) {
-		var promises = [];
-		for (var i=0; i<controlsToValidate.length; i++) {
-			promises.push(scope.validControl.apply(scope, controlsToValidate[i]));
-		}
-		$.when.apply($, promises).then(callback);
-	};
-
 	return {
 			GX_OLD_VALUE_ATTRIBUTE: 'data-gxoldvalue',
 			GX_VALID_ATTRIBUTE: 'data-gxvalid',
@@ -26551,7 +25803,7 @@ gx.csv_i =  (function($) {
 
 				this.validControls(gxO.fromValid, gxO.toValid, false, gxO).done((function () {
 					try {
-						if (this.invalidControl == null || !gx.csv.stopOnError)
+						if ((this.invalidControl == null || !gx.csv.stopOnError) && !(this.rowChanged && !this.targetRowIsMod(this.toValid)))
 							gxO.fromValid = gxO.toValid;
 					}
 					catch (e) {
@@ -26567,19 +25819,10 @@ gx.csv_i =  (function($) {
 				var deferred = $.Deferred(),
 					bRet = true,
 					bFailedCtrl = -1,
-					controlsToValidate = [],
+					validationPromises = [],
 					lvlFrom=0, lvlTarget=0, isValid, lvlCtrl=0, ret,
-					validFullGrid = gx.csv.fullGridValidation && (TargetControl - FromControl) >=1 && gx.O.isTransaction(),
-					validStruct;
-
-				gxO = gxO || gx.O;
-
-				gxO.startFeedback();
-				var resolve = function (bRet) {
-					gxO.endFeedback();
-					deferred.resolve(bRet);
-				};
-
+					validFullGrid = gx.csv.fullGridValidation && (TargetControl - FromControl) >=1 && gx.O.isTransaction();
+				
 				var setFocusResolver = function (bRet, bFailedCtrl) {
 					if (gx.csv.stopOnError) {
 						if (bFailedCtrl != -1) {
@@ -26601,7 +25844,6 @@ gx.csv_i =  (function($) {
 					gx.csv.validActivatedControl = null;
 					gx.csv.invalidControl = null;
 					gx.csv.invalidId = 0;
-					validStruct = null;
 					if (TargetControl > FromControl) {
 						if (validFullGrid)
 						{
@@ -26614,18 +25856,13 @@ gx.csv_i =  (function($) {
 								lvlTarget = validStruct.lvl;
 						}
 
-						var controlsToValidate = [];
 						for (var i = FromControl; i < TargetControl; i++) {
-							validStruct = gx.fn.validStruct(i);
-							var GXValidRow;
-							if (validStruct) {
-								GXValidRow = gx.fn.currentGridRowImpl(validStruct.grid);
-							}
-							controlsToValidate.push([i, bForceCheck, gxO, GXValidRow, toUpperRowInGrid]);
+							validationPromises.push(this.validControl(i, bForceCheck, gxO, null, toUpperRowInGrid));
 
 							//Valid Full Grid							
 							if (validFullGrid && i > FromControl && i < TargetControl)
 							{
+								validStruct = gx.fn.validStruct(i);
 								if (validStruct != undefined && validStruct.lvl != undefined)
 								{
 									lvlCtrl = validStruct.lvl;
@@ -26647,7 +25884,7 @@ gx.csv_i =  (function($) {
 												var RecordIsMod = rowObj.gxIsMod();
 												if (!IsRemoved && (RecordExists || RecordIsMod) && rowObj.gxId != gridCurrentRow) {
 													for (var colIdx = firstGridCtrl; colIdx <= lastGridCtrl; colIdx++) { 
-														controlsToValidate.push([colIdx, bForceCheck, gxO, gridCurrentRow, rowObj.gxId]);
+														validationPromises.push(this.validControl(colIdx, bForceCheck, gxO, rowObj.gxId));
 													}
 												}
 											}
@@ -26656,9 +25893,9 @@ gx.csv_i =  (function($) {
 								}
 							}
 						}
-						if (controlsToValidate.length > 0) {
+						if (validationPromises.length > 0) {
 							gx.evt.setProcessing(true);
-							runControlValidation(controlsToValidate, this, function () {
+							$.when.apply($, validationPromises).done(function () {
 								var bRet = true,
 									bFailedCtrl = -1;
 								for (var i=0, len=arguments.length; i < len; i++) {
@@ -26671,18 +25908,18 @@ gx.csv_i =  (function($) {
 								}
 								setFocusResolver(bRet, bFailedCtrl);
 								gx.evt.setProcessing(false);
-								resolve(bRet);
+								deferred.resolve(bRet);
 							});
 							return deferred.promise();
 						}
 						else {
 							setFocusResolver(bRet, bFailedCtrl);
-							resolve(bRet);
+							deferred.resolve(bRet);
 						}
 					}
 					else {
 						setFocusResolver(bRet, bFailedCtrl);
-						resolve(bRet);
+						deferred.resolve(bRet);
 					}
 				}
 				catch (e) {
@@ -26696,26 +25933,16 @@ gx.csv_i =  (function($) {
 					gxO = gxO || gx.O,
 					bRet = true,
 					bFailedCtrl = -1,
-					validStruct = gx.fn.validStruct(Id, gxO),
-					GXValidRow,
-					shouldResolveOnReturn = true;
+					validStruct = gx.fn.validStruct(Id, gxO);
 
 				if (validStruct != undefined) {
 					if (validStruct.grid != 0) {
-						GXValidRow = gridRow ? gridRow : gx.fn.currentGridRowImpl(validStruct.grid);
+						var GXValidRow = gridRow ? gridRow : gx.fn.currentGridRowImpl(validStruct.grid);
 						if (!gx.lang.emptyObject(GXValidRow))
 							gx.fn.setCurrentGridRow(validStruct.grid, GXValidRow);
 					}
-					if (validStruct.isuc == true) {
-						if (validStruct.grid != 0) {
-							GXValidRow = gridRow ? gridRow : gx.fn.currentGridRowImpl(validStruct.grid);
-						}
-						else {
-							GXValidRow = null;
-						}
-						var uc = validStruct.getUCInstance(GXValidRow) || validStruct.uc; 
+					if (validStruct.isuc == true)
 						validStruct.uc.execC2VFunctions();
-					}
 					else {
 						if (typeof (validStruct.c2v) == 'function')
 							validStruct.c2v();
@@ -26730,7 +25957,7 @@ gx.csv_i =  (function($) {
 							else
 								Control = gx.fn.getControlGridRef(validStruct.fld, validStruct.grid);
 							if (Control) {
-								this.validate(Control, Id, bForceCheck, gxO, gridRow, toUpperRowInGrid).done(function (bValid) {
+								this.validate(Control, Id, bForceCheck, gxO, toUpperRowInGrid).done(function (bValid) {
 									try {
 										var rowIsRemoved = false,
 											bRet = true,
@@ -26746,7 +25973,7 @@ gx.csv_i =  (function($) {
 
 										gx.csv.lastId = Id;
 										if (gx.fn.isAccepted(Control) == false) {
-											gx.evt.executeOnblur(Id, Control);
+											gx.evt.executeOnblur(Id);
 
 											if (Control.getAttribute("data-gxhiddenonchange") != Control.value) {
 												Control.setAttribute("data-gxhiddenonchange", Control.value);
@@ -26759,8 +25986,8 @@ gx.csv_i =  (function($) {
 									}
 
 									deferred.resolve({ ret: bRet, ctrl: bFailedCtrl});
+									return deferred.promise();
 								});
-								shouldResolveOnReturn = false;
 								return deferred.promise();
 							}
 						}
@@ -26769,16 +25996,13 @@ gx.csv_i =  (function($) {
 						gx.dbg.logEx(e, 'gxapi.js', 'validControl');
 					}
 				}
-				if (shouldResolveOnReturn) {
-					deferred.resolve({ ret: bRet, ctrl: bFailedCtrl});
-				}
+				deferred.resolve({ ret: bRet, ctrl: bFailedCtrl});
 				return deferred.promise();
 			},
 
-			validate: function (Ctrl, i, bForceCheck, gxO, ctrlRow, toUpperRowInGrid) {
+			validate: function (Ctrl, i, bForceCheck, gxO, toUpperRowInGrid) {
 				var deferred = $.Deferred(),
 					gxO = gxO || gx.O;
-				var shouldResolveOnReturn = true;
 				gx.csv.anyError = false;
 				var validStruct = gx.fn.validStruct(i, gxO);
 				if (validStruct == undefined) {
@@ -26790,8 +26014,8 @@ gx.csv_i =  (function($) {
 					//numeric grid filters refresh on lostfocus
 					if (Ctrl.tagName != "SELECT" && Ctrl.type != "checkbox" && !gx.evt.eachKeyAutorefreshType(validStruct.type) && !gx.lang.emptyObject(validStruct.rgrid)) {
 						var len = validStruct.rgrid.length;
-						for (var j = 0; j < len; j++) {
-							validStruct.rgrid[j].filterVarChanged();
+						for (var i = 0; i < len; i++) {
+							validStruct.rgrid[i].filterVarChanged();
 						}
 					}
 					deferred.resolve(true);
@@ -26802,115 +26026,93 @@ gx.csv_i =  (function($) {
 					var jsCode = '';
 					if (i != -1 && (bForceCheck || (Ctrl.getAttribute(gx.csv.GX_VALID_ATTRIBUTE) != "1"))) {
 						gx.csv.currentId = i;
-						gx.evt.startValidation(validStruct.gxgrid, true);
+						gx.evt.startValidation(validStruct.gxgrid, true);						
 						gx.csv.refreshVars(validStruct);
-						
-						var vStructValidCallback = function (validRet) {
-							if (gxO.AnyError == 1) {
-								if (gx.lang.emptyObject(gx.csv.invalidControl))
-									gx.csv.invalidControl = Ctrl;
-								gx.csv.anyError = true;
-								gxO.AnyError = 0;
+						var validRet = false;
+						if (validStruct.isuc == true)
+							validRet = validStruct.fnc.call(validStruct.uc);
+						else if (validStruct.fnc != null)
+							validRet = validStruct.fnc.call(gxO); 	//call FieldValidation
+						else
+							validRet = true;
+						if (gxO.AnyError == 1) {
+							if (gx.lang.emptyObject(gx.csv.invalidControl))
+								gx.csv.invalidControl = Ctrl;
+							gx.csv.anyError = true;
+							gxO.AnyError = 0;
+						}
+						if (gx.csv.anyError == true)
+							validRet = !gx.csv.anyError;
+						if (validRet == false) {
+							gx.evt.endValidation();
+							deferred.resolve(false);
+							return deferred.promise();
+						}
+						gx.csv.refreshControls(validStruct, gxO);
+						gx.csv.invalidateDeps(i, gxO);
+						if (!gx.lang.emptyObject(validStruct.rgrid) && !gx.lang.emptyObject(validStruct.hc)) {
+							var len = validStruct.rgrid.length;
+							for (var i = 0; i < len; i++) {
+								validStruct.rgrid[i].filterVarChanged();
 							}
+						}
+						var ctrlIsAccepted = gx.fn.isAccepted(Ctrl, gxO);
+						var callback = function () {
+							deferred.resolve(true);
+							try {
+								if (!toUpperRowInGrid) { //Si no se dispar� isValid (toUpperRowInGrid=true) => no se modifica el valor de Ctrl.gxvalid
+									//Si Ctrl esta en un grid, y fue una validacion server side que disparo un refresh del grid, Ctrl es una referencia a un control que fue sustituido (redibujado) en el dom.
+									var DomCtrl = gx.dom.byId(Ctrl.id);
 
-							if (gx.csv.anyError)
-								validRet = !gx.csv.anyError;
-							if (!validRet) {
-								gx.evt.endValidation();
-								deferred.resolve(false);
-								return deferred.promise();
-							}
-							gx.csv.refreshControls(validStruct, gxO, ctrlRow);
-							gx.csv.invalidateDeps(i, gxO);
-							if (!gx.lang.emptyObject(validStruct.rgrid) && !gx.lang.emptyObject(validStruct.hc)) {
-								var len = validStruct.rgrid.length;
-								for (var j = 0; j < len; j++) {
-									validStruct.rgrid[j].filterVarChanged();
-								}
-							}
-							var ctrlIsAccepted = gx.fn.isAccepted(Ctrl, false, gxO);
-							var callback = function () {
-								deferred.resolve(true);
-								try {
-									if (!toUpperRowInGrid) { //Si no se dispar? isValid (toUpperRowInGrid=true) => no se modifica el valor de Ctrl.gxvalid
-										//Si Ctrl esta en un grid, y fue una validacion server side que disparo un refresh del grid, Ctrl es una referencia a un control que fue sustituido (redibujado) en el dom.
-										var DomCtrl = gx.dom.byId(Ctrl.id);
-
-										if (ctrlIsAccepted) {
-											gx.fn.setControlGxValid(DomCtrl, "1");
-										}
-										else {
-											gx.fn.setControlGxValid(DomCtrl, "0");
-										}
-									}
-									gx.evt.endValidation();
-								}
-								catch (e) {
-									gx.dbg.logEx(e, 'gxapi.js', 'validate');
-								}
-							};
-
-							//Is valid del usuario se ejecuta si gx.csv.GX_VALID_ATTRIBUTE!=1, independientemente de bForceCheck
-							//toUpperRowInGrid indica que Ctrl esta en una row superior al control de donde viene el foco, dentro del mismo grid, alli no se dispara la IsValid del usuario(porque se va hacia atras), pero si la validacion anterior, para instanciar valores de la row en variables.
-							if (validStruct.isvalid != null && ctrlIsAccepted && Ctrl.getAttribute(gx.csv.GX_VALID_ATTRIBUTE) != "1" && !toUpperRowInGrid) {
-								var grid = validStruct.gxgrid ? validStruct.gxgrid : null;
-								var evtName = validStruct.isvalid;
-								if (gx.pO.supportAjaxEvents) {
-									var gridId = validStruct.gxgrid ? validStruct.gxgrid.gridId : false,
-										row = gridId ? gx.fn.currentGridRowImpl(gridId) : '',
-										serverEvent = gxO.isServerEvent(evtName);
-
-									if (evtName) {
-										gx.evt.dispatcher.dispatch(gxO.getServerEventName(evtName), gxO, gridId, row, serverEvent)
-											.done(callback)
-											.fail(callback);
+									if (ctrlIsAccepted && !toUpperRowInGrid) {
+										gx.fn.setControlGxValid(DomCtrl, "1");
 									}
 									else {
-										gxO[evtName]().then(callback);
+										gx.fn.setControlGxValid(DomCtrl, "0");
 									}
-									return;
 								}
-								else {
-									var oldGrid = gx.csv.instanciatedRowGrid;
-									gx.csv.instanciatedRowGrid = grid;
-									gxO[evtName]().then(function () {
-										gx.csv.instanciatedRowGrid = oldGrid;
-										callback();
-									});
-								}
+								gx.evt.endValidation();
 							}
-							else {
-								callback();
+							catch (e) {
+								gx.dbg.logEx(e, 'gxapi.js', 'validate');
 							}
 						};
 
-						shouldResolveOnReturn = false;
-						var validRet = false;
-						if (validStruct.isuc)
-							vStructValidCallback.call(this, validStruct.fnc.call(validStruct.uc));
-						else if (validStruct.fnc != null) {
-							var validResult = validStruct.fnc.call(gxO);
-							if (validResult && validResult.then) {
-								// The validation returned a promise
-								validResult.then(vStructValidCallback.closure(this)); 	//call FieldValidation
+						//Is valid del usuario se ejecuta si gx.csv.GX_VALID_ATTRIBUTE!=1, independientemente de bForceCheck
+						//toUpperRowInGrid indica que Ctrl esta en una row superior al control de donde viene el foco, dentro del mismo grid, alli no se dispara la IsValid del usuario(porque se va hacia atras), pero si la validacion anterior, para instanciar valores de la row en variables.
+						if (validStruct.isvalid != null && ctrlIsAccepted && Ctrl.getAttribute(gx.csv.GX_VALID_ATTRIBUTE) != "1" && !toUpperRowInGrid) {
+							var grid = validStruct.gxgrid ? validStruct.gxgrid : null;
+							if (gx.pO.supportAjaxEvents) {
+								var evtName = validStruct.isvalid,
+									gridId = validStruct.gxgrid ? validStruct.gxgrid.gridId : false,
+									row = gridId ? gx.fn.currentGridRowImpl(gridId) : '',
+									serverEvent = gxO.isServerEvent(evtName);
+
+								if (evtName) {
+									gx.evt.dispatcher.dispatch(gxO.getServerEventName(evtName), gxO, gridId, row, serverEvent).done(callback).fail(callback);
+								}
+								else {
+									gxO[validStruct.isvalid]();
+									callback();
+								}
 							}
 							else {
-								// The validation returned a value
-								vStructValidCallback.call(this, validResult);
+								var oldGrid = gx.csv.instanciatedRowGrid;
+								gx.csv.instanciatedRowGrid = grid;
+								gxO[validStruct.isvalid]();
+								gx.csv.instanciatedRowGrid = oldGrid;
+								callback();
 							}
 						}
-						else {
-							vStructValidCallback.call(this, true);
-						}
+						else
+							callback();
+						
 					}
 				}
 				catch (e) {
 					gx.dbg.logEx(e, 'gxapi.js', 'validate');
 				}
-
-				if (shouldResolveOnReturn) {
-					deferred.resolve(true);
-				}
+				deferred.resolve(true);
 				return deferred.promise();
 			},
 
@@ -26953,7 +26155,7 @@ gx.csv_i =  (function($) {
 			},
 
 			invalidateDeps: function (id, gxO) {
-				var ctrlIds = gx.fn.controlIds(gxO);
+				var ctrlIds = gx.fn.controlIds();
 				var len = ctrlIds.length;
 				for (var i = 0; i < len; i++) {
 					var cId = ctrlIds[i];
@@ -26999,16 +26201,15 @@ gx.csv_i =  (function($) {
 				if (typeof(currentValue) === 'undefined')
 					currentValue = Ctrl.value;
 				var ctrlOldValue = Ctrl.getAttribute(gx.csv.GX_OLD_VALUE_ATTRIBUTE),
-					oldValue = gx.applyPicture(vStruct, ctrlOldValue, Ctrl);
+					oldValue = gx.applyPicture(vStruct, ctrlOldValue);
 				
-				return ctrlOldValue === null || oldValue !== gx.applyPicture(vStruct, currentValue, Ctrl);
+				return ctrlOldValue === null || oldValue !== gx.applyPicture(vStruct, currentValue);
 			},
 
 			setFormatError: function(Ctrl, error) {
-				Ctrl = gx.dom.el(Ctrl);
 				if (Ctrl.id) {
 					if (error || typeof(error) == 'undefined') {
-						this.gxFormatErrors[Ctrl.id] = true;
+						this.gxFormatErrors[Ctrl.id] = true;		
 						Ctrl.GXFormatError = true;
 					}
 					else {
@@ -27045,12 +26246,12 @@ gx.csv_i =  (function($) {
 				return false;
 			},
 
-			loadScreen: function (callback) {
+			loadScreen: function () {
 				try {
 					if (gx.csv.pkDirty) {
 						gx.csv.pkDirty = false;
 						gx.fn.clearOldKeys();
-						gx.evt.execEvt(gx.csv.cmpCtx, false, gx.csv.cmpCtx + 'ELSCR.', gx.evt.dummyCtrl, null, true, undefined, undefined, callback);
+						gx.evt.execEvt(gx.csv.cmpCtx, false, gx.csv.cmpCtx + 'ELSCR.', gx.evt.dummyCtrl, null, true);
 					}
 				}
 				catch (e) {
@@ -27092,17 +26293,6 @@ gx.csv_i =  (function($) {
 				return false;
 			},
 
-			checkGridChange: function( gridObj, gridChange, gxO, lastRow) {
-				if (gridObj) {
-					var gridId = gridObj.gridId,
-						GXValidRow = gx.fn.currentGridRowImpl(gridId);
-					gx.csv.validGridRowChange( gridId, GXValidRow, gxO, GXValidRow).done( function() {
-						var gridObj = gxO.getGridById( gridId, lastRow);
-						gx.csv.checkGridChange( gridObj.parentGrid, true, gxO, lastRow);}
-					);
-				}
-			},
-			
 			checkRowChange: function (Ctrl, gridChange, gxO, lastRow) {
 				var deferred = $.Deferred();
 				try {
@@ -27118,12 +26308,8 @@ gx.csv_i =  (function($) {
 								gx.csv.validGridRowChange(GridId, GXValidRow, gxO, lastRow).done(function (isValid) {
 									if (isValid) {
 										var gridObj = gxO.getGridById(GridId, lastRow);
-										if (gridObj) {
+										if (gridObj)
 											gridObj.instanciateRow(GXValidRow); //setCurrentGridRow and instanciate variables
-											if (gridObj.parentGrid) {
-												gx.csv.checkGridChange( gridObj.parentGrid, true, gxO, lastRow);
-											}
-										}
 									}
 									gxO.Gx_BScreen = bkpBScreen;
 									deferred.resolve(true);
@@ -27201,17 +26387,17 @@ gx.csv_i =  (function($) {
 				}
 			},
 
-			refreshControls: function (validStruct, gxO, row) {
+			refreshControls: function (validStruct, gxO) {
 				var len = validStruct.op ? validStruct.op.length : 0;
 				for (var i = 0; i < len; i++) {
 					try {
 						var VStr = gx.fn.validStruct(validStruct.op[i], gxO);
-						gx.fn.v2c(VStr, null, null, row);
+						gx.fn.v2c(VStr);
 						var Ctrl = null;
 						if (VStr.grid == 0)
 							Ctrl = gx.dom.el(gx.csv.ctxControlId(VStr.fld));
 						else
-							Ctrl = gx.fn.getControlGridRef(VStr.fld, VStr.grid, row);
+							Ctrl = gx.fn.getControlGridRef(VStr.fld, VStr.grid);
 						if (Ctrl)
 							gx.fn.setControlGxValid(Ctrl, "0");
 					}
@@ -27417,11 +26603,9 @@ gx.http_i = (function ($) {
 			},
 			
 			applyWellKnownPtys: function() {
-				gx.wpo(function() {
 				if (this.viewState['FORM_Caption']) {
 					gx.fn.setCtrlPropertyImpl( document, 'Caption', this.viewState['FORM_Caption']);
 				}
-				}, this);
 			},
 
 			loadState: function () {
@@ -27543,14 +26727,14 @@ gx.http_i = (function ($) {
 				return (this.getCookie(name) == value);
 			},
 
-			checkResponseStatus: function (req, warnOnTimeout) {
+			checkResponseStatus: function (req) {
 				if (req.status == this.STATUS_FORBIDDEN)
 					return false;
-				if (req.status == this.STATUS_SESSION_TO) {
-					gx.http.reloadOnTimeout(warnOnTimeout);
+				if (req.status == this.STATUS_SESSION_TO) {						
+					gx.http.reloadOnTimeout();						
 					return true;
 				}
-				else if (this.isBadResponse(req)) {
+				else if (this.isBadResponse(req)) {						
 					gx.ajax.enableForm();
 					gx.util.alert.showError(gx.getMessage("GXM_NetworkError").replace('%1', req.status));
 					return true;
@@ -27560,7 +26744,7 @@ gx.http_i = (function ($) {
 						gx.http.reload();
 					}
 					else if (gx.pO.OnSessionTimeout == gx.timeoutActions.warn) {
-						gx.http.reloadOnTimeout(warnOnTimeout);
+						gx.http.reloadOnTimeout();
 					}
 					return true;
 				}
@@ -27587,8 +26771,8 @@ gx.http_i = (function ($) {
 				return false;
 			},
 
-			reloadOnTimeout: function (alwaysWarn) {
-				if ((alwaysWarn || gx.pO.fullAjax || gx.pO.AjaxSecurity) && confirm(gx.getMessage("GXM_sessionexpired"))) {
+			reloadOnTimeout: function () {
+				if ((gx.pO.fullAjax || gx.pO.AjaxSecurity) && confirm(gx.getMessage("GXM_sessionexpired"))) {
 					gx.http.reload();
 					return true;
 				}
@@ -27737,18 +26921,11 @@ gx.http_i = (function ($) {
 					gx.evt.setReady(false);
 					gx.evt.setProcessing(false, !gx.csv.validating);
 					if (req.status == this.STATUS_OK || info.handleAllStatusCodes) {
-						if (this.isOffline(req)) {
-							this.handleOffline(req);
-							if (info.offline) {
-								info.offline.call(info.obj || window, req, info);
-							}
-						}
 						this.doCallHandler(req, info);
 					}
 					else {
-						if (!gx.http.checkResponseStatus(req, info.warnOnTimeout)) {//Check for session timeout or forbidden status code.
+						if (!gx.http.checkResponseStatus(req)) //Check for session timeout or forbidden status code.
 							gx.lang.doCallTimeout(gx.dom.writeError, document, [req.responseText, gx.getMessage("GXM_runtimeappsrv"), req.status], 50);
-						}
 					}
 					if (info.always) {
 						info.always.call(info.obj || window, req, info);
@@ -27770,10 +26947,10 @@ gx.http_i = (function ($) {
 				}
 				gx.evt.setProcessing(false, !gx.csv.validating);
 				if (req.readyState == this.STATE_DONE) {
-					gx.http.checkResponseStatus(req, info.warnOnTimeout);
+					gx.http.checkResponseStatus(req);
 				}
 				else if (this.isBadResponse(req)) {
-					gx.http.reloadOnTimeout(info.warnOnTimeout);
+					gx.http.reloadOnTimeout();
 				}
 			},
 
@@ -28011,7 +27188,7 @@ gx.http_i = (function ($) {
 				gx.http.callBackend_impl( backcall, sURL, ExecAtFail, Mode, AvoidFormDisable, Method, PostData, AvoidUncache, Async, Headers);
 			},
 
-			callBackend_impl: function (backcall, sURL, ExecAtFail, Mode, AvoidFormDisable, Method, PostData, AvoidUncache, Async, Headers, failCallback) {
+			callBackend_impl: function (backcall, sURL, ExecAtFail, Mode, AvoidFormDisable, Method, PostData, AvoidUncache, Async, Headers) {
 				var _xmlHttp = this.getRequest();
 				var Headers = Headers || {};
 				if (_xmlHttp) {
@@ -28040,72 +27217,46 @@ gx.http_i = (function ($) {
 						{
 							gx.dbg.logEx(e, 'gxapi.js', 'callBackend_impl: gx.O cannot be null');
 						}
-
-						var callback = (function () {
-							if (!AvoidFormDisable) {
-								gxO.endFeedback();
-							}
-							this.lastStatus = _xmlHttp.status;
-							this.lastResponse = _xmlHttp.responseText;
-							if ((_xmlHttp.readyState != this.STATE_DONE) || (_xmlHttp.status != this.STATUS_OK)) //Firefox and Chrome will go with onerror handler. 
-							{
-								if (!gx.http.checkResponseStatus(_xmlHttp)) //Check for session timeout or forbidden status code. If not, will not refresh page, so continue with error. 
-								{
-									window.status = 'GXAjax HTTP error: (' + _xmlHttp.status + ') - ' + _xmlHttp.statusText;
-									gx.dbg.logEx(_xmlHttp.responseText);
-									if (failCallback) {
-										failCallback();
-									}
-								}
-							}
-							else {
-								if (Mode != this.modes.none) {
-									if (this.lastResponse && this.lastResponse.length > 0 && this.lastResponse.charAt(0) != '<') {
-										this.lastStatus = 0;
-
-										try {
-											if (Mode == this.modes.full)
-												this.handleFull(this.lastResponse)
-											else
-												if (Mode == this.modes.call)
-													return this.handleCall(this.lastResponse, backcall)
-											return this.handleRetVal(this.lastResponse, backcall, ExecAtFail)
-										}
-										catch (e) {
-											gx.dbg.logEx(e, 'gxapi.js', 'callBackend');
-											if (failCallback) {
-												failCallback();
-											}
-										}
-									}
-									else {
-										window.status = 'GXAjax HTTP error: (bad response format)';
-										if (failCallback) {
-											failCallback();
-										}
-									}
-								}
-							}
-						}).closure(this)
-
-						if (async) {
-							if (gx.util.browser.isIE() && gx.util.browser.ieVersion() <= 9) {
-								_xmlHttp.onreadystatechange = callback;
-							}
-							else {
-								_xmlHttp.onload = callback;
-							}
-						}
 						_xmlHttp.send(reqData);
-
-						if (!async) {
-							callback();
+						if (!AvoidFormDisable) {
+							gxO.endFeedback();
 						}
+						this.lastStatus = _xmlHttp.status;
+						this.lastResponse = _xmlHttp.responseText;
 					}
 					catch (e) {
 						window.status = 'GXAjax HTTP error: ' + e.message;
 					}
 					window.status = '';
+					if ((_xmlHttp.readyState != this.STATE_DONE) || (_xmlHttp.status != this.STATUS_OK)) //Firefox and Chrome will go with onerror handler. 
+					{
+						if (!gx.http.checkResponseStatus(_xmlHttp)) //Check for session timeout or forbidden status code. If not, will not refresh page, so continue with error. 
+						{
+							window.status = 'GXAjax HTTP error: (' + _xmlHttp.status + ') - ' + _xmlHttp.statusText;
+							gx.dbg.logEx(_xmlHttp.responseText);
+						}
+					}
+					else {
+						if (Mode != this.modes.none) {
+							if (this.lastResponse && this.lastResponse.length > 0 && this.lastResponse.charAt(0) != '<') {
+								this.lastStatus = 0;
+
+								try {
+									if (Mode == this.modes.full)
+										this.handleFull(this.lastResponse)
+									else
+										if (Mode == this.modes.call)
+											return this.handleCall(this.lastResponse, backcall)
+									return this.handleRetVal(this.lastResponse, backcall, ExecAtFail)
+								}
+								catch (e) {
+									gx.dbg.logEx(e, 'gxapi.js', 'callBackend');
+								}
+							}
+							else
+								window.status = 'GXAjax HTTP error: (bad response format)';
+						}
+					}
 				}
 			},
 
@@ -28209,7 +27360,6 @@ gx.http_i = (function ($) {
 
 			loadStyle: function (url, callback, beforeTheme, id) {
 				var style = id ? gx.dom.byId(id) : null;
-				var enablePreloading = false;
 				if (style) {
 					style.href = url;
 				}
@@ -28217,7 +27367,7 @@ gx.http_i = (function ($) {
 					var head = gx.dom.byTag('head')[0];
 					style = document.createElement("link");
 					//disabled for gx-ui compatibility issue 69571
-					if (enablePreloading && style.as != undefined) {
+					if (false && style.as != undefined) {
 						style.rel = 'preload';
 						style.as = 'style';
 					}
@@ -28272,14 +27422,6 @@ gx.http_i = (function ($) {
 				if (!gx.lang.emptyObject(cmds)) {
 					gx.ajax.dispatchCommands(cmds);
 				}
-			},
-
-			isOffline: function (req) {
-				return req.getResponseHeader("X-GX-OFFLINE") === "1";
-			},
-			
-			handleOffline: function (req) {
-				gx.util.alert.showError(gx.getMessage('GXM_OfflineUnsupported'));
 			}
 		}
 })(gx.$);
@@ -28344,25 +27486,6 @@ if (gx.util.browser.isIE())
   window.CustomEvent = CustomEvent;
 })();
 }
-
-gx.fx.obs.addObserver('gx.onload', gx, function () {
-	var serviceWorkerOptions;
-	if (gx.serviceWorkerUrl) {
-		if('serviceWorker' in navigator) {
-			if (gx.staticDirectory) {
-				serviceWorkerOptions = {
-					scope: gx.util.resourceUrl(gx.basePath, false) + "/"
-				};
-			}
-			navigator.serviceWorker
-						.register(gx.serviceWorkerUrl, serviceWorkerOptions)
-						.then(function() {
-							console.log('Service Worker Registered:', gx.serviceWorkerUrl);
-						});
-		}
-	}
-});
-
 /* END OF FILE - ..\js\gxapi_i.js - */
 /* START OF FILE - ..\js\gxfrmutl_i.js - */
 (function($) {
@@ -28387,19 +27510,19 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 	};
 
 	prot.Initialize = function () {
-		this.InitStandaloneVars();
-		gx.wpo(function() {
+		this.InitStandaloneVars( );
+		gx.wpo(function() {				
 			this.initTargets();
-		}, this);
+		}, this);	
 	};
 
-	prot.InitStandaloneVars = function () {
+	prot.InitStandaloneVars = function () {			
 		var oldGxo = gx.O;
 		gx.setGxO(this);
 		this.SetStandaloneVars();
 		if (oldGxo != null) {
-			gx.setGxO(oldGxo);
-		}
+			gx.setGxO(oldGxo);			
+		}			
 	};
 
 	prot.getCmpType = function (cmpContext) {
@@ -28470,23 +27593,16 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 		this.MsgList.push(Msg);
 	};
 
-	prot.showMessages = function (keepMsgs) {
+	prot.showMessages = function () {
 		var msgsArr = [];
 		var len = this.MsgList.length;
 		for (var i = 0; i < len; i++) {
-			var msgItem = this.MsgList[i];
-			if (typeof(msgItem) === 'string')
-				msgsArr.push({ att: '', type: 2, text: this.MsgList[i] });
-			else
-				msgsArr.push(msgItem);
+			msgsArr.push({ att: '', type: 2, text: this.MsgList[i] });
 		}
 		var msgs = {};
 		var msgsKey = (this.CmpContext == '') ? 'MAIN' : this.CmpContext;
 		msgs[msgsKey] = msgsArr;
-		if (keepMsgs)
-			gx.fn.setErrorViewer(msgs, false);
-		else
-			gx.fn.setErrorViewer(msgs);
+		gx.fn.setErrorViewer(msgs);
 		this.clearMessages();
 	};
 
@@ -29166,7 +28282,7 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 						if (obj.length == 0)
 							continue;
 						var gxGrid = gx.fn.getGridObj(vStruct.grid);
-						var firstRecordOnPage = (gxGrid && gxGrid.grid && !gxGrid.InfiniteScrolling) ? gxGrid.grid.firstRecordOnPage : 0;
+						var firstRecordOnPage = (gxGrid && gxGrid.grid) ? gxGrid.grid.firstRecordOnPage : 0;
 						var sRow = gx.fn.currentGridRow(vStruct.grid);
 						if (sRow.length > 4)
 							sRow = sRow.substr(sRow.length - ((i + 1) * 4), 4);
@@ -29234,7 +28350,7 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 	};
 
 	prot.setGridUCDynProp = function (CtrlName, PropName, HiddenName, Value, PropType) {
-		this.setGridUCProp(CtrlName, PropName, HiddenName, Value, PropType);
+		this.setGridUCProp(CtrlName, PropName, HiddenName, undefined, PropType);
 	};
 
 	prot.setGridUCProp = function (CtrlName, PropName, HiddenName, Value, PropType) {
@@ -29287,15 +28403,14 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 		});
 	};
 
-	prot.execV2CFunctions = function (Show, userControls, ShowGridUcs) {
-		ShowGridUcs = (ShowGridUcs === undefined) || ShowGridUcs;
+	prot.execV2CFunctions = function (Show, userControls) {
 		if (!userControls) {
 			userControls = this.UserControls;
 		}			
 		var gxO = this;
 		gx.uc.StartRender();
 		$.each(userControls, function (i, uc) {
-			if (uc && gxO == uc.ParentObject && (ShowGridUcs || !uc.GridId)) {
+			if (uc && gxO == uc.ParentObject) {
 				uc.updateAndShow(Show);
 			}
 		});
@@ -29384,7 +28499,7 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 
 	prot.cleanEventName = function(dirtyEventName) {
 		dirtyEventName = dirtyEventName.replace(new RegExp('^' + this.CmpContext), '');
-		var exp = (gx.pO.fullAjax)? /^E('?(.*)\.?'?)/: /^E('?(\w+)\.?([^\.]*)'?)/;
+		var exp = /^E('?(\w+)\.?([^\.]*)'?)/;
 		var tmpName = exp.exec(dirtyEventName);
 		var cleanName = (tmpName && tmpName.length && tmpName.length > 1) ? tmpName[1].replace(/\.\d*$/,'') : dirtyEventName;
 		return MAPPED_EVENTS[cleanName] || cleanName;
@@ -29510,7 +28625,6 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 		var cliEventName = this.getClientEventName(evtName),
 			isServerEvent = (cliEventName)? this.isServerEvent(cliEventName): true,
 			parms = '',
-			deferred,
 			gridObj;
 
 		if (isServerEvent) {
@@ -29527,13 +28641,12 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 				gx.csv.instanciatedRowGrid = null;
 			}
 
-			deferred = this.executeServerEvent(evtName, synch, rowGxId, force);
+			this.executeServerEvent(evtName, synch, rowGxId, force);
 		}
 		else {
-			deferred = gx.evt.execCliEvt( this.CmpContext, this.IsMasterPage, cliEventName, evtGridName, rowGxId, parms);
+			gx.evt.execCliEvt(this.CmpContext, this.IsMasterPage, cliEventName, evtGridName, rowGxId, parms);
 		}
 		gx.csv.instanciatedRowGrid = null;
-		return deferred;
 	};
 
 
@@ -29565,10 +28678,7 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 		var afterFnc = function() {			
 			deferred.resolve();
 		}
-		var failFnc = function() {			
-			deferred.reject();
-		}
-		gx.evt.execEvt(this.CmpContext, this.IsMasterPage, evtName, gx.evt.dummyCtrl, gridId, synchReq, null, null, afterFnc, Force, failFnc);
+		gx.evt.execEvt(this.CmpContext, this.IsMasterPage, evtName, gx.evt.dummyCtrl, gridId, synchReq, null, null, afterFnc.closure(this), Force);
 		return deferred.promise();
 	};
 
@@ -29579,25 +28689,19 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 		if (ctrl && ctrl.onblur)
 			ctrl.onblur();
 		if (gx.pO.fullAjax || gxOEnter == null) { //Si no es fullajax y tiene evento Enter => Enter ejecuta refresh implicito
-			if (evt && gx.evt.cancelAndRefresh(evt)) {
-				if (gxOEnter != null && !gxOEnter.autoRefresh && gxOEnter.hasEnterEvent && !gxOEnter.anyGridBaseTable) //grid sin tabla base, autorefresh=no, Enter definido => Refresh+Evento Enter
+			if (gx.evt.cancelAndRefresh(evt)) {
+				if ( !gxO.autoRefresh && gxO.hasEnterEvent && !gxO.anyGridBaseTable) //grid sin tabla base, autorefresh=no, Enter definido => Refresh+Evento Enter
 					forceEnter = true;
 				else 
 					return;
 			}
 		}
-		if (evt) {
-			if (gx.dom.hasSubmitControl()) {
-				gx.evt.cancel(evt, true);
-			}
-			if (ctrl && ctrl.nodeName == 'INPUT' && gx.dom.isEditControl(ctrl)) {
-				gx.evt.cancel(evt, true);
-			}
+		if (gx.dom.hasSubmitControl()) {
+			gx.evt.cancel(evt, true);
 		}
-		else {
-			forceEnter = true;
+		if (ctrl && ctrl.nodeName == 'INPUT' && gx.dom.isEditControl(ctrl)) {
+			gx.evt.cancel(evt, true);
 		}
-
 		if (gxOEnter != null) {
 			gx.evt.enter = true;
 			var enterName = 'ENTER';
@@ -29605,7 +28709,7 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 				enterName = enterName + '_MPAGE';
 			enterName = gxOEnter.CmpContext + 'E' + enterName + '.';
 			var gridId;
-			if (ctrl && gx.evt.isEnterEvtCtrl(ctrl)) {
+			if (gx.evt.isEnterEvtCtrl(ctrl)) {
 				var rowId = gx.fn.controlRowId(ctrl),
 					gridId = gx.fn.controlGridId(ctrl.id);
 				if (rowId)
@@ -29613,9 +28717,7 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 			}
 			gx.evt.execEvt(gxOEnter.CmpContext, gxOEnter.IsMasterPage, enterName, gx.evt.dummyCtrl, gridId, false, null, disableForm, null, forceEnter);
 			gx.evt.enter = false;
-			if (evt) {
-				gx.evt.cancel(evt, true);
-			}
+			gx.evt.cancel(evt, true);
 		}
 	};
 
@@ -29732,8 +28834,7 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 	};
 
 	var getConditionCode = function (el) {
-		var lTagName = el.tagName.toLowerCase();
-		if (lTagName == "img" || lTagName == "input") {
+		if (el.tagName.toLowerCase() == "img") {
 			return $(el).attr(gx.GxObject.GX_EVENT_CONDITION_DATA_ATTR);
 		}
 		else {
@@ -29807,24 +28908,12 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 		if ((elementIsFocusable(target) || isFocusableElementLabel(target)) && !$(target).is($currentTarget)) {
 			return;
 		}
-
-		if (gx.dom.hasAttribute(target, gx.GxObject.GX_EVENT_EVENT_IN_PROGRESS)) {
-			return;
-		}
 		
-		domEvt.stopPropagation();
-		var fnc = function() {
 		if (doubleClickEvtNotSupported())
 			dispatchEvent_IE7.apply(this, [domEvt, $target, gxO, fld]);
 		else
 			dispatchEvent.apply(this, [domEvt, $target, gxO, fld]);
-		};
-		if (gx.evt.processing) {
-			gx.fx.obs.addObserver('gx.endprocessing', this, fnc, { single: true });
-		} 
-		else {
-			fnc.call(this);
-		}
+		
 	};
 
 	var doubleClickEvtNotSupported = function () {
@@ -29884,18 +28973,6 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 		catch (e) {}
 	};
 
-	function readControlEventAttribute(el, attribute) {
-		var $el = $(el),
-			readOnlyCtrl = $el.is('SPAN,DIV');
-		return $el.attr(attribute) || 
-					(readOnlyCtrl ? 
-						$el.find("> a")
-							.first()
-							.attr(attribute) 
-						:
-						'');
-	};
-
 	prot.handleControlEvent = function (domEvt, fld, el) {
 		var controlEventMap = this.controlEventMap;
 		if (!controlEventMap[fld])
@@ -29905,11 +28982,12 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 			clientEventName = controlEventMap[fld].evt,
 			evtData = this.Events[clientEventName],
 			evtName = evtData ? this.Events[clientEventName][0] : controlEventMap[fld].std,
-			jsScriptType = readControlEventAttribute(el, gx.GxObject.GX_EVENT_DATA_ATTR),
-			jsScriptCode = readControlEventAttribute(el, gx.GxObject.GX_EVENT_CODE_DATA_ATTR),
+			readOnlyCtrl = $(el).is('SPAN'),
+			jsScriptType = $(el).attr(gx.GxObject.GX_EVENT_DATA_ATTR) || (readOnlyCtrl? $(el).find("> a").first().attr(gx.GxObject.GX_EVENT_DATA_ATTR): ''),
+			jsScriptCode = $(el).attr(gx.GxObject.GX_EVENT_CODE_DATA_ATTR) || (readOnlyCtrl? $(el).find("> a").first().attr(gx.GxObject.GX_EVENT_CODE_DATA_ATTR): ''),
 			conditionCode = getConditionCode(el),
 			rowGxId = (vStruct.grid > 0)? gx.fn.controlRowId(domEvt.currentTarget): null,
-			gridObj = this.getGridById(vStruct.grid, rowGxId),
+			gridObj = this.getGridById(vStruct.grid, rowGxId),				
 			gridName,
 			preventDefault = true,
 			forceOnChange = false,
@@ -29922,9 +29000,7 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 		switch (jsScriptType) {
 			case "1":
 				cancelEvent(domEvt, true, true);
-				if (!conditionCode || evaluateCode(conditionCode)) {
-					gx.fn.closeWindow();
-				}
+				gx.fn.closeWindow();
 				break;
 			case "3": //Help command
 			case "4":
@@ -29946,21 +29022,8 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 						preventDefault = false;
 						forceOnChange = true;
 					}
-					if (evtName) {
-						$target.attr(gx.GxObject.GX_EVENT_EVENT_IN_PROGRESS, true);
-						this.executeEvent(evtName, false, rowGxId, false, gridName).always(
-							function(ctrlTarget) {
-								if (!gx.evt.redirecting) {
-									var fnc = function() { $(ctrlTarget).attr(gx.GxObject.GX_EVENT_EVENT_IN_PROGRESS, null)};
-									if (gx.spa.isNavigating()) {
-										gx.spa.addObserver('onnavigate', this, fnc);
-									}
-									else
-										fnc();
-								}
-							}.closure(this, [$target])
-						);
-					}
+					if (evtName)
+						this.executeEvent(evtName, false, rowGxId, false, gridName);
 					if (forceOnChange) {
 						gx.evt.onchange(el);
 					}
@@ -30055,11 +29118,8 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 			if (typeof (lvlOlds) != 'function') {
 				var gridId = gx.fn.lvlGrid(parseInt(lvl, 10));
 				var gridRow;
-				if (gridId != 0) {
+				if (gridId != 0)
 					gridRow = gx.fn.currentGridRow(gridId);
-					if (gridRow === '9999')
-						continue;
-				}
 
 				var len = lvlOlds.length;
 				for (var i = 0; i < len; i++) {
@@ -30188,13 +29248,11 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 			arrDeferreds = [];
 		gx.dbg.logPerf('objectOnload_' + this.CmpContext + this.ServerClass);
 		gx.setGxO(this);
-		this.screenToVars();		
-		gx.wmp( function() {	
-				if (this.hasMasterPage()) {
-					this.MasterPage.onload();
-					gx.setGxO(this);
-				}
-			}, this);
+		this.screenToVars();
+		if (this.hasMasterPage()) {
+			this.MasterPage.onload();
+			gx.setGxO(this);
+		}
 
 		var len = this.Grids.length;
 		if (loadGrids !== false) {
@@ -30211,7 +29269,7 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 			this.afterLoad()
 		}
 		else {
-			gx.wr( this.afterLoad.closure(this), this);
+			gx.fx.obs.addObserver('gx.onready', this, this.afterLoad.closure(this), { single: true });
 		}
 		gx.dbg.logPerf('objectOnload_' + this.CmpContext + this.ServerClass);
 		var _this = this;
@@ -30227,7 +29285,7 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 		this.installImageControls();
 		this.refreshOlds();
 		this.initControlsBehaviour();
-		this.execV2CFunctions(true, undefined, false);
+		this.execV2CFunctions(true);
 		this.JustCreated = false;
 		this.registerCtrlsEventHandlers();
 
@@ -30355,13 +29413,8 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 		return (gx.pO && !gx.pO.fullAjax || this == gx.pO) ? document.body : this.getContainer();
 	};
 
-	prot.startFeedback = function(immediately, swallowKeys) {
+	prot.startFeedback = function(immediately) {
 		feedbackCallCounter++;
-		
-		if (swallowKeys) {
-			gx.fx.obs.addObserver('gx.keypress', this, this.swallowKeys);
-		}
-
 		var feedbackDelay = (immediately === true)? 0: FEEDBACK_MASK_DELAY,
 			timeoutObj;
 
@@ -30386,16 +29439,7 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 		}
 	};
 
-	prot.swallowKeys = function (eventObject) {
-		if (eventObject.event.keyCode !== 9) {
-			eventObject.cancel = true;
-			eventObject.event.preventDefault();
-		}
-	};
-
 	prot.endFeedback = function() {
-		gx.fx.obs.deleteObserver('gx.keypress', this, this.swallowKeys);
-
 		if (feedbackCallCounter > 0)
 			feedbackCallCounter--;
 		if (feedbackCallCounter == 0) {
@@ -30596,21 +29640,7 @@ gx.fx.obs.addObserver('gx.onload', gx, function () {
 		$(centerSelector).removeClass("collapsed");
 		gx.fx.obs.notify("gx.targetexpanded", [target]);
 	};
-
-	var appendArgs = function (args, item) {
-		var args = Array.prototype.slice.call(args, 0);
-		args.push(item);
-		return args;
-	};
-
-	prot.validSrvEvt = function () {
-		return gx.ajax.validSrvEvt.apply(gx.ajax, appendArgs(arguments, this));
-	};
-
-	prot.validCliEvt = function () {
-		return gx.ajax.validCliEvt.apply(gx.ajax, appendArgs(arguments, this));
-	};
-
+	
 
 })(gx.$);
 
@@ -30790,9 +29820,7 @@ gx.thread = {
 
 gx.sec = {
 	key: null,
-	iv: null,
 	keyName: 'GX_AJAX_KEY',
-	ivName: 'GX_AJAX_IV',
 	secToken: null,
 	secTokenName: 'AJAX_SECURITY_TOKEN',
 
@@ -30805,7 +29833,6 @@ gx.sec = {
 		if (this.key != null) {
 			this.loadSecToken();
 		}
-		this.iv = gx.fn.getHidden(this.ivName);
 	},
 
 	loadSecToken: function () {
@@ -30822,12 +29849,7 @@ gx.sec = {
 			if (Key != null) {
 				var alg = this.rijndael;
 				Key = alg.hexToByteArray(Key);
-				var encrypted;
-				if (this.iv != null) {
-					encrypted = alg.rijndaelEncrypt(Value, Key, "CBC", alg.hexToByteArray(this.iv));
-				} else {
-					encrypted = alg.rijndaelEncrypt(Value, Key);
-				}
+				var encrypted = alg.rijndaelEncrypt(Value, Key);
 				var encoded = alg.byteArrayToHex(encrypted);
 				return encoded;
 			}
@@ -30845,7 +29867,7 @@ gx.sec = {
 				var alg = this.rijndael;
 				Key = alg.hexToByteArray(Key);
 				var decoded = alg.hexToByteArray(Value);
-				var decrypted = alg.rijndaelDecrypt(decoded, Key, "CBC");
+				var decrypted = alg.rijndaelDecrypt(decoded, Key);
 				return alg.byteArrayToString(decrypted);
 			}
 		}
@@ -31213,7 +30235,7 @@ gx.webSocket = function (wsOpts) {
 				var wsUrl = wsOpts.wsProtocol + wsOpts.host + wsOpts.basePath + wsOpts.resourceUrl + wsOpts.clientId;
 				this.create(wsOpts.wsURL || wsUrl);
 				this.initialized = true;
-				this.wsOpts = wsOpts;
+                                this.wsOpts = wsOpts;
 			}
 			catch (e) {
 				gx.dbg.logEx(e, 'gxfrmutl.js', 'Could not initialize WebSocket');
@@ -31862,16 +30884,11 @@ gx.sec.rijndael = {
 	// The parameter "plaintext" can either be a string or an array of bytes. 
 	// The parameter "key" must be an array of key bytes. If you have a hex 
 	// string representing the key, invoke hexToByteArray() on it to convert it 
-	// to an array of bytes. The third parameter "mode" is a string indicating
-	// the encryption mode to use, either "ECB" or "CBC". If the parameter is
-	// omitted, ECB is assumed.
-	// 
+	// to an array of bytes. 
 	// An array of bytes representing the cihpertext is returned. To convert 
-	// this array to hex, invoke byteArrayToHex() on it. If you are using this 
-	// "for real" it is a good idea to change the function getRandomBytes() to 
-	// something that returns truly random bits.
+	// this array to hex, invoke byteArrayToHex() on it. 
 
-	rijndaelEncrypt: function (plaintext, key, mode, ivector) {
+	rijndaelEncrypt: function (plaintext, key) {
 		var expandedKey, i, aBlock;
 		var bpb = this.blockSizeInBits / 8;     // bytes per block
 		var ct;                                 // ciphertext
@@ -31880,13 +30897,8 @@ gx.sec.rijndael = {
 			return;
 		if (key.length * 8 != this.keySizeInBits)
 			return;
-		if (mode == "CBC") {
-			ct = ivector;
-		}
-		else {
-			mode = "ECB";
-			ct = [];
-		}
+		mode = "ECB";
+		ct = [];
 
 		// convert plaintext to byte array and pad with zeros if necessary. 
 		plaintext = this.formatPlaintext(plaintext);
@@ -31895,7 +30907,7 @@ gx.sec.rijndael = {
 
 		for (var block = 0; block < plaintext.length / bpb; block++) {
 			aBlock = plaintext.slice(block * bpb, (block + 1) * bpb);
-			if (mode == "CBC") 
+			if (mode == "CBC")
 				for (var i = 0; i < bpb; i++)
 					aBlock[i] ^= ct[block * bpb + i];
 			ct = ct.concat(this.encrypt(aBlock, expandedKey));
@@ -31967,7 +30979,6 @@ gx.popup = (function ($) {
 		POPUP_CLASS = 'PopupBorder gx-popup' + " " + POPUP_DEFAULT,		
 		POPUP_CLOSE_CLASS = 'PopupHeaderButton gx-popup-close',
 		POPUP_CENTERED_CLASS = 'gx-popup-centered',
-		POPUP__HORIZONTAL_CENTERED_CLASS = 'gx-popup-horizontal-center',
 		POPUP_INITIAL_SIZE_CLASS = 'gx-popup-initial',
 		POPUP_IFRAME_CONTAINER_ATTR = 'data-gx-popup-ct';
 
@@ -32205,12 +31216,6 @@ gx.popup = (function ($) {
 					gx.popup.lvl--;
 				}
 
-				var customRenderSetCellValue = function () {
-					var deferred = $.Deferred();
-					this.setCellValue.apply(this, arguments);
-					return deferred.resolve();
-				};
-
 				var close_impl = function () {
 					var i, len;
 
@@ -32233,25 +31238,6 @@ gx.popup = (function ($) {
 					}
 					gx.popup.ext.close(this);
 					var returnParms = this.getOutputParms();
-
-					var afterCloseFn = (function () {
-						if (opts && opts.ignoreCmds === true)
-							this.OncloseCmds = [];
-						gx.ajax.dispatchCommands(this.OncloseCmds, undefined, { updateParms: returnParms });
-						this.cleanup();
-						this.state = 'closed';
-						if (this.afterClose) {
-							this.afterClose(cParms);
-						}
-						if (this.parentPopup) {
-							this.parentPopup.frameWindow.gx.fx.obs.notify("popup.afterclose", [this]);
-						}
-						else {
-							gx.fx.obs.notify("popup.afterclose", [this]);
-						}
-					}).closure(this);
-					var callAfterClose = true;
-
 					if ((cParms != null) && (this.IsPrompt)) {
 						if (gxO && opts.parmsMetadata && opts.updateParms) {
 							len = opts.parmsMetadata.length;
@@ -32266,68 +31252,72 @@ gx.popup = (function ($) {
 						var func = gx.popup.assignPromptFields;
 						var scope = gx.popup;
 						if (!gx.lang.emptyObject(this.CustomRenderGrid)) {
-							func = customRenderSetCellValue;
+							func = this.CustomRenderGrid.grid.setCellValue;
 							scope = this.CustomRenderGrid.grid;
 						}
+												
+						func.apply(scope, [returnParms, cParms]);						
+						
+						var edtCtrl = null;
+						len = returnParms.length;
+						for (i = 0; i < len; i++) {
+							var ctrl = returnParms[i].Ctrl;
+							if (gx.fn.isAccepted(ctrl)) {
+								edtCtrl = ctrl;
+							}
+						}
+						if (edtCtrl && gx.TabOnPrompSelect) {
+							var el = gx.fn.getControlIndex(edtCtrl);
+							if (el != -1) {
+								edtCtrl = gx.fn.searchFocus(el + 1, true);
+							}
+						}
+						gx.fn.setFocus(edtCtrl);
 
-						callAfterClose = false;
-						func.call(scope, returnParms, cParms).then((function () {
-							var edtCtrl = null;
-							len = returnParms.length;
-							for (i = 0; i < len; i++) {
-								var ctrl = returnParms[i].Ctrl;
-								if (gx.fn.isAccepted(ctrl)) {
-									edtCtrl = ctrl;
+						if (this.PromptIsGet) {
+							if (this.Opener.fullAjax) {
+								var ControlId,
+								validStruct;
+								ControlId = gx.csv.ctxControlId(edtCtrl.id);
+								if (ControlId) {
+									validStruct = gx.O.getValidStructFld(ControlId);
+								}
+								if (validStruct) {
+									gx.csv.validControls(validStruct.id, validStruct.id + 1, true, this.Opener);
 								}
 							}
-							if (edtCtrl && gx.TabOnPrompSelect) {
-								var el = gx.fn.getControlIndex(edtCtrl);
-								if (el != -1) {
-									edtCtrl = gx.fn.searchFocus(el + 1, true);
-								}
+							else {
+								gx.csv.loadScreen();
+								gx.fn.setFocus(edtCtrl); // setFocus before loadScreen does not always work
 							}
-							gx.fn.setFocus(edtCtrl);
-
-							if (this.PromptIsGet) {
-								if (this.Opener.fullAjax) {
-									var ControlId,
-									validStruct;
-									ControlId = gx.csv.ctxControlId(edtCtrl.id);
-									if (ControlId) {
-										validStruct = gx.O.getValidStructFld(ControlId);
-									}
-									if (validStruct) {
-										gx.csv.validControls(validStruct.id, validStruct.id + 1, true, this.Opener);
-									}
-								}
-								else {
-									gx.csv.loadScreen(function () {
-										gx.fn.setFocus(edtCtrl); // setFocus before loadScreen does not always work
-										afterCloseFn();
-									});
-									return;
-								}
-							} else {
-								try {
-									gx.evt.ctrlOnchange(gx.fn.getControlValue(this.Opener.CmpContext + 'Mode'),
-									gx.fn.getControlValue(this.Opener.CmpContext + 'IsConfirmed'), (typeof (window.GXPkIsDirty) == "undefined" ? false : window.GXPkIsDirty), null, 'eng');
-								}
-								catch (e) {
-									gx.dbg.logEx(e, 'gxpopup.js', 'close');
-								}
+						} else {
+							try {
+								gx.evt.ctrlOnchange(gx.fn.getControlValue(this.Opener.CmpContext + 'Mode'),
+								gx.fn.getControlValue(this.Opener.CmpContext + 'IsConfirmed'), (typeof (window.GXPkIsDirty) == "undefined" ? false : window.GXPkIsDirty), null, 'eng');
 							}
-							afterCloseFn();
-						}).closure(this));
-
+							catch (e) {
+								gx.dbg.logEx(e, 'gxpopup.js', 'close');
+							}
+						}
 					}
 					else if (cParms) {
 						if (returnParms && returnParms instanceof Array && returnParms.length > 0) {
 							gx.fn.setReturnParms(this.Opener, returnParms, cParms, this.CustomRenderGrid);
 						}
 					}
-
-					if (callAfterClose) {
-						afterCloseFn();
+					if (opts && opts.ignoreCmds === true)
+						this.OncloseCmds = [];
+					gx.ajax.dispatchCommands(this.OncloseCmds, undefined, { updateParms: returnParms });
+					this.cleanup();
+					this.state = 'closed';
+					if (this.afterClose) {
+						this.afterClose(cParms);
+					}
+					if (this.parentPopup) {
+						this.parentPopup.frameWindow.gx.fx.obs.notify("popup.afterclose", [this]);
+					}
+					else {
+						gx.fx.obs.notify("popup.afterclose", [this]);
 					}
 				};
 
@@ -32342,7 +31332,7 @@ gx.popup = (function ($) {
 
 			this.setFocusFirst = function () {
 				if (this.frameWindow.gx) {
-					this.frameWindow.gx.fn.setFocusOnload(false);
+					this.frameWindow.gx.fn.setFocusOnload();
 				}
 			}
 
@@ -32590,7 +31580,6 @@ gx.popup = (function ($) {
 		},
 		
 		assignPromptFields: function (allParams, cParms) {
-			var assignPromises = [];
 			var gxO = gx.O,
 				orderedParams = [],
 				ctrlIdx = 99999,
@@ -32605,10 +31594,10 @@ gx.popup = (function ($) {
 				if (Parms.Ctrl.type == "checkbox" && Parms.Ctrl.value != PValue)
 					Parms.Ctrl.checked = !Parms.Ctrl.checked;
 				if (Parms.Ctrl.value != PValue && (Parms.isKey))
-					gx.popup.gxOpener().GXPkIsDirty = true;
+					gx.popup.gxOpener().GXPkIsDirty = true;					
 				var ControlId = gx.csv.ctxControlId(this.parmId(Parms.Ctrl));
 				var validStruct = gxO.getValidStructFld(ControlId);
-
+														
 				orderedParams.push(
 				{
 					'idx': (validStruct)? validStruct.id: ctrlIdx++,
@@ -32625,80 +31614,60 @@ gx.popup = (function ($) {
 				return 1;
 				return 0;
 			};
-			orderedParams.sort(compareFnc);
-			for (i = 0; i < orderedParams.length; i++) {
-				assignPromises.push(this.assignPromptField(orderedParams[i], gxO));
-			}
-
-			return $.when.apply($, assignPromises);
+			orderedParams.sort(compareFnc);			
+			for (i = 0; i < orderedParams.length; i++) {				
+				this.assignPromptField(orderedParams[i], gxO);
+			}			
 		},
 		
 		
-		assignPromptField: function (obj, gxO) {
-			var deferred = $.Deferred();
-			var returnResolved = true;
+		assignPromptField: function (obj, gxO) {			
 			var ControlId = obj.ControlId,
 				validStruct = obj.VStruct,
 				ParmCtrl = obj.ParmCtrl,
 				PValue = obj.PValue;
+			
 			var toValid;
-
-			var callback = (function () {
-				if (!gx.lang.emptyObject(validStruct) && !gx.lang.emptyObject(validStruct.v2c) && (validStruct.type == 'date' || validStruct.type == 'dtime')) {
-					validStruct.v2v(PValue);
-					gx.fn.v2c(validStruct, PValue);				
-				}
-				else {
-					gx.fn.setControlValue(this.parmId(ParmCtrl), PValue, 0);
-				}
-				gx.fn.setControlGxValid(ParmCtrl, "0");
-				gx.evt.execOnchange(ParmCtrl);
-				var spanObj = gx.dom.byId('span_' + ParmCtrl.name);
-				if (spanObj != null) {
-					if (spanObj.childNodes.length === 0)
-						spanObj.appendChild(gx.popup.gxOpener().document.createTextNode(""));
-					var spanChild = spanObj.childNodes[0];
-					spanChild.nodeValue = PValue;
-				}
-				if (validStruct && validStruct.gxgrid) {
-					validStruct.gxgrid.updateControlValue(validStruct, false);
-				}
-				gx.util.balloon.clear(ControlId);
-				if (toValid) {
-					//Validate ParmCtrl
-					gx.O.toValid = toValid + 1;
-					gx.csv.validateAll().done(function () {
-						if (!gx.lang.emptyObject(validStruct.rgrid)) {
-							var len = validStruct.rgrid.length;
-							for (var i = 0; i < len; i++) {
-								validStruct.rgrid[i].filterVarChanged();
-							}
-							deferred.resolve();
-							return;
-						}
-					});
-				}
-
-				deferred.resolve();
-			}).closure(this);
-
 			if (!gx.lang.emptyObject(validStruct)) {
 				toValid = gxO.getValidStructId(validStruct.fld);
 				if (toValid) {
 					//Validate previous controls
-					if (toValid > gx.O.toValid) {
+					if (toValid > gx.O.toValid)
 						gxO.toValid = toValid;
-					}
-					returnResolved = false;
-					gx.csv.validateAll().done(callback);
+					gx.csv.validateAll()
 				}
 			}
-
-			if (returnResolved) {
-				deferred.resolve();
+			if (!gx.lang.emptyObject(validStruct) && !gx.lang.emptyObject(validStruct.v2c) && (validStruct.type == 'date' || validStruct.type == 'dtime')) {
+				validStruct.v2v(PValue);
+				gx.fn.v2c(validStruct, PValue);				
 			}
-
-			return deferred.promise();
+			else {
+				gx.fn.setControlValue(this.parmId(ParmCtrl), PValue, 0);
+			}
+			gx.fn.setControlGxValid(ParmCtrl, "0");
+			gx.evt.execOnchange(ParmCtrl);
+			var spanObj = gx.dom.byId('span_' + ParmCtrl.name);
+			if (spanObj != null) {
+				if (spanObj.childNodes.length === 0)
+					spanObj.appendChild(gx.popup.gxOpener().document.createTextNode(""));
+				var spanChild = spanObj.childNodes[0];
+				spanChild.nodeValue = PValue;
+			}
+			if (validStruct && validStruct.gxgrid) {
+				validStruct.gxgrid.updateControlValue(validStruct, false);
+			}
+			gx.util.balloon.clear(ControlId);
+			if (toValid) {
+				//Validate ParmCtrl
+				gx.O.toValid = toValid + 1;
+				gx.csv.validateAll();
+				if (!gx.lang.emptyObject(validStruct.rgrid)) {
+					var len = validStruct.rgrid.length;
+					for (var i = 0; i < len; i++) {
+						validStruct.rgrid[i].filterVarChanged();
+					}
+				}
+			}
 		},
 
 		autofit: function () {
@@ -32774,8 +31743,6 @@ gx.popup = (function ($) {
 				$(document.body).toggleClass('gx-popup-opened', false);
 				if (beforeClose && typeof (beforeClose) == 'function' && beforeClose() === false)
 					return;
-				gx.popup.ext.draggable.deinit();
-				gx.popup.ext.resizable.deinit();
 				gx.popup.ext.iFrame = null;
 				gx.popup.ext.win = null;
 				gx.popup.ext.doc = null;
@@ -32808,14 +31775,14 @@ gx.popup = (function ($) {
 				}
 			},
 
-			move: function (ids, x, y) {
+			move: function (ids, x, y) {				
 				var $wB = $("#" + ids + '_b');
 				$wB.toggleClass(POPUP_CENTERED_CLASS, false);
-				if (x !== undefined) {
-					$wB.css( {left: Math.max(x, 0)}).toggleClass(POPUP__HORIZONTAL_CENTERED_CLASS, false);
+				if (x !== undefined) {					
+					$wB.css( {left: Math.max(x, 0)}).toggleClass('gx-popup-horizontal-center', false);
 				}
 				else
-					$wB.toggleClass(POPUP__HORIZONTAL_CENTERED_CLASS, true);	
+					$wB.toggleClass('gx-popup-horizontal-center', true);	
 				if (y !== undefined)
 					$wB.css( {top: Math.max(y, 0)});
 			},
@@ -32847,14 +31814,12 @@ gx.popup = (function ($) {
 			},
 			
 			movepopup: function () {
-				
 				if ((this.currIDb != null)) {
 					this.move(this.currIDb.cid, gx.evt.mouse.x + this.xoff, gx.evt.mouse.y + this.yoff);
 				}
 				if ((this.currRS != null)) {
 					this.resize(this.currRS.cid, gx.evt.mouse.x + this.rsxoff, gx.evt.mouse.y + this.rsyoff);
 				}
-
 				return false;
 			},
 
@@ -32922,7 +31887,7 @@ gx.popup = (function ($) {
 				v.style.height = h + 'px';
 				v.style.visibility = 'visible';
 				v.style.padding = '0px';
-				v.style.width = w + 'px';
+				v.style.width = w + 'px';								
 				return v;
 			},
 
@@ -32937,15 +31902,23 @@ gx.popup = (function ($) {
 			window_responsive: function (popupObj, autoSize, x, y, w, h, contentHtml, bgcolor, title, titlecolor, bordercolor, scrollcolor, shadowcolor, ismodal, showonstart, isdrag, isresize, isExt, rsImg, headCls, btnCls, cntCls, brdCls, shdwCls, showParentPopups, swallowKeys, callbacks, parentElement) {
 				showParentPopups = (showParentPopups !== undefined) ? showParentPopups : gx.popup.showParentPopups;
 				var cid = popupObj.id
+
 				if (!this.win)
 					this.win = window;
 				if (!this.doc)
-					this.doc = this.win.document;
+					this.doc = this.win.document;				
 
 				var byId = this.win.gx.dom.byId.closure(this.win.gx.dom);
-				
+									
+				var rdiv = $('<div/>', { id: cid + '_rs'})[0];
+				if (isresize) {
+					rdiv.className += POPUP_RESIZE_CLASS;					
+					rdiv.innerHTML = '<img src="' + rsImg + '" width="7px" height="7px" alt="' + gx.getMessage("GXM_resize") + '">';
+					rdiv.style.cursor = 'se-resize';
+				}
+				rdiv.rsEnable = isresize;							
 				var outerdiv = $('<div/>', { 
-											id: cid + '_b',
+											id: cid + '_b',											
 											style: (!showonstart)? 'visibility:hidden;': ''
 								})[0];				
 				$(outerdiv).addClass('gx-responsive-popup ' + POPUP_CENTERED_CLASS + " " + brdCls + " " + POPUP_INITIAL_SIZE_CLASS);
@@ -32960,167 +31933,48 @@ gx.popup = (function ($) {
 				if (typeof (contentHtml) == 'string')
 					content.innerHTML = contentHtml;
 				else
-					content.appendChild(contentHtml);
+					content.appendChild(contentHtml);								
 				outerdiv.appendChild(titlebar);
 				outerdiv.appendChild(content);
-				
+				outerdiv.appendChild(rdiv);
 				parentElement = gx.dom.byId(parentElement) || this.doc.body;
 				parentElement.appendChild(outerdiv);
 				if (!showonstart) {
 					this.hide(cid);
 				}
 				var wB = byId(cid + '_b'),
+					$wB = $(wB),
+					wRS = byId(cid + '_rs'),
 					wCLS = byId(cid + '_cls');
 
 				wB.cid = cid;
 				wB.isExt = (isExt) ? true : false;
 				var wT = byId(cid + '_t');
 				wT.cid = cid;
-				if (isresize) {
-					this.resizable.initialize(wB, cid, rsImg, outerdiv);
-				}
-				if (isdrag) {
-					this.draggable.initialize(wB, wT);
-				}
+				if (isresize) {					
+					wRS.cid = cid;					
+					gx.evt.attach(wRS, 'mousedown', this.startRS.closure(this, [wRS], true));
+					gx.evt.attach(wRS, 'mouseup', this.stopRS.closure(this, [wRS], true));
+				}								
 				gx.evt.attach(wCLS, 'click', callbacks.close || this.close.closure(this, [popupObj, callbacks.beforeClose]));
-				if (ismodal || showParentPopups) {
+				if (isdrag) {
+					gx.evt.attach(wT, 'mousedown', function (evt) {
+						this.grab_id(evt, wT);						
+						$wB.css({top: $wB.position().top, left: $wB.position().left });						
+						$wB.toggleClass(POPUP_CENTERED_CLASS, false);
+						gx.evt.attach(wB, 'mouseup', this.stopdrag.closure(this, [wT], true), this, { single: true});
+					}, this);
+					if (isresize) {
+						gx.evt.attach(rdiv.firstChild, 'dragstart', function(e) {
+							gx.evt.cancel(e, true);
+						}, true);
+					}
+				}
+				if (ismodal || showParentPopups) {					
 					this.initmodal(popupObj, showParentPopups, swallowKeys);
 				}
 			},
-			
-			resizable: (function () {
-				var initialized;
-				var isMouseDown = false;
-				var mouseX;
-				var mouseY;
-				var containerElement;
-				var mouseUp;
-				var mousemove;
-				return {
-					
-					initialize: function(container, cid, rsImg, outerdiv) {
-						var rdiv = $('<div/>', { id: cid + '_rs'})[0];
-						rdiv.className += POPUP_RESIZE_CLASS;
-						rdiv.innerHTML = '<img src="' + rsImg + '" width="7px" height="7px" alt="' + gx.getMessage("GXM_resize") + '">';
-						rdiv.rsEnable = true;
-						rdiv.style.cursor = 'se-resize';
-						rdiv.cid = cid;
-						outerdiv.appendChild(rdiv);
-						containerElement = container;
-						rdiv.firstChild.addEventListener('dragstart', function(e) {
-							gx.evt.cancel(e, true);
-						}, true);
-						mouseUp = this.onMouseup.closure(this);
-						mousemove = this.onMousemove.closure(this);
-						rdiv.addEventListener('mousedown', this.onMousedown.closure(this));
-						document.addEventListener('mouseup', mouseUp);
-						document.addEventListener('mousemove', mousemove); 
-						initialized = true;
-					},
 
-					deinit: function() {
-						if (initialized) {
-							document.removeEventListener('mouseup', mouseUp);
-							document.removeEventListener('mousemove', mousemove);
-							containerElement = null;
-							initialized = null;
-						}
-					},
-
-					onMousemove: function (event) {
-						if (!isMouseDown) return;
-						var iFrame = $(containerElement).find("iframe");
-						$('iframe').css('pointer-events', 'none');
-						var multiplier = ($(containerElement).hasClass(POPUP_CENTERED_CLASS))? 2: 1;
-						var deltaX = event.clientX - mouseX;
-						var deltaY = event.clientY - mouseY;
-						var elWidth = $(iFrame).width() + (deltaX * multiplier);
-						var elHeight = $(iFrame).height() + (deltaY * multiplier);
-						$(iFrame).css({ width: elWidth, height: elHeight} );
-						mouseX = event.clientX;
-						mouseY = event.clientY;
-					},
-
-					onMousedown: function (event) {
-						mouseX = event.clientX;
-						mouseY = event.clientY;
-						isMouseDown = true;
-					},
-
-					onMouseup: function() {
-						if (!isMouseDown) return;
-						$('iframe').css('pointer-events', '');
-						isMouseDown = false;
-					}
-				}
-			})(),
-
-			draggable: (function () {
-				var initialized;
-				var isMouseDown = false;
-				var mouseX;
-				var mouseY;
-				var elementX = 0;
-				var elementY = 0;
-				var containerElement;
-				var moveableElement;
-				var mouseUp;
-				var mousemove;
-				var mouseDown;
-				return {
-					initialize: function(cElement, moveElement) {
-						containerElement = cElement;
-						moveableElement = moveElement;
-						mouseDown = this.onMousedown.closure(this);
-						mousemove = this.onMousemove.closure(this);
-						mouseUp = this.onMouseup.closure(this);
-						containerElement.addEventListener('mousedown', mouseDown);
-						containerElement.addEventListener('mouseup', mouseUp);
-						document.addEventListener('mousemove', mousemove);
-						initialized = true;
-					},
-
-					deinit: function() {
-						if (initialized) {
-							containerElement.removeEventListener('mousedown', mouseDown);
-							containerElement.removeEventListener('mouseup', mouseUp);
-							document.removeEventListener('mousemove', mousemove);
-							moveableElement = null;
-							containerElement = null;
-							initialized = null;
-						}
-					},
-
-					onMousemove: function (event) {
-						if (!isMouseDown) return;
-						$('iframe').css('pointer-events', 'none');
-						var deltaX = event.clientX - mouseX;
-						var deltaY = event.clientY - mouseY;
-						containerElement.style.left = elementX + deltaX + 'px';
-						containerElement.style.top = elementY + deltaY + 'px';
-					},
-
-					onMousedown: function (event) {
-						if (event.target === moveableElement) {
-							var $elem = $(containerElement);
-							elementX = $elem.position().left;
-							elementY = $elem.position().top;
-							$elem.css({ left: elementX, top: elementY }).toggleClass(POPUP_CENTERED_CLASS + " " + POPUP__HORIZONTAL_CENTERED_CLASS, false);
-							mouseX = event.clientX;
-							mouseY = event.clientY;
-							isMouseDown = true;
-						}
-					},
-
-					onMouseup: function() {
-						if (!isMouseDown) return;
-						$('iframe').css('pointer-events', '');
-						isMouseDown = false;
-						elementX = parseInt(containerElement.style.left, 10) || 0;
-						elementY = parseInt(containerElement.style.top, 10) || 0;
-					}
-				}
-			})(),
 
 			window_compat: function (popupObj, autoSize, x, y, w, h, contentHtml, bgcolor, title, titlecolor, bordercolor, scrollcolor, shadowcolor, ismodal, showonstart, isdrag, isresize, isExt, rsImg, headCls, btnCls, cntCls, brdCls, shdwCls, showParentPopups, swallowKeys, callbacks, parentElement) {
 				showParentPopups = (showParentPopups !== undefined) ? showParentPopups : gx.popup.showParentPopups;
@@ -33424,8 +32278,8 @@ gx.popup = (function ($) {
 
 				if (frameDoc) {
 					var mainEl = frameDoc.documentElement;
-					if (mainEl) {
-						if(compatMode) {
+					if (mainEl) {															
+						if(compatMode) {							
 							docWidth = docHeight = "100%";
 						}
 						else
@@ -33437,9 +32291,10 @@ gx.popup = (function ($) {
 							
 							if (!fixedSize) {
 								if (!isResponsive) {
-									$iFrame.width(50);
+									$iFrame.width(50);									
 								}
-								$(mainEl).width(mainEl.offsetWidth);
+								$(mainEl).width($(mainEl).width());									
+								$iFrame.width($(mainEl).width());
 							}
 							else {
 								$(mainEl).width(width);								
@@ -33746,7 +32601,8 @@ gx.popup = (function ($) {
 				return info;
 			},
 
-			_init: function () {
+			_init: function () {												
+				setInterval(gx.popup.ext.movepopup.closure(gx.popup.ext), 40);
 			}
 		},
 
@@ -33785,22 +32641,10 @@ gx.popup = (function ($) {
 /* START OF FILE - ..\js\gxcallrpc.js - */
 gx.ajax = (function ($) {
 	var VAR_QUERYSTRING_REGEX = /\?(.*)/;
-	var GX_FULL_AJAX_REQUEST_HEADER = "X-FULL-AJAX-REQUEST";
 
 	var logExternalObjectUnexpectedMsg = function (type, msg, name) {
 		gx.dbg.logMsg("Unable to execute external object " + type + " - " + msg + "(" + name + ")");
 	};
-
-	function setGridRow(grid, row, gxO) {
-		if (grid > 0) {
-			gxO = gxO || gx.O;
-			gx.fn.setCurrentGridRow(grid, row);
-			var gridObj = gxO.getGridById(grid);
-			if (gridObj) {
-				gridObj.instanciateRow(row);
-			}
-		}
-	}
 
 	return {
 		reqHeader: 'GxAjaxRequest',
@@ -33831,36 +32675,7 @@ gx.ajax = (function ($) {
 			}
 			return url;
 		},
-
-		validationMessage: function (method, gxO, grid, row, serverSide, disableForm) {
-			var message = new gx.ajax.message(method, gxO, grid, row, serverSide, disableForm);
-
-			return gx.lang.apply(message, {
-				isValidation: true,
-				beforeCall: gx.emptyFn,
-				beforeAjaxCall: function (postInfo) {
-					postInfo.warnOnTimeout = true;
-					postInfo.beforeSend = function (req) {
-						req.setRequestHeader(GX_FULL_AJAX_REQUEST_HEADER, "1");
-					}
-				},
-				beforeProcesResponse: function (processResponseOpt) {
-					var i,
-						validationInput = [],
-						validationInputMetadata = this.getParmsMetadata("input");
-
-					for (i=0; i<validationInputMetadata.length; i++) {
-						if (validationInputMetadata[i].av) {
-							validationInput.push(validationInputMetadata[i].av);
-						}
-					}
-
-					processResponseOpt.isValidation = true;
-					processResponseOpt.validationInput = validationInput;
-				}
-			});
-		},
-
+		
 		message: function (method, gxO, grid, row, serverSide, disableForm) {
 			var deferred;
 
@@ -33870,12 +32685,9 @@ gx.ajax = (function ($) {
 				grid: grid,
 				row: row,
 				methods: [method],
-				isValidation: false,
-
 				addMethod: function (method) {
 					this.methods.push(method)
 				},
-
 				gridsData: function () {
 					var grid = this.gxO.getGridById( this.grid, this.row);
 					var pgrid = grid;
@@ -33918,7 +32730,6 @@ gx.ajax = (function ($) {
 					}
 					return grids;
 				},
-
 				to_json: function () {
 					var o = {
 						MPage: this.gxO.IsMasterPage, 
@@ -33942,7 +32753,6 @@ gx.ajax = (function ($) {
 					}
 					return gx.json.serializeJson(o);
 				},
-
 				getParmsMetadata: function (type) {
 					var parms = [],
 						parmsHash = {};
@@ -33972,7 +32782,6 @@ gx.ajax = (function ($) {
 					}
 					return parms;
 				},
-
 				parmFromHidden: function(vStruct, gxO) 
 				{
 					var gxOld = gx.O;
@@ -33987,7 +32796,6 @@ gx.ajax = (function ($) {
 					gx.setGxO(gxOld);
 					return value;
 				},
-
 				getInputParms: function () {
 					var parmsMetadata = this.getParmsMetadata("input"),
 						CmpContext = this.gxO.CmpContext,
@@ -33995,16 +32803,11 @@ gx.ajax = (function ($) {
 						hashedParms = [],
 						parm,
 						value,
-						vStruct,
+						vStruct,						
 						ctrl,
 						gRow,
-						ctrlJSON,
-						gridObject,
-						gridColumn;
+						ctrlJSON;
 					for (var i = 0, len = parmsMetadata.length; i < len; i++) {
-						vStruct = undefined;
-						value = undefined;
-						ctrlJSON = "";
 						parm = parmsMetadata[i];
 						if (parm.postForm)	{
 							var postInfo = {};
@@ -34015,10 +32818,6 @@ gx.ajax = (function ($) {
 									this.fullPost[h] = gx.http.viewState[h];
 								}
 							}
-						}
-						else if (this.gxO.isTransaction() && this.grid > 0 && this.row && parm.av === 'Gx_mode' && parm.fld === 'vMODE')
-						{
-							inputParms.push(gx.fn.getGridRowModeImpl(gx.fn.gridLvl(this.grid), this.grid, this.row));
 						}
 						else if (parm.prop == 'Referrer') {
 							inputParms.push(gx.referrer ? gx.referrer : document.referrer);
@@ -34045,17 +32844,9 @@ gx.ajax = (function ($) {
 							} 
 							else {
 									vStruct = this.gxO.getValidStructFld(parm.ctrl);
-									if (vStruct) {
+									if (vStruct != null && gx.html.controls.isMultiSelection(vStruct.ctrltype)) {
 										ctrl = gx.fn.getControlGridRef(vStruct.fld, vStruct.grid);
-										if (gx.html.controls.isMultiSelection(vStruct.ctrltype)) {
-											ctrlJSON = gx.dom.comboBoxToObj(ctrl, value);
-										}
-										else {
-											if (vStruct.ctrltype === "radio") {
-												ctrlJSON = gx.dom.radioToObj(ctrl, value);
-											}
-										}
-
+										ctrlJSON = gx.dom.comboBoxToObj(ctrl, value);
 										if (ctrlJSON) {
 											value = ctrlJSON;
 										}
@@ -34066,29 +32857,11 @@ gx.ajax = (function ($) {
 						else {
 							if (parm.fld !== undefined) {
 								vStruct = parm.fld ? this.gxO.getValidStructFld(parm.fld) : null;
-							}
-							else {
-								if (this.grid && this.row) {
-									gridObject = this.gxO.getGridById(this.grid);
-									if (gridObject) {
-										gridColumn = gridObject.grid.getColumnForVar(parm.av);
-										if (gridColumn) {
-											vStruct = this.gxO.getValidStruct(gridColumn.gxId);
-										}
-									}
+								if (vStruct && typeof (vStruct.c2v) == 'function' && typeof (vStruct.val) == 'function' && vStruct.val() !== undefined) {
+									vStruct.c2v();
 								}
 							}
 
-                            if (vStruct && vStruct.grid && typeof (vStruct.c2v) == 'function' && typeof (vStruct.val) == 'function') {
-                                gRow = gx.fn.currentGridRowImpl(vStruct.grid);
-                                if (vStruct.val(gRow) !== undefined)
-                                    vStruct.c2v(gRow);
-							}
-							if (vStruct && vStruct.isuc === true) {
-								gRow = this.row || ((vStruct && vStruct.grid) ? gx.fn.currentGridRowImpl(vStruct.grid) : undefined);
-								var uc = vStruct.getUCInstance(gRow) || vStruct.uc; 
-								uc.execC2VFunctions();
-							}
 							if (typeof (this.gxO[parm.av]) == 'function') {
 								value = this.gxO[parm.av](this.row);
 							}
@@ -34097,24 +32870,6 @@ gx.ajax = (function ($) {
 							}
 							else {
 								value = this.gxO[parm.av];
-							}
-
-							var vStructOld = gx.fn.vStructForOld(parm.av);
-							if (vStructOld && (vStructOld.type == "date" || vStructOld.type == "dtime")) {
-								if (typeof (value) === "string") {
-									value = new gx.date.gxdate(value);
-								}
-							}
-
-							// For compatibility reasons, for validation messages, dates without date part
-							// are serialized as "0001/01/01..." instead of the default serialization (1899/01/01...)
-							if (this.isValidation) {
-								if (value instanceof gx.date.gxdate && !value.HasDatePart) {
-									var newValue = new gx.date.gxdate("");
-									newValue.assign_date(value);
-									newValue.JsonNullFormat = gx.date.jsonNullFormat.YearOne;
-									value = newValue;
-								}
 							}
 
 							if (parm.grid !== undefined) {
@@ -34179,23 +32934,16 @@ gx.ajax = (function ($) {
 
 				addGXStateParms: function (obj) {
 					var gxstate = {};
-
+										
 					if (gx.notifications && gx.notifications.webSocket.initialized && gx.fn.getHidden("GX_WEBSOCKET_ID"))
 					{
 						gxstate.GX_WEBSOCKET_ID = gx.fn.getHidden("GX_WEBSOCKET_ID");
 					}
-
+										
 					if (!gx.lang.emptyObj(gxstate)) {
 						obj.gxstate = gxstate;
 					}
-				},
-
-				beforeCall: function () {
-					if (serverSide) {
-						gx.fn.objectOnpost();
-					}
-				},
-
+				},				
 				call: function () {
 					deferred = $.Deferred();
 					var gxOld = gx.O;
@@ -34205,12 +32953,14 @@ gx.ajax = (function ($) {
 						oldRow = gx.fn.currentGridRowImpl(this.grid);
 						gx.fn.setCurrentGridRow(this.grid, this.row);
 					}
-					this.beforeCall();
+					if (serverSide) {
+						gx.fn.objectOnpost();
+					}
 					var parms = this.getInputParms(); //It must be always executed.
 					if (serverSide) {
 						this.parms = parms.input;
 						this.hashedParms = parms.hashed;
-						this.doAjaxCall(false, this.disableForm);
+						this.doFullAjaxCall(false, this.disableForm);
 					}
 					else {
 						this.doClientSideCall();
@@ -34222,62 +32972,46 @@ gx.ajax = (function ($) {
 					return deferred.promise();
 				},
 
-				doAjaxCall: function (Synch, disableForm) {
+				doFullAjaxCall: function (Synch, disableForm) {
 					var ParmString = this.to_json();
 					gx.evt.setProcessing(true);
-					if (disableForm !== false) {
-						this.startFeedback();
+					if (disableForm !== false) {					
+						this.gxO.startFeedback();
 					}
 					gx.fx.obs.notify('gx.onbeforeevent', [ParmString, Synch]);
 					var postInfo = gx.ajax.getPostInfo(this.gxO, ParmString, Synch);
-					postInfo.handler = this.ajaxCallHandler.closure(this);
-					postInfo.error = this.ajaxCallError.closure(this);
+					postInfo.handler = this.postHandlerFullAjax.closure(this);
 					postInfo.handleAllStatusCodes = true;
 					postInfo.url = gx.ajax.serviceUrl(gx.pO, gx.ajax.encryptParms(this.gxO, 'gxfullajaxEvt'));
 					postInfo.reqData = ParmString;
 					postInfo.always = this.callback;
-					postInfo.contentType = 'application/json';
-					this.beforeAjaxCall(postInfo);
+					postInfo.contentType = 'application/json';					
 					gx.http.doCall(postInfo);
 				},
-
-				beforeAjaxCall: gx.emptyFn,
-
+				
 				doClientSideCall: function () {
-					var result = this.callback();
-					deferred.resolve(result);
+					this.callback();
+					deferred.resolve();
 				},
 
-				ajaxCallError:function() {
-					deferred.resolve(false);
-					gxO.endFeedback();
-				},
-				afterAjaxCallHandler: function (callFailed, DataObj) {
-					gx.evt.setProcessing(false);
-					deferred.resolve(!callFailed);
-					if (callFailed) {
-						gx.fx.obs.notify('gx.onafterevent', [DataObj]);
-					}
-				},
-
-				ajaxCallHandler: function (type, data, event) {
+				postHandlerFullAjax: function (type, data, event) {
 					gx.evt.enter = false;
 					gx.csv.lastEvtResponse = null;
 					gx.http.lastStatus = event.status;
-					var callFailed = false,
+					var fireOnAfterEvent = false,
 						DataObj;
 					if (event.status == gx.http.STATUS_FORBIDDEN) {
-						gx.util.alert.showError(gx.getMessage("GXM_runtimeappsrv") + ' (' + event.status + ')');
-						callFailed = true;
+						alert( gx.getMessage("GXM_runtimeappsrv") + ' (' + event.status + ')');
+						fireOnAfterEvent = true;
 					}
 					else {
-						if (gx.http.checkResponseStatus(event, this.isValidation)) {
-							callFailed = true;
+						if (gx.http.checkResponseStatus(event)) {
+							fireOnAfterEvent = true;
 							//Handled by checkResponse
 						}
 						else if (event.status < 200 || event.status > 299) {
 							gx.dom.writeError( event.responseText, gx.getMessage("GXM_runtimeappsrv"), event.status);
-							callFailed = true;
+							fireOnAfterEvent = true;
 						}
 						else {
 							if (gx.http.validJsonResponse( event, data)) {
@@ -34286,34 +33020,27 @@ gx.ajax = (function ($) {
 									gx.dom.writeError( data.toString(), gx.getMessage("GXM_runtimeappsrv"), event.status);
 								else {
 									gx.csv.lastEvtResponse = DataObj;
-
-									var processResponseOpt = {
+									gx.ajax.setJsonResponse({
 										response: DataObj, 
 										isPostBack: true, 
 										gxObject: this.gxO, 
 										gridId: this.grid, 
 										row: this.row
-									};
-
-									this.beforeProcesResponse(processResponseOpt);
-
-									gx.ajax.setJsonResponse(processResponseOpt).done(function () {
+									}).done(function () {
 										gx.fx.obs.notify('gx.onafterevent', [DataObj]);
 									});
 								}
 							}
 							else {
-								callFailed = true;
+								fireOnAfterEvent = true;
 							}
 						}
 					}
-					this.afterAjaxCallHandler(callFailed, DataObj);
-				},
-
-				beforeProcesResponse: gx.emptyFn,
-
-				startFeedback: function () {
-					this.gxO.startFeedback(false, this.isValidation);
+					gx.evt.setProcessing(false);
+					deferred.resolve();
+					if (fireOnAfterEvent) {
+						gx.fx.obs.notify('gx.onafterevent', [DataObj]);
+					}
 				}
 			};
 		},
@@ -34449,8 +33176,7 @@ gx.ajax = (function ($) {
 			var redirect,
 				tempGxO,
 				oldgxO,
-				ignoreCmds = opts.ignoreCmds || [],
-				methodsExecuted;
+				ignoreCmds = opts.ignoreCmds || [];
 
 			commandIndexStart = commandIndexStart === undefined ? 0 : commandIndexStart;
 			gxO = gxO || gx.O;
@@ -34487,7 +33213,7 @@ gx.ajax = (function ($) {
 					if (Command.redirect) {
 						redirect = Command.redirect;
 						redirect.url = gx.ajax.removeGXParms(redirect.url);
-						gx.http.redirect(redirect.url, redirect.forceDisableFrm === 1, redirect.forceDisableFrm === 2, gxO);
+						gx.http.redirect(redirect.url, redirect.forceDisableFrm, false, gxO);
 					}
 					if (Command.calltarget) {
 						gx.nav.callFromServerRedirect(Command.calltarget.url, Command.calltarget.target);
@@ -34522,7 +33248,6 @@ gx.ajax = (function ($) {
 								if (typeof (uc[Command.ucmethod.Method]) == 'function') {
 									try {
 										uc[Command.ucmethod.Method].apply(uc, Command.ucmethod.Parms);
-										methodsExecuted = true;
 									}
 									catch (e){
 										gx.dbg.logEx(e, 'gxcallrpc.js', 'Failed to execute usercontrol method: ' + Command.ucmethod.Method);
@@ -34534,14 +33259,10 @@ gx.ajax = (function ($) {
 					}
 					if (Command.exomethod) {
 						gx.ajax.dispatchExoMethod(Command.exomethod);
-						methodsExecuted = true;
 					}
 					if (Command.exoprop) {
 						gx.ajax.dispatchExoProperty(Command.exoprop);
 					}
-				}
-				if (methodsExecuted) {
-					gxO.showMessages(true);
 				}
 			}
 		},
@@ -34722,8 +33443,7 @@ gx.ajax = (function ($) {
 				gxO = opts.gxObject,
 				gridId = opts.gridId,
 				row = opts.row,
-				context = opts.context || {},
-				isValidation = !!opts.isValidation;
+				context = opts.context || {};
 				
 			var fn = gx.fn,
 				doFunc = gx.lang.doCall,
@@ -34752,7 +33472,7 @@ gx.ajax = (function ($) {
 			}
 			else { 
 				var redirectCommand = this.getRedirectCommand(response.gxCommands);
-				if (redirectCommand && redirectCommand.redirect.forceDisableFrm === 1) {
+				if (redirectCommand && redirectCommand.redirect.forceDisableFrm) {
 					doFunc(gx.ajax.dispatchCommands, response.gxCommands, gxO, { ignoreCmds: ['refresh', 'cmp_refresh'] });
 					deferred.resolve(willLeavePage);
 				}
@@ -34776,7 +33496,7 @@ gx.ajax = (function ($) {
 						if (oldGxO) {
 							gx.O = oldGxO;
 						}
-						var valuesUCs = doFunc(fn.setJsonValues, response.gxValues, isValidation, gridId, row);
+						var valuesUCs = doFunc(fn.setJsonValues, response.gxValues);
 						var propUCs = doFunc(fn.setJsonProperties, response.gxProps, row);
 						var gridUCs = [];
 						var newCompUCs = $.map(newComponents, function (comp) {
@@ -34786,20 +33506,11 @@ gx.ajax = (function ($) {
 								return gx.lang.objToArray(gxWcObj.UserControls).concat(gxWcObj.getUserControlGrids());
 							}
 						});
-						
-						if (!isValidation && (gxO.isTransaction() || !gxO.fullAjax)) {
-							gx.util.balloon.clearAll();
-						}
-						
+						gx.util.balloon.clearAll();
 						fn.enableDisableDelete();
 						if (isPostback) {
 							gridUCs = doFunc(fn.loadJsonGrids, response.gxGrids, isPostback);
 						}
-
-						if (isValidation) {
-							gx.ajax.transformValidationMessages(opts, gxO, response.gxMessages);
-						}
-
 						doFunc(fn.setErrorViewer, response.gxMessages);
 						if (isPostback) {
 							var userControls;
@@ -34807,9 +33518,7 @@ gx.ajax = (function ($) {
 								userControls = gx.lang.arrayUnique(propUCs.concat(valuesUCs, newCompUCs, gridUCs, hiddensUCs));
 							}
 							fn.objectPostback(userControls, newComponents);
-							if (!isValidation) {
-								fn.setFocusAfterLoad(true);
-							}
+							fn.setFocusAfterLoad(true);
 							gx.dom.indexElements();
 						}
 
@@ -34828,19 +33537,17 @@ gx.ajax = (function ($) {
 			return deferred;
 		},
 
-		transformValidationMessages: function (opts, gxO, messages) {
-			var ctx = gxO.cmpCtx || "MAIN";
-			if (typeof(messages[ctx]) != 'undefined') {
-				messages[ctx] = {
-					fields: opts.validationInput,
-					msgs: messages[ctx]
-				};
-			}
+		swallowKeys: function (eventObject) {
+			eventObject.cancel = true;
+			eventObject.event.preventDefault();
 		},
 
 		disableForm: function (swallowKeys, immediately) {
 			swallowKeys = (swallowKeys === undefined) || swallowKeys;
-			gx.pO.startFeedback(immediately, swallowKeys);
+			gx.pO.startFeedback(immediately);
+			if (swallowKeys) {
+				gx.fx.obs.addObserver('gx.keypress', this, this.swallowKeys);
+			}
 		},
 
 		enableForm: function (gxO) {
@@ -34849,6 +33556,7 @@ gx.ajax = (function ($) {
 				gx.pO.endFeedback();
 			if (gxO != gx.pO)
 				gxO.endFeedback();
+			gx.fx.obs.deleteObserver('gx.keypress', this, this.swallowKeys);
 		},
 
 		isFormEnabled: function () {
@@ -34995,7 +33703,7 @@ gx.ajax = (function ($) {
 				method = 'POST';
 				postData = ["GXEvent=" + gx.ajax.encryptParms(gxO, evtName)];				
 				for (var i = 1, len = parameters.length; i < len; i++) {
-					postData.push("GXParm" + (i - 1) + "=" + parameters[i]);
+					postData.push("GXParm" + i + "=" + parameters[i]);
 				}
 				strBody = postData.join('&');
 			} 
@@ -35045,47 +33753,32 @@ gx.ajax = (function ($) {
 			gx.http.callBackend_impl( backcall, sURL, true, gx.http.modes.full);
 		},
 
-		validSrvEvt: function (GXAction, grid, gxO) {
-			var currentRow = gx.fn.currentGridRowImpl(grid),
-				oldCurrentRow;
-			if (grid > 0) {
-				oldCurrentRow = gx.fn.currentGridRowImpl(grid);
-				setGridRow(grid, currentRow, gxO);
-			}
-			if (gx.fx.delayedValidation) {
-				var deferred = $.Deferred();
-				var args = arguments;
-				gx.fx.obs.addObserver('gx.validation', this, function () {
-					return this.validSrvEvt_impl.apply(this, args).then(function (ret) {
-						deferred.resolve(ret);
-						setGridRow(grid, oldCurrentRow, gxO);
-					});
-				}, { single: true, async: true });
-				return deferred.promise();
-			}
-			else {
-				return this.validSrvEvt_impl.apply(this, arguments).then(function (ret) {
-					setGridRow(grid, oldCurrentRow, gxO);
-					return ret;
-				});
-			}
+		validSrvEvt: function (/*GXEvent, GXAction, InputParameters, OutputParameters */) {			
+			if (gx.fx.delayedValidation)
+				gx.fx.obs.addObserver('gx.validation', this, this.validSrvEvt_impl.closure(this, arguments), { single: true });
+			else
+				this.validSrvEvt_impl.apply(this, arguments);					
 		},
 		
-		validCliEvt: function (GXAction, grid, fn, gxO) {
-			gxO = gxO || gx.O;
-			gxO[GXAction] = fn;
-			return gx.evt.dispatcher.dispatch(GXAction, gxO, grid, gx.fn.currentGridRowImpl(grid), false, undefined, undefined, gx.evt.dispatcher.types.validation);
+		validSrvEvt_impl: function (GXEvent, GXAction, InputParameters, OutputParameters) {
+			var backcall = function( VarValues) { gx.csv.setValidValues(InputParameters, OutputParameters, VarValues)};
+			var sURL = this.objectUrl();
+			var sParms = GXEvent + ',' + GXAction + ',' + this.arrayToUrl(InputParameters, true);
+			if (sParms.length > this.maxGETLength(gx.O)) {
+				this.validAsPost(sURL, backcall, GXEvent, GXAction, InputParameters);
+			}
+			else {
+				sURL += '?' + gx.ajax.encryptParms(gx.O, sParms);
+				gx.http.callBackend_impl( backcall, sURL, true, gx.http.modes.call, !gx.ajax.isFormEnabled());
+			}
 		},
 
-		validSrvEvt_impl: function (GXAction, grid, gxO) {
-			gxO = gxO || gx.O;
-			var currentRow = gx.fn.currentGridRowImpl(grid);
-			
-			return gx.evt.dispatcher.dispatch(GXAction, gxO, grid, currentRow, true, undefined, undefined, gx.evt.dispatcher.types.validation).then(function(ret) {
-					gxO.refreshOlds();					
-					return ret;
-				}
-			);
+		validAsPost: function (sURL, backcall, GXEvent, GXAction, InputParameters) {
+			var postData = 'GXEvent=' + gx.ajax.encryptParms(gx.O, GXEvent) + '&GXAction=' + GXAction;
+			if (InputParameters.length > 0) {
+				postData += '&' + this.getParmsPostData(InputParameters);
+			}
+			gx.http.callBackend_impl( backcall, sURL, true, gx.http.modes.call, !gx.ajax.isFormEnabled(), 'POST', postData);
 		},
 
 		getParmsPostData: function (Parms) {
@@ -35400,20 +34093,12 @@ gx.util.balloon = {
 				this.hasMessage = true;
 			}
 		}
-		
-		this.setAsFormatError = function () {
-			this.isFormatError = true;
-			gx.csv.setFormatError(this.id, false);
-		}
 
 		this.setError = function (message) {
 			if (!this.hasMessage) {
 				this.messageErr = message;
 				this.isError = true;
 				this.hasMessage = true;
-				if (this.isFormatError) {
-					gx.csv.setFormatError(this.id);
-				}
 			}
 		}
 
@@ -35524,45 +34209,43 @@ gx.util.balloon = {
 					ofEl = Control,
 					triggerEl = findTriggerElement(Control);
 
-				gx.lang.requestAnimationFrame(function () {
-					if (gx.csv.overlap === true) {
-						switch(messagePosition) {
-							case "top":
-								my = "left bottom";
-								at = "left top";
-								break;
-							case "right":
-								my = "left center";
-								at = "right center";
-								ofEl = triggerEl || ofEl;
-								break;
-							case "bottom":
-								my = "left top";
-								at = "left bottom";
-								break;
-							case "left":
-								my = "right center";
-								at = "left center";
-								break;
-						}
+				if (gx.csv.overlap === true) {
+					switch(messagePosition) {
+						case "top":
+							my = "left bottom";
+							at = "left top";
+							break;
+						case "right":
+							my = "left center";
+							at = "right center";
+							ofEl = triggerEl || ofEl;
+							break;
+						case "bottom":
+							my = "left top";
+							at = "left bottom";
+							break;
+						case "left":
+							my = "right center";
+							at = "left center";
+							break;
+					}
 
-						$div.fadeIn().css("display","block");
-						$div.position({
-							my: my,
-							at: at,
-							of: ofEl,
-							collision: collision
-						});
+					$div.fadeIn().css("display","block");
+					$div.position({
+						my: my,
+						at: at,
+						of: ofEl,
+						collision: collision
+					});
+				}
+				else {
+					if ((messagePosition == "top" || messagePosition == "bottom") && (gx.csv.overlap === false)) {
+						div.style.display = "block";
 					}
 					else {
-						if ((messagePosition == "top" || messagePosition == "bottom") && (gx.csv.overlap === false)) {
-							div.style.display = "block";
-						}
-						else {
-							div.style.display = "inline";
-						}
+						div.style.display = "inline";
 					}
-				});
+				}
 			}
 			catch (e) {
 				gx.dbg.logEx(e, 'gxballoon.js', 'showBalloon');

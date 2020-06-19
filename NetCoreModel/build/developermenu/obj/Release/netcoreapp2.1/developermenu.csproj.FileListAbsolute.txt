@@ -1,0 +1,10 @@
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\developermenu.runtimeconfig.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\developermenu.runtimeconfig.dev.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\developermenu.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\developermenu.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\developermenu\obj\Release\netcoreapp2.1\developermenu.csprojAssemblyReference.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\developermenu\obj\Release\netcoreapp2.1\developermenu.csproj.CoreCompileInputs.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\developermenu\obj\Release\netcoreapp2.1\developermenu.csproj.CopyComplete
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\developermenu\obj\Release\netcoreapp2.1\developermenu.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\developermenu\obj\Release\netcoreapp2.1\developermenu.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\developermenu\obj\Release\netcoreapp2.1\developermenu.genruntimeconfig.cache

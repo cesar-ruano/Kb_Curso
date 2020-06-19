@@ -1,8 +1,12 @@
-﻿Microsoft Visual Studio Solution File, Format Version 12.00
+Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
+Project("9A19103F-16F7-4668-BE54-9A1E7A4F7556") = "ms_empleados", "ms_empleados\ms_empleados.csproj", "{159017ef-8f10-47be-80a3-add13097c8c8}"
+EndProject
 Project("9A19103F-16F7-4668-BE54-9A1E7A4F7556") = "templeado", "templeado\templeado.csproj", "{683e0a71-fae7-4711-9cf4-e079239e7368}"
 EndProject
 Project("9A19103F-16F7-4668-BE54-9A1E7A4F7556") = "tpuestos", "tpuestos\tpuestos.csproj", "{e0370d56-9ada-4850-8fa3-8b67aeb0e8c2}"
+EndProject
+Project("9A19103F-16F7-4668-BE54-9A1E7A4F7556") = "tsueldo", "tsueldo\tsueldo.csproj", "{79199e83-4916-4f36-a51c-122553c5447b}"
 EndProject
 Project("9A19103F-16F7-4668-BE54-9A1E7A4F7556") = "appmasterpage", "appmasterpage\appmasterpage.csproj", "{0d98c411-d9b1-4077-beb3-8a6b3751d736}"
 EndProject
@@ -20,19 +24,23 @@ Project("9A19103F-16F7-4668-BE54-9A1E7A4F7556") = "gx0010", "gx0010\gx0010.cspro
 EndProject
 Project("9A19103F-16F7-4668-BE54-9A1E7A4F7556") = "gx0020", "gx0020\gx0020.csproj", "{d12f6dd0-ecf2-4f0b-98eb-3c171df8bbec}"
 EndProject
-Project("9A19103F-16F7-4668-BE54-9A1E7A4F7556") = "developermenu", "developermenu\developermenu.csproj", "{00000000-0000-0000-0000-000000000000}"
+Project("9A19103F-16F7-4668-BE54-9A1E7A4F7556") = "gx0030", "gx0030\gx0030.csproj", "{3aed8204-293b-40bd-b64f-843f19cbc827}"
 EndProject
-Project("9A19103F-16F7-4668-BE54-9A1E7A4F7556") = "GeneXus.Programs.Common", "GeneXus.Programs.Common\GeneXus.Programs.Common.csproj", "{94763234-8d89-47e9-a715-0682d9348a3f}"
+Project("9A19103F-16F7-4668-BE54-9A1E7A4F7556") = "developermenu", "developermenu\developermenu.csproj", "{00000000-0000-0000-0000-000000000000}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+	{159017ef-8f10-47be-80a3-add13097c8c8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	{159017ef-8f10-47be-80a3-add13097c8c8}.Release|Any CPU.Build.0 = Release|Any CPU
 	{683e0a71-fae7-4711-9cf4-e079239e7368}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	{683e0a71-fae7-4711-9cf4-e079239e7368}.Release|Any CPU.Build.0 = Release|Any CPU
 	{e0370d56-9ada-4850-8fa3-8b67aeb0e8c2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	{e0370d56-9ada-4850-8fa3-8b67aeb0e8c2}.Release|Any CPU.Build.0 = Release|Any CPU
+	{79199e83-4916-4f36-a51c-122553c5447b}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	{79199e83-4916-4f36-a51c-122553c5447b}.Release|Any CPU.Build.0 = Release|Any CPU
 	{0d98c411-d9b1-4077-beb3-8a6b3751d736}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	{0d98c411-d9b1-4077-beb3-8a6b3751d736}.Release|Any CPU.Build.0 = Release|Any CPU
 	{e54a8580-861c-4151-8d54-6e1fc936e334}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -49,10 +57,10 @@ Global
 	{f7953f33-a5ab-4303-8c58-44169d36a94c}.Release|Any CPU.Build.0 = Release|Any CPU
 	{d12f6dd0-ecf2-4f0b-98eb-3c171df8bbec}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	{d12f6dd0-ecf2-4f0b-98eb-3c171df8bbec}.Release|Any CPU.Build.0 = Release|Any CPU
+	{3aed8204-293b-40bd-b64f-843f19cbc827}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	{3aed8204-293b-40bd-b64f-843f19cbc827}.Release|Any CPU.Build.0 = Release|Any CPU
 	{00000000-0000-0000-0000-000000000000}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	{00000000-0000-0000-0000-000000000000}.Release|Any CPU.Build.0 = Release|Any CPU
-	{94763234-8d89-47e9-a715-0682d9348a3f}.Release|Any CPU.ActiveCfg = Release|Any CPU
-	{94763234-8d89-47e9-a715-0682d9348a3f}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,10 @@
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\promptmasterpage.runtimeconfig.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\promptmasterpage.runtimeconfig.dev.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\promptmasterpage.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\promptmasterpage.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp2.1\promptmasterpage.csprojAssemblyReference.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp2.1\promptmasterpage.csproj.CoreCompileInputs.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp2.1\promptmasterpage.csproj.CopyComplete
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp2.1\promptmasterpage.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp2.1\promptmasterpage.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp2.1\promptmasterpage.genruntimeconfig.cache

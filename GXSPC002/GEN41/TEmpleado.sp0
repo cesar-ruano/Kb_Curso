@@ -1,4 +1,4 @@
-spec_i([ trn,1,'TEmpleado','TEmpleado',[],spa,'16_0_9-140712' ]).
+spec_i([ trn,1,'TEmpleado','TEmpleado',[],spa,'16_0_2-131213' ]).
  
 struct_i(1,0,[],[]).
  
@@ -46,9 +46,9 @@ rule_i(0,datastore(1,'JRN400','QSQJRN')).
 rule_i(0,datastore(1,'CREATE_SAVF','Yes')).
 rule_i(0,datastore(1,'PGMLIB','')).
 rule_i(0,datastore(1,'DTALIB','')).
-rule_i(0,datastore(1,'CC_USER_PASS','Vyãu|Ñèlêo')).
+rule_i(0,datastore(1,'CC_USER_PASS',äãnyv)).
 rule_i(0,datastore(1,'CC_USER_ID',sa)).
-rule_i(0,datastore(1,'CC_SERVER','DESKTOP-A77C4G7')).
+rule_i(0,datastore(1,'CC_SERVER','DESKTOP-LH23KFE')).
 rule_i(0,datastore(1,'CC_DBNAME','Curso2BD')).
 rule_i(0,datastore(1,'RecycleRWMin','30')).
 rule_i(0,datastore(1,'RecycleRWType','1')).
@@ -61,12 +61,12 @@ rule_i(0,datastore(1,'CS_RPCPGML','')).
 rule_i(0,datastore(1,'JDBC_DATASOURCE','')).
 rule_i(0,datastore(1,'USE_JDBC_DATASOURCE','0')).
 rule_i(0,datastore(1,'DS_DBMS_ADDINFO','')).
-rule_i(0,datastore(1,'USER_PASSWORD','‹Dek]ähOêRo')).
+rule_i(0,datastore(1,'USER_PASSWORD',psnet)).
 rule_i(0,datastore(1,'USER_ID',sa)).
 rule_i(0,datastore(1,'TRUSTED_CONNECTION','No')).
 rule_i(0,datastore(1,'CS_CONNECT','First')).
 rule_i(0,datastore(1,'DBMS_PORT','')).
-rule_i(0,datastore(1,'CS_SERVER','DESKTOP-A77C4G7')).
+rule_i(0,datastore(1,'CS_SERVER','DESKTOP-LH23KFE')).
 rule_i(0,datastore(1,'CS_DBNAME','Curso2BD')).
 rule_i(0,datastore(1,'CS_FLEDSNAME','')).
 rule_i(0,datastore(1,'CS_DRVNAME','sql server')).
@@ -593,7 +593,7 @@ html_comp_i(31,'Semanticcontent',div,d,[ str ]).
 html_comp_i(31,'Align',left,d,[ str ]).
 html_comp_i(31,'Valign',top,d,[ str ]).
 html_comp_i(32,'Isabstractlayoutcontrol',0,d,[ bool ]).
-html_comp_i(32,'Class','form-group gx-form-group ',v,[ str ]).
+html_comp_i(32,'Class','form-group gx-form-group',v,[ str ]).
 html_comp_i(32,'Id','',d,[ str ]).
 html_comp_i(32,'Height',measure(0,px),d,[ measure ]).
 html_comp_i(32,'Width',measure(0,px),d,[ measure ]).
@@ -615,7 +615,6 @@ html_comp_i(34,'Class','Attribute',v,[ str ]).
 html_comp_i(34,'Controlname','Empleadoid',d,[ str ]).
 html_comp_i(34,'Returnonclick',0,v,[ bool ]).
 html_comp_i(34,'Captionclass','col-sm-3 AttributeLabel',v,[ str ]).
-html_comp_i(34,'Captionstyle','',v,[ str ]).
 html_comp_i(34,'Captionposition','Left',v,[ str ]).
 html_comp_i(34,'Captionvalue','Id',d,[ str ]).
 html_comp_i(34,'Layoutclass','col-sm-9',v,[ str ]).
@@ -656,7 +655,7 @@ html_comp_i(36,'Semanticcontent',div,d,[ str ]).
 html_comp_i(36,'Align',left,d,[ str ]).
 html_comp_i(36,'Valign',top,d,[ str ]).
 html_comp_i(37,'Isabstractlayoutcontrol',0,d,[ bool ]).
-html_comp_i(37,'Class','form-group gx-form-group ',v,[ str ]).
+html_comp_i(37,'Class','form-group gx-form-group',v,[ str ]).
 html_comp_i(37,'Id','',d,[ str ]).
 html_comp_i(37,'Height',measure(0,px),d,[ measure ]).
 html_comp_i(37,'Width',measure(0,px),d,[ measure ]).
@@ -678,7 +677,6 @@ html_comp_i(39,'Class','Attribute',v,[ str ]).
 html_comp_i(39,'Controlname','Empleadonombre',d,[ str ]).
 html_comp_i(39,'Returnonclick',0,v,[ bool ]).
 html_comp_i(39,'Captionclass','col-sm-3 AttributeLabel',v,[ str ]).
-html_comp_i(39,'Captionstyle','',v,[ str ]).
 html_comp_i(39,'Captionposition','Left',v,[ str ]).
 html_comp_i(39,'Captionvalue','Nombre',d,[ str ]).
 html_comp_i(39,'Layoutclass','col-sm-9',v,[ str ]).
@@ -722,7 +720,7 @@ html_comp_i(41,'Semanticcontent',div,d,[ str ]).
 html_comp_i(41,'Align',left,d,[ str ]).
 html_comp_i(41,'Valign',top,d,[ str ]).
 html_comp_i(42,'Isabstractlayoutcontrol',0,d,[ bool ]).
-html_comp_i(42,'Class','form-group gx-form-group ',v,[ str ]).
+html_comp_i(42,'Class','form-group gx-form-group',v,[ str ]).
 html_comp_i(42,'Id','',d,[ str ]).
 html_comp_i(42,'Height',measure(0,px),d,[ measure ]).
 html_comp_i(42,'Width',measure(0,px),d,[ measure ]).
@@ -744,7 +742,6 @@ html_comp_i(44,'Class','Attribute',v,[ str ]).
 html_comp_i(44,'Controlname','Empleadofechanacimiento',d,[ str ]).
 html_comp_i(44,'Returnonclick',0,v,[ bool ]).
 html_comp_i(44,'Captionclass','col-sm-3 AttributeLabel',v,[ str ]).
-html_comp_i(44,'Captionstyle','',v,[ str ]).
 html_comp_i(44,'Captionposition','Left',v,[ str ]).
 html_comp_i(44,'Captionvalue','Fecha Nacimiento',d,[ str ]).
 html_comp_i(44,'Layoutclass','col-sm-9',v,[ str ]).
@@ -786,7 +783,7 @@ html_comp_i(46,'Semanticcontent',div,d,[ str ]).
 html_comp_i(46,'Align',left,d,[ str ]).
 html_comp_i(46,'Valign',top,d,[ str ]).
 html_comp_i(47,'Isabstractlayoutcontrol',0,d,[ bool ]).
-html_comp_i(47,'Class','form-group gx-form-group ',v,[ str ]).
+html_comp_i(47,'Class','form-group gx-form-group',v,[ str ]).
 html_comp_i(47,'Id','',d,[ str ]).
 html_comp_i(47,'Height',measure(0,px),d,[ measure ]).
 html_comp_i(47,'Width',measure(0,px),d,[ measure ]).
@@ -808,7 +805,6 @@ html_comp_i(49,'Class','Attribute',v,[ str ]).
 html_comp_i(49,'Controlname','Puestoid',d,[ str ]).
 html_comp_i(49,'Returnonclick',0,v,[ bool ]).
 html_comp_i(49,'Captionclass','col-sm-3 AttributeLabel',v,[ str ]).
-html_comp_i(49,'Captionstyle','',v,[ str ]).
 html_comp_i(49,'Captionposition','Left',v,[ str ]).
 html_comp_i(49,'Captionvalue','Puesto Id',d,[ str ]).
 html_comp_i(49,'Layoutclass','col-sm-9',v,[ str ]).
@@ -998,7 +994,6 @@ att_prop_i(2,1,'AUTONUMBER','0',d).
 att_prop_i(2,1,'ATT_INITIAL_VALUE','',d).
 att_prop_i(2,1,'AttRegEx','',d).
 att_prop_i(2,1,'AttValidationFailedMsg','',d).
-att_prop_i(2,1,'DownloadOffline','0',d).
 att_prop_i(2,1,'FullName','EmpleadoId',v).
 att_prop_i(2,2,'ExternalName','EmpleadoNombre',d).
 att_prop_i(2,2,'ExternalNamespace','Curso2',d).
@@ -1008,7 +1003,6 @@ att_prop_i(2,2,'ATT_INITIAL_VALUE','',d).
 att_prop_i(2,2,'DB_NLS_SUPPORT','Yes',d).
 att_prop_i(2,2,'AttRegEx','',d).
 att_prop_i(2,2,'AttValidationFailedMsg','',d).
-att_prop_i(2,2,'DownloadOffline','0',d).
 att_prop_i(2,2,'FullName','EmpleadoNombre',v).
 att_prop_i(2,3,'ExternalName','EmpleadoFechaNacimiento',d).
 att_prop_i(2,3,'ExternalNamespace','Curso2',d).
@@ -1018,7 +1012,6 @@ att_prop_i(2,3,'ATT_INITIAL_VALUE','',d).
 att_prop_i(2,3,'AttRegEx','',d).
 att_prop_i(2,3,'AttValidationFailedMsg','',d).
 att_prop_i(2,3,idDATEFORMAT,idDATEFORMAT_SHORT,d).
-att_prop_i(2,3,'DownloadOffline','0',d).
 att_prop_i(2,3,'FullName','EmpleadoFechaNacimiento',v).
 att_prop_i(2,4,'ExternalName','PuestoId',d).
 att_prop_i(2,4,'ExternalNamespace','Curso2',d).
@@ -1028,7 +1021,6 @@ att_prop_i(2,4,'AUTONUMBER','0',d).
 att_prop_i(2,4,'ATT_INITIAL_VALUE','',d).
 att_prop_i(2,4,'AttRegEx','',d).
 att_prop_i(2,4,'AttValidationFailedMsg','',d).
-att_prop_i(2,4,'DownloadOffline','0',d).
 att_prop_i(2,4,'FullName','PuestoId',v).
  
 tbl_prop_i(2,1,'AllDirSuper',[ [ 2,[ 4 ] ] ],v).
@@ -1055,10 +1047,11 @@ trn_level_i(1,[ [ 1,2,3,4 ],'TEmpleado','TEmpleado','TEmpleado','',2 ]).
  
  
 pgm_parm_i(web,7,'GX0010',[ [ int,4,0,0 ] ],[ [ pEmpleadoId,out,[] ] ]).
-pgm_parm_i(web,0,'GX0020',[ [ int,4,0,0 ] ],[ [ 'V4',out,[] ] ]).
+pgm_parm_i(web,8,'GX0020',[ [ int,4,0,0 ] ],[ [ pPuestoId,out,[] ] ]).
  
 pgm_callprotocol_i(trn,1,'TEMPLEADO','INTERNAL','Unsecure').
 pgm_callprotocol_i(web,7,'GX0010','INTERNAL','Unsecure').
+pgm_callprotocol_i(web,8,'GX0020','INTERNAL','Unsecure').
  
  
  

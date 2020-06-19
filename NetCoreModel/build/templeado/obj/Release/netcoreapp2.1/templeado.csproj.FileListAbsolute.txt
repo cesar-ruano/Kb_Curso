@@ -1,0 +1,10 @@
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\templeado.runtimeconfig.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\templeado.runtimeconfig.dev.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\templeado.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\templeado.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\templeado\obj\Release\netcoreapp2.1\templeado.csprojAssemblyReference.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\templeado\obj\Release\netcoreapp2.1\templeado.csproj.CoreCompileInputs.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\templeado\obj\Release\netcoreapp2.1\templeado.csproj.CopyComplete
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\templeado\obj\Release\netcoreapp2.1\templeado.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\templeado\obj\Release\netcoreapp2.1\templeado.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\templeado\obj\Release\netcoreapp2.1\templeado.genruntimeconfig.cache

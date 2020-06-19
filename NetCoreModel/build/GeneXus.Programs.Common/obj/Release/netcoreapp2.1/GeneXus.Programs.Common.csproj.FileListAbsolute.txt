@@ -1,0 +1,10 @@
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\GeneXus.Programs.Common.runtimeconfig.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\GeneXus.Programs.Common.runtimeconfig.dev.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\GeneXus.Programs.Common.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\GeneXus.Programs.Common.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\GeneXus.Programs.Common\obj\Release\netcoreapp2.1\GeneXus.Programs.Common.csprojAssemblyReference.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\GeneXus.Programs.Common\obj\Release\netcoreapp2.1\GeneXus.Programs.Common.csproj.CoreCompileInputs.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\GeneXus.Programs.Common\obj\Release\netcoreapp2.1\GeneXus.Programs.Common.csproj.CopyComplete
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\GeneXus.Programs.Common\obj\Release\netcoreapp2.1\GeneXus.Programs.Common.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\GeneXus.Programs.Common\obj\Release\netcoreapp2.1\GeneXus.Programs.Common.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\GeneXus.Programs.Common\obj\Release\netcoreapp2.1\GeneXus.Programs.Common.genruntimeconfig.cache

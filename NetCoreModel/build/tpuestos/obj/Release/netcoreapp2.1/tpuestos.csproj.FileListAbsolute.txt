@@ -1,0 +1,10 @@
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\tpuestos.runtimeconfig.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\tpuestos.runtimeconfig.dev.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\tpuestos.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\tpuestos.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\tpuestos\obj\Release\netcoreapp2.1\tpuestos.csprojAssemblyReference.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\tpuestos\obj\Release\netcoreapp2.1\tpuestos.csproj.CoreCompileInputs.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\tpuestos\obj\Release\netcoreapp2.1\tpuestos.csproj.CopyComplete
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\tpuestos\obj\Release\netcoreapp2.1\tpuestos.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\tpuestos\obj\Release\netcoreapp2.1\tpuestos.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\tpuestos\obj\Release\netcoreapp2.1\tpuestos.genruntimeconfig.cache

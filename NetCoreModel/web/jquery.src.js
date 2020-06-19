@@ -8203,11 +8203,6 @@ function ajaxConvert( s, response ) {
 
 			// Convert response if prev dataType is non-auto and differs from current
 			if ( prev !== "*" && prev !== current ) {
-				
-				// Mitigate possible XSS vulnerability (gh-2432)
-				if ( s.crossDomain && current === "script" ) {
-					continue;
-				}
 
 				// Seek a direct converter
 				conv = converters[ prev + " " + current ] || converters[ "* " + current ];

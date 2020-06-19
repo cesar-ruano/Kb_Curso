@@ -1,8 +1,8 @@
 /*
                File: Gx0010
         Description: Selection List TEmpleado
-             Author: GeneXus .NET Core Generator version 16_0_9-140712
-       Generated on: 6/19/2020 9:8:54.26
+             Author: GeneXus .NET Core Generator version 16_0_2-131213
+       Generated on: 6/19/2020 10:23:30.83
        Program type: Callable routine
           Main DBMS: SQL Server
 */
@@ -112,8 +112,8 @@ namespace GeneXus.Programs {
             }
             else if ( StringUtil.StrCmp(gxfirstwebparm, "gxajaxNewRow_"+"Grid1") == 0 )
             {
-               nRC_GXsfl_54 = (int)(NumberUtil.Val( GetNextPar( ), "."));
-               nGXsfl_54_idx = (int)(NumberUtil.Val( GetNextPar( ), "."));
+               nRC_GXsfl_54 = (short)(NumberUtil.Val( GetNextPar( ), "."));
+               nGXsfl_54_idx = (short)(NumberUtil.Val( GetNextPar( ), "."));
                sGXsfl_54_idx = GetNextPar( );
                setAjaxCallMode();
                if ( ! IsValidAjaxCall( true) )
@@ -138,7 +138,9 @@ namespace GeneXus.Programs {
                   return  ;
                }
                gxgrGrid1_refresh( subGrid1_Rows, AV6cEmpleadoId, AV7cEmpleadoNombre, AV8cEmpleadoFechaNacimiento, AV11cPuestoId) ;
-               AddString( context.getJSONResponse( )) ;
+               GXKey = Decrypt64( context.GetCookie( "GX_SESSION_ID"), Crypto.GetServerKey( ));
+               GXKey = Decrypt64( context.GetCookie( "GX_SESSION_ID"), Crypto.GetServerKey( ));
+               context.GX_webresponse.AddString((String)(context.getJSONResponse( )));
                return  ;
             }
             else
@@ -153,7 +155,7 @@ namespace GeneXus.Programs {
             if ( ! entryPointCalled && ! ( isAjaxCallMode( ) || isFullAjaxMode( ) ) )
             {
                AV9pEmpleadoId = (short)(NumberUtil.Val( gxfirstwebparm, "."));
-               AssignAttri("", false, "AV9pEmpleadoId", StringUtil.LTrimStr( (decimal)(AV9pEmpleadoId), 4, 0));
+               context.httpAjaxContext.ajax_rsp_assign_attri("", false, "AV9pEmpleadoId", StringUtil.LTrim( StringUtil.Str( (decimal)(AV9pEmpleadoId), 4, 0)));
             }
             if ( context.isSpaRequest( ) )
             {
@@ -189,7 +191,7 @@ namespace GeneXus.Programs {
                }
                if ( ! context.WillRedirect( ) )
                {
-                  AddString( context.getJSONResponse( )) ;
+                  context.GX_webresponse.AddString((String)(context.getJSONResponse( )));
                }
                else
                {
@@ -246,18 +248,18 @@ namespace GeneXus.Programs {
          }
          if ( ( ( context.GetBrowserType( ) == 1 ) || ( context.GetBrowserType( ) == 5 ) ) && ( StringUtil.StrCmp(context.GetBrowserVersion( ), "7.0") == 0 ) )
          {
-            context.AddJavascriptSource("json2.js", "?"+context.GetBuildNumber( 140712), false, true);
+            context.AddJavascriptSource("json2.js", "?"+context.GetBuildNumber( 131213), false, true);
          }
-         context.AddJavascriptSource("jquery.js", "?"+context.GetBuildNumber( 140712), false, true);
-         context.AddJavascriptSource("gxgral.js", "?"+context.GetBuildNumber( 140712), false, true);
-         context.AddJavascriptSource("gxcfg.js", "?2020619985432", false, true);
+         context.AddJavascriptSource("jquery.js", "?"+context.GetBuildNumber( 131213), false, true);
+         context.AddJavascriptSource("gxgral.js", "?"+context.GetBuildNumber( 131213), false, true);
+         context.AddJavascriptSource("gxcfg.js", "?202061910233093", false, true);
          if ( context.isSpaRequest( ) )
          {
             enableOutput();
          }
-         context.AddJavascriptSource("calendar.js", "?"+context.GetBuildNumber( 140712), false, true);
-         context.AddJavascriptSource("calendar-setup.js", "?"+context.GetBuildNumber( 140712), false, true);
-         context.AddJavascriptSource("calendar-es.js", "?"+context.GetBuildNumber( 140712), false, true);
+         context.AddJavascriptSource("calendar.js", "?"+context.GetBuildNumber( 131213), false, true);
+         context.AddJavascriptSource("calendar-setup.js", "?"+context.GetBuildNumber( 131213), false, true);
+         context.AddJavascriptSource("calendar-es.js", "?"+context.GetBuildNumber( 131213), false, true);
          context.WriteHtmlText( Form.Headerrawhtml) ;
          context.CloseHtmlHeader();
          if ( context.isSpaRequest( ) )
@@ -283,7 +285,7 @@ namespace GeneXus.Programs {
          GxWebStd.gx_hidden_field( context, "_EventGridId", "");
          GxWebStd.gx_hidden_field( context, "_EventRowId", "");
          context.WriteHtmlText( "<input type=\"submit\" title=\"submit\" style=\"display:none\" disabled>") ;
-         AssignProp("", false, "FORM", "Class", "form-horizontal Form", true);
+         context.httpAjaxContext.ajax_rsp_assign_prop("", false, "FORM", "Class", "form-horizontal Form", true);
          toggleJsOutput = isJsOutputEnabled( );
          if ( context.isSpaRequest( ) )
          {
@@ -305,7 +307,7 @@ namespace GeneXus.Programs {
          GxWebStd.gx_hidden_field( context, "GXH_vCPUESTOID", StringUtil.LTrim( StringUtil.NToC( (decimal)(AV11cPuestoId), 4, 0, ",", "")));
          /* Send saved values. */
          send_integrity_footer_hashes( ) ;
-         GxWebStd.gx_hidden_field( context, "nRC_GXsfl_54", StringUtil.LTrim( StringUtil.NToC( (decimal)(nRC_GXsfl_54), 8, 0, ",", "")));
+         GxWebStd.gx_hidden_field( context, "nRC_GXsfl_54", StringUtil.LTrim( StringUtil.NToC( (decimal)(nRC_GXsfl_54), 4, 0, ",", "")));
          GxWebStd.gx_hidden_field( context, "vPEMPLEADOID", StringUtil.LTrim( StringUtil.NToC( (decimal)(AV9pEmpleadoId), 4, 0, ",", "")));
          GxWebStd.gx_hidden_field( context, "GRID1_nFirstRecordOnPage", StringUtil.LTrim( StringUtil.NToC( (decimal)(GRID1_nFirstRecordOnPage), 15, 0, ",", "")));
          GxWebStd.gx_hidden_field( context, "GRID1_nEOF", StringUtil.LTrim( StringUtil.NToC( (decimal)(GRID1_nEOF), 1, 0, ",", "")));
@@ -426,10 +428,10 @@ namespace GeneXus.Programs {
             /* Div Control */
             GxWebStd.gx_div_start( context, "", 1, 0, "px", 0, "px", " gx-attribute", "left", "top", "", "", "div");
             /* Attribute/Variable Label */
-            GxWebStd.gx_label_element( context, edtavCempleadoid_Internalname, "Empleado Id", "col-sm-3 AttributeLabel", 0, true, "");
+            GxWebStd.gx_label_element( context, edtavCempleadoid_Internalname, "Empleado Id", "col-sm-3 AttributeLabel", 0, true);
             /* Single line edit */
             TempTags = "  onfocus=\"gx.evt.onfocus(this, 16,'',false,'" + sGXsfl_54_idx + "',0)\"";
-            GxWebStd.gx_single_line_edit( context, edtavCempleadoid_Internalname, StringUtil.LTrim( StringUtil.NToC( (decimal)(AV6cEmpleadoId), 4, 0, ",", "")), ((edtavCempleadoid_Enabled!=0) ? StringUtil.LTrim( context.localUtil.Format( (decimal)(AV6cEmpleadoId), "ZZZ9")) : context.localUtil.Format( (decimal)(AV6cEmpleadoId), "ZZZ9")), TempTags+" onchange=\""+"gx.num.valid_integer( this,'.');"+";gx.evt.onchange(this, event)\" "+" onblur=\""+"gx.num.valid_integer( this,'.');"+";gx.evt.onblur(this,16);\"", "'"+""+"'"+",false,"+"'"+""+"'", "", "", "", "", edtavCempleadoid_Jsonclick, 0, "Attribute", "", "", "", "", edtavCempleadoid_Visible, edtavCempleadoid_Enabled, 0, "number", "1", 4, "chr", 1, "row", 4, 0, 0, 0, 1, -1, 0, true, "", "right", false, "", "HLP_Gx0010.htm");
+            GxWebStd.gx_single_line_edit( context, edtavCempleadoid_Internalname, StringUtil.LTrim( StringUtil.NToC( (decimal)(AV6cEmpleadoId), 4, 0, ",", "")), ((edtavCempleadoid_Enabled!=0) ? StringUtil.LTrim( context.localUtil.Format( (decimal)(AV6cEmpleadoId), "ZZZ9")) : context.localUtil.Format( (decimal)(AV6cEmpleadoId), "ZZZ9")), TempTags+" onchange=\""+"gx.num.valid_integer( this,'.');"+";gx.evt.onchange(this, event)\" "+" onblur=\""+";gx.evt.onblur(this,16);\"", "'"+""+"'"+",false,"+"'"+""+"'", "", "", "", "", edtavCempleadoid_Jsonclick, 0, "Attribute", "", "", "", "", edtavCempleadoid_Visible, edtavCempleadoid_Enabled, 0, "number", "1", 4, "chr", 1, "row", 4, 0, 0, 0, 1, -1, 0, true, "", "right", false, "HLP_Gx0010.htm");
             GxWebStd.gx_div_end( context, "left", "top", "div");
             GxWebStd.gx_div_end( context, "left", "top", "div");
             GxWebStd.gx_div_end( context, "left", "top", "div");
@@ -457,10 +459,10 @@ namespace GeneXus.Programs {
             /* Div Control */
             GxWebStd.gx_div_start( context, "", 1, 0, "px", 0, "px", " gx-attribute", "left", "top", "", "", "div");
             /* Attribute/Variable Label */
-            GxWebStd.gx_label_element( context, edtavCempleadonombre_Internalname, "Empleado Nombre", "col-sm-3 AttributeLabel", 0, true, "");
+            GxWebStd.gx_label_element( context, edtavCempleadonombre_Internalname, "Empleado Nombre", "col-sm-3 AttributeLabel", 0, true);
             /* Single line edit */
             TempTags = "  onfocus=\"gx.evt.onfocus(this, 26,'',false,'" + sGXsfl_54_idx + "',0)\"";
-            GxWebStd.gx_single_line_edit( context, edtavCempleadonombre_Internalname, AV7cEmpleadoNombre, StringUtil.RTrim( context.localUtil.Format( AV7cEmpleadoNombre, "")), TempTags+" onchange=\""+""+";gx.evt.onchange(this, event)\" "+" onblur=\""+""+";gx.evt.onblur(this,26);\"", "'"+""+"'"+",false,"+"'"+""+"'", "", "", "", "", edtavCempleadonombre_Jsonclick, 0, "Attribute", "", "", "", "", edtavCempleadonombre_Visible, edtavCempleadonombre_Enabled, 0, "text", "", 30, "chr", 1, "row", 30, 0, 0, 0, 1, -1, -1, true, "", "left", true, "", "HLP_Gx0010.htm");
+            GxWebStd.gx_single_line_edit( context, edtavCempleadonombre_Internalname, AV7cEmpleadoNombre, StringUtil.RTrim( context.localUtil.Format( AV7cEmpleadoNombre, "")), TempTags+" onchange=\""+""+";gx.evt.onchange(this, event)\" "+" onblur=\""+";gx.evt.onblur(this,26);\"", "'"+""+"'"+",false,"+"'"+""+"'", "", "", "", "", edtavCempleadonombre_Jsonclick, 0, "Attribute", "", "", "", "", edtavCempleadonombre_Visible, edtavCempleadonombre_Enabled, 0, "text", "", 30, "chr", 1, "row", 30, 0, 0, 0, 1, -1, -1, true, "", "left", true, "HLP_Gx0010.htm");
             GxWebStd.gx_div_end( context, "left", "top", "div");
             GxWebStd.gx_div_end( context, "left", "top", "div");
             GxWebStd.gx_div_end( context, "left", "top", "div");
@@ -488,11 +490,11 @@ namespace GeneXus.Programs {
             /* Div Control */
             GxWebStd.gx_div_start( context, "", 1, 0, "px", 0, "px", " gx-attribute", "left", "top", "", "", "div");
             /* Attribute/Variable Label */
-            GxWebStd.gx_label_element( context, edtavCempleadofechanacimiento_Internalname, "Empleado Fecha Nacimiento", "col-sm-3 AttributeLabel", 0, true, "");
+            GxWebStd.gx_label_element( context, edtavCempleadofechanacimiento_Internalname, "Empleado Fecha Nacimiento", "col-sm-3 AttributeLabel", 0, true);
             /* Single line edit */
             TempTags = "  onfocus=\"gx.evt.onfocus(this, 36,'',false,'" + sGXsfl_54_idx + "',0)\"";
             context.WriteHtmlText( "<div id=\""+edtavCempleadofechanacimiento_Internalname+"_dp_container\" class=\"dp_container\" style=\"white-space:nowrap;display:inline;\">") ;
-            GxWebStd.gx_single_line_edit( context, edtavCempleadofechanacimiento_Internalname, context.localUtil.Format(AV8cEmpleadoFechaNacimiento, "99/99/99"), context.localUtil.Format( AV8cEmpleadoFechaNacimiento, "99/99/99"), TempTags+" onchange=\""+"gx.date.valid_date(this, 8,'DMY',0,24,'spa',false,0);"+";gx.evt.onchange(this, event)\" "+" onblur=\""+"gx.date.valid_date(this, 8,'DMY',0,24,'spa',false,0);"+";gx.evt.onblur(this,36);\"", "'"+""+"'"+",false,"+"'"+""+"'", "", "", "", "", edtavCempleadofechanacimiento_Jsonclick, 0, "Attribute", "", "", "", "", 1, edtavCempleadofechanacimiento_Enabled, 0, "text", "", 8, "chr", 1, "row", 8, 0, 0, 0, 1, -1, 0, true, "", "right", false, "", "HLP_Gx0010.htm");
+            GxWebStd.gx_single_line_edit( context, edtavCempleadofechanacimiento_Internalname, context.localUtil.Format(AV8cEmpleadoFechaNacimiento, "99/99/99"), context.localUtil.Format( AV8cEmpleadoFechaNacimiento, "99/99/99"), TempTags+" onchange=\""+"gx.date.valid_date(this, 8,'DMY',0,24,'spa',false,0);"+";gx.evt.onchange(this, event)\" "+" onblur=\""+";gx.evt.onblur(this,36);\"", "'"+""+"'"+",false,"+"'"+""+"'", "", "", "", "", edtavCempleadofechanacimiento_Jsonclick, 0, "Attribute", "", "", "", "", 1, edtavCempleadofechanacimiento_Enabled, 0, "text", "", 8, "chr", 1, "row", 8, 0, 0, 0, 1, -1, 0, true, "", "right", false, "HLP_Gx0010.htm");
             context.WriteHtmlTextNl( "</div>") ;
             GxWebStd.gx_div_end( context, "left", "top", "div");
             GxWebStd.gx_div_end( context, "left", "top", "div");
@@ -521,10 +523,10 @@ namespace GeneXus.Programs {
             /* Div Control */
             GxWebStd.gx_div_start( context, "", 1, 0, "px", 0, "px", " gx-attribute", "left", "top", "", "", "div");
             /* Attribute/Variable Label */
-            GxWebStd.gx_label_element( context, edtavCpuestoid_Internalname, "Puesto Id", "col-sm-3 AttributeLabel", 0, true, "");
+            GxWebStd.gx_label_element( context, edtavCpuestoid_Internalname, "Puesto Id", "col-sm-3 AttributeLabel", 0, true);
             /* Single line edit */
             TempTags = "  onfocus=\"gx.evt.onfocus(this, 46,'',false,'" + sGXsfl_54_idx + "',0)\"";
-            GxWebStd.gx_single_line_edit( context, edtavCpuestoid_Internalname, StringUtil.LTrim( StringUtil.NToC( (decimal)(AV11cPuestoId), 4, 0, ",", "")), ((edtavCpuestoid_Enabled!=0) ? StringUtil.LTrim( context.localUtil.Format( (decimal)(AV11cPuestoId), "ZZZ9")) : context.localUtil.Format( (decimal)(AV11cPuestoId), "ZZZ9")), TempTags+" onchange=\""+"gx.num.valid_integer( this,'.');"+";gx.evt.onchange(this, event)\" "+" onblur=\""+"gx.num.valid_integer( this,'.');"+";gx.evt.onblur(this,46);\"", "'"+""+"'"+",false,"+"'"+""+"'", "", "", "", "", edtavCpuestoid_Jsonclick, 0, "Attribute", "", "", "", "", edtavCpuestoid_Visible, edtavCpuestoid_Enabled, 0, "number", "1", 4, "chr", 1, "row", 4, 0, 0, 0, 1, -1, 0, true, "", "right", false, "", "HLP_Gx0010.htm");
+            GxWebStd.gx_single_line_edit( context, edtavCpuestoid_Internalname, StringUtil.LTrim( StringUtil.NToC( (decimal)(AV11cPuestoId), 4, 0, ",", "")), ((edtavCpuestoid_Enabled!=0) ? StringUtil.LTrim( context.localUtil.Format( (decimal)(AV11cPuestoId), "ZZZ9")) : context.localUtil.Format( (decimal)(AV11cPuestoId), "ZZZ9")), TempTags+" onchange=\""+"gx.num.valid_integer( this,'.');"+";gx.evt.onchange(this, event)\" "+" onblur=\""+";gx.evt.onblur(this,46);\"", "'"+""+"'"+",false,"+"'"+""+"'", "", "", "", "", edtavCpuestoid_Jsonclick, 0, "Attribute", "", "", "", "", edtavCpuestoid_Visible, edtavCpuestoid_Enabled, 0, "number", "1", 4, "chr", 1, "row", 4, 0, 0, 0, 1, -1, 0, true, "", "right", false, "HLP_Gx0010.htm");
             GxWebStd.gx_div_end( context, "left", "top", "div");
             GxWebStd.gx_div_end( context, "left", "top", "div");
             GxWebStd.gx_div_end( context, "left", "top", "div");
@@ -654,7 +656,7 @@ namespace GeneXus.Programs {
          if ( wbEnd == 54 )
          {
             wbEnd = 0;
-            nRC_GXsfl_54 = (int)(nGXsfl_54_idx-1);
+            nRC_GXsfl_54 = (short)(nGXsfl_54_idx-1);
             if ( Grid1Container.GetWrapped() == 1 )
             {
                context.WriteHtmlText( "</table>") ;
@@ -740,7 +742,7 @@ namespace GeneXus.Programs {
          wbStart = 0;
          if ( ! context.isSpaRequest( ) )
          {
-            Form.Meta.addItem("generator", "GeneXus .NET Core 16_0_9-140712", 0) ;
+            Form.Meta.addItem("generator", "GeneXus .NET Core 16_0_2-131213", 0) ;
             Form.Meta.addItem("description", "Selection List TEmpleado", 0) ;
          }
          context.wjLoc = "";
@@ -821,12 +823,12 @@ namespace GeneXus.Programs {
                            sEvt = StringUtil.Left( sEvt, (short)(StringUtil.Len( sEvt)-4));
                            if ( ( StringUtil.StrCmp(StringUtil.Left( sEvt, 5), "START") == 0 ) || ( StringUtil.StrCmp(StringUtil.Left( sEvt, 4), "LOAD") == 0 ) || ( StringUtil.StrCmp(StringUtil.Left( sEvt, 5), "ENTER") == 0 ) )
                            {
-                              nGXsfl_54_idx = (int)(NumberUtil.Val( sEvtType, "."));
-                              sGXsfl_54_idx = StringUtil.PadL( StringUtil.LTrimStr( (decimal)(nGXsfl_54_idx), 4, 0), 4, "0");
+                              nGXsfl_54_idx = (short)(NumberUtil.Val( sEvtType, "."));
+                              sGXsfl_54_idx = StringUtil.PadL( StringUtil.LTrim( StringUtil.Str( (decimal)(nGXsfl_54_idx), 4, 0)), 4, "0");
                               SubsflControlProps_542( ) ;
                               AV5LinkSelection = cgiGet( edtavLinkselection_Internalname);
-                              AssignProp("", false, edtavLinkselection_Internalname, "Bitmap", (String.IsNullOrEmpty(StringUtil.RTrim( AV5LinkSelection)) ? AV14Linkselection_GXI : context.convertURL( context.PathToRelativeUrl( AV5LinkSelection))), !bGXsfl_54_Refreshing);
-                              AssignProp("", false, edtavLinkselection_Internalname, "SrcSet", context.GetImageSrcSet( AV5LinkSelection), true);
+                              context.httpAjaxContext.ajax_rsp_assign_prop("", false, edtavLinkselection_Internalname, "Bitmap", (String.IsNullOrEmpty(StringUtil.RTrim( AV5LinkSelection)) ? AV14Linkselection_GXI : context.convertURL( context.PathToRelativeUrl( AV5LinkSelection))), !bGXsfl_54_Refreshing);
+                              context.httpAjaxContext.ajax_rsp_assign_prop("", false, edtavLinkselection_Internalname, "SrcSet", context.GetImageSrcSet( AV5LinkSelection), true);
                               A1EmpleadoId = (short)(context.localUtil.CToN( cgiGet( edtEmpleadoId_Internalname), ",", "."));
                               A2EmpleadoNombre = cgiGet( edtEmpleadoNombre_Internalname);
                               A3EmpleadoFechaNacimiento = DateTimeUtil.ResetTime(context.localUtil.CToT( cgiGet( edtEmpleadoFechaNacimiento_Internalname), 0));
@@ -956,11 +958,11 @@ namespace GeneXus.Programs {
          while ( nGXsfl_54_idx <= nRC_GXsfl_54 )
          {
             sendrow_542( ) ;
-            nGXsfl_54_idx = ((subGrid1_Islastpage==1)&&(nGXsfl_54_idx+1>subGrid1_fnc_Recordsperpage( )) ? 1 : nGXsfl_54_idx+1);
-            sGXsfl_54_idx = StringUtil.PadL( StringUtil.LTrimStr( (decimal)(nGXsfl_54_idx), 4, 0), 4, "0");
+            nGXsfl_54_idx = (short)(((subGrid1_Islastpage==1)&&(nGXsfl_54_idx+1>subGrid1_Recordsperpage( )) ? 1 : nGXsfl_54_idx+1));
+            sGXsfl_54_idx = StringUtil.PadL( StringUtil.LTrim( StringUtil.Str( (decimal)(nGXsfl_54_idx), 4, 0)), 4, "0");
             SubsflControlProps_542( ) ;
          }
-         AddString( context.httpAjaxContext.getJSONContainerResponse( Grid1Container)) ;
+         context.GX_webresponse.AddString(context.httpAjaxContext.getJSONContainerResponse( Grid1Container));
          /* End function gxnrGrid1_newrow */
       }
 
@@ -972,11 +974,9 @@ namespace GeneXus.Programs {
       {
          initialize_formulas( ) ;
          GxWebStd.set_html_headers( context, 0, "", "");
+         GxWebStd.gx_hidden_field( context, "GRID1_Rows", StringUtil.LTrim( StringUtil.NToC( (decimal)(subGrid1_Rows), 6, 0, ".", "")));
          GRID1_nCurrentRecord = 0;
          RF072( ) ;
-         GXKey = Decrypt64( context.GetCookie( "GX_SESSION_ID"), Crypto.GetServerKey( ));
-         send_integrity_footer_hashes( ) ;
-         GXKey = Decrypt64( context.GetCookie( "GX_SESSION_ID"), Crypto.GetServerKey( ));
          /* End function gxgrGrid1_refresh */
       }
 
@@ -991,7 +991,6 @@ namespace GeneXus.Programs {
          if ( context.isAjaxRequest( ) )
          {
             dynload_actions( ) ;
-            before_start_formulas( ) ;
          }
       }
 
@@ -1025,7 +1024,7 @@ namespace GeneXus.Programs {
          }
          wbStart = 54;
          nGXsfl_54_idx = 1;
-         sGXsfl_54_idx = StringUtil.PadL( StringUtil.LTrimStr( (decimal)(nGXsfl_54_idx), 4, 0), 4, "0");
+         sGXsfl_54_idx = StringUtil.PadL( StringUtil.LTrim( StringUtil.Str( (decimal)(nGXsfl_54_idx), 4, 0)), 4, "0");
          SubsflControlProps_542( ) ;
          bGXsfl_54_Refreshing = true;
          Grid1Container.AddObjectProperty("GridName", "Grid1");
@@ -1035,15 +1034,15 @@ namespace GeneXus.Programs {
          Grid1Container.AddObjectProperty("Cellpadding", StringUtil.LTrim( StringUtil.NToC( (decimal)(1), 4, 0, ".", "")));
          Grid1Container.AddObjectProperty("Cellspacing", StringUtil.LTrim( StringUtil.NToC( (decimal)(2), 4, 0, ".", "")));
          Grid1Container.AddObjectProperty("Backcolorstyle", StringUtil.LTrim( StringUtil.NToC( (decimal)(subGrid1_Backcolorstyle), 1, 0, ".", "")));
-         Grid1Container.PageSize = subGrid1_fnc_Recordsperpage( );
+         Grid1Container.PageSize = subGrid1_Recordsperpage( );
          gxdyncontrolsrefreshing = true;
          fix_multi_value_controls( ) ;
          gxdyncontrolsrefreshing = false;
          if ( ! context.WillRedirect( ) && ( context.nUserReturn != 1 ) )
          {
             SubsflControlProps_542( ) ;
-            GXPagingFrom2 = (int)(GRID1_nFirstRecordOnPage);
-            GXPagingTo2 = (int)(subGrid1_fnc_Recordsperpage( )+1);
+            GXPagingFrom2 = (int)(((10==0) ? 0 : GRID1_nFirstRecordOnPage));
+            GXPagingTo2 = ((10==0) ? 10000 : subGrid1_Recordsperpage( )+1);
             pr_default.dynParam(0, new Object[]{ new Object[]{
                                                  AV7cEmpleadoNombre ,
                                                  AV8cEmpleadoFechaNacimiento ,
@@ -1060,9 +1059,9 @@ namespace GeneXus.Programs {
             /* Using cursor H00072 */
             pr_default.execute(0, new Object[] {AV6cEmpleadoId, lV7cEmpleadoNombre, AV8cEmpleadoFechaNacimiento, AV11cPuestoId, GXPagingFrom2, GXPagingTo2, GXPagingTo2});
             nGXsfl_54_idx = 1;
-            sGXsfl_54_idx = StringUtil.PadL( StringUtil.LTrimStr( (decimal)(nGXsfl_54_idx), 4, 0), 4, "0");
+            sGXsfl_54_idx = StringUtil.PadL( StringUtil.LTrim( StringUtil.Str( (decimal)(nGXsfl_54_idx), 4, 0)), 4, "0");
             SubsflControlProps_542( ) ;
-            while ( ( (pr_default.getStatus(0) != 101) ) && ( ( GRID1_nCurrentRecord < subGrid1_fnc_Recordsperpage( ) ) ) )
+            while ( ( (pr_default.getStatus(0) != 101) ) && ( ( ( 10 == 0 ) || ( GRID1_nCurrentRecord < subGrid1_Recordsperpage( ) ) ) ) )
             {
                A4PuestoId = H00072_A4PuestoId[0];
                A3EmpleadoFechaNacimiento = H00072_A3EmpleadoFechaNacimiento[0];
@@ -1086,17 +1085,17 @@ namespace GeneXus.Programs {
          GxWebStd.gx_hidden_field( context, "gxhash_EMPLEADOID"+"_"+sGXsfl_54_idx, GetSecureSignedToken( sGXsfl_54_idx, context.localUtil.Format( (decimal)(A1EmpleadoId), "ZZZ9"), context));
       }
 
-      protected int subGrid1_fnc_Pagecount( )
+      protected int subGrid1_Pagecount( )
       {
-         GRID1_nRecordCount = subGrid1_fnc_Recordcount( );
-         if ( ((int)((GRID1_nRecordCount) % (subGrid1_fnc_Recordsperpage( )))) == 0 )
+         GRID1_nRecordCount = subGrid1_Recordcount( );
+         if ( ((int)((GRID1_nRecordCount) % (subGrid1_Recordsperpage( )))) == 0 )
          {
-            return (int)(NumberUtil.Int( (long)(GRID1_nRecordCount/ (decimal)(subGrid1_fnc_Recordsperpage( ))))) ;
+            return (int)(NumberUtil.Int( (long)(GRID1_nRecordCount/ (decimal)(subGrid1_Recordsperpage( ))))) ;
          }
-         return (int)(NumberUtil.Int( (long)(GRID1_nRecordCount/ (decimal)(subGrid1_fnc_Recordsperpage( ))))+1) ;
+         return (int)(NumberUtil.Int( (long)(GRID1_nRecordCount/ (decimal)(subGrid1_Recordsperpage( ))))+1) ;
       }
 
-      protected int subGrid1_fnc_Recordcount( )
+      protected int subGrid1_Recordcount( )
       {
          pr_default.dynParam(1, new Object[]{ new Object[]{
                                               AV7cEmpleadoNombre ,
@@ -1118,14 +1117,14 @@ namespace GeneXus.Programs {
          return (int)(GRID1_nRecordCount) ;
       }
 
-      protected int subGrid1_fnc_Recordsperpage( )
+      protected int subGrid1_Recordsperpage( )
       {
          return (int)(10*1) ;
       }
 
-      protected int subGrid1_fnc_Currentpage( )
+      protected int subGrid1_Currentpage( )
       {
-         return (int)(NumberUtil.Int( (long)(GRID1_nFirstRecordOnPage/ (decimal)(subGrid1_fnc_Recordsperpage( ))))+1) ;
+         return (int)(NumberUtil.Int( (long)(GRID1_nFirstRecordOnPage/ (decimal)(subGrid1_Recordsperpage( ))))+1) ;
       }
 
       protected short subgrid1_firstpage( )
@@ -1142,10 +1141,10 @@ namespace GeneXus.Programs {
 
       protected short subgrid1_nextpage( )
       {
-         GRID1_nRecordCount = subGrid1_fnc_Recordcount( );
-         if ( ( GRID1_nRecordCount >= subGrid1_fnc_Recordsperpage( ) ) && ( GRID1_nEOF == 0 ) )
+         GRID1_nRecordCount = subGrid1_Recordcount( );
+         if ( ( GRID1_nRecordCount >= subGrid1_Recordsperpage( ) ) && ( GRID1_nEOF == 0 ) )
          {
-            GRID1_nFirstRecordOnPage = (long)(GRID1_nFirstRecordOnPage+subGrid1_fnc_Recordsperpage( ));
+            GRID1_nFirstRecordOnPage = (long)(GRID1_nFirstRecordOnPage+subGrid1_Recordsperpage( ));
          }
          else
          {
@@ -1163,9 +1162,9 @@ namespace GeneXus.Programs {
 
       protected short subgrid1_previouspage( )
       {
-         if ( GRID1_nFirstRecordOnPage >= subGrid1_fnc_Recordsperpage( ) )
+         if ( GRID1_nFirstRecordOnPage >= subGrid1_Recordsperpage( ) )
          {
-            GRID1_nFirstRecordOnPage = (long)(GRID1_nFirstRecordOnPage-subGrid1_fnc_Recordsperpage( ));
+            GRID1_nFirstRecordOnPage = (long)(GRID1_nFirstRecordOnPage-subGrid1_Recordsperpage( ));
          }
          else
          {
@@ -1182,16 +1181,16 @@ namespace GeneXus.Programs {
 
       protected short subgrid1_lastpage( )
       {
-         GRID1_nRecordCount = subGrid1_fnc_Recordcount( );
-         if ( GRID1_nRecordCount > subGrid1_fnc_Recordsperpage( ) )
+         GRID1_nRecordCount = subGrid1_Recordcount( );
+         if ( GRID1_nRecordCount > subGrid1_Recordsperpage( ) )
          {
-            if ( ((int)((GRID1_nRecordCount) % (subGrid1_fnc_Recordsperpage( )))) == 0 )
+            if ( ((int)((GRID1_nRecordCount) % (subGrid1_Recordsperpage( )))) == 0 )
             {
-               GRID1_nFirstRecordOnPage = (long)(GRID1_nRecordCount-subGrid1_fnc_Recordsperpage( ));
+               GRID1_nFirstRecordOnPage = (long)(GRID1_nRecordCount-subGrid1_Recordsperpage( ));
             }
             else
             {
-               GRID1_nFirstRecordOnPage = (long)(GRID1_nRecordCount-((int)((GRID1_nRecordCount) % (subGrid1_fnc_Recordsperpage( )))));
+               GRID1_nFirstRecordOnPage = (long)(GRID1_nRecordCount-((int)((GRID1_nRecordCount) % (subGrid1_Recordsperpage( )))));
             }
          }
          else
@@ -1211,7 +1210,7 @@ namespace GeneXus.Programs {
       {
          if ( nPageNo > 0 )
          {
-            GRID1_nFirstRecordOnPage = (long)(subGrid1_fnc_Recordsperpage( )*(nPageNo-1));
+            GRID1_nFirstRecordOnPage = (long)(subGrid1_Recordsperpage( )*(nPageNo-1));
          }
          else
          {
@@ -1226,15 +1225,10 @@ namespace GeneXus.Programs {
          return (int)(0) ;
       }
 
-      protected void before_start_formulas( )
-      {
-         context.Gx_err = 0;
-      }
-
       protected void STRUP070( )
       {
          /* Before Start, stand alone formulas. */
-         before_start_formulas( ) ;
+         context.Gx_err = 0;
          /* Execute Start event if defined. */
          context.wbGlbDoneStart = 0;
          /* Execute user event: Start */
@@ -1244,55 +1238,55 @@ namespace GeneXus.Programs {
          if ( StringUtil.StrCmp(context.GetRequestMethod( ), "POST") == 0 )
          {
             /* Read saved SDTs. */
-            /* Read saved values. */
-            nRC_GXsfl_54 = (int)(context.localUtil.CToN( cgiGet( "nRC_GXsfl_54"), ",", "."));
-            GRID1_nFirstRecordOnPage = (long)(context.localUtil.CToN( cgiGet( "GRID1_nFirstRecordOnPage"), ",", "."));
-            GRID1_nEOF = (short)(context.localUtil.CToN( cgiGet( "GRID1_nEOF"), ",", "."));
             /* Read variables values. */
             if ( ( ( context.localUtil.CToN( cgiGet( edtavCempleadoid_Internalname), ",", ".") < Convert.ToDecimal( 0 )) ) || ( ( context.localUtil.CToN( cgiGet( edtavCempleadoid_Internalname), ",", ".") > Convert.ToDecimal( 9999 )) ) )
             {
                GX_msglist.addItem(context.GetMessage( "GXM_badnum", ""), 1, "vCEMPLEADOID");
                GX_FocusControl = edtavCempleadoid_Internalname;
-               AssignAttri("", false, "GX_FocusControl", GX_FocusControl);
+               context.httpAjaxContext.ajax_rsp_assign_attri("", false, "GX_FocusControl", GX_FocusControl);
                wbErr = true;
                AV6cEmpleadoId = 0;
-               AssignAttri("", false, "AV6cEmpleadoId", StringUtil.LTrimStr( (decimal)(AV6cEmpleadoId), 4, 0));
+               context.httpAjaxContext.ajax_rsp_assign_attri("", false, "AV6cEmpleadoId", StringUtil.LTrim( StringUtil.Str( (decimal)(AV6cEmpleadoId), 4, 0)));
             }
             else
             {
                AV6cEmpleadoId = (short)(context.localUtil.CToN( cgiGet( edtavCempleadoid_Internalname), ",", "."));
-               AssignAttri("", false, "AV6cEmpleadoId", StringUtil.LTrimStr( (decimal)(AV6cEmpleadoId), 4, 0));
+               context.httpAjaxContext.ajax_rsp_assign_attri("", false, "AV6cEmpleadoId", StringUtil.LTrim( StringUtil.Str( (decimal)(AV6cEmpleadoId), 4, 0)));
             }
             AV7cEmpleadoNombre = cgiGet( edtavCempleadonombre_Internalname);
-            AssignAttri("", false, "AV7cEmpleadoNombre", AV7cEmpleadoNombre);
+            context.httpAjaxContext.ajax_rsp_assign_attri("", false, "AV7cEmpleadoNombre", AV7cEmpleadoNombre);
             if ( context.localUtil.VCDate( cgiGet( edtavCempleadofechanacimiento_Internalname), 2) == 0 )
             {
                GX_msglist.addItem(context.GetMessage( "GXM_faildate", new   object[]  {"Empleado Fecha Nacimiento"}), 1, "vCEMPLEADOFECHANACIMIENTO");
                GX_FocusControl = edtavCempleadofechanacimiento_Internalname;
-               AssignAttri("", false, "GX_FocusControl", GX_FocusControl);
+               context.httpAjaxContext.ajax_rsp_assign_attri("", false, "GX_FocusControl", GX_FocusControl);
                wbErr = true;
                AV8cEmpleadoFechaNacimiento = DateTime.MinValue;
-               AssignAttri("", false, "AV8cEmpleadoFechaNacimiento", context.localUtil.Format(AV8cEmpleadoFechaNacimiento, "99/99/99"));
+               context.httpAjaxContext.ajax_rsp_assign_attri("", false, "AV8cEmpleadoFechaNacimiento", context.localUtil.Format(AV8cEmpleadoFechaNacimiento, "99/99/99"));
             }
             else
             {
                AV8cEmpleadoFechaNacimiento = context.localUtil.CToD( cgiGet( edtavCempleadofechanacimiento_Internalname), 2);
-               AssignAttri("", false, "AV8cEmpleadoFechaNacimiento", context.localUtil.Format(AV8cEmpleadoFechaNacimiento, "99/99/99"));
+               context.httpAjaxContext.ajax_rsp_assign_attri("", false, "AV8cEmpleadoFechaNacimiento", context.localUtil.Format(AV8cEmpleadoFechaNacimiento, "99/99/99"));
             }
             if ( ( ( context.localUtil.CToN( cgiGet( edtavCpuestoid_Internalname), ",", ".") < Convert.ToDecimal( 0 )) ) || ( ( context.localUtil.CToN( cgiGet( edtavCpuestoid_Internalname), ",", ".") > Convert.ToDecimal( 9999 )) ) )
             {
                GX_msglist.addItem(context.GetMessage( "GXM_badnum", ""), 1, "vCPUESTOID");
                GX_FocusControl = edtavCpuestoid_Internalname;
-               AssignAttri("", false, "GX_FocusControl", GX_FocusControl);
+               context.httpAjaxContext.ajax_rsp_assign_attri("", false, "GX_FocusControl", GX_FocusControl);
                wbErr = true;
                AV11cPuestoId = 0;
-               AssignAttri("", false, "AV11cPuestoId", StringUtil.LTrimStr( (decimal)(AV11cPuestoId), 4, 0));
+               context.httpAjaxContext.ajax_rsp_assign_attri("", false, "AV11cPuestoId", StringUtil.LTrim( StringUtil.Str( (decimal)(AV11cPuestoId), 4, 0)));
             }
             else
             {
                AV11cPuestoId = (short)(context.localUtil.CToN( cgiGet( edtavCpuestoid_Internalname), ",", "."));
-               AssignAttri("", false, "AV11cPuestoId", StringUtil.LTrimStr( (decimal)(AV11cPuestoId), 4, 0));
+               context.httpAjaxContext.ajax_rsp_assign_attri("", false, "AV11cPuestoId", StringUtil.LTrim( StringUtil.Str( (decimal)(AV11cPuestoId), 4, 0)));
             }
+            /* Read saved values. */
+            nRC_GXsfl_54 = (short)(context.localUtil.CToN( cgiGet( "nRC_GXsfl_54"), ",", "."));
+            GRID1_nFirstRecordOnPage = (long)(context.localUtil.CToN( cgiGet( "GRID1_nFirstRecordOnPage"), ",", "."));
+            GRID1_nEOF = (short)(context.localUtil.CToN( cgiGet( "GRID1_nEOF"), ",", "."));
             /* Read subfile selected row values. */
             /* Read hidden variables. */
             GXKey = Decrypt64( context.GetCookie( "GX_SESSION_ID"), Crypto.GetServerKey( ));
@@ -1335,7 +1329,7 @@ namespace GeneXus.Programs {
       {
          /* Start Routine */
          Form.Caption = StringUtil.Format( "Lista de Selección %1", "TEmpleado", "", "", "", "", "", "", "", "");
-         AssignProp("", false, "FORM", "Caption", Form.Caption, true);
+         context.httpAjaxContext.ajax_rsp_assign_prop("", false, "FORM", "Caption", Form.Caption, true);
          AV10ADVANCED_LABEL_TEMPLATE = "%1 <strong>%2</strong>";
       }
 
@@ -1343,7 +1337,7 @@ namespace GeneXus.Programs {
       {
          /* Load Routine */
          AV5LinkSelection = context.GetImagePath( "3914535b-0c03-44c5-9538-906a99cdd2bc", "", context.GetTheme( ));
-         AssignAttri("", false, edtavLinkselection_Internalname, AV5LinkSelection);
+         context.httpAjaxContext.ajax_rsp_assign_attri("", false, edtavLinkselection_Internalname, AV5LinkSelection);
          AV14Linkselection_GXI = GXDbFile.PathToUrl( context.GetImagePath( "3914535b-0c03-44c5-9538-906a99cdd2bc", "", context.GetTheme( )));
          sendrow_542( ) ;
          GRID1_nCurrentRecord = (long)(GRID1_nCurrentRecord+1);
@@ -1368,7 +1362,7 @@ namespace GeneXus.Programs {
       {
          /* Enter Routine */
          AV9pEmpleadoId = A1EmpleadoId;
-         AssignAttri("", false, "AV9pEmpleadoId", StringUtil.LTrimStr( (decimal)(AV9pEmpleadoId), 4, 0));
+         context.httpAjaxContext.ajax_rsp_assign_attri("", false, "AV9pEmpleadoId", StringUtil.LTrim( StringUtil.Str( (decimal)(AV9pEmpleadoId), 4, 0)));
          context.setWebReturnParms(new Object[] {(short)AV9pEmpleadoId});
          context.setWebReturnParmsMetadata(new Object[] {"AV9pEmpleadoId"});
          context.wjLocDisableFrm = 1;
@@ -1383,7 +1377,7 @@ namespace GeneXus.Programs {
          createObjects();
          initialize();
          AV9pEmpleadoId = Convert.ToInt16(getParm(obj,0));
-         AssignAttri("", false, "AV9pEmpleadoId", StringUtil.LTrimStr( (decimal)(AV9pEmpleadoId), 4, 0));
+         context.httpAjaxContext.ajax_rsp_assign_attri("", false, "AV9pEmpleadoId", StringUtil.LTrim( StringUtil.Str( (decimal)(AV9pEmpleadoId), 4, 0)));
       }
 
       public override String getresponse( String sGXDynURL )
@@ -1420,7 +1414,7 @@ namespace GeneXus.Programs {
          idxLst = 1;
          while ( idxLst <= Form.Jscriptsrc.Count )
          {
-            context.AddJavascriptSource(StringUtil.RTrim( ((String)Form.Jscriptsrc.Item(idxLst))), "?2020619985478", true, true);
+            context.AddJavascriptSource(StringUtil.RTrim( ((String)Form.Jscriptsrc.Item(idxLst))), "?20206191023320", true, true);
             idxLst = (int)(idxLst+1);
          }
          if ( ! outputEnabled )
@@ -1436,7 +1430,7 @@ namespace GeneXus.Programs {
       protected void include_jscripts( )
       {
          context.AddJavascriptSource("messages.spa.js", "?"+GetCacheInvalidationToken( ), false, true);
-         context.AddJavascriptSource("gx0010.js", "?2020619985478", false, true);
+         context.AddJavascriptSource("gx0010.js", "?20206191023321", false, true);
          /* End function include_jscripts */
       }
 
@@ -1462,7 +1456,7 @@ namespace GeneXus.Programs {
       {
          SubsflControlProps_542( ) ;
          WB070( ) ;
-         if ( ( 10 * 1 == 0 ) || ( nGXsfl_54_idx <= subGrid1_fnc_Recordsperpage( ) * 1 ) )
+         if ( ( 10 * 1 == 0 ) || ( nGXsfl_54_idx <= subGrid1_Recordsperpage( ) * 1 ) )
          {
             Grid1Row = GXWebRow.GetNew(context,Grid1Container);
             if ( subGrid1_Backcolorstyle == 0 )
@@ -1498,12 +1492,12 @@ namespace GeneXus.Programs {
             {
                /* Report style subfile background logic. */
                subGrid1_Backstyle = 1;
-               if ( ((int)((nGXsfl_54_idx) % (2))) == 0 )
+               if ( ((int)(((nGXsfl_54_idx-1)/ (decimal)(1)) % (2))) == 0 )
                {
                   subGrid1_Backcolor = (int)(0x0);
                   if ( StringUtil.StrCmp(subGrid1_Class, "") != 0 )
                   {
-                     subGrid1_Linesclass = subGrid1_Class+"Even";
+                     subGrid1_Linesclass = subGrid1_Class+"Odd";
                   }
                }
                else
@@ -1511,7 +1505,7 @@ namespace GeneXus.Programs {
                   subGrid1_Backcolor = (int)(0x0);
                   if ( StringUtil.StrCmp(subGrid1_Class, "") != 0 )
                   {
-                     subGrid1_Linesclass = subGrid1_Class+"Odd";
+                     subGrid1_Linesclass = subGrid1_Class+"Even";
                   }
                }
             }
@@ -1528,7 +1522,7 @@ namespace GeneXus.Programs {
             }
             /* Static Bitmap Variable */
             edtavLinkselection_Link = "javascript:gx.popup.gxReturn(["+"'"+GXUtil.EncodeJSConstant( StringUtil.LTrim( StringUtil.NToC( (decimal)(A1EmpleadoId), 4, 0, ",", "")))+"'"+"]);";
-            AssignProp("", false, edtavLinkselection_Internalname, "Link", edtavLinkselection_Link, !bGXsfl_54_Refreshing);
+            context.httpAjaxContext.ajax_rsp_assign_prop("", false, edtavLinkselection_Internalname, "Link", edtavLinkselection_Link, !bGXsfl_54_Refreshing);
             ClassString = "SelectionAttribute";
             StyleString = "";
             AV5LinkSelection_IsBlob = (bool)((String.IsNullOrEmpty(StringUtil.RTrim( AV5LinkSelection))&&String.IsNullOrEmpty(StringUtil.RTrim( AV14Linkselection_GXI)))||!String.IsNullOrEmpty(StringUtil.RTrim( AV5LinkSelection)));
@@ -1541,7 +1535,7 @@ namespace GeneXus.Programs {
             }
             /* Single line edit */
             ROClassString = "Attribute";
-            Grid1Row.AddColumnProperties("edit", 1, isAjaxCallMode( ), new Object[] {(String)edtEmpleadoId_Internalname,StringUtil.LTrim( StringUtil.NToC( (decimal)(A1EmpleadoId), 4, 0, ",", "")),context.localUtil.Format( (decimal)(A1EmpleadoId), "ZZZ9"),(String)"",(String)"'"+""+"'"+",false,"+"'"+""+"'",(String)"",(String)"",(String)"",(String)"",(String)edtEmpleadoId_Jsonclick,(short)0,(String)"Attribute",(String)"",(String)ROClassString,(String)"WWColumn",(String)"",(short)-1,(short)0,(short)0,(String)"number",(String)"1",(short)0,(String)"px",(short)17,(String)"px",(short)4,(short)0,(short)0,(short)54,(short)1,(short)-1,(short)0,(bool)true,(String)"",(String)"right",(bool)false,(String)""});
+            Grid1Row.AddColumnProperties("edit", 1, isAjaxCallMode( ), new Object[] {(String)edtEmpleadoId_Internalname,StringUtil.LTrim( StringUtil.NToC( (decimal)(A1EmpleadoId), 4, 0, ",", "")),context.localUtil.Format( (decimal)(A1EmpleadoId), "ZZZ9"),(String)"",(String)"'"+""+"'"+",false,"+"'"+""+"'",(String)"",(String)"",(String)"",(String)"",(String)edtEmpleadoId_Jsonclick,(short)0,(String)"Attribute",(String)"",(String)ROClassString,(String)"WWColumn",(String)"",(short)-1,(short)0,(short)0,(String)"number",(String)"1",(short)0,(String)"px",(short)17,(String)"px",(short)4,(short)0,(short)0,(short)54,(short)1,(short)-1,(short)0,(bool)true,(String)"",(String)"right",(bool)false});
             /* Subfile cell */
             if ( Grid1Container.GetWrapped() == 1 )
             {
@@ -1550,8 +1544,8 @@ namespace GeneXus.Programs {
             /* Single line edit */
             ROClassString = "DescriptionAttribute";
             edtEmpleadoNombre_Link = "javascript:gx.popup.gxReturn(["+"'"+GXUtil.EncodeJSConstant( StringUtil.LTrim( StringUtil.NToC( (decimal)(A1EmpleadoId), 4, 0, ",", "")))+"'"+"]);";
-            AssignProp("", false, edtEmpleadoNombre_Internalname, "Link", edtEmpleadoNombre_Link, !bGXsfl_54_Refreshing);
-            Grid1Row.AddColumnProperties("edit", 1, isAjaxCallMode( ), new Object[] {(String)edtEmpleadoNombre_Internalname,(String)A2EmpleadoNombre,(String)"",(String)"",(String)"'"+""+"'"+",false,"+"'"+""+"'",(String)edtEmpleadoNombre_Link,(String)"",(String)"",(String)"",(String)edtEmpleadoNombre_Jsonclick,(short)0,(String)"DescriptionAttribute",(String)"",(String)ROClassString,(String)"WWColumn",(String)"",(short)-1,(short)0,(short)0,(String)"text",(String)"",(short)0,(String)"px",(short)17,(String)"px",(short)30,(short)0,(short)0,(short)54,(short)1,(short)-1,(short)-1,(bool)true,(String)"",(String)"left",(bool)true,(String)""});
+            context.httpAjaxContext.ajax_rsp_assign_prop("", false, edtEmpleadoNombre_Internalname, "Link", edtEmpleadoNombre_Link, !bGXsfl_54_Refreshing);
+            Grid1Row.AddColumnProperties("edit", 1, isAjaxCallMode( ), new Object[] {(String)edtEmpleadoNombre_Internalname,(String)A2EmpleadoNombre,(String)"",(String)"",(String)"'"+""+"'"+",false,"+"'"+""+"'",(String)edtEmpleadoNombre_Link,(String)"",(String)"",(String)"",(String)edtEmpleadoNombre_Jsonclick,(short)0,(String)"DescriptionAttribute",(String)"",(String)ROClassString,(String)"WWColumn",(String)"",(short)-1,(short)0,(short)0,(String)"text",(String)"",(short)0,(String)"px",(short)17,(String)"px",(short)30,(short)0,(short)0,(short)54,(short)1,(short)-1,(short)-1,(bool)true,(String)"",(String)"left",(bool)true});
             /* Subfile cell */
             if ( Grid1Container.GetWrapped() == 1 )
             {
@@ -1559,7 +1553,7 @@ namespace GeneXus.Programs {
             }
             /* Single line edit */
             ROClassString = "Attribute";
-            Grid1Row.AddColumnProperties("edit", 1, isAjaxCallMode( ), new Object[] {(String)edtEmpleadoFechaNacimiento_Internalname,context.localUtil.Format(A3EmpleadoFechaNacimiento, "99/99/99"),context.localUtil.Format( A3EmpleadoFechaNacimiento, "99/99/99"),(String)"",(String)"'"+""+"'"+",false,"+"'"+""+"'",(String)"",(String)"",(String)"",(String)"",(String)edtEmpleadoFechaNacimiento_Jsonclick,(short)0,(String)"Attribute",(String)"",(String)ROClassString,(String)"WWColumn OptionalColumn",(String)"",(short)-1,(short)0,(short)0,(String)"text",(String)"",(short)0,(String)"px",(short)17,(String)"px",(short)8,(short)0,(short)0,(short)54,(short)1,(short)-1,(short)0,(bool)true,(String)"",(String)"right",(bool)false,(String)""});
+            Grid1Row.AddColumnProperties("edit", 1, isAjaxCallMode( ), new Object[] {(String)edtEmpleadoFechaNacimiento_Internalname,context.localUtil.Format(A3EmpleadoFechaNacimiento, "99/99/99"),context.localUtil.Format( A3EmpleadoFechaNacimiento, "99/99/99"),(String)"",(String)"'"+""+"'"+",false,"+"'"+""+"'",(String)"",(String)"",(String)"",(String)"",(String)edtEmpleadoFechaNacimiento_Jsonclick,(short)0,(String)"Attribute",(String)"",(String)ROClassString,(String)"WWColumn OptionalColumn",(String)"",(short)-1,(short)0,(short)0,(String)"text",(String)"",(short)0,(String)"px",(short)17,(String)"px",(short)8,(short)0,(short)0,(short)54,(short)1,(short)-1,(short)0,(bool)true,(String)"",(String)"right",(bool)false});
             /* Subfile cell */
             if ( Grid1Container.GetWrapped() == 1 )
             {
@@ -1567,11 +1561,11 @@ namespace GeneXus.Programs {
             }
             /* Single line edit */
             ROClassString = "Attribute";
-            Grid1Row.AddColumnProperties("edit", 1, isAjaxCallMode( ), new Object[] {(String)edtPuestoId_Internalname,StringUtil.LTrim( StringUtil.NToC( (decimal)(A4PuestoId), 4, 0, ",", "")),context.localUtil.Format( (decimal)(A4PuestoId), "ZZZ9"),(String)"",(String)"'"+""+"'"+",false,"+"'"+""+"'",(String)"",(String)"",(String)"",(String)"",(String)edtPuestoId_Jsonclick,(short)0,(String)"Attribute",(String)"",(String)ROClassString,(String)"WWColumn OptionalColumn",(String)"",(short)-1,(short)0,(short)0,(String)"number",(String)"1",(short)0,(String)"px",(short)17,(String)"px",(short)4,(short)0,(short)0,(short)54,(short)1,(short)-1,(short)0,(bool)true,(String)"",(String)"right",(bool)false,(String)""});
+            Grid1Row.AddColumnProperties("edit", 1, isAjaxCallMode( ), new Object[] {(String)edtPuestoId_Internalname,StringUtil.LTrim( StringUtil.NToC( (decimal)(A4PuestoId), 4, 0, ",", "")),context.localUtil.Format( (decimal)(A4PuestoId), "ZZZ9"),(String)"",(String)"'"+""+"'"+",false,"+"'"+""+"'",(String)"",(String)"",(String)"",(String)"",(String)edtPuestoId_Jsonclick,(short)0,(String)"Attribute",(String)"",(String)ROClassString,(String)"WWColumn OptionalColumn",(String)"",(short)-1,(short)0,(short)0,(String)"number",(String)"1",(short)0,(String)"px",(short)17,(String)"px",(short)4,(short)0,(short)0,(short)54,(short)1,(short)-1,(short)0,(bool)true,(String)"",(String)"right",(bool)false});
             send_integrity_lvl_hashes072( ) ;
             Grid1Container.AddRow(Grid1Row);
-            nGXsfl_54_idx = ((subGrid1_Islastpage==1)&&(nGXsfl_54_idx+1>subGrid1_fnc_Recordsperpage( )) ? 1 : nGXsfl_54_idx+1);
-            sGXsfl_54_idx = StringUtil.PadL( StringUtil.LTrimStr( (decimal)(nGXsfl_54_idx), 4, 0), 4, "0");
+            nGXsfl_54_idx = (short)(((subGrid1_Islastpage==1)&&(nGXsfl_54_idx+1>subGrid1_Recordsperpage( )) ? 1 : nGXsfl_54_idx+1));
+            sGXsfl_54_idx = StringUtil.PadL( StringUtil.LTrim( StringUtil.Str( (decimal)(nGXsfl_54_idx), 4, 0)), 4, "0");
             SubsflControlProps_542( ) ;
          }
          /* End function sendrow_542 */
@@ -1687,10 +1681,6 @@ namespace GeneXus.Programs {
          setEventMetadata("GRID1_NEXTPAGE",",oparms:[]}");
          setEventMetadata("GRID1_LASTPAGE","{handler:'subgrid1_lastpage',iparms:[{av:'GRID1_nFirstRecordOnPage'},{av:'GRID1_nEOF'},{av:'subGrid1_Rows',ctrl:'GRID1',prop:'Rows'},{av:'AV6cEmpleadoId',fld:'vCEMPLEADOID',pic:'ZZZ9'},{av:'AV7cEmpleadoNombre',fld:'vCEMPLEADONOMBRE',pic:''},{av:'AV8cEmpleadoFechaNacimiento',fld:'vCEMPLEADOFECHANACIMIENTO',pic:''},{av:'AV11cPuestoId',fld:'vCPUESTOID',pic:'ZZZ9'}]");
          setEventMetadata("GRID1_LASTPAGE",",oparms:[]}");
-         setEventMetadata("VALIDV_CEMPLEADOFECHANACIMIENTO","{handler:'Validv_Cempleadofechanacimiento',iparms:[]");
-         setEventMetadata("VALIDV_CEMPLEADOFECHANACIMIENTO",",oparms:[]}");
-         setEventMetadata("NULL","{handler:'Valid_Puestoid',iparms:[]");
-         setEventMetadata("NULL",",oparms:[]}");
          return  ;
       }
 
@@ -1714,10 +1704,10 @@ namespace GeneXus.Programs {
          gxfirstwebparm_bkp = "";
          AV7cEmpleadoNombre = "";
          AV8cEmpleadoFechaNacimiento = DateTime.MinValue;
+         GXKey = "";
          sDynURL = "";
          FormProcess = "";
          bodyStyle = "";
-         GXKey = "";
          GX_FocusControl = "";
          Form = new GXWebForm();
          sPrefix = "";
@@ -1769,9 +1759,11 @@ namespace GeneXus.Programs {
          context.Gx_err = 0;
       }
 
-      private short GRID1_nEOF ;
       private short nGotPars ;
       private short GxWebError ;
+      private short nRC_GXsfl_54 ;
+      private short nGXsfl_54_idx=1 ;
+      private short GRID1_nEOF ;
       private short AV6cEmpleadoId ;
       private short AV11cPuestoId ;
       private short AV9pEmpleadoId ;
@@ -1791,8 +1783,6 @@ namespace GeneXus.Programs {
       private short gxcookieaux ;
       private short nGXWrapped ;
       private short subGrid1_Backstyle ;
-      private int nRC_GXsfl_54 ;
-      private int nGXsfl_54_idx=1 ;
       private int subGrid1_Rows ;
       private int edtavCempleadoid_Enabled ;
       private int edtavCempleadoid_Visible ;
@@ -1823,10 +1813,10 @@ namespace GeneXus.Programs {
       private String gxfirstwebparm ;
       private String gxfirstwebparm_bkp ;
       private String sGXsfl_54_idx="0001" ;
+      private String GXKey ;
       private String sDynURL ;
       private String FormProcess ;
       private String bodyStyle ;
-      private String GXKey ;
       private String GX_FocusControl ;
       private String sPrefix ;
       private String divMain_Internalname ;
@@ -1965,7 +1955,7 @@ namespace GeneXus.Programs {
             GXv_int1[3] = 1;
          }
          sOrderString = sOrderString + " ORDER BY [EmpleadoId]";
-         scmdbuf = "SELECT " + sSelectString + sFromString + sWhereString + sOrderString + "" + " OFFSET " + "@GXPagingFrom2" + " ROWS FETCH NEXT CAST((SELECT CASE WHEN " + "@GXPagingTo2" + " > 0 THEN " + "@GXPagingTo2" + " ELSE 1e9 END) AS INTEGER) ROWS ONLY";
+         scmdbuf = "SELECT " + sSelectString + sFromString + sWhereString + "" + sOrderString + " OFFSET " + "@GXPagingFrom2" + " ROWS FETCH NEXT CAST((SELECT CASE WHEN " + "@GXPagingTo2" + " > 0 THEN " + "@GXPagingTo2" + " ELSE 1e9 END) AS INTEGER) ROWS ONLY";
          GXv_Object2[0] = scmdbuf;
          GXv_Object2[1] = GXv_int1;
          return GXv_Object2 ;

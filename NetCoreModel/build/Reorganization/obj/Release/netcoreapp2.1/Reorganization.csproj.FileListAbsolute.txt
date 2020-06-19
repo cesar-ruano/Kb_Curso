@@ -1,0 +1,10 @@
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\Reorganization.runtimeconfig.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\Reorganization.runtimeconfig.dev.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\Reorganization.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\Reorganization.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\Reorganization\obj\Release\netcoreapp2.1\Reorganization.csprojAssemblyReference.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\Reorganization\obj\Release\netcoreapp2.1\Reorganization.csproj.CoreCompileInputs.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\Reorganization\obj\Release\netcoreapp2.1\Reorganization.csproj.CopyComplete
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\Reorganization\obj\Release\netcoreapp2.1\Reorganization.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\Reorganization\obj\Release\netcoreapp2.1\Reorganization.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\Reorganization\obj\Release\netcoreapp2.1\Reorganization.genruntimeconfig.cache

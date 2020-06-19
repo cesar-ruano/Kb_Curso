@@ -1,8 +1,8 @@
 /*
                File: RwdRecentLinks
         Description: Responsive Recent Links
-             Author: GeneXus .NET Core Generator version 16_0_9-140712
-       Generated on: 6/19/2020 8:27:55.6
+             Author: GeneXus .NET Core Generator version 16_0_2-131213
+       Generated on: 6/19/2020 10:23:23.61
        Program type: Callable routine
           Main DBMS: SQL Server
 */
@@ -115,9 +115,9 @@ namespace GeneXus.Programs {
                   sCompPrefix = GetNextPar( );
                   sSFPrefix = GetNextPar( );
                   AV6FormCaption = GetNextPar( );
-                  AssignAttri(sPrefix, false, "AV6FormCaption", AV6FormCaption);
+                  context.httpAjaxContext.ajax_rsp_assign_attri(sPrefix, false, "AV6FormCaption", AV6FormCaption);
                   AV7FormPgmName = GetNextPar( );
-                  AssignAttri(sPrefix, false, "AV7FormPgmName", AV7FormPgmName);
+                  context.httpAjaxContext.ajax_rsp_assign_attri(sPrefix, false, "AV7FormPgmName", AV7FormPgmName);
                   setjustcreated();
                   componentprepare(new Object[] {(String)sCompPrefix,(String)sSFPrefix,(String)AV6FormCaption,(String)AV7FormPgmName});
                   componentstart();
@@ -147,8 +147,8 @@ namespace GeneXus.Programs {
                }
                else if ( StringUtil.StrCmp(gxfirstwebparm, "gxajaxNewRow_"+"Links") == 0 )
                {
-                  nRC_GXsfl_8 = (int)(NumberUtil.Val( GetNextPar( ), "."));
-                  nGXsfl_8_idx = (int)(NumberUtil.Val( GetNextPar( ), "."));
+                  nRC_GXsfl_8 = (short)(NumberUtil.Val( GetNextPar( ), "."));
+                  nGXsfl_8_idx = (short)(NumberUtil.Val( GetNextPar( ), "."));
                   sGXsfl_8_idx = GetNextPar( );
                   sPrefix = GetNextPar( );
                   setAjaxCallMode();
@@ -172,7 +172,9 @@ namespace GeneXus.Programs {
                      return  ;
                   }
                   gxgrLinks_refresh( AV6FormCaption, sPrefix) ;
-                  AddString( context.getJSONResponse( )) ;
+                  GXKey = Decrypt64( context.GetCookie( "GX_SESSION_ID"), Crypto.GetServerKey( ));
+                  GXKey = Decrypt64( context.GetCookie( "GX_SESSION_ID"), Crypto.GetServerKey( ));
+                  context.GX_webresponse.AddString((String)(context.getJSONResponse( )));
                   return  ;
                }
                else
@@ -236,7 +238,7 @@ namespace GeneXus.Programs {
                }
                if ( ! context.WillRedirect( ) )
                {
-                  AddString( context.getJSONResponse( )) ;
+                  context.GX_webresponse.AddString((String)(context.getJSONResponse( )));
                }
                else
                {
@@ -281,11 +283,11 @@ namespace GeneXus.Programs {
          }
          if ( ( ( context.GetBrowserType( ) == 1 ) || ( context.GetBrowserType( ) == 5 ) ) && ( StringUtil.StrCmp(context.GetBrowserVersion( ), "7.0") == 0 ) )
          {
-            context.AddJavascriptSource("json2.js", "?"+context.GetBuildNumber( 140712), false, true);
+            context.AddJavascriptSource("json2.js", "?"+context.GetBuildNumber( 131213), false, true);
          }
-         context.AddJavascriptSource("jquery.js", "?"+context.GetBuildNumber( 140712), false, true);
-         context.AddJavascriptSource("gxgral.js", "?"+context.GetBuildNumber( 140712), false, true);
-         context.AddJavascriptSource("gxcfg.js", "?20206198275510", false, true);
+         context.AddJavascriptSource("jquery.js", "?"+context.GetBuildNumber( 131213), false, true);
+         context.AddJavascriptSource("gxgral.js", "?"+context.GetBuildNumber( 131213), false, true);
+         context.AddJavascriptSource("gxcfg.js", "?202061910232366", false, true);
          if ( context.isSpaRequest( ) )
          {
             enableOutput();
@@ -312,7 +314,7 @@ namespace GeneXus.Programs {
             GxWebStd.gx_hidden_field( context, "_EventGridId", "");
             GxWebStd.gx_hidden_field( context, "_EventRowId", "");
             context.WriteHtmlText( "<input type=\"submit\" title=\"submit\" style=\"display:none\" disabled>") ;
-            AssignProp(sPrefix, false, "FORM", "Class", "form-horizontal Form", true);
+            context.httpAjaxContext.ajax_rsp_assign_prop(sPrefix, false, "FORM", "Class", "form-horizontal Form", true);
          }
          else
          {
@@ -362,7 +364,7 @@ namespace GeneXus.Programs {
          /* Send hidden variables. */
          /* Send saved values. */
          send_integrity_footer_hashes( ) ;
-         GxWebStd.gx_hidden_field( context, sPrefix+"nRC_GXsfl_8", StringUtil.LTrim( StringUtil.NToC( (decimal)(nRC_GXsfl_8), 8, 0, ",", "")));
+         GxWebStd.gx_hidden_field( context, sPrefix+"nRC_GXsfl_8", StringUtil.LTrim( StringUtil.NToC( (decimal)(nRC_GXsfl_8), 4, 0, ",", "")));
          GxWebStd.gx_hidden_field( context, sPrefix+"wcpOAV6FormCaption", StringUtil.RTrim( wcpOAV6FormCaption));
          GxWebStd.gx_hidden_field( context, sPrefix+"wcpOAV7FormPgmName", wcpOAV7FormPgmName);
          GxWebStd.gx_hidden_field( context, sPrefix+"vFORMCAPTION", StringUtil.RTrim( AV6FormCaption));
@@ -375,7 +377,7 @@ namespace GeneXus.Programs {
          SendCloseFormHiddens( ) ;
          if ( ( StringUtil.Len( sPrefix) != 0 ) && ( context.isAjaxRequest( ) || context.isSpaRequest( ) ) )
          {
-            context.AddJavascriptSource("rwdrecentlinks.js", "?20206198275512", false, true);
+            context.AddJavascriptSource("rwdrecentlinks.js", "?202061910232367", false, true);
          }
          GxWebStd.gx_hidden_field( context, sPrefix+"GX_FocusControl", GX_FocusControl);
          define_styles( ) ;
@@ -500,7 +502,7 @@ namespace GeneXus.Programs {
          if ( wbEnd == 8 )
          {
             wbEnd = 0;
-            nRC_GXsfl_8 = (int)(nGXsfl_8_idx-1);
+            nRC_GXsfl_8 = (short)(nGXsfl_8_idx-1);
             if ( LinksContainer.GetWrapped() == 1 )
             {
                context.WriteHtmlText( "</table>") ;
@@ -571,7 +573,7 @@ namespace GeneXus.Programs {
          {
             if ( ! context.isSpaRequest( ) )
             {
-               Form.Meta.addItem("generator", "GeneXus .NET Core 16_0_9-140712", 0) ;
+               Form.Meta.addItem("generator", "GeneXus .NET Core 16_0_2-131213", 0) ;
                Form.Meta.addItem("description", "Responsive Recent Links", 0) ;
             }
             context.wjLoc = "";
@@ -669,8 +671,8 @@ namespace GeneXus.Programs {
                               {
                                  STRUP050( ) ;
                               }
-                              nGXsfl_8_idx = (int)(NumberUtil.Val( sEvtType, "."));
-                              sGXsfl_8_idx = StringUtil.PadL( StringUtil.LTrimStr( (decimal)(nGXsfl_8_idx), 4, 0), 4, "0");
+                              nGXsfl_8_idx = (short)(NumberUtil.Val( sEvtType, "."));
+                              sGXsfl_8_idx = StringUtil.PadL( StringUtil.LTrim( StringUtil.Str( (decimal)(nGXsfl_8_idx), 4, 0)), 4, "0");
                               SubsflControlProps_82( ) ;
                               sEvtType = StringUtil.Right( sEvt, 1);
                               if ( StringUtil.StrCmp(sEvtType, ".") == 0 )
@@ -803,11 +805,11 @@ namespace GeneXus.Programs {
          while ( nGXsfl_8_idx <= nRC_GXsfl_8 )
          {
             sendrow_82( ) ;
-            nGXsfl_8_idx = ((subLinks_Islastpage==1)&&(nGXsfl_8_idx+1>subLinks_fnc_Recordsperpage( )) ? 1 : nGXsfl_8_idx+1);
-            sGXsfl_8_idx = StringUtil.PadL( StringUtil.LTrimStr( (decimal)(nGXsfl_8_idx), 4, 0), 4, "0");
+            nGXsfl_8_idx = (short)(((subLinks_Islastpage==1)&&(nGXsfl_8_idx+1>subLinks_Recordsperpage( )) ? 1 : nGXsfl_8_idx+1));
+            sGXsfl_8_idx = StringUtil.PadL( StringUtil.LTrim( StringUtil.Str( (decimal)(nGXsfl_8_idx), 4, 0)), 4, "0");
             SubsflControlProps_82( ) ;
          }
-         AddString( context.httpAjaxContext.getJSONContainerResponse( LinksContainer)) ;
+         context.GX_webresponse.AddString(context.httpAjaxContext.getJSONContainerResponse( LinksContainer));
          /* End function gxnrLinks_newrow */
       }
 
@@ -818,9 +820,6 @@ namespace GeneXus.Programs {
          GxWebStd.set_html_headers( context, 0, "", "");
          LINKS_nCurrentRecord = 0;
          RF052( ) ;
-         GXKey = Decrypt64( context.GetCookie( "GX_SESSION_ID"), Crypto.GetServerKey( ));
-         send_integrity_footer_hashes( ) ;
-         GXKey = Decrypt64( context.GetCookie( "GX_SESSION_ID"), Crypto.GetServerKey( ));
          /* End function gxgrLinks_refresh */
       }
 
@@ -833,7 +832,6 @@ namespace GeneXus.Programs {
          if ( context.isAjaxRequest( ) )
          {
             dynload_actions( ) ;
-            before_start_formulas( ) ;
          }
       }
 
@@ -867,7 +865,7 @@ namespace GeneXus.Programs {
          }
          wbStart = 8;
          nGXsfl_8_idx = 1;
-         sGXsfl_8_idx = StringUtil.PadL( StringUtil.LTrimStr( (decimal)(nGXsfl_8_idx), 4, 0), 4, "0");
+         sGXsfl_8_idx = StringUtil.PadL( StringUtil.LTrim( StringUtil.Str( (decimal)(nGXsfl_8_idx), 4, 0)), 4, "0");
          SubsflControlProps_82( ) ;
          bGXsfl_8_Refreshing = true;
          LinksContainer.AddObjectProperty("GridName", "Links");
@@ -878,13 +876,7 @@ namespace GeneXus.Programs {
          LinksContainer.AddObjectProperty("Cellpadding", StringUtil.LTrim( StringUtil.NToC( (decimal)(1), 4, 0, ".", "")));
          LinksContainer.AddObjectProperty("Cellspacing", StringUtil.LTrim( StringUtil.NToC( (decimal)(2), 4, 0, ".", "")));
          LinksContainer.AddObjectProperty("Backcolorstyle", StringUtil.LTrim( StringUtil.NToC( (decimal)(subLinks_Backcolorstyle), 1, 0, ".", "")));
-         LinksContainer.PageSize = subLinks_fnc_Recordsperpage( );
-         if ( subLinks_Islastpage != 0 )
-         {
-            LINKS_nFirstRecordOnPage = (long)(subLinks_fnc_Recordcount( )-subLinks_fnc_Recordsperpage( ));
-            GxWebStd.gx_hidden_field( context, sPrefix+"LINKS_nFirstRecordOnPage", StringUtil.LTrim( StringUtil.NToC( (decimal)(LINKS_nFirstRecordOnPage), 15, 0, ".", "")));
-            LinksContainer.AddObjectProperty("LINKS_nFirstRecordOnPage", LINKS_nFirstRecordOnPage);
-         }
+         LinksContainer.PageSize = subLinks_Recordsperpage( );
          gxdyncontrolsrefreshing = true;
          fix_multi_value_controls( ) ;
          gxdyncontrolsrefreshing = false;
@@ -902,35 +894,32 @@ namespace GeneXus.Programs {
       {
       }
 
-      protected int subLinks_fnc_Pagecount( )
+      protected int subLinks_Pagecount( )
       {
          return (int)(-1) ;
       }
 
-      protected int subLinks_fnc_Recordcount( )
+      protected int subLinks_Recordcount( )
       {
          return (int)(-1) ;
       }
 
-      protected int subLinks_fnc_Recordsperpage( )
+      protected int subLinks_Recordsperpage( )
       {
          return (int)(-1) ;
       }
 
-      protected int subLinks_fnc_Currentpage( )
+      protected int subLinks_Currentpage( )
       {
          return (int)(-1) ;
-      }
-
-      protected void before_start_formulas( )
-      {
-         context.Gx_err = 0;
       }
 
       protected void STRUP050( )
       {
          /* Before Start, stand alone formulas. */
-         before_start_formulas( ) ;
+         context.Gx_err = 0;
+         /* Execute Start event if defined. */
+         context.wbGlbDoneStart = 0;
          context.wbGlbDoneStart = 1;
          nDoneStart = 1;
          /* After Start, stand alone formulas. */
@@ -938,11 +927,11 @@ namespace GeneXus.Programs {
          if ( ! GetJustCreated( ) && ( StringUtil.StrCmp(context.GetRequestMethod( ), "POST") == 0 ) )
          {
             /* Read saved SDTs. */
+            /* Read variables values. */
             /* Read saved values. */
-            nRC_GXsfl_8 = (int)(context.localUtil.CToN( cgiGet( sPrefix+"nRC_GXsfl_8"), ",", "."));
+            nRC_GXsfl_8 = (short)(context.localUtil.CToN( cgiGet( sPrefix+"nRC_GXsfl_8"), ",", "."));
             wcpOAV6FormCaption = cgiGet( sPrefix+"wcpOAV6FormCaption");
             wcpOAV7FormPgmName = cgiGet( sPrefix+"wcpOAV7FormPgmName");
-            /* Read variables values. */
             /* Read subfile selected row values. */
             /* Read hidden variables. */
             GXKey = Decrypt64( context.GetCookie( "GX_SESSION_ID"), Crypto.GetServerKey( ));
@@ -1017,9 +1006,9 @@ namespace GeneXus.Programs {
          createObjects();
          initialize();
          AV6FormCaption = (String)getParm(obj,0);
-         AssignAttri(sPrefix, false, "AV6FormCaption", AV6FormCaption);
+         context.httpAjaxContext.ajax_rsp_assign_attri(sPrefix, false, "AV6FormCaption", AV6FormCaption);
          AV7FormPgmName = (String)getParm(obj,1);
-         AssignAttri(sPrefix, false, "AV7FormPgmName", AV7FormPgmName);
+         context.httpAjaxContext.ajax_rsp_assign_attri(sPrefix, false, "AV7FormPgmName", AV7FormPgmName);
       }
 
       public override String getresponse( String sGXDynURL )
@@ -1087,9 +1076,9 @@ namespace GeneXus.Programs {
          else
          {
             AV6FormCaption = (String)getParm(obj,2);
-            AssignAttri(sPrefix, false, "AV6FormCaption", AV6FormCaption);
+            context.httpAjaxContext.ajax_rsp_assign_attri(sPrefix, false, "AV6FormCaption", AV6FormCaption);
             AV7FormPgmName = (String)getParm(obj,3);
-            AssignAttri(sPrefix, false, "AV7FormPgmName", AV7FormPgmName);
+            context.httpAjaxContext.ajax_rsp_assign_attri(sPrefix, false, "AV7FormPgmName", AV7FormPgmName);
          }
          wcpOAV6FormCaption = cgiGet( sPrefix+"wcpOAV6FormCaption");
          wcpOAV7FormPgmName = cgiGet( sPrefix+"wcpOAV7FormPgmName");
@@ -1108,7 +1097,7 @@ namespace GeneXus.Programs {
          if ( StringUtil.Len( sCtrlAV6FormCaption) > 0 )
          {
             AV6FormCaption = cgiGet( sCtrlAV6FormCaption);
-            AssignAttri(sPrefix, false, "AV6FormCaption", AV6FormCaption);
+            context.httpAjaxContext.ajax_rsp_assign_attri(sPrefix, false, "AV6FormCaption", AV6FormCaption);
          }
          else
          {
@@ -1118,7 +1107,7 @@ namespace GeneXus.Programs {
          if ( StringUtil.Len( sCtrlAV7FormPgmName) > 0 )
          {
             AV7FormPgmName = cgiGet( sCtrlAV7FormPgmName);
-            AssignAttri(sPrefix, false, "AV7FormPgmName", AV7FormPgmName);
+            context.httpAjaxContext.ajax_rsp_assign_attri(sPrefix, false, "AV7FormPgmName", AV7FormPgmName);
          }
          else
          {
@@ -1230,7 +1219,7 @@ namespace GeneXus.Programs {
          idxLst = 1;
          while ( idxLst <= Form.Jscriptsrc.Count )
          {
-            context.AddJavascriptSource(StringUtil.RTrim( ((String)Form.Jscriptsrc.Item(idxLst))), "?20206198275527", true, true);
+            context.AddJavascriptSource(StringUtil.RTrim( ((String)Form.Jscriptsrc.Item(idxLst))), "?202061910232390", true, true);
             idxLst = (int)(idxLst+1);
          }
          if ( ! outputEnabled )
@@ -1245,7 +1234,7 @@ namespace GeneXus.Programs {
 
       protected void include_jscripts( )
       {
-         context.AddJavascriptSource("rwdrecentlinks.js", "?20206198275527", false, true);
+         context.AddJavascriptSource("rwdrecentlinks.js", "?202061910232390", false, true);
          /* End function include_jscripts */
       }
 
@@ -1297,15 +1286,7 @@ namespace GeneXus.Programs {
          {
             /* Report style subfile background logic. */
             subLinks_Backstyle = 1;
-            if ( ((int)((nGXsfl_8_idx) % (2))) == 0 )
-            {
-               subLinks_Backcolor = (int)(0x0);
-               if ( StringUtil.StrCmp(subLinks_Class, "") != 0 )
-               {
-                  subLinks_Linesclass = subLinks_Class+"Even";
-               }
-            }
-            else
+            if ( ((int)(((nGXsfl_8_idx-1)/ (decimal)(1)) % (2))) == 0 )
             {
                subLinks_Backcolor = (int)(0xFFFFFF);
                if ( StringUtil.StrCmp(subLinks_Class, "") != 0 )
@@ -1313,11 +1294,29 @@ namespace GeneXus.Programs {
                   subLinks_Linesclass = subLinks_Class+"Odd";
                }
             }
+            else
+            {
+               subLinks_Backcolor = (int)(0x0);
+               if ( StringUtil.StrCmp(subLinks_Class, "") != 0 )
+               {
+                  subLinks_Linesclass = subLinks_Class+"Even";
+               }
+            }
          }
          /* Start of Columns property logic. */
          if ( LinksContainer.GetWrapped() == 1 )
          {
-            context.WriteHtmlText( "<tr"+" class=\""+subLinks_Linesclass+"\" style=\""+""+"\""+" data-gxrow=\""+sGXsfl_8_idx+"\">") ;
+            if ( ( 1 == 0 ) && ( nGXsfl_8_idx == 1 ) )
+            {
+               context.WriteHtmlText( "<tr"+" class=\""+subLinks_Linesclass+"\" style=\""+""+"\""+" data-gxrow=\""+sGXsfl_8_idx+"\">") ;
+            }
+            if ( 1 > 0 )
+            {
+               if ( ( 1 == 1 ) || ( ((int)((nGXsfl_8_idx) % (1))) - 1 == 0 ) )
+               {
+                  context.WriteHtmlText( "<tr"+" class=\""+subLinks_Linesclass+"\" style=\""+""+"\""+" data-gxrow=\""+sGXsfl_8_idx+"\">") ;
+               }
+            }
          }
          /* Div Control */
          LinksRow.AddColumnProperties("div_start", -1, isAjaxCallMode( ), new Object[] {(String)divLinkstable_Internalname+"_"+sGXsfl_8_idx,(short)1,(short)0,(String)"px",(short)0,(String)"px",(String)"RecentLinksTable",(String)"left",(String)"top",(String)"",(String)"",(String)"div"});
@@ -1333,8 +1332,8 @@ namespace GeneXus.Programs {
          send_integrity_lvl_hashes052( ) ;
          /* End of Columns property logic. */
          LinksContainer.AddRow(LinksRow);
-         nGXsfl_8_idx = ((subLinks_Islastpage==1)&&(nGXsfl_8_idx+1>subLinks_fnc_Recordsperpage( )) ? 1 : nGXsfl_8_idx+1);
-         sGXsfl_8_idx = StringUtil.PadL( StringUtil.LTrimStr( (decimal)(nGXsfl_8_idx), 4, 0), 4, "0");
+         nGXsfl_8_idx = (short)(((subLinks_Islastpage==1)&&(nGXsfl_8_idx+1>subLinks_Recordsperpage( )) ? 1 : nGXsfl_8_idx+1));
+         sGXsfl_8_idx = StringUtil.PadL( StringUtil.LTrim( StringUtil.Str( (decimal)(nGXsfl_8_idx), 4, 0)), 4, "0");
          SubsflControlProps_82( ) ;
          /* End function sendrow_82 */
       }
@@ -1421,10 +1420,10 @@ namespace GeneXus.Programs {
          gxfirstwebparm = "";
          gxfirstwebparm_bkp = "";
          sPrefix = "";
+         GXKey = "";
          sDynURL = "";
          FormProcess = "";
          bodyStyle = "";
-         GXKey = "";
          GX_FocusControl = "";
          lblRecenttext_Jsonclick = "";
          LinksContainer = new GXWebGrid( context);
@@ -1456,6 +1455,8 @@ namespace GeneXus.Programs {
       private short nGotPars ;
       private short GxWebError ;
       private short nDynComponent ;
+      private short nRC_GXsfl_8 ;
+      private short nGXsfl_8_idx=1 ;
       private short initialized ;
       private short wbEnd ;
       private short wbStart ;
@@ -1471,8 +1472,6 @@ namespace GeneXus.Programs {
       private short nGXWrapped ;
       private short subLinks_Backstyle ;
       private short LINKS_nEOF ;
-      private int nRC_GXsfl_8 ;
-      private int nGXsfl_8_idx=1 ;
       private int subLinks_Selectedindex ;
       private int subLinks_Selectioncolor ;
       private int subLinks_Hoveringcolor ;
@@ -1492,10 +1491,10 @@ namespace GeneXus.Programs {
       private String sCompPrefix ;
       private String sSFPrefix ;
       private String sGXsfl_8_idx="0001" ;
+      private String GXKey ;
       private String sDynURL ;
       private String FormProcess ;
       private String bodyStyle ;
-      private String GXKey ;
       private String GX_FocusControl ;
       private String divMaintable_Internalname ;
       private String lblRecenttext_Internalname ;

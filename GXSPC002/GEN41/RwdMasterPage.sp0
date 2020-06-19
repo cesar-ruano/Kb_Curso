@@ -1,4 +1,4 @@
-spec_i([ web,4,'Responsive Master Page','RwdMasterPage',0,spa,'16_0_9-140712' ]).
+spec_i([ web,4,'Responsive Master Page','RwdMasterPage',0,spa,'16_0_2-131213' ]).
  
 struct_i(2,1,[],[]).
  
@@ -42,9 +42,9 @@ rule_i(0,datastore(1,'JRN400','QSQJRN')).
 rule_i(0,datastore(1,'CREATE_SAVF','Yes')).
 rule_i(0,datastore(1,'PGMLIB','')).
 rule_i(0,datastore(1,'DTALIB','')).
-rule_i(0,datastore(1,'CC_USER_PASS','Vyãu|Ñèlêo')).
+rule_i(0,datastore(1,'CC_USER_PASS',äãnyv)).
 rule_i(0,datastore(1,'CC_USER_ID',sa)).
-rule_i(0,datastore(1,'CC_SERVER','DESKTOP-URMRLQ4\MSSQLSERVER2016')).
+rule_i(0,datastore(1,'CC_SERVER','DESKTOP-LH23KFE')).
 rule_i(0,datastore(1,'CC_DBNAME','Curso2BD')).
 rule_i(0,datastore(1,'RecycleRWMin','30')).
 rule_i(0,datastore(1,'RecycleRWType','1')).
@@ -57,12 +57,12 @@ rule_i(0,datastore(1,'CS_RPCPGML','')).
 rule_i(0,datastore(1,'JDBC_DATASOURCE','')).
 rule_i(0,datastore(1,'USE_JDBC_DATASOURCE','0')).
 rule_i(0,datastore(1,'DS_DBMS_ADDINFO','')).
-rule_i(0,datastore(1,'USER_PASSWORD','‹Dek]ähOêRo')).
+rule_i(0,datastore(1,'USER_PASSWORD',psnet)).
 rule_i(0,datastore(1,'USER_ID',sa)).
 rule_i(0,datastore(1,'TRUSTED_CONNECTION','No')).
 rule_i(0,datastore(1,'CS_CONNECT','First')).
 rule_i(0,datastore(1,'DBMS_PORT','')).
-rule_i(0,datastore(1,'CS_SERVER','DESKTOP-URMRLQ4\MSSQLSERVER2016')).
+rule_i(0,datastore(1,'CS_SERVER','DESKTOP-LH23KFE')).
 rule_i(0,datastore(1,'CS_DBNAME','Curso2BD')).
 rule_i(0,datastore(1,'CS_FLEDSNAME','')).
 rule_i(0,datastore(1,'CS_DRVNAME','sql server')).
@@ -102,7 +102,6 @@ rule_i(0,prop(idUSE_WEB_DATEPICKER,'UMPV')).
 rule_i(0,prop('WebUX','SMOOTH')).
 rule_i(0,prop('STD_FUNC_OBJECT','Yes')).
 rule_i(0,prop('SPC_WARNINGS_DISABLED','spc0096 spc0107 spc0142')).
-rule_i(0,prop('WebApplication',idDefault)).
 rule_i(0,prop('COMPRESS_HTML','UMPV')).
 rule_i(0,prop('AUTO_REFRESH','VARS_CHANGE')).
 rule_i(0,prop('CACHE_EXPIRES','')).
@@ -166,10 +165,10 @@ b_group_i(2,2,lit,0,2,26).
 b_group_i(2,3,lit,0,27,0).
  
 b_line_i(1,2,1,cmd,1,[ t('',146,1,0),t('Start',3,1,7) ]).
-b_line_i(24,2,2,cmd,1,[ t('',147,24,0) ]).
-b_line_i(26,2,2,cmd,1,[ t('',146,26,0),t('Refresh',3,26,7) ]).
-b_line_i(29,2,3,cmd,1,[ t('',107,29,0),t([ t('Wcrecentlinks',3,1,0),t('Object',3,1,0) ],29,1,0),t(=,10,1,0),t('create(',1,1,0),t(o(13,'RwdRecentLinks'),28,1,0),t(',',7,1,0),t([ t('Form',3,1,0),t('Caption',3,1,0) ],29,1,0),t(',',7,1,0),t([ t('Contentholder',3,1,0),t('Pgmname',3,1,0) ],29,1,0),t(')',4,1,0) ]).
-b_line_i(30,2,3,cmd,1,[ t('',147,30,0) ]).
+b_line_i(24,2,2,cmd,1,[ t('',147,1,0) ]).
+b_line_i(26,2,2,cmd,1,[ t('',146,1,0),t('Refresh',3,26,7) ]).
+b_line_i(29,2,3,cmd,1,[ t('',107,1,0),t([ t('Wcrecentlinks',3,1,0),t('Object',3,1,0) ],29,1,0),t(=,10,1,0),t('create(',1,1,0),t(o(13,'RwdRecentLinks'),28,1,0),t(',',7,1,0),t([ t('Form',3,1,0),t('Caption',3,1,0) ],29,1,0),t(',',7,1,0),t([ t('Contentholder',3,1,0),t('Pgmname',3,1,0) ],29,1,0),t(')',4,1,0) ]).
+b_line_i(30,2,3,cmd,1,[ t('',147,1,0) ]).
 b_line_i(1000,2,3,cmd,0,[ t('',146,0,0),t('Load',3,0,0) ]).
 b_line_i(1001,2,3,cmd,0,[ t('',155,0,0) ]).
 b_line_i(1002,2,3,cmd,0,[ t('',147,0,0) ]).
@@ -448,7 +447,7 @@ lit_i(1,1,window,[ rect(0,0,1000,1000),ctlname('Form') ]).
  
  
 sub_info_i(146,'Start',1,24,[ [],[] ]).
-sub_info_i(146,'Refresh',26,30,[ [ [ t('Form',3),t('Caption',3) ],[ t('Contentholder',3),t('Pgmname',3) ] ],[ [ t('Wcrecentlinks',3),t('Object',3) ] ] ]).
+sub_info_i(146,'Refresh',26,30,[ [ [ t('Contentholder',3),t('Pgmname',3) ],[ t('Form',3),t('Caption',3) ] ],[ [ t('Wcrecentlinks',3),t('Object',3) ] ] ]).
  
 pgm_parm_i(web,5,'RWDRECENTLINKS',[ [ char,100,0,0 ],[ svchar,256,0,0 ] ],[ [ 'FormCaption',in,[] ],[ 'FormPgmName',in,[] ] ]).
  

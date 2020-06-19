@@ -1,0 +1,10 @@
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\tsueldo.runtimeconfig.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\tsueldo.runtimeconfig.dev.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\tsueldo.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\tsueldo.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\tsueldo\obj\Release\netcoreapp2.1\tsueldo.csprojAssemblyReference.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\tsueldo\obj\Release\netcoreapp2.1\tsueldo.csproj.CoreCompileInputs.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\tsueldo\obj\Release\netcoreapp2.1\tsueldo.csproj.CopyComplete
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\tsueldo\obj\Release\netcoreapp2.1\tsueldo.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\tsueldo\obj\Release\netcoreapp2.1\tsueldo.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\tsueldo\obj\Release\netcoreapp2.1\tsueldo.genruntimeconfig.cache

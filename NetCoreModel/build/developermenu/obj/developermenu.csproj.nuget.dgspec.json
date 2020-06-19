@@ -1,34 +1,37 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\developermenu\\developermenu.csproj": {}
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\developermenu\\developermenu.csproj": {}
   },
   "projects": {
-    "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj": {
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj",
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj",
         "projectName": "appmasterpage",
-        "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\obj\\",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
               }
             }
           }
@@ -43,40 +46,17 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp2.1": {
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "Microsoft.AspNetCore.All": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.1.1, )"
             },
-            "Microsoft.Data.SqlClient": {
-              "target": "Package",
-              "version": "[1.0.19269.1, )"
-            },
-            "Microsoft.Extensions.DependencyModel": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "NetTopologySuite": {
-              "target": "Package",
-              "version": "[2.0.0, )"
-            },
-            "NetTopologySuite.Core": {
-              "target": "Package",
-              "version": "[1.15.3, )"
-            },
-            "Sandwych.GeographicLib": {
-              "target": "Package",
-              "version": "[1.49.3, )"
-            },
-            "System.Configuration.ConfigurationManager": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "System.DirectoryServices": {
+            "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[4.7.0, )"
+              "version": "[2.1.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -89,73 +69,77 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\developermenu\\developermenu.csproj": {
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\developermenu\\developermenu.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\developermenu\\developermenu.csproj",
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\developermenu\\developermenu.csproj",
         "projectName": "developermenu",
-        "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\developermenu\\developermenu.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\developermenu\\obj\\",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\developermenu\\developermenu.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\developermenu\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj"
               },
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
               },
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0010\\gx0010.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0010\\gx0010.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0010\\gx0010.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0010\\gx0010.csproj"
               },
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0020\\gx0020.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0020\\gx0020.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0020\\gx0020.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0020\\gx0020.csproj"
               },
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0030\\gx0030.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0030\\gx0030.csproj"
               },
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\ms_empleados\\ms_empleados.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\ms_empleados\\ms_empleados.csproj"
               },
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj"
               },
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj"
               },
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj"
               },
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\templeado\\templeado.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\templeado\\templeado.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj"
               },
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\tpuestos.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\tpuestos.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj"
+              },
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\templeado\\templeado.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\templeado\\templeado.csproj"
+              },
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\tpuestos.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\tpuestos.csproj"
+              },
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\tsueldo\\tsueldo.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\tsueldo\\tsueldo.csproj"
               }
             }
           }
@@ -170,40 +154,17 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp2.1": {
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "Microsoft.AspNetCore.All": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.1.1, )"
             },
-            "Microsoft.Data.SqlClient": {
-              "target": "Package",
-              "version": "[1.0.19269.1, )"
-            },
-            "Microsoft.Extensions.DependencyModel": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "NetTopologySuite": {
-              "target": "Package",
-              "version": "[2.0.0, )"
-            },
-            "NetTopologySuite.Core": {
-              "target": "Package",
-              "version": "[1.15.3, )"
-            },
-            "Sandwych.GeographicLib": {
-              "target": "Package",
-              "version": "[1.49.3, )"
-            },
-            "System.Configuration.ConfigurationManager": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "System.DirectoryServices": {
+            "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[4.7.0, )"
+              "version": "[2.1.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -216,40 +177,35 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj",
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj",
         "projectName": "GeneXus.Programs.Common",
-        "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\obj\\",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp2.1": {
             "projectReferences": {}
           }
         },
@@ -263,40 +219,17 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp2.1": {
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "Microsoft.AspNetCore.All": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.1.1, )"
             },
-            "Microsoft.Data.SqlClient": {
-              "target": "Package",
-              "version": "[1.0.19269.1, )"
-            },
-            "Microsoft.Extensions.DependencyModel": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "NetTopologySuite": {
-              "target": "Package",
-              "version": "[2.0.0, )"
-            },
-            "NetTopologySuite.Core": {
-              "target": "Package",
-              "version": "[1.15.3, )"
-            },
-            "Sandwych.GeographicLib": {
-              "target": "Package",
-              "version": "[1.49.3, )"
-            },
-            "System.Configuration.ConfigurationManager": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "System.DirectoryServices": {
+            "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[4.7.0, )"
+              "version": "[2.1.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -309,43 +242,38 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0010\\gx0010.csproj": {
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0010\\gx0010.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0010\\gx0010.csproj",
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0010\\gx0010.csproj",
         "projectName": "gx0010",
-        "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0010\\gx0010.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0010\\obj\\",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0010\\gx0010.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0010\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
               }
             }
           }
@@ -360,40 +288,17 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp2.1": {
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "Microsoft.AspNetCore.All": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.1.1, )"
             },
-            "Microsoft.Data.SqlClient": {
-              "target": "Package",
-              "version": "[1.0.19269.1, )"
-            },
-            "Microsoft.Extensions.DependencyModel": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "NetTopologySuite": {
-              "target": "Package",
-              "version": "[2.0.0, )"
-            },
-            "NetTopologySuite.Core": {
-              "target": "Package",
-              "version": "[1.15.3, )"
-            },
-            "Sandwych.GeographicLib": {
-              "target": "Package",
-              "version": "[1.49.3, )"
-            },
-            "System.Configuration.ConfigurationManager": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "System.DirectoryServices": {
+            "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[4.7.0, )"
+              "version": "[2.1.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -406,43 +311,38 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0020\\gx0020.csproj": {
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0020\\gx0020.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0020\\gx0020.csproj",
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0020\\gx0020.csproj",
         "projectName": "gx0020",
-        "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0020\\gx0020.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0020\\obj\\",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0020\\gx0020.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0020\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
               }
             }
           }
@@ -457,40 +357,17 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp2.1": {
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "Microsoft.AspNetCore.All": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.1.1, )"
             },
-            "Microsoft.Data.SqlClient": {
-              "target": "Package",
-              "version": "[1.0.19269.1, )"
-            },
-            "Microsoft.Extensions.DependencyModel": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "NetTopologySuite": {
-              "target": "Package",
-              "version": "[2.0.0, )"
-            },
-            "NetTopologySuite.Core": {
-              "target": "Package",
-              "version": "[1.15.3, )"
-            },
-            "Sandwych.GeographicLib": {
-              "target": "Package",
-              "version": "[1.49.3, )"
-            },
-            "System.Configuration.ConfigurationManager": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "System.DirectoryServices": {
+            "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[4.7.0, )"
+              "version": "[2.1.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -503,43 +380,176 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj": {
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0030\\gx0030.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj",
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0030\\gx0030.csproj",
+        "projectName": "gx0030",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0030\\gx0030.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\gx0030\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU1603"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.All": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\ms_empleados\\ms_empleados.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\ms_empleados\\ms_empleados.csproj",
+        "projectName": "ms_empleados",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\ms_empleados\\ms_empleados.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\ms_empleados\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU1603"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.All": {
+              "target": "Package",
+              "version": "[2.1.1, )"
+            },
+            "Microsoft.NETCore.App": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj",
         "projectName": "promptmasterpage",
-        "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\obj\\",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
               }
             }
           }
@@ -554,40 +564,17 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp2.1": {
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "Microsoft.AspNetCore.All": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.1.1, )"
             },
-            "Microsoft.Data.SqlClient": {
-              "target": "Package",
-              "version": "[1.0.19269.1, )"
-            },
-            "Microsoft.Extensions.DependencyModel": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "NetTopologySuite": {
-              "target": "Package",
-              "version": "[2.0.0, )"
-            },
-            "NetTopologySuite.Core": {
-              "target": "Package",
-              "version": "[1.15.3, )"
-            },
-            "Sandwych.GeographicLib": {
-              "target": "Package",
-              "version": "[1.49.3, )"
-            },
-            "System.Configuration.ConfigurationManager": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "System.DirectoryServices": {
+            "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[4.7.0, )"
+              "version": "[2.1.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -600,43 +587,38 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj": {
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj",
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj",
         "projectName": "recentlinks",
-        "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\obj\\",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
               }
             }
           }
@@ -651,40 +633,17 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp2.1": {
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "Microsoft.AspNetCore.All": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.1.1, )"
             },
-            "Microsoft.Data.SqlClient": {
-              "target": "Package",
-              "version": "[1.0.19269.1, )"
-            },
-            "Microsoft.Extensions.DependencyModel": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "NetTopologySuite": {
-              "target": "Package",
-              "version": "[2.0.0, )"
-            },
-            "NetTopologySuite.Core": {
-              "target": "Package",
-              "version": "[1.15.3, )"
-            },
-            "Sandwych.GeographicLib": {
-              "target": "Package",
-              "version": "[1.49.3, )"
-            },
-            "System.Configuration.ConfigurationManager": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "System.DirectoryServices": {
+            "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[4.7.0, )"
+              "version": "[2.1.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -697,43 +656,38 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj": {
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj",
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj",
         "projectName": "rwdmasterpage",
-        "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\obj\\",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
               }
             }
           }
@@ -748,40 +702,17 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp2.1": {
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "Microsoft.AspNetCore.All": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.1.1, )"
             },
-            "Microsoft.Data.SqlClient": {
-              "target": "Package",
-              "version": "[1.0.19269.1, )"
-            },
-            "Microsoft.Extensions.DependencyModel": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "NetTopologySuite": {
-              "target": "Package",
-              "version": "[2.0.0, )"
-            },
-            "NetTopologySuite.Core": {
-              "target": "Package",
-              "version": "[1.15.3, )"
-            },
-            "Sandwych.GeographicLib": {
-              "target": "Package",
-              "version": "[1.49.3, )"
-            },
-            "System.Configuration.ConfigurationManager": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "System.DirectoryServices": {
+            "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[4.7.0, )"
+              "version": "[2.1.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -794,43 +725,38 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj": {
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj",
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj",
         "projectName": "rwdpromptmasterpage",
-        "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\obj\\",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
               }
             }
           }
@@ -845,40 +771,17 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp2.1": {
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "Microsoft.AspNetCore.All": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.1.1, )"
             },
-            "Microsoft.Data.SqlClient": {
-              "target": "Package",
-              "version": "[1.0.19269.1, )"
-            },
-            "Microsoft.Extensions.DependencyModel": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "NetTopologySuite": {
-              "target": "Package",
-              "version": "[2.0.0, )"
-            },
-            "NetTopologySuite.Core": {
-              "target": "Package",
-              "version": "[1.15.3, )"
-            },
-            "Sandwych.GeographicLib": {
-              "target": "Package",
-              "version": "[1.49.3, )"
-            },
-            "System.Configuration.ConfigurationManager": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "System.DirectoryServices": {
+            "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[4.7.0, )"
+              "version": "[2.1.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -891,43 +794,38 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj": {
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj",
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj",
         "projectName": "rwdrecentlinks",
-        "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\obj\\",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
               }
             }
           }
@@ -942,40 +840,17 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp2.1": {
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "Microsoft.AspNetCore.All": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.1.1, )"
             },
-            "Microsoft.Data.SqlClient": {
-              "target": "Package",
-              "version": "[1.0.19269.1, )"
-            },
-            "Microsoft.Extensions.DependencyModel": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "NetTopologySuite": {
-              "target": "Package",
-              "version": "[2.0.0, )"
-            },
-            "NetTopologySuite.Core": {
-              "target": "Package",
-              "version": "[1.15.3, )"
-            },
-            "Sandwych.GeographicLib": {
-              "target": "Package",
-              "version": "[1.49.3, )"
-            },
-            "System.Configuration.ConfigurationManager": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "System.DirectoryServices": {
+            "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[4.7.0, )"
+              "version": "[2.1.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -988,43 +863,38 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\templeado\\templeado.csproj": {
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\templeado\\templeado.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\templeado\\templeado.csproj",
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\templeado\\templeado.csproj",
         "projectName": "templeado",
-        "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\templeado\\templeado.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\templeado\\obj\\",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\templeado\\templeado.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\templeado\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
               }
             }
           }
@@ -1039,40 +909,17 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp2.1": {
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "Microsoft.AspNetCore.All": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.1.1, )"
             },
-            "Microsoft.Data.SqlClient": {
-              "target": "Package",
-              "version": "[1.0.19269.1, )"
-            },
-            "Microsoft.Extensions.DependencyModel": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "NetTopologySuite": {
-              "target": "Package",
-              "version": "[2.0.0, )"
-            },
-            "NetTopologySuite.Core": {
-              "target": "Package",
-              "version": "[1.15.3, )"
-            },
-            "Sandwych.GeographicLib": {
-              "target": "Package",
-              "version": "[1.49.3, )"
-            },
-            "System.Configuration.ConfigurationManager": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "System.DirectoryServices": {
+            "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[4.7.0, )"
+              "version": "[2.1.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -1085,43 +932,38 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\tpuestos.csproj": {
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\tpuestos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\tpuestos.csproj",
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\tpuestos.csproj",
         "projectName": "tpuestos",
-        "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\tpuestos.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\obj\\",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\tpuestos.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.1"
+          "netcoreapp2.1"
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.1": {
+          "netcoreapp2.1": {
             "projectReferences": {
-              "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
-                "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
               }
             }
           }
@@ -1136,40 +978,17 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.1": {
+        "netcoreapp2.1": {
           "dependencies": {
-            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+            "Microsoft.AspNetCore.All": {
               "target": "Package",
-              "version": "[3.0.0, )"
+              "version": "[2.1.1, )"
             },
-            "Microsoft.Data.SqlClient": {
-              "target": "Package",
-              "version": "[1.0.19269.1, )"
-            },
-            "Microsoft.Extensions.DependencyModel": {
-              "target": "Package",
-              "version": "[3.0.0, )"
-            },
-            "NetTopologySuite": {
-              "target": "Package",
-              "version": "[2.0.0, )"
-            },
-            "NetTopologySuite.Core": {
-              "target": "Package",
-              "version": "[1.15.3, )"
-            },
-            "Sandwych.GeographicLib": {
-              "target": "Package",
-              "version": "[1.49.3, )"
-            },
-            "System.Configuration.ConfigurationManager": {
-              "target": "Package",
-              "version": "[4.5.0, )"
-            },
-            "System.DirectoryServices": {
+            "Microsoft.NETCore.App": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[4.7.0, )"
+              "version": "[2.1.0, )",
+              "autoReferenced": true
             }
           },
           "imports": [
@@ -1182,14 +1001,75 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\tsueldo\\tsueldo.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\tsueldo\\tsueldo.csproj",
+        "projectName": "tsueldo",
+        "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\tsueldo\\tsueldo.csproj",
+        "packagesPath": "C:\\Users\\sauln\\.nuget\\packages\\",
+        "outputPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\tsueldo\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\sauln\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp2.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp2.1": {
+            "projectReferences": {
+              "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+                "projectPath": "C:\\proyectos\\curso\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "noWarn": [
+            "NU1603"
+          ],
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp2.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.All": {
+              "target": "Package",
+              "version": "[2.1.1, )"
             },
             "Microsoft.NETCore.App": {
-              "privateAssets": "all"
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.1.0, )",
+              "autoReferenced": true
             }
           },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
         }
       }

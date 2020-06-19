@@ -1,8 +1,8 @@
 /*
                File: SoapParm
         Description: No description for object
-             Author: GeneXus .NET Core Generator version 16_0_9-140712
-       Generated on: 6/19/2020 8:26:54.35
+             Author: GeneXus .NET Core Generator version 16_0_2-131213
+       Generated on: 6/19/2020 10:23:35.50
        Program type: Callable routine
           Main DBMS: SQL Server
 */
@@ -13,11 +13,6 @@ using GeneXus.Resources;
 using GeneXus.Application;
 using GeneXus.Metadata;
 using GeneXus.Cryptography;
-using GeneXus.Reorg;
-using System.Threading;
-using GeneXus.Programs;
-using System.Data;
-using GeneXus.Data;
 using GeneXus.Data.ADO;
 using GeneXus.Data.NTier;
 using GeneXus.Data.NTier.ADO;
@@ -26,6 +21,7 @@ using GeneXus.Search;
 using GeneXus.Encryption;
 using GeneXus.Http.Client;
 using System.Xml.Serialization;
+using System.Runtime.Serialization;
 namespace GeneXus.Programs {
    public class SoapParm
    {
@@ -221,7 +217,6 @@ namespace GeneXus.Programs {
                {
                   oLocation.Host = oGroupLocation.Host;
                   oLocation.Port = oGroupLocation.Port;
-                  oLocation.Wsdlurl = oGroupLocation.Wsdlurl;
                   oLocation.BaseUrl = oGroupLocation.BaseUrl;
                   oLocation.Secure = oGroupLocation.Secure;
                   oLocation.ProxyServerHost = oGroupLocation.ProxyServerHost;
@@ -339,10 +334,6 @@ namespace GeneXus.Programs {
             if ( oLocation.ProxyServerPort != -1 )
             {
                oClient.ProxyServerPort = (short)(oLocation.ProxyServerPort);
-            }
-            if ( StringUtil.StrCmp(oLocation.Wsdlurl, "") != 0 )
-            {
-               oClient.WSDLURL = oLocation.Wsdlurl;
             }
             if ( StringUtil.StrCmp(oLocation.BaseUrl, "") != 0 )
             {

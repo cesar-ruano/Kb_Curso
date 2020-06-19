@@ -1,0 +1,10 @@
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\rwdmasterpage.runtimeconfig.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\rwdmasterpage.runtimeconfig.dev.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\rwdmasterpage.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\rwdmasterpage.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\rwdmasterpage\obj\Release\netcoreapp2.1\rwdmasterpage.csprojAssemblyReference.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\rwdmasterpage\obj\Release\netcoreapp2.1\rwdmasterpage.csproj.CoreCompileInputs.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\rwdmasterpage\obj\Release\netcoreapp2.1\rwdmasterpage.csproj.CopyComplete
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\rwdmasterpage\obj\Release\netcoreapp2.1\rwdmasterpage.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\rwdmasterpage\obj\Release\netcoreapp2.1\rwdmasterpage.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\rwdmasterpage\obj\Release\netcoreapp2.1\rwdmasterpage.genruntimeconfig.cache

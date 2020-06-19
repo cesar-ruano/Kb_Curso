@@ -1,0 +1,33 @@
+<Objects>
+  <Object>
+    <Type>1db606f2-af09-4cf9-a3b5-b481519d28f6</Type>
+    <Id>1</Id>
+    <Part>264be5fb-1b28-4b25-a598-6ca900dd059f</Part>
+  </Object>
+  <Object>
+    <Type>1db606f2-af09-4cf9-a3b5-b481519d28f6</Type>
+    <Id>3</Id>
+    <Part>264be5fb-1b28-4b25-a598-6ca900dd059f</Part>
+  </Object>
+  <Object>
+    <Type>1db606f2-af09-4cf9-a3b5-b481519d28f6</Type>
+    <Id>2</Id>
+    <Part>264be5fb-1b28-4b25-a598-6ca900dd059f</Part>
+  </Object>
+  <Object>
+    <Type>447527b5-9210-4523-898b-5dccb17be60a</Type>
+    <Id>47</Id>
+    <Part>5c2aa9da-8fc4-4b6b-ae02-8db4fa48976a</Part>
+  </Object>
+  <Object>
+    <Type>84a12160-f59b-4ad7-a683-ea4481ac23e9</Type>
+    <Id>11</Id>
+    <Part>528d1c06-a9c2-420d-bd35-21dca83f12ff</Part>
+  </Object>
+  <Object>
+    <Type>857ca50e-7905-0000-0007-c5d9ff2975ec</Type>
+    <Id>2</Id>
+    <Part>00000000-0000-0000-0002-000000000004</Part>
+  </Object>
+  <Recent />
+</Objects>

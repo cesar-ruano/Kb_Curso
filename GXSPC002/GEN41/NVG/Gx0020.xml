@@ -1,6 +1,6 @@
 
 <ObjectSpec>
-<SpecVersion>16_0_9-140712</SpecVersion>
+<SpecVersion>16_0_2-131213</SpecVersion>
 <Object>
 <ObjClsGuid>c9584656-94b6-4ccd-890f-332d11fc2c25</ObjClsGuid>
 <ObjCls>13</ObjCls>
@@ -31,6 +31,8 @@
 <EventName>Lblpuestoidfilter.Click</EventName></Event>
 <Event>
 <EventName>Lblpuestodscfilter.Click</EventName></Event>
+<Event>
+<EventName>Lblsueldoidfilter.Click</EventName></Event>
 <Event>
 <EventName>Load</EventName>
 <LoadMethod>Auto</LoadMethod>
@@ -88,6 +90,27 @@
 <Variable>
 <VarId>Cpuestodsc</VarId>
 <VarName>&amp;cPuestoDsc</VarName></Variable>
+<Token>.</Token>
+<Token>isempty(</Token>
+<Token>)</Token></Condition></ConditionalConstraint>
+<ConditionalConstraint>
+<Constraint>
+<Attribute>
+<AttriId>6</AttriId>
+<AttriName>SueldoId</AttriName>
+<Description>Sueldo Id</Description></Attribute>
+<Sp></Sp>
+<Token>&gt;=</Token>
+<Sp></Sp>
+<Variable>
+<VarId>Csueldoid</VarId>
+<VarName>&amp;cSueldoId</VarName></Variable></Constraint>
+<Condition>
+<Token>not</Token>
+<Sp></Sp>
+<Variable>
+<VarId>Csueldoid</VarId>
+<VarName>&amp;cSueldoId</VarName></Variable>
 <Token>.</Token>
 <Token>isempty(</Token>
 <Token>)</Token></Condition></ConditionalConstraint></NonOptimizedWhere>

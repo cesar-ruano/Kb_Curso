@@ -3,6 +3,9 @@ current_obj_i(2,trn,1).
 current_guid('683e0a71-fae7-4711-9cf4-e079239e7368').
  
  
+called_tree_i(0,1,13,4).
+called_tree_i(0,1,13,7).
+called_tree_i(0,1,13,8).
  
  
  

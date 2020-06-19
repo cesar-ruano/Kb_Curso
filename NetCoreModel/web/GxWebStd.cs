@@ -1,8 +1,8 @@
 /*
                File: GxWebStd
         Description: GeneXus Standard Web Functions
-             Author: GeneXus .NET Core Generator version 16_0_9-140712
-       Generated on: 6/19/2020 8:26:53.83
+             Author: GeneXus .NET Core Generator version 16_0_2-131213
+       Generated on: 6/19/2020 10:23:23.29
        Program type: Callable routine
           Main DBMS: SQL Server
 */
@@ -77,7 +77,7 @@ namespace GeneXus.Programs {
                                                String sDomainType ,
                                                String sCallerPgm )
       {
-         gx_single_line_edit( context, sCtrlName, sValue, sFormatedValue, sTags, sEventName, sLinkURL, sLinkTarget, sTooltipText, sPlaceholder, sUserOnClickCode, nJScriptCode, sClassString, sStyleString, sROClassString, sColumnClassString, sColumnHeaderClassString, nVisible, nEnabled, nRTEnabled, sType, sStep, nWidth, nWidthUnit, nHeight, nHeightUnit, nLength, nIsPassword, nFormat, nParentId, bHasTheme, nAutoComplete, nAutoCorrection, bSendHidden, sDomainType, "", false, "", sCallerPgm) ;
+         gx_single_line_edit( context, sCtrlName, sValue, sFormatedValue, sTags, sEventName, sLinkURL, sLinkTarget, sTooltipText, sPlaceholder, sUserOnClickCode, nJScriptCode, sClassString, sStyleString, sROClassString, sColumnClassString, sColumnHeaderClassString, nVisible, nEnabled, nRTEnabled, sType, sStep, nWidth, nWidthUnit, nHeight, nHeightUnit, nLength, nIsPassword, nFormat, nParentId, bHasTheme, nAutoComplete, nAutoCorrection, bSendHidden, sDomainType, "", false, sCallerPgm) ;
       }
 
       static public void gx_single_line_edit( IGxContext context ,
@@ -117,7 +117,6 @@ namespace GeneXus.Programs {
                                               String sDomainType ,
                                               String sAlign ,
                                               bool bIsTextEdit ,
-                                              String rtPicture ,
                                               String sCallerPgm )
       {
          String sOStyle ;
@@ -146,12 +145,12 @@ namespace GeneXus.Programs {
             }
             else
             {
-               sStyleString = sStyleString + ";width: " + StringUtil.LTrimStr( (decimal)(nWidth), 10, 0) + nWidthUnit + ";";
+               sStyleString = sStyleString + ";width: " + StringUtil.LTrim( StringUtil.Str( (decimal)(nWidth), 10, 0)+nWidthUnit) + ";";
             }
          }
          if ( ( nHeight > 0 ) && ( StringUtil.StrCmp(nHeightUnit, "row") != 0 ) )
          {
-            sStyleString = sStyleString + ";height: " + StringUtil.LTrimStr( (decimal)(nHeight), 10, 0) + nHeightUnit + ";";
+            sStyleString = sStyleString + ";height: " + StringUtil.LTrim( StringUtil.Str( (decimal)(nHeight), 10, 0)+nHeightUnit) + ";";
          }
          sOStyle = sStyleString;
          sStyleString = sStyleString + ((nVisible==0)||((nEnabled==0)) ? ";display:none;" : "");
@@ -215,10 +214,6 @@ namespace GeneXus.Programs {
                context.SendWebValue( StringUtil.Trim( sPlaceholder)) ;
                context.WriteHtmlText( "\"") ;
             }
-            if ( StringUtil.Len( rtPicture) > 0 )
-            {
-               context.WriteHtmlText( " data-gx-rt-picture=\""+rtPicture+"\" ") ;
-            }
             context.WriteHtmlText( " spellcheck=") ;
             if ( nAutoCorrection == 0 )
             {
@@ -244,6 +239,10 @@ namespace GeneXus.Programs {
                GxWebStd.StyleAttribute( context, sStyleString);
             }
             context.WriteHtmlText( sTags) ;
+            if ( nAutoComplete == 0 )
+            {
+               GxWebStd.gx_ctrl_attribute( context, sCtrlName, "autocomplete", "off", false, true);
+            }
             context.WriteHtmlText( GXUtil.HtmlEndTag( HTMLElement.INPUT)) ;
          }
          if ( nEnabled == 0 )
@@ -371,7 +370,7 @@ namespace GeneXus.Programs {
             }
             if ( ! String.IsNullOrEmpty(StringUtil.RTrim( sClassString)) )
             {
-               context.WriteHtmlText( " class=\"") ;
+               context.WriteHtmlText( "class=\"") ;
                context.WriteHtmlText( sClassString) ;
                context.WriteHtmlText( "\"") ;
             }
@@ -469,19 +468,19 @@ namespace GeneXus.Programs {
          if ( ! (0==nWidth) && ( ( nAutoresize == 0 ) ) )
          {
             context.WriteHtmlText( " width:") ;
-            context.WriteHtmlText( StringUtil.LTrimStr( (decimal)(nWidth), 10, 0)) ;
+            context.WriteHtmlText( StringUtil.LTrim( StringUtil.Str( (decimal)(nWidth), 10, 0))) ;
             context.WriteHtmlText( nWidthUnit+";") ;
          }
          if ( ! (0==nHeight) && ( ( nAutoresize == 0 ) ) )
          {
             context.WriteHtmlText( " height:") ;
-            context.WriteHtmlText( StringUtil.LTrimStr( (decimal)(nHeight), 10, 0)) ;
+            context.WriteHtmlText( StringUtil.LTrim( StringUtil.Str( (decimal)(nHeight), 10, 0))) ;
             context.WriteHtmlText( nHeightUnit+";") ;
          }
          context.WriteHtmlText( "margin:") ;
-         context.WriteHtmlText( StringUtil.LTrimStr( (decimal)(nVerticalSpace), 10, 0)) ;
+         context.WriteHtmlText( StringUtil.LTrim( StringUtil.Str( (decimal)(nVerticalSpace), 10, 0))) ;
          context.WriteHtmlText( "px ") ;
-         context.WriteHtmlText( StringUtil.LTrimStr( (decimal)(nHorizontalSpace), 10, 0)) ;
+         context.WriteHtmlText( StringUtil.LTrim( StringUtil.Str( (decimal)(nHorizontalSpace), 10, 0))) ;
          context.WriteHtmlText( "px;\"") ;
          if ( ! String.IsNullOrEmpty(StringUtil.RTrim( sTooltipText)) )
          {
@@ -522,13 +521,13 @@ namespace GeneXus.Programs {
             if ( ! (0==nWidth) && ( ( nAutoresize == 0 ) ) )
             {
                context.WriteHtmlText( " width:") ;
-               context.WriteHtmlText( StringUtil.LTrimStr( (decimal)(nWidth), 10, 0)) ;
+               context.WriteHtmlText( StringUtil.LTrim( StringUtil.Str( (decimal)(nWidth), 10, 0))) ;
                context.WriteHtmlText( nWidthUnit+";") ;
             }
             if ( ! (0==nHeight) && ( ( nAutoresize == 0 ) ) )
             {
                context.WriteHtmlText( " height:") ;
-               context.WriteHtmlText( StringUtil.LTrimStr( (decimal)(nHeight), 10, 0)) ;
+               context.WriteHtmlText( StringUtil.LTrim( StringUtil.Str( (decimal)(nHeight), 10, 0))) ;
                context.WriteHtmlText( nHeightUnit+";") ;
             }
             context.SendWebValue( CSSHelper.Prettify( sStyleString)) ;
@@ -608,7 +607,7 @@ namespace GeneXus.Programs {
             }
             if ( ! (0==nWidth) )
             {
-               sStyleString = sStyleString + " width:" + StringUtil.LTrimStr( (decimal)(nWidth), 10, 0) + nWidthUnit + ";";
+               sStyleString = sStyleString + " width:" + StringUtil.LTrim( StringUtil.Str( (decimal)(nWidth), 10, 0)) + nWidthUnit + ";";
             }
             GxWebStd.StyleAttribute( context, sStyleString);
             context.WriteHtmlText( " value=\"") ;
@@ -772,9 +771,10 @@ namespace GeneXus.Programs {
             sEventJsCode = "";
          }
          sEventJsCode = sJsCode + sEventJsCode;
-         GxWebStd.gx_on_js_event( context, nJScriptCode, sEventJsCode, sUserOnClickCode);
+         GxWebStd.gx_on_js_event( context, "onclick", sEventJsCode);
          context.WriteHtmlText( " ") ;
          context.WriteHtmlText( sTags) ;
+         GxWebStd.gx_ctrl_attribute( context, sCtrlName, "data-jsevent", sUserOnClickCode, false, false);
          context.WriteHtmlText( GXUtil.HtmlEndTag( HTMLElement.INPUT)) ;
          if ( StringUtil.StrCmp(sBorderStyle, "rounded") == 0 )
          {
@@ -783,48 +783,24 @@ namespace GeneXus.Programs {
       }
 
       static public void gx_on_js_event( IGxContext context ,
-                                         int nJScriptCode ,
-                                         String sGXOnClickCode ,
-                                         String sUserOnClickCode )
+                                         String sEventName ,
+                                         String sEventJsCode )
       {
-         if ( ! String.IsNullOrEmpty(StringUtil.RTrim( sUserOnClickCode)) )
+         context.WriteHtmlText( " ") ;
+         context.SendWebValue( sEventName) ;
+         context.WriteHtmlText( "=\"if( ") ;
+         if ( ! String.IsNullOrEmpty(StringUtil.RTrim( sEventJsCode)) )
          {
-            if ( ! (0==nJScriptCode) )
-            {
-               context.WriteHtmlText( " data-gx-evt=\"") ;
-               context.WriteHtmlText( StringUtil.Trim( StringUtil.Str( (decimal)(nJScriptCode), 10, 0))) ;
-               context.WriteHtmlText( "\"") ;
-               context.WriteHtmlText( " data-gx-evt-condition=\"") ;
-               context.WriteHtmlText( sUserOnClickCode) ;
-               context.WriteHtmlText( "\"") ;
-            }
-            else
-            {
-               context.WriteHtmlText( " data-gx-evt=\"") ;
-               context.WriteHtmlText( StringUtil.Trim( StringUtil.Str( (decimal)(nJScriptCode), 10, 0))) ;
-               context.WriteHtmlText( "\"") ;
-            }
-            if ( ( nJScriptCode == 4 ) || ( nJScriptCode == 3 ) )
-            {
-               context.WriteHtmlText( " data-gx-evt-code=\"") ;
-               context.WriteHtmlText( sGXOnClickCode) ;
-               context.WriteHtmlText( "\"") ;
-            }
+            context.WriteHtmlText( "gx.evt.jsEvent(this)") ;
+            context.WriteHtmlText( ") {") ;
+            context.WriteHtmlText( sEventJsCode) ;
+            context.WriteHtmlText( "} else return false;\"") ;
          }
          else
          {
-            if ( ! (0==nJScriptCode) )
-            {
-               context.WriteHtmlText( " data-gx-evt=\"") ;
-               context.WriteHtmlText( StringUtil.Trim( StringUtil.Str( (decimal)(nJScriptCode), 10, 0))) ;
-               context.WriteHtmlText( "\"") ;
-               if ( ( nJScriptCode == 4 ) || ( nJScriptCode == 3 ) )
-               {
-                  context.WriteHtmlText( " data-gx-evt-code=\"") ;
-                  context.WriteHtmlText( sGXOnClickCode) ;
-                  context.WriteHtmlText( "\"") ;
-               }
-            }
+            context.WriteHtmlText( "!(") ;
+            context.WriteHtmlText( "gx.evt.jsEvent(this)") ;
+            context.WriteHtmlText( ")) return false;\"") ;
          }
       }
 
@@ -977,11 +953,11 @@ namespace GeneXus.Programs {
          idxLst = 1;
          if ( nWidth > 0 )
          {
-            sStyleString = sStyleString + ";width: " + StringUtil.LTrimStr( (decimal)(nWidth), 10, 0) + nWidthUnit;
+            sStyleString = sStyleString + ";width: " + StringUtil.LTrim( StringUtil.Str( (decimal)(nWidth), 10, 0)+nWidthUnit);
          }
          if ( nHeight > 0 )
          {
-            sStyleString = sStyleString + ";height: " + StringUtil.LTrimStr( (decimal)(nHeight), 10, 0) + nHeightUnit;
+            sStyleString = sStyleString + ";height: " + StringUtil.LTrim( StringUtil.Str( (decimal)(nHeight), 10, 0)+nHeightUnit);
          }
          sOStyle = sStyleString + " ;overflow:hidden;";
          sStyleString = sStyleString + ((nVisible==0)||(nEnabled==0) ? ";display:none;" : "");
@@ -1191,11 +1167,11 @@ namespace GeneXus.Programs {
          idxLst = 1;
          if ( nWidth > 0 )
          {
-            sStyleString = sStyleString + ";width: " + StringUtil.LTrimStr( (decimal)(nWidth), 10, 0) + nWidthUnit;
+            sStyleString = sStyleString + ";width: " + StringUtil.LTrim( StringUtil.Str( (decimal)(nWidth), 10, 0)+nWidthUnit);
          }
          if ( nHeight > 0 )
          {
-            sStyleString = sStyleString + ";height: " + StringUtil.LTrimStr( (decimal)(nHeight), 10, 0) + nHeightUnit;
+            sStyleString = sStyleString + ";height: " + StringUtil.LTrim( StringUtil.Str( (decimal)(nHeight), 10, 0)+nHeightUnit);
          }
          sOStyle = sStyleString + " ;overflow:hidden;";
          sStyleString = sStyleString + ((nVisible==0)||(nEnabled==0) ? ";display:none;" : "");
@@ -1733,13 +1709,13 @@ namespace GeneXus.Programs {
          if ( ! (0==nVerticalSpace) )
          {
             context.WriteHtmlText( " vspace=\"") ;
-            context.WriteHtmlText( StringUtil.LTrimStr( (decimal)(nVerticalSpace), 10, 0)) ;
+            context.WriteHtmlText( StringUtil.LTrim( StringUtil.Str( (decimal)(nVerticalSpace), 10, 0))) ;
             context.WriteHtmlText( "\"") ;
          }
          if ( ! (0==nHorizontalSpace) )
          {
             context.WriteHtmlText( " hspace=\"") ;
-            context.WriteHtmlText( StringUtil.LTrimStr( (decimal)(nHorizontalSpace), 10, 0)) ;
+            context.WriteHtmlText( StringUtil.LTrim( StringUtil.Str( (decimal)(nHorizontalSpace), 10, 0))) ;
             context.WriteHtmlText( "\"") ;
          }
          if ( ! String.IsNullOrEmpty(StringUtil.RTrim( sAlign)) )
@@ -1763,11 +1739,11 @@ namespace GeneXus.Programs {
          }
          if ( nWidth > 0 )
          {
-            sStyleString = sStyleString + ";width: " + StringUtil.LTrimStr( (decimal)(nWidth), 10, 0) + nWidthUnit;
+            sStyleString = sStyleString + ";width: " + StringUtil.LTrim( StringUtil.Str( (decimal)(nWidth), 10, 0)) + nWidthUnit;
          }
          if ( nHeight > 0 )
          {
-            sStyleString = sStyleString + ";height: " + StringUtil.LTrimStr( (decimal)(nHeight), 10, 0) + nHeightUnit;
+            sStyleString = sStyleString + ";height: " + StringUtil.LTrim( StringUtil.Str( (decimal)(nHeight), 10, 0)) + nHeightUnit;
          }
          GxWebStd.ClassAttribute( context, sClassString);
          GxWebStd.StyleAttribute( context, sStyleString);
@@ -1789,20 +1765,20 @@ namespace GeneXus.Programs {
                                                      String sInternalName ,
                                                      int nVisible ,
                                                      int nWidth ,
-                                                     String sStyleStringParm )
+                                                     String sStyleString )
       {
          context.WriteHtmlText( "<div class=\"gx-multimedia-upload\"") ;
          context.WriteHtmlText( " id =\"") ;
          context.SendWebValue( sInternalName) ;
          context.WriteHtmlText( "_ct\"") ;
-         String sStyleString = sStyleStringParm ;
+         sStyleString = "";
          if ( nVisible == 0 )
          {
             sStyleString = "display:none;";
          }
          if ( nWidth > 0 )
          {
-            sStyleString = sStyleString + " width:" + StringUtil.LTrimStr( (decimal)(nWidth), 10, 0) + ";";
+            sStyleString = sStyleString + " width:" + StringUtil.LTrim( StringUtil.Str( (decimal)(nWidth), 10, 0)) + ";";
          }
          GxWebStd.StyleAttribute( context, sStyleString);
          context.WriteHtmlText( ">") ;
@@ -1860,7 +1836,7 @@ namespace GeneXus.Programs {
          {
             sURL = sMultimediaURL;
          }
-         GxWebStd.gx_single_line_edit( context, sInternalName+"_GXI", sURL, sURL, sInputTags, sEventName, "", "", sTooltipText, "", sUserOnClickCode, 0, "field "+sClassString, sStyleString, "", "", "", 1, 1, 1, "text", "", nWidth, nWidthUnit, nHeight, nHeightUnit, 254, 0, 2, 0, 1, 1, 0, true, "", sAlign, false, "", sCallerPgm);
+         GxWebStd.gx_single_line_edit( context, sInternalName+"_GXI", sURL, sURL, sInputTags, sEventName, "", "", sTooltipText, "", sUserOnClickCode, 0, "field "+sClassString, sStyleString, "", "", "", 1, 1, 1, "text", "", nWidth, nWidthUnit, nHeight, nHeightUnit, 254, 0, 2, 0, 1, 1, 0, true, "", sAlign, false, sCallerPgm);
          context.WriteHtmlText( "<input type=\"file\" class=\"field ") ;
          context.SendWebValue( sClassString) ;
          context.WriteHtmlText( "\"") ;
@@ -2365,8 +2341,7 @@ namespace GeneXus.Programs {
                                            String sLabelCaption ,
                                            String sLabelClass ,
                                            int nLabelPosition ,
-                                           bool bDataAttSupported ,
-                                           String sExtraStyle )
+                                           bool bDataAttSupported )
       {
          if ( String.IsNullOrEmpty(StringUtil.RTrim( sReferencedControl)) )
          {
@@ -2393,10 +2368,6 @@ namespace GeneXus.Programs {
          if ( ( nLabelPosition == 0 ) && bDataAttSupported )
          {
             context.WriteHtmlTextNl( " data-gx-sr-only ") ;
-         }
-         if ( ! String.IsNullOrEmpty(StringUtil.RTrim( sExtraStyle)) )
-         {
-            GxWebStd.StyleAttribute( context, CSSHelper.Prettify( sExtraStyle));
          }
          context.WriteHtmlText( ">") ;
          context.WriteHtmlText( sLabelCaption) ;
@@ -2438,8 +2409,8 @@ namespace GeneXus.Programs {
                   {
                      context.WriteHtmlText( GXUtil.HtmlDocType( )) ;
                      context.WriteHtmlText( "<html><head><meta http-equiv=\"content-type\" content=\"text/html; charset=UTF-8\"><title>Close window</title>") ;
-                     context.AddJavascriptSource("jquery.js", "?"+context.GetBuildNumber( 140712), false, true);
-                     context.AddJavascriptSource("gxgral.js", "?"+context.GetBuildNumber( 140712), false, true);
+                     context.AddJavascriptSource("jquery.js", "?"+context.GetBuildNumber( 131213), false, true);
+                     context.AddJavascriptSource("gxgral.js", "?"+context.GetBuildNumber( 131213), false, true);
                      context.WriteHtmlText( "</head><body><script type=\"text/javascript\">") ;
                      context.WriteHtmlText( "gx.fn.closeWindowServerScript(") ;
                      context.WriteHtmlText( context.getWebReturnParmsJS( )) ;
@@ -2527,10 +2498,10 @@ namespace GeneXus.Programs {
             context.WriteHtmlText( "\"") ;
          }
          context.WriteHtmlText( " data-cellpadding=\"") ;
-         context.WriteHtmlText( StringUtil.LTrimStr( (decimal)(nCellpadding), 10, 0)) ;
+         context.WriteHtmlText( StringUtil.LTrim( StringUtil.Str( (decimal)(nCellpadding), 10, 0))) ;
          context.WriteHtmlText( "\"") ;
          context.WriteHtmlText( " data-cellspacing=\"") ;
-         context.WriteHtmlText( StringUtil.LTrim( StringUtil.LTrimStr( (decimal)(nCellspacing), 5, 0))) ;
+         context.WriteHtmlText( StringUtil.LTrim( StringUtil.Str( (decimal)(nCellspacing), 10, 0))) ;
          context.WriteHtmlText( "\"") ;
          if ( ( StringUtil.StrCmp(sRules, "") != 0 ) && ( StringUtil.StrCmp(sRules, "none") != 0 ) )
          {
@@ -2825,11 +2796,10 @@ namespace GeneXus.Programs {
                                          bool bSendHidden ,
                                          String sDomainType ,
                                          String sAlign ,
-                                         bool bIsTextEdit ,
-                                         String rtPicture )
+                                         bool bIsTextEdit )
       {
-         String sTagsLocal = " data-gx-geolocation" ;
-         GxWebStd.gx_single_line_edit( context, sCtrlName, sValue, sFormatedValue, sTagsLocal, sEventName, sLinkURL, sLinkTarget, sTooltipText, sPlaceholder, sUserOnClickCode, nJScriptCode, sClassString, sStyleString, sROClassString, sColumnClassString, sColumnHeaderClassString, nVisible, nEnabled, nRTEnabled, sType, sStep, nWidth, nWidthUnit, nHeight, nHeightUnit, nLength, nIsPassword, nFormat, nParentId, bHasTheme, nAutoComplete, nAutoCorrection, bSendHidden, sDomainType, "", false, "", "");
+         sTags = " data-gx-geolocation";
+         GxWebStd.gx_single_line_edit( context, sCtrlName, sValue, sFormatedValue, sTags, sEventName, sLinkURL, sLinkTarget, sTooltipText, sPlaceholder, sUserOnClickCode, nJScriptCode, sClassString, sStyleString, sROClassString, sColumnClassString, sColumnHeaderClassString, nVisible, nEnabled, nRTEnabled, sType, sStep, nWidth, nWidthUnit, nHeight, nHeightUnit, nLength, nIsPassword, nFormat, nParentId, bHasTheme, nAutoComplete, nAutoCorrection, bSendHidden, sDomainType, "", false, "");
          if ( ( nRTEnabled != 0 ) || ( nEnabled != 0 ) )
          {
             GxWebStd.gx_bitmap_readonly( context, sCtrlName+"_geoLocMe", context.convertURL( "locateMe"), "", "", "", "", nVisible, 1, context.GetMessage( "GXM_locatemeoption", ""), context.GetMessage( "GXM_locatemeoption", ""), 0, 0, 0, nWidthUnit, 0, nHeightUnit, 0, 0, 4, sUserOnClickCode, sEventName, sStyleString, "GeoLocOption", "", "", "", "", "", "gx.geolocation.getMyPosition(this);", "", "");
@@ -2862,13 +2832,13 @@ namespace GeneXus.Programs {
          if ( ! (0==nWidth) )
          {
             context.WriteHtmlText( " width:") ;
-            context.WriteHtmlText( StringUtil.LTrimStr( (decimal)(nWidth), 10, 0)) ;
+            context.WriteHtmlText( StringUtil.LTrim( StringUtil.Str( (decimal)(nWidth), 10, 0))) ;
             context.WriteHtmlText( sWidthUnit+";") ;
          }
          if ( ! (0==nHeight) )
          {
             context.WriteHtmlText( " height:") ;
-            context.WriteHtmlText( StringUtil.LTrimStr( (decimal)(nHeight), 10, 0)) ;
+            context.WriteHtmlText( StringUtil.LTrim( StringUtil.Str( (decimal)(nHeight), 10, 0))) ;
             context.WriteHtmlText( sHeightUnit+";") ;
          }
          context.WriteHtmlText( "\"") ;
@@ -2916,11 +2886,11 @@ namespace GeneXus.Programs {
          }
          if ( ! (0==nWidth) )
          {
-            sOStyle = sOStyle + " width:" + StringUtil.LTrimStr( (decimal)(nWidth), 10, 0) + sWidthUnit + ";";
+            sOStyle = sOStyle + " width:" + StringUtil.LTrim( StringUtil.Str( (decimal)(nWidth), 10, 0)) + sWidthUnit + ";";
          }
          if ( ! (0==nHeight) )
          {
-            sOStyle = sOStyle + " height:" + StringUtil.LTrimStr( (decimal)(nHeight), 10, 0) + sHeightUnit + ";";
+            sOStyle = sOStyle + " height:" + StringUtil.LTrim( StringUtil.Str( (decimal)(nHeight), 10, 0)) + sHeightUnit + ";";
          }
          if ( ! String.IsNullOrEmpty(StringUtil.RTrim( sExtraStyle)) )
          {
@@ -2993,11 +2963,11 @@ namespace GeneXus.Programs {
          context.WriteHtmlText( " name=\""+sInternalName+"\"") ;
          if ( nWidth > 0 )
          {
-            sStyleString = sStyleString + "width:" + StringUtil.LTrimStr( (decimal)(nWidth), 10, 0) + sWidthUnit + ";";
+            sStyleString = sStyleString + "width:" + StringUtil.LTrim( StringUtil.Str( (decimal)(nWidth), 10, 0)) + sWidthUnit + ";";
          }
          if ( nHeight > 0 )
          {
-            sStyleString = sStyleString + "height:" + StringUtil.LTrimStr( (decimal)(nHeight), 10, 0) + sHeightUnit + ";";
+            sStyleString = sStyleString + "height:" + StringUtil.LTrim( StringUtil.Str( (decimal)(nHeight), 10, 0)) + sHeightUnit + ";";
          }
          if ( StringUtil.StrCmp(sScroll, "yes") == 0 )
          {

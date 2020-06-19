@@ -13,4 +13,10 @@
     <ObjDesc>TPuestos</ObjDesc>
     <ObjLink>tpuestos.aspx</ObjLink>
   </Object>
+  <Object>
+    <ObjCls>0</ObjCls>
+    <ObjName>TSueldo</ObjName>
+    <ObjDesc>TSueldo</ObjDesc>
+    <ObjLink>tsueldo.aspx</ObjLink>
+  </Object>
 </Objects>

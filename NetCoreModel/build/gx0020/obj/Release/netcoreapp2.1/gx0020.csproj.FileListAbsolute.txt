@@ -1,0 +1,10 @@
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\gx0020.runtimeconfig.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\gx0020.runtimeconfig.dev.json
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\gx0020.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\web\bin\gx0020.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\gx0020\obj\Release\netcoreapp2.1\gx0020.csprojAssemblyReference.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\gx0020\obj\Release\netcoreapp2.1\gx0020.csproj.CoreCompileInputs.cache
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\gx0020\obj\Release\netcoreapp2.1\gx0020.csproj.CopyComplete
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\gx0020\obj\Release\netcoreapp2.1\gx0020.dll
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\gx0020\obj\Release\netcoreapp2.1\gx0020.pdb
+C:\proyectos\curso\Kb_Curso\NetCoreModel\build\gx0020\obj\Release\netcoreapp2.1\gx0020.genruntimeconfig.cache

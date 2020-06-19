@@ -14,9 +14,9 @@
       <add  key="Connection-Default-LockTimeout" value="0"/>
       <add  key="Connection-Default-LockRetryCount" value="10"/>
       <add  key="Connection-Default-IsolationLevel" value="CR"/>
-      <add  key="Connection-Default-Datasource" value="eZu4OsfYl9Ki3fKD0tol5lPsPC6xHxUNL9u8DsQBf6s="/>
+      <add  key="Connection-Default-Datasource" value="NKQ+mXOxXxznARjp/Su7eHClYUAxOCk/6o8hb89weQB="/>
       <add  key="Connection-Default-User" value="Elj20MqY44RPdvT8FEpDD0=="/>
-      <add  key="Connection-Default-Password" value="ET+G0llM05sjDMImmTbP8D=="/>
+      <add  key="Connection-Default-Password" value="538YqhzbDREHVFlrHkgS5U=="/>
       <add  key="Connection-Default-DB" value="Curso2BD"/>
       <add  key="Connection-Default-Schema" value="82sPNmMP8O3TlpdEZk1r8E=="/>
       <add  key="Connection-Default-Opts" value=";Integrated Security=no;"/>
@@ -24,7 +24,7 @@
       <add  key="DateFormat" value="DMY"/>
       <add  key="YearLimit" value="1940"/>
       <add  key="TimeAmPmFormat" value="24"/>
-      <add  key="VER_STAMP" value="20200619.132604"/>
+      <add  key="VER_STAMP" value="20200619.145734"/>
       <add  key="CS_BLOB_PATH" value="PublicTempStorage"/>
       <add  key="TMPMEDIA_DIR" value="PrivateTempStorage"/>
       <add  key="PRINT_LAYOUT_METADATA_DIR" value="LayoutMetadata"/>
@@ -40,18 +40,14 @@
       <add  key="EnableIntegratedSecurity" value="0"/>
       <add  key="MAX_CURSOR" value="100"/>
       <add  key="STATIC_CONTENT" value=""/>
-      <add  key="GX_BUILD_NUMBER" value="140712"/>
+      <add  key="GX_BUILD_NUMBER" value="131213"/>
       <add  key="CACHE_CONTENT_EXPIRATION" value="36"/>
-      <add  key="FTP_DEFAULT_USER" value="Zd8hx1OPJaolo5nN5s4nmc=="/>
-      <add  key="FTP_DEFAULT_PASSWORD" value="kvwmxbHzjMA66dQNAHRlhn=="/>
       <add  key="ENABLE_MANAGEMENT" value="0"/>
       <add  key="COMPRESS_HTML" value="1"/>
       <add  key="IE_COMPATIBILITY_VIEW" value="EmulateIE7"/>
       <add  key="DocumentType" value="HTML5"/>
       <add  key="SMART_CACHING" value="0"/>
-      <add  key="wcf:serviceHostingEnvironment:useClassicReadEntityBodyMode" value="true"/>
-      <add  key="HTTP_PROTOCOL" value="Unsecure"/>
-      <add  key="CACHE_INVALIDATION_TOKEN" value="2020619985537"/>
+      <add  key="CACHE_INVALIDATION_TOKEN" value="202061910241955"/>
    </appSettings>
    <languages >
       <Spanish  code="spa" time_fmt="24" decimal_point="," thousand_sep="." date_fmt="DMY" culture="es-ES"/>

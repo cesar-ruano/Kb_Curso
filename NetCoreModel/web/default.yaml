@@ -1,0 +1,32 @@
+swagger: '2.0'
+info:
+  title: "Curso2"
+  version: "20200619152336"
+host: localhost:8082
+schemes:
+  - http
+basePath: /Curso2.NETCoreEnvironment/rest
+produces:
+  - application/json
+paths:
+  /MS_Empleados:
+    post:
+      tags:
+        - MS_Empleados
+      operationId: "MS_Empleados"
+      summary: "MS_Empleados"
+
+      responses:
+        200:
+          description: "Successful operation"
+          schema:
+            $ref: "#/definitions/MS_EmpleadosOutput"
+        404:
+          description: "Not found"
+definitions:
+  MS_EmpleadosOutput:
+    properties:
+      EmpleadoJSON:
+        type: "string"
+
+

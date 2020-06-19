@@ -1,9 +1,12 @@
-CREATE TABLE [TPuestos] ([PuestoId] smallint NOT NULL , [PuestoDsc] nvarchar(40) NOT NULL , PRIMARY KEY([PuestoId]))
+CREATE TABLE [TSueldo] ([SueldoId]  smallint NOT NULL , [SueldoMonto]  decimal( 17, 2) NOT NULL , PRIMARY KEY([SueldoId]))
 
-ALTER TABLE [TEmpleado] ADD [PuestoId] smallint NOT NULL CONSTRAINT PuestoIdTEmpleado_DEFAULT DEFAULT convert(int, 0)
-ALTER TABLE [TEmpleado] DROP CONSTRAINT PuestoIdTEmpleado_DEFAULT
-INSERT INTO [TPuestos] ([PuestoId], [PuestoDsc]) SELECT TOP 1 convert(int, 0), ' ' FROM [TEmpleado]
+CREATE TABLE [TPuestos] ([PuestoId]  smallint NOT NULL , [PuestoDsc]  nvarchar(40) NOT NULL , [SueldoId]  smallint NOT NULL , PRIMARY KEY([PuestoId]))
+CREATE NONCLUSTERED INDEX [ITPUESTOS1] ON [TPuestos] ([SueldoId] )
+
+CREATE TABLE [TEmpleado] ([EmpleadoId]  smallint NOT NULL , [EmpleadoNombre]  nvarchar(30) NOT NULL , [EmpleadoFechaNacimiento]  datetime NOT NULL , [PuestoId]  smallint NOT NULL , PRIMARY KEY([EmpleadoId]))
 CREATE NONCLUSTERED INDEX [ITEMPLEADO1] ON [TEmpleado] ([PuestoId] )
 
 ALTER TABLE [TEmpleado] ADD CONSTRAINT [ITEMPLEADO1] FOREIGN KEY ([PuestoId]) REFERENCES [TPuestos] ([PuestoId])
+
+ALTER TABLE [TPuestos] ADD CONSTRAINT [ITPUESTOS1] FOREIGN KEY ([SueldoId]) REFERENCES [TSueldo] ([SueldoId])
 

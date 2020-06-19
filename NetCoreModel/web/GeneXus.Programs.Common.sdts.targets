@@ -6,6 +6,7 @@
 
 <ItemGroup>
  	<Compile Include="$(WebDirectory)\type_SdtLinkList_LinkItem.cs" />
+ 	<Compile Include="$(WebDirectory)\type_SdtSDT_Empleado_SDT_EmpleadoItem.cs" />
 
 </ItemGroup>
 

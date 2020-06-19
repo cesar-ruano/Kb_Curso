@@ -1,8 +1,8 @@
 /*
                File: GXLRED
         Description: Load redundancy procedure
-             Author: GeneXus .NET Core Generator version 16_0_9-140712
-       Generated on: 6/19/2020 9:8:55.30
+             Author: GeneXus .NET Core Generator version 16_0_2-131213
+       Generated on: 6/19/2020 10:23:34.77
        Program type: Callable routine
           Main DBMS: SQL Server
 */
@@ -104,11 +104,55 @@ namespace GeneXus.Programs {
 
       public override void initialize( )
       {
+         pr_default = new DataStoreProvider(context, new GeneXus.Programs.gxlred__default(),
+            new Object[][] {
+            }
+         );
          /* GeneXus formulas. */
          context.Gx_err = 0;
       }
 
       private IGxDataStore dsDefault ;
+      private IDataStoreProvider pr_default ;
    }
+
+   public class gxlred__default : DataStoreHelperBase, IDataStoreHelper
+   {
+      public ICursor[] getCursors( )
+      {
+         cursorDefinitions();
+         return new Cursor[] {
+       };
+    }
+
+    private static CursorDef[] def;
+    private void cursorDefinitions( )
+    {
+       if ( def == null )
+       {
+          def= new CursorDef[] {
+          };
+       }
+    }
+
+    public void getResults( int cursor ,
+                            IFieldGetter rslt ,
+                            Object[] buf )
+    {
+       switch ( cursor )
+       {
+       }
+    }
+
+    public void setParameters( int cursor ,
+                               IFieldSetter stmt ,
+                               Object[] parms )
+    {
+       switch ( cursor )
+       {
+       }
+    }
+
+ }
 
 }
