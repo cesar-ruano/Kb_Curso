@@ -9,5 +9,10 @@
     <Id>2</Id>
     <Part>264be5fb-1b28-4b25-a598-6ca900dd059f</Part>
   </Object>
-  <Recent />
+  <Recent>
+    <RecentKBObjectsList>
+      <MaximumItems>10</MaximumItems>
+      <RecentKBObjects />
+    </RecentKBObjectsList>
+  </Recent>
 </Objects>
