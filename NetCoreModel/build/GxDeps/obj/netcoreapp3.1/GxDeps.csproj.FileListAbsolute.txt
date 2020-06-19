@@ -1,0 +1,9 @@
+D:\Proyectos\Curso2\NetCoreModel\web\bin\GxDeps.deps.json
+D:\Proyectos\Curso2\NetCoreModel\web\bin\GxDeps.dll
+D:\Proyectos\Curso2\NetCoreModel\web\bin\GxDeps.pdb
+D:\Proyectos\Curso2\NetCoreModel\build\GxDeps\obj\netcoreapp3.1\GxDeps.csprojAssemblyReference.cache
+D:\Proyectos\Curso2\NetCoreModel\build\GxDeps\obj\netcoreapp3.1\GxDeps.AssemblyInfoInputs.cache
+D:\Proyectos\Curso2\NetCoreModel\build\GxDeps\obj\netcoreapp3.1\GxDeps.AssemblyInfo.cs
+D:\Proyectos\Curso2\NetCoreModel\build\GxDeps\obj\netcoreapp3.1\GxDeps.csproj.CoreCompileInputs.cache
+D:\Proyectos\Curso2\NetCoreModel\build\GxDeps\obj\netcoreapp3.1\GxDeps.dll
+D:\Proyectos\Curso2\NetCoreModel\build\GxDeps\obj\netcoreapp3.1\GxDeps.pdb

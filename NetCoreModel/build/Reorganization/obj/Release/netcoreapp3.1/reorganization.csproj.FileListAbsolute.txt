@@ -1,0 +1,9 @@
+D:\Proyectos\Curso2\NetCoreModel\web\bin\Reorganization.dll
+D:\Proyectos\Curso2\NetCoreModel\web\bin\Reorganization.pdb
+D:\Proyectos\Curso2\NetCoreModel\build\reorganization\obj\Release\netcoreapp3.1\reorganization.csprojAssemblyReference.cache
+D:\Proyectos\Curso2\NetCoreModel\build\reorganization\obj\Release\netcoreapp3.1\reorganization.csproj.CoreCompileInputs.cache
+D:\Proyectos\Curso2\NetCoreModel\build\reorganization\obj\Release\netcoreapp3.1\reorganization.csproj.CopyComplete
+D:\Proyectos\Curso2\NetCoreModel\build\reorganization\obj\Release\netcoreapp3.1\staticwebassets\Reorganization.StaticWebAssets.Manifest.cache
+D:\Proyectos\Curso2\NetCoreModel\build\reorganization\obj\Release\netcoreapp3.1\staticwebassets\Reorganization.StaticWebAssets.xml
+D:\Proyectos\Curso2\NetCoreModel\build\reorganization\obj\Release\netcoreapp3.1\Reorganization.dll
+D:\Proyectos\Curso2\NetCoreModel\build\reorganization\obj\Release\netcoreapp3.1\Reorganization.pdb

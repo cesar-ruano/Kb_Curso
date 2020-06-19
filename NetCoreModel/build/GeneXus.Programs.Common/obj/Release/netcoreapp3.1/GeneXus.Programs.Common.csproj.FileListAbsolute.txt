@@ -1,0 +1,9 @@
+D:\Proyectos\Curso2\NetCoreModel\web\bin\GeneXus.Programs.Common.dll
+D:\Proyectos\Curso2\NetCoreModel\web\bin\GeneXus.Programs.Common.pdb
+D:\Proyectos\Curso2\NetCoreModel\build\GeneXus.Programs.Common\obj\Release\netcoreapp3.1\GeneXus.Programs.Common.csprojAssemblyReference.cache
+D:\Proyectos\Curso2\NetCoreModel\build\GeneXus.Programs.Common\obj\Release\netcoreapp3.1\GeneXus.Programs.Common.csproj.CoreCompileInputs.cache
+D:\Proyectos\Curso2\NetCoreModel\build\GeneXus.Programs.Common\obj\Release\netcoreapp3.1\GeneXus.Programs.Common.csproj.CopyComplete
+D:\Proyectos\Curso2\NetCoreModel\build\GeneXus.Programs.Common\obj\Release\netcoreapp3.1\staticwebassets\GeneXus.Programs.Common.StaticWebAssets.Manifest.cache
+D:\Proyectos\Curso2\NetCoreModel\build\GeneXus.Programs.Common\obj\Release\netcoreapp3.1\staticwebassets\GeneXus.Programs.Common.StaticWebAssets.xml
+D:\Proyectos\Curso2\NetCoreModel\build\GeneXus.Programs.Common\obj\Release\netcoreapp3.1\GeneXus.Programs.Common.dll
+D:\Proyectos\Curso2\NetCoreModel\build\GeneXus.Programs.Common\obj\Release\netcoreapp3.1\GeneXus.Programs.Common.pdb

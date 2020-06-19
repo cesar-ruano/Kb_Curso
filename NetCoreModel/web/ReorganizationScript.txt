@@ -1,0 +1,2 @@
+CREATE TABLE [TEmpleado] ([EmpleadoId] smallint NOT NULL , [EmpleadoNombre] nvarchar(30) NOT NULL , [EmpleadoFechaNacimiento] datetime NOT NULL , PRIMARY KEY([EmpleadoId]))
+

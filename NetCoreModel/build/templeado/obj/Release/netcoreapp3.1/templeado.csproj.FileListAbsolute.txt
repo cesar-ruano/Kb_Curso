@@ -1,0 +1,9 @@
+D:\Proyectos\Curso2\NetCoreModel\web\bin\templeado.dll
+D:\Proyectos\Curso2\NetCoreModel\web\bin\templeado.pdb
+D:\Proyectos\Curso2\NetCoreModel\build\templeado\obj\Release\netcoreapp3.1\templeado.csprojAssemblyReference.cache
+D:\Proyectos\Curso2\NetCoreModel\build\templeado\obj\Release\netcoreapp3.1\templeado.csproj.CoreCompileInputs.cache
+D:\Proyectos\Curso2\NetCoreModel\build\templeado\obj\Release\netcoreapp3.1\templeado.csproj.CopyComplete
+D:\Proyectos\Curso2\NetCoreModel\build\templeado\obj\Release\netcoreapp3.1\staticwebassets\templeado.StaticWebAssets.Manifest.cache
+D:\Proyectos\Curso2\NetCoreModel\build\templeado\obj\Release\netcoreapp3.1\staticwebassets\templeado.StaticWebAssets.xml
+D:\Proyectos\Curso2\NetCoreModel\build\templeado\obj\Release\netcoreapp3.1\templeado.dll
+D:\Proyectos\Curso2\NetCoreModel\build\templeado\obj\Release\netcoreapp3.1\templeado.pdb

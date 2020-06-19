@@ -1,0 +1,9 @@
+D:\Proyectos\Curso2\NetCoreModel\web\bin\rwdmasterpage.dll
+D:\Proyectos\Curso2\NetCoreModel\web\bin\rwdmasterpage.pdb
+D:\Proyectos\Curso2\NetCoreModel\build\rwdmasterpage\obj\Release\netcoreapp3.1\rwdmasterpage.csprojAssemblyReference.cache
+D:\Proyectos\Curso2\NetCoreModel\build\rwdmasterpage\obj\Release\netcoreapp3.1\rwdmasterpage.csproj.CoreCompileInputs.cache
+D:\Proyectos\Curso2\NetCoreModel\build\rwdmasterpage\obj\Release\netcoreapp3.1\rwdmasterpage.csproj.CopyComplete
+D:\Proyectos\Curso2\NetCoreModel\build\rwdmasterpage\obj\Release\netcoreapp3.1\staticwebassets\rwdmasterpage.StaticWebAssets.Manifest.cache
+D:\Proyectos\Curso2\NetCoreModel\build\rwdmasterpage\obj\Release\netcoreapp3.1\staticwebassets\rwdmasterpage.StaticWebAssets.xml
+D:\Proyectos\Curso2\NetCoreModel\build\rwdmasterpage\obj\Release\netcoreapp3.1\rwdmasterpage.dll
+D:\Proyectos\Curso2\NetCoreModel\build\rwdmasterpage\obj\Release\netcoreapp3.1\rwdmasterpage.pdb

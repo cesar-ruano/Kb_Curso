@@ -1,0 +1,111 @@
+2020-06-19 08:26:15,008: INFO  – ========== Build All started ==========
+2020-06-19 08:26:15,143: INFO  – ========== Copying Module 'GeneXus' started ==========
+2020-06-19 08:26:15,558: INFO  – Success: Copying Module 'GeneXus'
+2020-06-19 08:26:15,680: INFO  – ========== Database Creation Analysis started ==========
+2020-06-19 08:26:17,546: INFO  – Processing ... 
+2020-06-19 08:26:17,564: INFO  – Searching for new or changed tables ...
+2020-06-19 08:26:18,057: INFO  – Analyzing   TEmpleado ...
+2020-06-19 08:26:18,060: INFO  – Removing specification files ...
+2020-06-19 08:26:18,061: INFO  – Specification files removed.
+2020-06-19 08:26:21,754: INFO  – Searching for deleted tables ...
+2020-06-19 08:26:21,758: INFO  – Searching redundancy in TEmpleado
+2020-06-19 08:26:21,759: INFO  – Updating redundancy in TEmpleado
+2020-06-19 08:26:22,094: INFO  –  Specifying GXLRED ...
+2020-06-19 08:26:22,094: INFO  – Loading table and attribute properties ...
+2020-06-19 08:26:22,095: INFO  – Saving specifications.
+2020-06-19 08:26:22,116: INFO  – Success: Database Creation Analysis
+2020-06-19 08:26:45,067: INFO  – Generating Resources...
+2020-06-19 08:26:46,856: INFO  – Success
+2020-06-19 08:26:46,863: INFO  – ========== Default (.NET Core) Generation started ==========
+2020-06-19 08:26:53,118: INFO  – Copying standard files from C:\Program Files (x86)\GeneXus\GeneXus16 to NetCoreModel\web...
+2020-06-19 08:26:53,830: INFO  – Generating to NetCoreModel\web\GxWebStd.cs
+2020-06-19 08:26:54,032: INFO  – Generating to NetCoreModel\web\reorg.cs
+2020-06-19 08:26:54,242: INFO  – Generating to NetCoreModel\web\ReorganizationScript.txt
+2020-06-19 08:26:54,242: INFO  – Generating to NetCoreModel\web\GxFullTextSearchReindexer.cs
+2020-06-19 08:26:54,246: INFO  – Generating to NetCoreModel\web\gxlred.cs
+2020-06-19 08:26:54,276: INFO  – Generating to NetCoreModel\web\GxModelInfoProvider.cs
+2020-06-19 08:26:54,277: INFO  – Generating to NetCoreModel\web\GxObjectCollection.cs
+2020-06-19 08:26:54,284: INFO  – Generating to NetCoreModel\web\gxcfg.js
+2020-06-19 08:26:54,293: INFO  – Generating to NetCoreModel\web\GXCFG.WEB
+2020-06-19 08:26:54,320: INFO  – Generating to NetCoreModel\web\client.exe.config
+2020-06-19 08:26:54,350: INFO  – Generating to NetCoreModel\web\_COPYCLS.GEN
+2020-06-19 08:26:54,350: INFO  – Generating to NetCoreModel\web\REORGPGM.GEN
+2020-06-19 08:26:54,350: INFO  – Generating to NetCoreModel\web\reorganization.cs
+2020-06-19 08:26:54,353: INFO  – Generating to NetCoreModel\web\reorganization.bld
+2020-06-19 08:26:54,353: INFO  – Generating to NetCoreModel\web\bld41.info
+2020-06-19 08:26:54,355: INFO  – Generating to NetCoreModel\web\SoapParm.cs
+2020-06-19 08:26:54,414: INFO  – Success: Default (.NET Core) Generation
+2020-06-19 08:26:55,467: INFO  – ========== Reorganization started ==========
+2020-06-19 08:26:55,488: INFO  – dotnet publish -nologo -v q "D:\Proyectos\Curso2\NetCoreModel\web\GxDeps.csproj" -o "D:\Proyectos\Curso2\NetCoreModel\web\bin
+2020-06-19 08:27:19,393: INFO  – dotnet build -nologo -c Release /v:q /m  "D:\Proyectos\Curso2\NetCoreModel\build\LastBuild.sln"
+2020-06-19 08:27:23,661: INFO  – Compilaci¢n correcta.
+2020-06-19 08:27:23,662: INFO  –     0 Advertencia(s)
+2020-06-19 08:27:23,663: INFO  –     0 Errores
+2020-06-19 08:27:23,681: INFO  – Tiempo transcurrido 00:00:03.72
+2020-06-19 08:27:23,708: INFO  – dotnet "D:\Proyectos\Curso2\NetCoreModel\web\bin\Reor.dll" -nogui -noverifydatabaseschema
+2020-06-19 08:27:34,664: INFO  – Creando la base de datos Curso2BD
+2020-06-19 08:27:40,247: INFO  – Creando la tabla TEmpleado .
+2020-06-19 08:27:40,762: INFO  – Creando la tabla TEmpleado . Iniciado
+2020-06-19 08:27:41,262: INFO  – Creando la tabla TEmpleado . Terminado
+2020-06-19 08:27:41,273: INFO  – El proceso de reorganizaci¢n ha finalizado con ‚xito.
+2020-06-19 08:27:41,278: INFO  – Success: Reorganization
+2020-06-19 08:27:41,298: INFO  – ========== Target Environment update started ==========
+2020-06-19 08:27:42,642: INFO  – Success: Target Environment update
+2020-06-19 08:27:43,480: INFO  – ========== Specification started ==========
+2020-06-19 08:27:45,376: INFO  –  Specifying PromptMasterPage ...
+2020-06-19 08:27:45,556: INFO  –  Specifying AppMasterPage ...
+2020-06-19 08:27:47,262: INFO  –  Specifying RwdRecentLinks ...
+2020-06-19 08:27:47,286: INFO  –  Specifying RecentLinks ...
+2020-06-19 08:27:48,458: INFO  – Generating Resources...
+2020-06-19 08:27:48,625: INFO  –  Specifying RwdMasterPage ...
+2020-06-19 08:27:50,256: INFO  –  Specifying RwdPromptMasterPage ...
+2020-06-19 08:27:52,991: INFO  – Success
+2020-06-19 08:27:53,077: INFO  – ========== Default (.NET Core) Generation started ==========
+2020-06-19 08:27:53,257: INFO  – Generating to NetCoreModel\web\appmasterpage.cs
+2020-06-19 08:27:53,460: INFO  – Generating to NetCoreModel\web\appmasterpage.js
+2020-06-19 08:27:53,595: INFO  – Generating to NetCoreModel\web\rwdmasterpage.cs
+2020-06-19 08:27:53,717: INFO  – Generating to NetCoreModel\web\rwdmasterpage.js
+2020-06-19 08:27:53,768: INFO  – Generating to NetCoreModel\web\rwdpromptmasterpage.cs
+2020-06-19 08:27:53,853: INFO  – Generating to NetCoreModel\web\rwdpromptmasterpage.js
+2020-06-19 08:27:53,902: INFO  – Generating to NetCoreModel\web\promptmasterpage.cs
+2020-06-19 08:27:54,050: INFO  – Generating to NetCoreModel\web\promptmasterpage.js
+2020-06-19 08:27:54,102: INFO  – Generating to NetCoreModel\web\recentlinks.cs
+2020-06-19 08:27:54,469: INFO  – Generating to NetCoreModel\web\recentlinks.js
+2020-06-19 08:27:54,665: INFO  –  Specifying TEmpleado ...
+2020-06-19 08:27:55,070: INFO  – Generating to NetCoreModel\web\rwdrecentlinks.cs
+2020-06-19 08:27:55,166: INFO  – Creating prompt 'Gx0010' (for table 'TEmpleado')...
+2020-06-19 08:27:55,353: INFO  – Generating to NetCoreModel\web\rwdrecentlinks.js
+2020-06-19 08:27:59,441: INFO  –  Specifying Gx0010 ...
+2020-06-19 08:28:00,719: INFO  – Generating to NetCoreModel\web\templeado.cs
+2020-06-19 08:28:00,783: INFO  – Processing inferred calls...
+2020-06-19 08:28:00,940: INFO  – Success: Specification
+2020-06-19 08:28:01,320: INFO  – Generating to NetCoreModel\web\templeado.js
+2020-06-19 08:28:01,418: INFO  – Generating to NetCoreModel\web\gx0010.cs
+2020-06-19 08:28:01,961: INFO  – Generating to NetCoreModel\web\gx0010.js
+2020-06-19 08:28:02,134: INFO  – Generating to NetCoreModel\web\gxcfg.js
+2020-06-19 08:28:02,142: INFO  – Generating to NetCoreModel\web\GXCFG.WEB
+2020-06-19 08:28:02,289: INFO  – Generating to NetCoreModel\web\Developermenu.bld
+2020-06-19 08:28:02,337: INFO  – Generating to NetCoreModel\web\genexus.programs.common.bld
+2020-06-19 08:28:02,376: INFO  – Generating to NetCoreModel\web\bld41.info
+2020-06-19 08:28:02,378: INFO  – Generating to NetCoreModel\web\DeveloperMenu.xml
+2020-06-19 08:28:02,386: INFO  – Generating to NetCoreModel\web\GxFullTextSearchReindexer.cs
+2020-06-19 08:28:02,425: INFO  – Success: Default (.NET Core) Generation
+2020-06-19 08:28:02,453: INFO  – Compressing static files...
+2020-06-19 08:28:02,838: INFO  – Success
+2020-06-19 08:28:02,915: INFO  – ========== SDT Generation started ==========
+2020-06-19 08:28:02,948: INFO  – Generating to NetCoreModel\web\type_SdtLinkList_LinkItem.cs
+2020-06-19 08:28:03,031: INFO  – Success: SDT Generation
+2020-06-19 08:28:03,880: INFO  – ========== DeveloperMenu Compilation for Default (.NET Core) started ==========
+2020-06-19 08:28:03,890: INFO  – dotnet build -nologo -c Release /v:q /m  "D:\Proyectos\Curso2\NetCoreModel\build\LastBuild.sln"
+2020-06-19 08:28:13,230: INFO  – Compilaci¢n correcta.
+2020-06-19 08:28:13,231: INFO  –     0 Advertencia(s)
+2020-06-19 08:28:13,232: INFO  –     0 Errores
+2020-06-19 08:28:13,264: INFO  – Tiempo transcurrido 00:00:08.81
+2020-06-19 08:28:13,310: INFO  – Success: DeveloperMenu Compilation for Default (.NET Core)
+2020-06-19 08:28:13,312: INFO  – ========== Web config update started ==========
+2020-06-19 08:28:15,620: INFO  – Virtual directory created.
+2020-06-19 08:28:15,686: INFO  – Gx config file: gxcfg.web
+2020-06-19 08:28:15,686: INFO  – Web config file: appsettings.json
+2020-06-19 08:28:15,696: INFO  – Updating web config ...
+2020-06-19 08:28:15,927: INFO  – Success: Web config update
+2020-06-19 08:28:16,474: INFO  – Success: Build All

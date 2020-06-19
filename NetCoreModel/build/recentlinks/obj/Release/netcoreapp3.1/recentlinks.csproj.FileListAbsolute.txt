@@ -1,0 +1,9 @@
+D:\Proyectos\Curso2\NetCoreModel\web\bin\recentlinks.dll
+D:\Proyectos\Curso2\NetCoreModel\web\bin\recentlinks.pdb
+D:\Proyectos\Curso2\NetCoreModel\build\recentlinks\obj\Release\netcoreapp3.1\recentlinks.csprojAssemblyReference.cache
+D:\Proyectos\Curso2\NetCoreModel\build\recentlinks\obj\Release\netcoreapp3.1\recentlinks.csproj.CoreCompileInputs.cache
+D:\Proyectos\Curso2\NetCoreModel\build\recentlinks\obj\Release\netcoreapp3.1\recentlinks.csproj.CopyComplete
+D:\Proyectos\Curso2\NetCoreModel\build\recentlinks\obj\Release\netcoreapp3.1\staticwebassets\recentlinks.StaticWebAssets.Manifest.cache
+D:\Proyectos\Curso2\NetCoreModel\build\recentlinks\obj\Release\netcoreapp3.1\staticwebassets\recentlinks.StaticWebAssets.xml
+D:\Proyectos\Curso2\NetCoreModel\build\recentlinks\obj\Release\netcoreapp3.1\recentlinks.dll
+D:\Proyectos\Curso2\NetCoreModel\build\recentlinks\obj\Release\netcoreapp3.1\recentlinks.pdb

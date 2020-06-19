@@ -1,0 +1,9 @@
+D:\Proyectos\Curso2\NetCoreModel\web\bin\developermenu.dll
+D:\Proyectos\Curso2\NetCoreModel\web\bin\developermenu.pdb
+D:\Proyectos\Curso2\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\developermenu.csprojAssemblyReference.cache
+D:\Proyectos\Curso2\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\developermenu.csproj.CoreCompileInputs.cache
+D:\Proyectos\Curso2\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\developermenu.csproj.CopyComplete
+D:\Proyectos\Curso2\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\staticwebassets\developermenu.StaticWebAssets.Manifest.cache
+D:\Proyectos\Curso2\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\staticwebassets\developermenu.StaticWebAssets.xml
+D:\Proyectos\Curso2\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\developermenu.dll
+D:\Proyectos\Curso2\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\developermenu.pdb
