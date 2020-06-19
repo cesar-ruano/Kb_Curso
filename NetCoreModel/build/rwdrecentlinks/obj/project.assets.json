@@ -6852,31 +6852,33 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Desarrollo\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj",
+      "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj",
       "projectName": "rwdrecentlinks",
-      "projectPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj",
-      "packagesPath": "C:\\Users\\Desarrollo\\.nuget\\packages\\",
-      "outputPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\rwdrecentlinks\\obj\\",
+      "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Desarrollo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
-              "projectPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+            "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+              "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
             }
           }
         }

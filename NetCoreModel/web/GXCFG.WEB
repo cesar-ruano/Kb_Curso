@@ -14,7 +14,7 @@
       <add  key="Connection-Default-LockTimeout" value="0"/>
       <add  key="Connection-Default-LockRetryCount" value="10"/>
       <add  key="Connection-Default-IsolationLevel" value="CR"/>
-      <add  key="Connection-Default-Datasource" value="I9FfWPRTcxDEviccW3mu8L+IOz8bnktRGO/oSGRZdvdFdkVe+RmGtmS2bhiIuybs"/>
+      <add  key="Connection-Default-Datasource" value="eZu4OsfYl9Ki3fKD0tol5lPsPC6xHxUNL9u8DsQBf6s="/>
       <add  key="Connection-Default-User" value="Elj20MqY44RPdvT8FEpDD0=="/>
       <add  key="Connection-Default-Password" value="ET+G0llM05sjDMImmTbP8D=="/>
       <add  key="Connection-Default-DB" value="Curso2BD"/>
@@ -51,7 +51,7 @@
       <add  key="SMART_CACHING" value="0"/>
       <add  key="wcf:serviceHostingEnvironment:useClassicReadEntityBodyMode" value="true"/>
       <add  key="HTTP_PROTOCOL" value="Unsecure"/>
-      <add  key="CACHE_INVALIDATION_TOKEN" value="2020619828215"/>
+      <add  key="CACHE_INVALIDATION_TOKEN" value="2020619985537"/>
    </appSettings>
    <languages >
       <Spanish  code="spa" time_fmt="24" decimal_point="," thousand_sep="." date_fmt="DMY" culture="es-ES"/>

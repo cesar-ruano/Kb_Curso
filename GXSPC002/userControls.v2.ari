@@ -1,6 +1,7 @@
 usercontrol_directory_i('actiongroupdynamicitems', ['ActionGroupDynamicItems']).
 usercontrol_directory_i('animationview', ['AnimationView']).
 usercontrol_directory_i('audiocontroller', ['AudioController']).
+usercontrol_directory_i('bootstrapalert', ['BootstrapAlert']).
 usercontrol_directory_i('fckeditor', ['CKEditor']).
 usercontrol_directory_i('dashboardviewer', ['DashboardViewer']).
 usercontrol_directory_i('fbhoverpanel', ['FBHoverPanel']).
@@ -23,13 +24,30 @@ usercontrol_directory_i('gxmediaplayer', ['GXMediaPlayer']).
 usercontrol_directory_i('gxprogressindicator', ['GXProgressIndicator']).
 usercontrol_directory_i('gxscheduler', ['GXScheduler']).
 usercontrol_directory_i('gxspreadsheet', ['GXSpreadsheet']).
+usercontrol_directory_i('gxui.eventobject', ['gxui']).
+usercontrol_directory_i('gxui.grid', ['gxui']).
+usercontrol_directory_i('gxui.gridextension', ['gxui']).
+usercontrol_directory_i('gxui.layout', ['gxui']).
+usercontrol_directory_i('gxui.menu', ['gxui']).
+usercontrol_directory_i('gxui.message', ['gxui']).
+usercontrol_directory_i('gxui.panel', ['gxui']).
+usercontrol_directory_i('gxui.settings', ['gxui']).
+usercontrol_directory_i('gxui.splash', ['gxui']).
+usercontrol_directory_i('gxui.tabpanel', ['gxui']).
+usercontrol_directory_i('gxui.toolbar', ['gxui']).
+usercontrol_directory_i('gxui.treeview', ['gxui']).
+usercontrol_directory_i('gxui.viewport', ['gxui']).
 usercontrol_directory_i('historymanager', ['HistoryManager']).
 usercontrol_directory_i('horizontalgrid', ['HorizontalGrid']).
 usercontrol_directory_i('imagegallery', ['ImageGallery']).
+usercontrol_directory_i('innewwindow', ['InNewWindow']).
+usercontrol_directory_i('jseventhandler', ['JSEventHandler']).
+usercontrol_directory_i('jsmsgbox', ['JsMsgBox']).
 usercontrol_directory_i('matrixgrid', ['MatrixGrid']).
 usercontrol_directory_i('queryviewer', ['QueryViewer']).
 usercontrol_directory_i('rating', ['Rating']).
 usercontrol_directory_i('scanner', ['Scanner']).
+usercontrol_directory_i('screendetector', ['ScreenDetector']).
 usercontrol_directory_i('sdadsview', ['SDAdsView']).
 usercontrol_directory_i('sd advanced image', ['SDAdvancedImage']).
 usercontrol_directory_i('sdcalendar', ['SDCalendar']).
@@ -63,6 +81,7 @@ usercontrol_directory_i('weblineargauge', ['WebLinearGauge']).
 usercontrol_i('actiongroupdynamicitems', ['ActionGroupDynamicItems','Actiongroupdynamicitems']).
 usercontrol_i('animationview', ['AnimationView','Animationview']).
 usercontrol_i('audiocontroller', ['AudioController','Audiocontroller']).
+usercontrol_i('bootstrapalert', ['BootstrapAlert','Bootstrapalert']).
 usercontrol_i('fckeditor', ['FCKEditor','Fckeditor']).
 usercontrol_i('dashboardviewer', ['DashboardViewer','Dashboardviewer']).
 usercontrol_i('fbhoverpanel', ['FBHoverPanel','Fbhoverpanel']).
@@ -85,13 +104,30 @@ usercontrol_i('gxmediaplayer', ['GXMediaPlayer','Gxmediaplayer']).
 usercontrol_i('gxprogressindicator', ['GXProgressIndicator','Gxprogressindicator']).
 usercontrol_i('gxscheduler', ['GXScheduler','Gxscheduler']).
 usercontrol_i('gxspreadsheet', ['GXSpreadsheet','Gxspreadsheet']).
+usercontrol_i('gxui.eventobject', ['gxui.EventObject','Gxui.eventobject']).
+usercontrol_i('gxui.grid', ['gxui.Grid','Gxui.grid']).
+usercontrol_i('gxui.gridextension', ['gxui.GridExtension','Gxui.gridextension']).
+usercontrol_i('gxui.layout', ['gxui.Layout','Gxui.layout']).
+usercontrol_i('gxui.menu', ['gxui.Menu','Gxui.menu']).
+usercontrol_i('gxui.message', ['gxui.Message','Gxui.message']).
+usercontrol_i('gxui.panel', ['gxui.Panel','Gxui.panel']).
+usercontrol_i('gxui.settings', ['gxui.Settings','Gxui.settings']).
+usercontrol_i('gxui.splash', ['gxui.Splash','Gxui.splash']).
+usercontrol_i('gxui.tabpanel', ['gxui.TabPanel','Gxui.tabpanel']).
+usercontrol_i('gxui.toolbar', ['gxui.Toolbar','Gxui.toolbar']).
+usercontrol_i('gxui.treeview', ['gxui.Treeview','Gxui.treeview']).
+usercontrol_i('gxui.viewport', ['gxui.Viewport','Gxui.viewport']).
 usercontrol_i('historymanager', ['HistoryManager','Historymanager']).
 usercontrol_i('horizontalgrid', ['HorizontalGrid','Horizontalgrid']).
 usercontrol_i('imagegallery', ['ImageGallery','Imagegallery']).
+usercontrol_i('innewwindow', ['InNewWindow','Innewwindow']).
+usercontrol_i('jseventhandler', ['JSEventHandler','Jseventhandler']).
+usercontrol_i('jsmsgbox', ['JsMsgBox','Jsmsgbox']).
 usercontrol_i('matrixgrid', ['MatrixGrid','Matrixgrid']).
 usercontrol_i('queryviewer', ['QueryViewer','Queryviewer']).
 usercontrol_i('rating', ['Rating','Rating']).
 usercontrol_i('scanner', ['Scanner','Scanner']).
+usercontrol_i('screendetector', ['ScreenDetector','Screendetector']).
 usercontrol_i('sdadsview', ['SDAdsView','Sdadsview']).
 usercontrol_i('sd advanced image', ['SD Advanced Image','Sd advanced image']).
 usercontrol_i('sdcalendar', ['SDCalendar','Sdcalendar']).
@@ -150,6 +186,19 @@ usercontrol_property_mapping_i('animationview', 'JsSharedSupportFiles', 'Jsshare
 usercontrol_property_mapping_i('audiocontroller', 'Class', 'Class', 'Class', char, 0, any).
 usercontrol_property_mapping_i('audiocontroller', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
 usercontrol_property_mapping_i('audiocontroller', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('bootstrapalert', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('bootstrapalert', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('bootstrapalert', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('bootstrapalert', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('bootstrapalert', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('bootstrapalert', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('bootstrapalert', 'Width', 'Width', 'Width', char, 0, any).
+usercontrol_property_mapping_i('bootstrapalert', 'Height', 'Height', 'Height', char, 0, any).
+usercontrol_property_mapping_i('bootstrapalert', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('bootstrapalert', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('bootstrapalert', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('bootstrapalert', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('bootstrapalert', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
 usercontrol_property_mapping_i('fckeditor', 'Class', 'Class', 'Class', char, 0, any).
 usercontrol_property_mapping_i('fckeditor', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
 usercontrol_property_mapping_i('fckeditor', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
@@ -713,6 +762,532 @@ usercontrol_property_mapping_i('gxspreadsheet', 'CssSupportFiles', 'Csssupportfi
 usercontrol_property_mapping_i('gxspreadsheet', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
 usercontrol_property_mapping_i('gxspreadsheet', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
 usercontrol_property_mapping_i('gxspreadsheet', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.eventobject', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('gxui.eventobject', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.eventobject', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('gxui.eventobject', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('gxui.eventobject', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('gxui.eventobject', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('gxui.eventobject', 'Key', 'Key', 'Key', char, 0, rt).
+usercontrol_property_mapping_i('gxui.eventobject', 'X', 'X', 'X', int, 0, rt).
+usercontrol_property_mapping_i('gxui.eventobject', 'Y', 'Y', 'Y', int, 0, rt).
+usercontrol_property_mapping_i('gxui.eventobject', 'MouseButton', 'Mousebutton', 'Mousebutton', int, 0, rt).
+usercontrol_property_mapping_i('gxui.eventobject', 'AltKey', 'Altkey', 'Altkey', boolean, 0, rt).
+usercontrol_property_mapping_i('gxui.eventobject', 'CtrlKey', 'Ctrlkey', 'Ctrlkey', boolean, 0, rt).
+usercontrol_property_mapping_i('gxui.eventobject', 'ShiftKey', 'Shiftkey', 'Shiftkey', boolean, 0, rt).
+usercontrol_property_mapping_i('gxui.eventobject', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.eventobject', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.eventobject', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.eventobject', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.eventobject', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'Width', 'Width', 'Width', int, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Height', 'Height', 'Height', int, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'ButtonPressedId', 'Buttonpressedid', 'Buttonpressedid', char, 0, rt).
+usercontrol_property_mapping_i('gxui.grid', 'LoadExceptionError', 'Loadexceptionerror', 'Loadexceptionerror', char, 0, rt).
+usercontrol_property_mapping_i('gxui.grid', 'EditFieldValue', 'Editfieldvalue', 'Editfieldvalue', char, 0, rt).
+usercontrol_property_mapping_i('gxui.grid', 'AutoWidth', 'Autowidth', 'Autowidth', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'AutoHeight', 'Autoheight', 'Autoheight', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'ForceFit', 'Forcefit', 'Forcefit', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Title', 'Title', 'Title', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'IconCls', 'Iconcls', 'Iconcls', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Cls', 'Cls', 'Cls', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Frame', 'Frame', 'Frame', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'StripeRows', 'Striperows', 'Striperows', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'UseToolbar', 'Usetoolbar', 'Usetoolbar', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'ToolbarData', 'Toolbardata', 'Toolbardata', o('gxuiToolbar'), 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'AddSearchField', 'Addsearchfield', 'Addsearchfield', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'SearchFieldWidth', 'Searchfieldwidth', 'Searchfieldwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'SearchFieldAutoRefresh', 'Searchfieldautorefresh', 'Searchfieldautorefresh', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'SearchFieldAutoRefreshTimeout', 'Searchfieldautorefreshtimeout', 'Searchfieldautorefreshtimeout', int, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'UseFilters', 'Usefilters', 'Usefilters', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'FiltersMode', 'Filtersmode', 'Filtersmode', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'LocalFilters', 'Localfilters', 'Localfilters', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'AutoReloadFilters', 'Autoreloadfilters', 'Autoreloadfilters', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'FiltersStateId', 'Filtersstateid', 'Filtersstateid', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'FiltersCls', 'Filterscls', 'Filterscls', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'ShowFiltersMenu', 'Showfiltersmenu', 'Showfiltersmenu', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'FiltersText', 'Filterstext', 'Filterstext', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'YesText', 'Yestext', 'Yestext', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'NoText', 'Notext', 'Notext', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'BeforeText', 'Beforetext', 'Beforetext', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'AfterText', 'Aftertext', 'Aftertext', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'OnText', 'Ontext', 'Ontext', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Resizable', 'Resizable', 'Resizable', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'MinWidth', 'Minwidth', 'Minwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'MaxWidth', 'Maxwidth', 'Maxwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'MinHeight', 'Minheight', 'Minheight', int, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'MaxHeigt', 'Maxheigt', 'Maxheight', int, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Wrap', 'Wrap', 'Wrap', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Pinned', 'Pinned', 'Pinned', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Handles', 'Handles', 'Handles', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Collapsible', 'Collapsible', 'Collapsible', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'AnimateCollapse', 'Animatecollapse', 'Animatecollapse', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'TrackMouseOver', 'Trackmouseover', 'Trackmouseover', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'SelectionModel', 'Selectionmodel', 'Selectionmodel', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'SingleSelect', 'Singleselect', 'Singleselect', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'LockSelections', 'Lockselections', 'Lockselections', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'SelectedRowData', 'Selectedrowdata', 'Selectedrowdata', unknown, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Grouping', 'Grouping', 'Grouping', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'GroupField', 'Groupfield', 'Groupfield', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'HideGroupedField', 'Hidegroupedfield', 'Hidegroupedfield', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'GroupTemplate', 'Grouptemplate', 'Grouptemplate', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'EnableDragDrop', 'Enabledragdrop', 'Enabledragdrop', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'AutoSizeColumns', 'Autosizecolumns', 'Autosizecolumns', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'MinColumnWidth', 'Mincolumnwidth', 'Mincolumnwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'EnableColumnHide', 'Enablecolumnhide', 'Enablecolumnhide', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'EnableColumnMove', 'Enablecolumnmove', 'Enablecolumnmove', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'DefaultSortable', 'Defaultsortable', 'Defaultsortable', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'DefaultResizable', 'Defaultresizable', 'Defaultresizable', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'LoadingIndicator', 'Loadingindicator', 'Loadingindicator', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'LoadingMsg', 'Loadingmsg', 'Loadingmsg', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Paging', 'Paging', 'Paging', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'PageSize', 'Pagesize', 'Pagesize', int, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'DisplayInfo', 'Displayinfo', 'Displayinfo', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'DisplayMsg', 'Displaymsg', 'Displaymsg', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'EmptyMsg', 'Emptymsg', 'Emptymsg', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'AfterPageText', 'Afterpagetext', 'Afterpagetext', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'BeforePageText', 'Beforepagetext', 'Beforepagetext', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'FirstText', 'Firsttext', 'Firsttext', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'LastText', 'Lasttext', 'Lasttext', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'NextText', 'Nexttext', 'Nexttext', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'PreviousText', 'Previoustext', 'Previoustext', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'RefreshText', 'Refreshtext', 'Refreshtext', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'RemoteSort', 'Remotesort', 'Remotesort', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'DefaultSortField', 'Defaultsortfield', 'Defaultsortfield', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'DefaultSortDir', 'Defaultsortdir', 'Defaultsortdirection', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'ColumnModel', 'Columnmodel', 'Columnmodel', o('gxuiGridColumnModel'), 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Data', 'Data', 'Data', unknown, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Root', 'Root', 'Root', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'DataStoreURL', 'Datastoreurl', 'Datastoreurl', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'DataStoreParms', 'Datastoreparms', 'Datastoreparms', unknown, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Record', 'Record', 'Record', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Identifier', 'Identifier', 'Identifier', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Total', 'Total', 'Total', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'Stateful', 'Stateful', 'Stateful', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'StateId', 'Stateid', 'Stateid', char, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'SetToolbarData', 'Settoolbardata', 'Settoolbardata', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'GetToolbarData', 'Gettoolbardata', 'Gettoolbardata', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'SetSelectedRowData', 'Setselectedrowdata', 'Setselectedrowdata', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'GetSelectedRowData', 'Getselectedrowdata', 'Getselectedrowdata', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'SetColumnModel', 'Setcolumnmodel', 'Setcolumnmodel', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'GetColumnModel', 'Getcolumnmodel', 'Getcolumnmodel', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'SetData', 'Setdata', 'Setdata', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'GetData', 'Getdata', 'Getdata', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'SetDataStoreParms', 'Setdatastoreparms', 'Setdatastoreparms', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'GetDataStoreParms', 'Getdatastoreparms', 'Getdatastoreparms', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.grid', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.grid', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'GridHeight', 'Gridheight', 'Gridheight', int, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'Title', 'Title', 'Title', char, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'AddToParentGxUIControl', 'Addtoparentgxuicontrol', 'Addtoparentgxuicontrol', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'SelectedRow', 'Selectedrow', 'Selectedrow', int, 0, rt).
+usercontrol_property_mapping_i('gxui.gridextension', 'AutoHeight', 'Autoheight', 'Autoheight', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'DefaultColumnWidth', 'Defaultcolumnwidth', 'Defaultcolumnwidth', int, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'UseThemeClasses', 'Usethemeclasses', 'Usethemeclasses', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'EnableColumnLocking', 'Enablecolumnlocking', 'Enablecolumnlocking', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'SelectionModel', 'Selectionmodel', 'Selectionmodel', char, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'DragDropGroup', 'Dragdropgroup', 'Dragdropgroup', char, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'DragDropText', 'Dragdroptext', 'Dragdroptext', char, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'PrimaryButtonOnly', 'Primarybuttononly', 'Primarybuttononly', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'Grouping', 'Grouping', 'Grouping', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'GroupField', 'Groupfield', 'Groupfield', char, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'HideGroupedField', 'Hidegroupedfield', 'Hidegroupedfield', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'GroupTemplate', 'Grouptemplate', 'Grouptemplate', char, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'ForceFit', 'Forcefit', 'Forcefit', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'MinColumnWidth', 'Mincolumnwidth', 'Mincolumnwidth', int, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'EnableColumnHide', 'Enablecolumnhide', 'Enablecolumnhide', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'EnableColumnMove', 'Enablecolumnmove', 'Enablecolumnmove', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'RemoteSort', 'Remotesort', 'Remotesort', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'SortField', 'Sortfield', 'Sortfield', char, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'SortOrder', 'Sortorder', 'Sortorder', char, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'FirstText', 'Firsttext', 'Firsttext', char, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'LastText', 'Lasttext', 'Lasttext', char, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'NextText', 'Nexttext', 'Nexttext', char, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'PreviousText', 'Previoustext', 'Previoustext', char, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'RefreshText', 'Refreshtext', 'Refreshtext', char, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'Stateful', 'Stateful', 'Stateful', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'StateId', 'Stateid', 'Stateid', char, 0, dt).
+usercontrol_property_mapping_i('gxui.gridextension', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.gridextension', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.layout', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('gxui.layout', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('gxui.layout', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('gxui.layout', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('gxui.layout', 'Width', 'Width', 'Width', int, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'Height', 'Height', 'Height', int, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'Cls', 'Cls', 'Cls', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'Nested', 'Nested', 'Nested', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthHidden', 'Northhidden', 'Northhidden', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'NorthSplit', 'Northsplit', 'Northsplit', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthAutoScroll', 'Northautoscroll', 'Northautoscroll', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthMargins', 'Northmargins', 'Northmargins', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthBorder', 'Northborder', 'Northborder', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthLayout', 'Northlayout', 'Northlayout', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'NorthDragDropMode', 'Northdragdropmode', 'Northdragdropmode', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthTitleBar', 'Northtitlebar', 'Northtitlebar', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthTitle', 'Northtitle', 'Northtitle', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'NorthHeight', 'Northheight', 'Northheight', int, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthMinHeight', 'Northminheight', 'Northminheight', int, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthMaxHeight', 'Northmaxheight', 'Northmaxheight', int, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthCollapsible', 'Northcollapsible', 'Northcollapsible', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthCollapsed', 'Northcollapsed', 'Northcollapsed', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'NorthCollapseMode', 'Northcollapsemode', 'Northcollapsemode', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthCollapsedMargins', 'Northcollapsedmargins', 'Northcollapsedmargins', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthFloatable', 'Northfloatable', 'Northfloatable', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthAutoHide', 'Northautohide', 'Northautohide', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthAnimate', 'Northanimate', 'Northanimate', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'NorthDuration', 'Northduration', 'Northduration', int, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthHidden', 'Southhidden', 'Southhidden', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'SouthSplit', 'Southsplit', 'Southsplit', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthAutoScroll', 'Southautoscroll', 'Southautoscroll', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthMargins', 'Southmargins', 'Southmargins', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthBorder', 'Southborder', 'Southborder', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthLayout', 'Southlayout', 'Southlayout', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'SouthDragDropMode', 'Southdragdropmode', 'Southdragdropmode', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthTitleBar', 'Southtitlebar', 'Southtitlebar', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthTitle', 'Southtitle', 'Southtitle', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'SouthHeight', 'Southheight', 'Southheight', int, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthMinHeight', 'Southminheight', 'Southminheight', int, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthMaxHeight', 'Southmaxheight', 'Southmaxheight', int, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthCollapsible', 'Southcollapsible', 'Southcollapsible', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthCollapseMode', 'Southcollapsemode', 'Southcollapsemode', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthCollapsed', 'Southcollapsed', 'Southcollapsed', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'SouthCollapsedMargins', 'Southcollapsedmargins', 'Southcollapsedmargins', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthFloatable', 'Southfloatable', 'Southfloatable', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthAutoHide', 'Southautohide', 'Southautohide', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthAnimate', 'Southanimate', 'Southanimate', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'SouthDuration', 'Southduration', 'Southduration', int, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'WestHidden', 'Westhidden', 'Westhidden', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'WestSplit', 'Westsplit', 'Westsplit', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'WestAutoScroll', 'Westautoscroll', 'Westautoscroll', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'WestMargins', 'Westmargins', 'Westmargins', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'WestBorder', 'Westborder', 'Westborder', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'WestLayout', 'Westlayout', 'Westlayout', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'WestDragDropMode', 'Westdragdropmode', 'Westdragdropmode', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'WestTitleBar', 'Westtitlebar', 'Westtitlebar', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'WestTitle', 'Westtitle', 'Westtitle', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'WestWidth', 'Westwidth', 'Westwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'WestMinWidth', 'Westminwidth', 'Westminwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'WestMaxWidth', 'Westmaxwidth', 'Westmaxwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'WestCollapsible', 'Westcollapsible', 'Westcollapsible', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'WestCollapseMode', 'Westcollapsemode', 'Westcollapsemode', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'WestCollapsed', 'Westcollapsed', 'Westcollapsed', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'WestCollapsedMargins', 'Westcollapsedmargins', 'Westcollapsedmargins', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'WestFloatable', 'Westfloatable', 'Westfloatable', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'WestAutoHide', 'Westautohide', 'Westautohide', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'WestAnimate', 'Westanimate', 'Westanimate', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'WestDuration', 'Westduration', 'Westduration', int, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'CenterHidden', 'Centerhidden', 'Centerhidden', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'CenterSplit', 'Centersplit', 'Centersplit', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'CenterAutoScroll', 'Centerautoscroll', 'Centerautoscroll', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'CenterMargins', 'Centermargins', 'Centermargins', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'CenterBorder', 'Centerborder', 'Centerborder', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'CenterLayout', 'Centerlayout', 'Centerlayout', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'CenterDragDropMode', 'Centerdragdropmode', 'Centerdragdropmode', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'CenterTitleBar', 'Centertitlebar', 'Centertitlebar', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'CenterTitle', 'Centertitle', 'Centertitle', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'CenterWidth', 'Centerwidth', 'Centerwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'CenterMinWidth', 'Centerminwidth', 'Centerminwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'CenterMaxWidth', 'Centermaxwidth', 'Centermaxwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'CenterCollapsible', 'Centercollapsible', 'Centercollapsible', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'CenterCollapseMode', 'Centercollapsemode', 'Centercollapsemode', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'CenterCollapsed', 'Centercollapsed', 'Centercollapsed', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'CenterCollapsedMargins', 'Centercollapsedmargins', 'Centercollapsedmargins', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'CenterFloatable', 'Centerfloatable', 'Centerfloatable', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'CenterAutoHide', 'Centerautohide', 'Centerautohide', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'CenterAnimate', 'Centeranimate', 'Centeranimate', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'CenterDuration', 'Centerduration', 'Centerduration', int, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'EastHidden', 'Easthidden', 'Easthidden', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'EastSplit', 'Eastsplit', 'Eastsplit', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'EastAutoScroll', 'Eastautoscroll', 'Eastautoscroll', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'EastMargins', 'Eastmargins', 'Eastmargins', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'EastBorder', 'Eastborder', 'Eastborder', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'EastLayout', 'Eastlayout', 'Eastlayout', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'EastDragDropMode', 'Eastdragdropmode', 'Eastdragdropmode', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'EastTitleBar', 'Easttitlebar', 'Easttitlebar', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'EastTitle', 'Easttitle', 'Easttitle', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'EastWidth', 'Eastwidth', 'Eastwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'EastMinWidth', 'Eastminwidth', 'Eastminwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'EastMaxWidth', 'Eastmaxwidth', 'Eastmaxwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'EastCollapsible', 'Eastcollapsible', 'Eastcollapsible', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'EastCollapseMode', 'Eastcollapsemode', 'Eastcollapsemode', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'EastCollapsed', 'Eastcollapsed', 'Eastcollapsed', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'EastCollapsedMargins', 'Eastcollapsedmargins', 'Eastcollapsedmargins', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'EastFloatable', 'Eastfloatable', 'Eastfloatable', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'EastAutoHide', 'Eastautohide', 'Eastautohide', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'EastAnimate', 'Eastanimate', 'Eastanimate', char, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'EastDuration', 'Eastduration', 'Eastduration', int, 0, dt).
+usercontrol_property_mapping_i('gxui.layout', 'Stateful', 'Stateful', 'Stateful', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'StateId', 'Stateid', 'Stateid', char, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.layout', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.layout', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.layout', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.layout', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.menu', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('gxui.menu', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.menu', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('gxui.menu', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('gxui.menu', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('gxui.menu', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('gxui.menu', 'Menu', 'Menu', 'Menu', o('gxuiButton'), 0, any).
+usercontrol_property_mapping_i('gxui.menu', 'ItemClickedId', 'Itemclickedid', 'Itemclickedid', char, 0, rt).
+usercontrol_property_mapping_i('gxui.menu', 'SetMenu', 'Setmenu', 'Setmenu', char, 1, any).
+usercontrol_property_mapping_i('gxui.menu', 'GetMenu', 'Getmenu', 'Getmenu', char, 1, any).
+usercontrol_property_mapping_i('gxui.menu', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.menu', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.menu', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.menu', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.menu', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.message', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('gxui.message', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.message', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('gxui.message', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('gxui.message', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('gxui.message', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('gxui.message', 'Width', 'Width', 'Width', char, 0, any).
+usercontrol_property_mapping_i('gxui.message', 'Height', 'Height', 'Height', char, 0, any).
+usercontrol_property_mapping_i('gxui.message', 'Show', 'Show', 'Show', char, 0, any).
+usercontrol_property_mapping_i('gxui.message', 'Title', 'Title', 'Title', char, 0, any).
+usercontrol_property_mapping_i('gxui.message', 'Message', 'Message', 'Message', char, 0, any).
+usercontrol_property_mapping_i('gxui.message', 'Type', 'Type', 'Type', char, 0, any).
+usercontrol_property_mapping_i('gxui.message', 'Icon', 'Icon', 'Icon', char, 0, any).
+usercontrol_property_mapping_i('gxui.message', 'Cls', 'Cls', 'Cls', char, 0, any).
+usercontrol_property_mapping_i('gxui.message', 'Position', 'Position', 'Position', char, 0, any).
+usercontrol_property_mapping_i('gxui.message', 'Duration', 'Duration', 'Duration', int, 0, any).
+usercontrol_property_mapping_i('gxui.message', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.message', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.message', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.message', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.message', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.panel', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('gxui.panel', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.panel', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('gxui.panel', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('gxui.panel', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('gxui.panel', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('gxui.panel', 'Width', 'Width', 'Width', int, 0, any).
+usercontrol_property_mapping_i('gxui.panel', 'Height', 'Height', 'Height', int, 0, any).
+usercontrol_property_mapping_i('gxui.panel', 'Draggable', 'Draggable', 'Draggable', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'ShowAsWindow', 'Showaswindow', 'Showaswindow', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'Layout', 'Layout', 'Layout', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'AddToParentGxUIControl', 'Addtoparentgxuicontrol', 'Addtoparentgxuicontrol', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'ButtonPressedId', 'Buttonpressedid', 'Buttonpressedid', char, 0, rt).
+usercontrol_property_mapping_i('gxui.panel', 'EditFieldValue', 'Editfieldvalue', 'Editfieldvalue', char, 0, rt).
+usercontrol_property_mapping_i('gxui.panel', 'Visible', 'Visible', 'Visible', boolean, 0, rt).
+usercontrol_property_mapping_i('gxui.panel', 'Refresh', 'Refresh', 'Refresh', boolean, 0, rt).
+usercontrol_property_mapping_i('gxui.panel', 'AutoWidth', 'Autowidth', 'Autowidth', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'AutoHeight', 'Autoheight', 'Autoheight', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'Title', 'Title', 'Title', char, 0, any).
+usercontrol_property_mapping_i('gxui.panel', 'IconCls', 'Iconcls', 'Iconcls', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'Cls', 'Cls', 'Cls', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'Frame', 'Frame', 'Frame', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'Border', 'Border', 'Border', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.panel', 'Modal', 'Modal', 'Modal', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'UseToolbar', 'Usetoolbar', 'Usetoolbar', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'ToolbarData', 'Toolbardata', 'Toolbardata', o('gxuiToolbar'), 0, any).
+usercontrol_property_mapping_i('gxui.panel', 'Resizable', 'Resizable', 'Resizable', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'MinWidth', 'Minwidth', 'Minwidth', int, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'MaxWidth', 'Maxwidth', 'Maxwidth', int, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'MinHeight', 'Minheight', 'Minheight', int, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'MaxHeight', 'Maxheight', 'Maxheight', int, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'Pinned', 'Pinned', 'Pinned', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'Handles', 'Handles', 'Handles', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'Collapsible', 'Collapsible', 'Collapsible', char, 0, any).
+usercontrol_property_mapping_i('gxui.panel', 'Collapsed', 'Collapsed', 'Collapsed', char, 0, any).
+usercontrol_property_mapping_i('gxui.panel', 'AnimateCollapse', 'Animatecollapse', 'Animatecollapse', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'Stateful', 'Stateful', 'Stateful', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'StateId', 'Stateid', 'Stateid', char, 0, dt).
+usercontrol_property_mapping_i('gxui.panel', 'SetToolbarData', 'Settoolbardata', 'Settoolbardata', char, 1, any).
+usercontrol_property_mapping_i('gxui.panel', 'GetToolbarData', 'Gettoolbardata', 'Gettoolbardata', char, 1, any).
+usercontrol_property_mapping_i('gxui.panel', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.panel', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.panel', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.panel', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.settings', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('gxui.settings', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.settings', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('gxui.settings', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('gxui.settings', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('gxui.settings', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('gxui.settings', 'Enable', 'Enable', 'Enable', char, 0, any).
+usercontrol_property_mapping_i('gxui.settings', 'Provider', 'Provider', 'Provider', char, 0, any).
+usercontrol_property_mapping_i('gxui.settings', 'InitialState', 'Initialstate', 'Initialstate', o('gxuiState'), 0, any).
+usercontrol_property_mapping_i('gxui.settings', 'SaveURL', 'Saveurl', 'Saveurl', char, 0, any).
+usercontrol_property_mapping_i('gxui.settings', 'Delay', 'Delay', 'Delay', int, 0, any).
+usercontrol_property_mapping_i('gxui.settings', 'SetInitialState', 'Setinitialstate', 'Setinitialstate', char, 1, any).
+usercontrol_property_mapping_i('gxui.settings', 'GetInitialState', 'Getinitialstate', 'Getinitialstate', char, 1, any).
+usercontrol_property_mapping_i('gxui.settings', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.settings', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.settings', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.settings', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.settings', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.splash', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('gxui.splash', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.splash', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('gxui.splash', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('gxui.splash', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('gxui.splash', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('gxui.splash', 'Width', 'Width', 'Width', char, 0, any).
+usercontrol_property_mapping_i('gxui.splash', 'Height', 'Height', 'Height', char, 0, any).
+usercontrol_property_mapping_i('gxui.splash', 'Duration', 'Duration', 'Duration', int, 0, any).
+usercontrol_property_mapping_i('gxui.splash', 'Message', 'Message', 'Message', char, 0, any).
+usercontrol_property_mapping_i('gxui.splash', 'Image', 'Image', 'Image', char, 0, any).
+usercontrol_property_mapping_i('gxui.splash', 'Cls', 'Cls', 'Cls', char, 0, any).
+usercontrol_property_mapping_i('gxui.splash', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.splash', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.splash', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.splash', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.splash', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'Width', 'Width', 'Width', int, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'Height', 'Height', 'Height', int, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'Layout', 'Layout', 'Layout', char, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'AddToParentGxUIControl', 'Addtoparentgxuicontrol', 'Addtoparentgxuicontrol', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'ClosedTabId', 'Closedtabid', 'Closedtabid', char, 0, rt).
+usercontrol_property_mapping_i('gxui.tabpanel', 'ActiveTabId', 'Activetabid', 'Activetabid', char, 0, rt).
+usercontrol_property_mapping_i('gxui.tabpanel', 'CancelEvent', 'Cancelevent', 'Cancelevent', boolean, 0, rt).
+usercontrol_property_mapping_i('gxui.tabpanel', 'TabPosition', 'Tabposition', 'Tabposition', char, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'AutoWidth', 'Autowidth', 'Autowidth', char, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'AutoHeight', 'Autoheight', 'Autoheight', char, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'Cls', 'Cls', 'Cls', char, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'TabCls', 'Tabcls', 'Tabcls', char, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'Border', 'Border', 'Border', boolean, 0, dt).
+usercontrol_property_mapping_i('gxui.tabpanel', 'EnableTabScroll', 'Enabletabscroll', 'Enabletabscroll', char, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'HandleUniqueId', 'Handleuniqueid', 'Handleuniqueid', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'MinTabWidth', 'Mintabwidth', 'Mintabwidth', int, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'DesignTimeTabs', 'Designtimetabs', 'Designtimetabs', char, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'RunTimeTabs', 'Runtimetabs', 'Runtimetabs', o('gxuiTabPanel'), 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'RunTimeWebComponent', 'Runtimewebcomponent', 'Runtimewebcomponent', char, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'SetRunTimeTabs', 'Setruntimetabs', 'Setruntimetabs', char, 1, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'GetRunTimeTabs', 'Getruntimetabs', 'Getruntimetabs', char, 1, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.tabpanel', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'Width', 'Width', 'Width', char, 0, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'Height', 'Height', 'Height', char, 0, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'ButtonPressedId', 'Buttonpressedid', 'Buttonpressedid', char, 0, rt).
+usercontrol_property_mapping_i('gxui.toolbar', 'EditFieldValue', 'Editfieldvalue', 'Editfieldvalue', char, 0, rt).
+usercontrol_property_mapping_i('gxui.toolbar', 'Data', 'Data', 'Data', o('gxuiToolbar'), 0, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'SetData', 'Setdata', 'Setdata', char, 1, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'GetData', 'Getdata', 'Getdata', char, 1, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.toolbar', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Width', 'Width', 'Width', int, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Height', 'Height', 'Height', int, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'AddToParentGxUIControl', 'Addtoparentgxuicontrol', 'Addtoparentgxuicontrol', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'SelectedNode', 'Selectednode', 'Selectednode', char, 0, rt).
+usercontrol_property_mapping_i('gxui.treeview', 'SelectedText', 'Selectedtext', 'Selectedtext', char, 0, rt).
+usercontrol_property_mapping_i('gxui.treeview', 'SelectedIcon', 'Selectedicon', 'Selectedicon', char, 0, rt).
+usercontrol_property_mapping_i('gxui.treeview', 'SelectedNodeChecked', 'Selectednodechecked', 'Selectednodechecked', boolean, 0, rt).
+usercontrol_property_mapping_i('gxui.treeview', 'DropTarget', 'Droptarget', 'Droptarget', char, 0, rt).
+usercontrol_property_mapping_i('gxui.treeview', 'DropNode', 'Dropnode', 'Dropnode', char, 0, rt).
+usercontrol_property_mapping_i('gxui.treeview', 'DropPoint', 'Droppoint', 'Droppoint', char, 0, rt).
+usercontrol_property_mapping_i('gxui.treeview', 'NodeEditText', 'Nodeedittext', 'Nodeedittext', char, 0, rt).
+usercontrol_property_mapping_i('gxui.treeview', 'DropAllowed', 'Dropallowed', 'Dropallowed', boolean, 0, rt).
+usercontrol_property_mapping_i('gxui.treeview', 'Multiselection', 'Multiselection', 'Multiselection', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Editable', 'Editable', 'Editable', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'EnableCheckbox', 'Enablecheckbox', 'Enablecheckbox', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'CheckedNodes', 'Checkednodes', 'Checkednodes', unknown, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'UncheckedNodes', 'Uncheckednodes', 'Uncheckednodes', unknown, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Title', 'Title', 'Title', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'IconCls', 'Iconcls', 'Iconcls', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Cls', 'Cls', 'Cls', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Frame', 'Frame', 'Frame', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Border', 'Border', 'Border', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'AutoScroll', 'Autoscroll', 'Autoscroll', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Animate', 'Animate', 'Animate', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'ExpandAll', 'Expandall', 'Expandall', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'ShowLines', 'Showlines', 'Showlines', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Sort', 'Sort', 'Sort', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'RootId', 'Rootid', 'Rootid', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'RootVisible', 'Rootvisible', 'Rootvisible', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'RootText', 'Roottext', 'Roottext', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'RootIcon', 'Rooticon', 'Rooticon', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'RootCls', 'Rootcls', 'Rootcls', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'RootIconCls', 'Rooticoncls', 'Rooticoncls', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'ExpandRoot', 'Expandroot', 'Expandroot', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'EnableDragDrop', 'Enabledragdrop', 'Enabledragdrop', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'DragDropGroup', 'Dragdropgroup', 'Dragdropgroup', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'AppendOnly', 'Appendonly', 'Appendonly', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Scroll', 'Scroll', 'Scroll', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'DropData', 'Dropdata', 'Dropdata', unknown, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'DisableBranchEvents', 'Disablebranchevents', 'Disablebranchevents', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'NotifyContext', 'Notifycontext', 'Notifycontext', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'NotifyDataType', 'Notifydatatype', 'Notifydatatype', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'LazyLoading', 'Lazyloading', 'Lazyloading', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'LoaderURL', 'Loaderurl', 'Loaderurl', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Children', 'Children', 'Children', o('gxuiTreeviewNode'), 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'SelectedNodeData', 'Selectednodedata', 'Selectednodedata', unknown, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Stateful', 'Stateful', 'Stateful', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'StateId', 'Stateid', 'Stateid', char, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'SetCheckedNodes', 'Setcheckednodes', 'Setcheckednodes', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'GetCheckedNodes', 'Getcheckednodes', 'Getcheckednodes', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'SetUncheckedNodes', 'Setuncheckednodes', 'Setuncheckednodes', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'GetUncheckedNodes', 'Getuncheckednodes', 'Getuncheckednodes', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'SetDropData', 'Setdropdata', 'Setdropdata', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'GetDropData', 'Getdropdata', 'Getdropdata', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'SetChildren', 'Setchildren', 'Setchildren', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'GetChildren', 'Getchildren', 'Getchildren', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'SetSelectedNodeData', 'Setselectednodedata', 'Setselectednodedata', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'GetSelectedNodeData', 'Getselectednodedata', 'Getselectednodedata', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.treeview', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.treeview', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.viewport', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('gxui.viewport', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.viewport', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('gxui.viewport', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('gxui.viewport', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('gxui.viewport', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('gxui.viewport', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('gxui.viewport', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.viewport', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.viewport', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('gxui.viewport', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
 usercontrol_property_mapping_i('historymanager', 'Class', 'Class', 'Class', char, 0, any).
 usercontrol_property_mapping_i('historymanager', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
 usercontrol_property_mapping_i('historymanager', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
@@ -782,6 +1357,85 @@ usercontrol_property_mapping_i('imagegallery', 'CssSupportFiles', 'Csssupportfil
 usercontrol_property_mapping_i('imagegallery', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
 usercontrol_property_mapping_i('imagegallery', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
 usercontrol_property_mapping_i('imagegallery', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('innewwindow', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('innewwindow', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('innewwindow', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('innewwindow', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('innewwindow', 'Width', 'Width', 'Width', char, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'Height', 'Height', 'Height', char, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'Name', 'Name', 'Name', char, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'Target', 'Target', 'Target', char, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'Fullscreen', 'Fullscreen', 'Fullscreen', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'Location', 'Location', 'Location', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'MenuBar', 'Menubar', 'Menubar', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'Resizable', 'Resizable', 'Resizable', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'Scrollbars', 'Scrollbars', 'Scrollbars', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'TitleBar', 'Titlebar', 'Titlebar', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'ToolBar', 'Toolbar', 'Toolbar', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'directories', 'Directories', 'Directories', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'status', 'Status', 'Status', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'copyhistory', 'Copyhistory', 'Copyhistory', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'top', 'Top', 'Top', char, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'left', 'Left', 'Left', char, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'fitscreen', 'Fitscreen', 'Fitscreen', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'RefreshParentOnClose', 'Refreshparentonclose', 'Refreshparentonclose', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'Targets', 'Targets', 'Targets', o('InNewWindowTargets'), 0, any).
+usercontrol_property_mapping_i('innewwindow', 'SetTargets', 'Settargets', 'Settargets', char, 1, any).
+usercontrol_property_mapping_i('innewwindow', 'GetTargets', 'Gettargets', 'Gettargets', char, 1, any).
+usercontrol_property_mapping_i('innewwindow', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('innewwindow', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('innewwindow', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('innewwindow', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('innewwindow', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('jseventhandler', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('jseventhandler', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('jseventhandler', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('jseventhandler', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('jseventhandler', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('jseventhandler', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('jseventhandler', 'EventList', 'Eventlist', 'Eventlist', o('EventList'), 0, any).
+usercontrol_property_mapping_i('jseventhandler', 'AttachedControl', 'Attachedcontrol', 'Attachedcontrol', char, 0, rt).
+usercontrol_property_mapping_i('jseventhandler', 'EventType', 'Eventtype', 'Eventtype', char, 0, rt).
+usercontrol_property_mapping_i('jseventhandler', 'EventAltKey', 'Eventaltkey', 'Eventaltkey', char, 0, rt).
+usercontrol_property_mapping_i('jseventhandler', 'EventCtrlKey', 'Eventctrlkey', 'Eventctrlkey', char, 0, rt).
+usercontrol_property_mapping_i('jseventhandler', 'EventClientX', 'Eventclientx', 'Eventclientx', char, 0, rt).
+usercontrol_property_mapping_i('jseventhandler', 'EventClientY', 'Eventclienty', 'Eventclienty', char, 0, rt).
+usercontrol_property_mapping_i('jseventhandler', 'EventShiftKey', 'Eventshiftkey', 'Eventshiftkey', char, 0, rt).
+usercontrol_property_mapping_i('jseventhandler', 'EventScreenX', 'Eventscreenx', 'Eventscreenx', char, 0, rt).
+usercontrol_property_mapping_i('jseventhandler', 'EventScreenY', 'Eventscreeny', 'Eventscreeny', char, 0, rt).
+usercontrol_property_mapping_i('jseventhandler', 'EventButton', 'Eventbutton', 'Eventbutton', char, 0, rt).
+usercontrol_property_mapping_i('jseventhandler', 'Width', 'Width', 'Width', char, 0, dt).
+usercontrol_property_mapping_i('jseventhandler', 'Height', 'Height', 'Height', char, 0, dt).
+usercontrol_property_mapping_i('jseventhandler', 'SetEventList', 'Seteventlist', 'Seteventlist', char, 1, any).
+usercontrol_property_mapping_i('jseventhandler', 'GetEventList', 'Geteventlist', 'Geteventlist', char, 1, any).
+usercontrol_property_mapping_i('jseventhandler', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('jseventhandler', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('jseventhandler', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('jseventhandler', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('jseventhandler', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('jsmsgbox', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('jsmsgbox', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('jsmsgbox', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('jsmsgbox', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('jsmsgbox', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('jsmsgbox', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('jsmsgbox', 'Width', 'Width', 'Width', char, 0, any).
+usercontrol_property_mapping_i('jsmsgbox', 'Height', 'Height', 'Height', char, 0, any).
+usercontrol_property_mapping_i('jsmsgbox', 'Texto', 'Texto', 'Texto', char, 0, any).
+usercontrol_property_mapping_i('jsmsgbox', 'Icono', 'Icono', 'Icono', char, 0, any).
+usercontrol_property_mapping_i('jsmsgbox', 'Botones', 'Botones', 'Botones', char, 0, any).
+usercontrol_property_mapping_i('jsmsgbox', 'Texto_Boton_OK', 'Texto_boton_ok', 'Texto_boton_ok', char, 0, any).
+usercontrol_property_mapping_i('jsmsgbox', 'Texto_Boton_Cancel', 'Texto_boton_cancel', 'Texto_boton_cancel', char, 0, any).
+usercontrol_property_mapping_i('jsmsgbox', 'Texto_Boton_Abort', 'Texto_boton_abort', 'Texto_boton_abort', char, 0, any).
+usercontrol_property_mapping_i('jsmsgbox', 'Texto_Boton_Retry', 'Texto_boton_retry', 'Texto_boton_retry', char, 0, any).
+usercontrol_property_mapping_i('jsmsgbox', 'Texto_Boton_Ignore', 'Texto_boton_ignore', 'Texto_boton_ignore', char, 0, any).
+usercontrol_property_mapping_i('jsmsgbox', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('jsmsgbox', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('jsmsgbox', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('jsmsgbox', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('jsmsgbox', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
 usercontrol_property_mapping_i('matrixgrid', 'Class', 'Class', 'Class', char, 0, any).
 usercontrol_property_mapping_i('matrixgrid', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
 usercontrol_property_mapping_i('matrixgrid', 'Visible', 'Visible', 'Visible', boolean, 0, any).
@@ -935,6 +1589,22 @@ usercontrol_property_mapping_i('scanner', 'Attribute', 'Attribute', 'Attid', cha
 usercontrol_property_mapping_i('scanner', 'Barcode Types', 'Barcode types', 'Barcodetypes', char, 0, dt).
 usercontrol_property_mapping_i('scanner', 'SetAttribute', 'Setattribute', 'Setattid', char, 1, any).
 usercontrol_property_mapping_i('scanner', 'GetAttribute', 'Getattribute', 'Getattid', char, 1, any).
+usercontrol_property_mapping_i('screendetector', 'Class', 'Class', 'Class', char, 0, any).
+usercontrol_property_mapping_i('screendetector', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
+usercontrol_property_mapping_i('screendetector', 'UserControlType', 'Usercontroltype', 'Usercontroltype', char, 1, any).
+usercontrol_property_mapping_i('screendetector', 'ConstructorName', 'Constructorname', 'Constructorname', char, 1, any).
+usercontrol_property_mapping_i('screendetector', 'ShowMethodName', 'Showmethodname', 'Showmethodname', char, 1, any).
+usercontrol_property_mapping_i('screendetector', 'ControlName', 'Controlname', 'Controlname', char, 1, any).
+usercontrol_property_mapping_i('screendetector', 'ScreenWidth', 'Screenwidth', 'Screenwidth', char, 0, rt).
+usercontrol_property_mapping_i('screendetector', 'ScreenHeight', 'Screenheight', 'Screenheight', char, 0, rt).
+usercontrol_property_mapping_i('screendetector', 'ClientScreenHeight', 'Clientscreenheight', 'Clientscreenheight', char, 0, rt).
+usercontrol_property_mapping_i('screendetector', 'ClientScreenWidth', 'Clientscreenwidth', 'Clientscreenwidth', char, 0, rt).
+usercontrol_property_mapping_i('screendetector', 'ScreenColorDepth', 'Screencolordepth', 'Screencolordepth', char, 0, rt).
+usercontrol_property_mapping_i('screendetector', 'Visible', 'Visible', 'Visible', boolean, 0, any).
+usercontrol_property_mapping_i('screendetector', 'CssSupportFiles', 'Csssupportfiles', 'Csssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('screendetector', 'JsSupportFiles', 'Jssupportfiles', 'Jssupportfiles', char, 1, any).
+usercontrol_property_mapping_i('screendetector', 'CssSharedSupportFiles', 'Csssharedsupportfiles', 'Csssharedsupportfiles', char, 1, any).
+usercontrol_property_mapping_i('screendetector', 'JsSharedSupportFiles', 'Jssharedsupportfiles', 'Jssharedsupportfiles', char, 1, any).
 usercontrol_property_mapping_i('sdadsview', 'Class', 'Class', 'Class', char, 0, any).
 usercontrol_property_mapping_i('sdadsview', 'Enabled', 'Enabled', 'Enabled', boolean, 0, any).
 usercontrol_property_mapping_i('sdadsview', 'Visible', 'Visible', 'Visible', boolean, 0, any).
@@ -1352,8 +2022,78 @@ usercontrol_method_i('gxscheduler', 'setcurrentview', [object], [[object],[char]
 usercontrol_method_i('gxscheduler', 'setcurrentview', [object], [[char]]).
 usercontrol_method_i('gxscheduler', 'refresh', [object], []).
 usercontrol_method_i('gxspreadsheet', 'setmenu', [object], [[object]]).
+usercontrol_method_i('gxui.eventobject', 'preventdefault', [object], []).
+usercontrol_method_i('gxui.eventobject', 'stopevent', [object], []).
+usercontrol_method_i('gxui.eventobject', 'stoppropagation', [object], []).
+usercontrol_method_i('gxui.grid', 'refresh', [object], []).
+usercontrol_method_i('gxui.grid', 'selectrow', [object], [[char]]).
+usercontrol_method_i('gxui.grid', 'selectrow', [object], [[char],[boolean]]).
+usercontrol_method_i('gxui.grid', 'selectrowbyindex', [object], [[object]]).
+usercontrol_method_i('gxui.grid', 'selectrowbyindex', [object], [[object],[boolean]]).
+usercontrol_method_i('gxui.grid', 'deselectrow', [object], [[char]]).
+usercontrol_method_i('gxui.grid', 'deselectrowbyindex', [object], [[object]]).
+usercontrol_method_i('gxui.grid', 'clearselections', [object], []).
+usercontrol_method_i('gxui.gridextension', 'selectrow', [object], [[object]]).
+usercontrol_method_i('gxui.layout', 'hideregion', [object], [[char]]).
+usercontrol_method_i('gxui.layout', 'showregion', [object], [[char]]).
+usercontrol_method_i('gxui.layout', 'collapseregion', [object], [[char]]).
+usercontrol_method_i('gxui.layout', 'collapseregion', [object], [[char],[boolean]]).
+usercontrol_method_i('gxui.layout', 'expandregion', [object], [[char]]).
+usercontrol_method_i('gxui.layout', 'expandregion', [object], [[char],[boolean]]).
+usercontrol_method_i('gxui.menu', 'showmenu', [object], []).
+usercontrol_method_i('gxui.menu', 'showmenu', [object], [[object]]).
+usercontrol_method_i('gxui.menu', 'showmenu', [object], [[object],[object],[object]]).
+usercontrol_method_i('gxui.menu', 'showmenuxy', [object], [[object],[object]]).
+usercontrol_method_i('gxui.message', 'showmessage', [object], [[char],[char]]).
+usercontrol_method_i('gxui.message', 'showmessage', [object], [[char],[char],[char]]).
+usercontrol_method_i('gxui.panel', 'changetoolbar', [object], [[object]]).
+usercontrol_method_i('gxui.panel', 'collapse', [object], []).
+usercontrol_method_i('gxui.panel', 'collapse', [object], [[boolean]]).
+usercontrol_method_i('gxui.panel', 'expand', [object], []).
+usercontrol_method_i('gxui.panel', 'expand', [object], [[boolean]]).
+usercontrol_method_i('gxui.panel', 'disabletoolbaritem', [object], [[char]]).
+usercontrol_method_i('gxui.panel', 'enabletoolbaritem', [object], [[char]]).
+usercontrol_method_i('gxui.panel', 'hidetoolbaritem', [object], [[char]]).
+usercontrol_method_i('gxui.panel', 'showtoolbaritem', [object], [[char]]).
+usercontrol_method_i('gxui.panel', 'centerwindow', [object], []).
+usercontrol_method_i('gxui.settings', 'setlanguage', [object], [[char]]).
+usercontrol_method_i('gxui.settings', 'setlanguage', [object], [[char],[char]]).
+usercontrol_method_i('gxui.tabpanel', 'opentab', [object], [[char],[char],[char]]).
+usercontrol_method_i('gxui.tabpanel', 'opentab', [object], [[char],[char],[char],[boolean]]).
+usercontrol_method_i('gxui.tabpanel', 'closetab', [object], [[char]]).
+usercontrol_method_i('gxui.tabpanel', 'selecttab', [object], [[char]]).
+usercontrol_method_i('gxui.tabpanel', 'istabopen', [boolean], [[char]]).
+usercontrol_method_i('gxui.tabpanel', 'showtab', [object], [[object]]).
+usercontrol_method_i('gxui.tabpanel', 'hidetab', [object], [[object]]).
+usercontrol_method_i('gxui.tabpanel', 'settabdirty', [object], [[char],[boolean]]).
+usercontrol_method_i('gxui.tabpanel', 'istabdirty', [boolean], [[char]]).
+usercontrol_method_i('gxui.tabpanel', 'settabtitle', [object], [[char],[char]]).
+usercontrol_method_i('gxui.toolbar', 'changetoolbar', [object], [[object]]).
+usercontrol_method_i('gxui.toolbar', 'disableitem', [object], [[char]]).
+usercontrol_method_i('gxui.toolbar', 'enableitem', [object], [[char]]).
+usercontrol_method_i('gxui.toolbar', 'hideitem', [object], [[char]]).
+usercontrol_method_i('gxui.toolbar', 'showitem', [object], [[char]]).
+usercontrol_method_i('gxui.treeview', 'selectnode', [object], [[char]]).
+usercontrol_method_i('gxui.treeview', 'expandnode', [object], [[char]]).
+usercontrol_method_i('gxui.treeview', 'expandallnodes', [object], []).
+usercontrol_method_i('gxui.treeview', 'collapsenode', [object], [[char]]).
+usercontrol_method_i('gxui.treeview', 'collapseallnodes', [object], []).
+usercontrol_method_i('gxui.treeview', 'reload', [object], []).
+usercontrol_method_i('gxui.treeview', 'reload', [object], [[char]]).
+usercontrol_method_i('gxui.treeview', 'refresh', [object], []).
+usercontrol_method_i('gxui.treeview', 'show', [object], []).
+usercontrol_method_i('gxui.treeview', 'hide', [object], []).
+usercontrol_method_i('gxui.treeview', 'getnodeparentid', [char], [[char]]).
+usercontrol_method_i('gxui.treeview', 'setnodedata', [object], [[char],[object]]).
+usercontrol_method_i('gxui.treeview', 'setnodetext', [object], [[char],[char]]).
+usercontrol_method_i('gxui.treeview', 'startedit', [object], [[char]]).
+usercontrol_method_i('gxui.treeview', 'startedit', [object], [[char],[char]]).
+usercontrol_method_i('gxui.treeview', 'canceledit', [object], []).
+usercontrol_method_i('gxui.treeview', 'clearallnodes', [object], []).
 usercontrol_method_i('historymanager', 'addhistorypoint', [object], [[char]]).
 usercontrol_method_i('historymanager', 'addhistorypoint', [object], [[char],[boolean]]).
+usercontrol_method_i('innewwindow', 'openwindow', [object], []).
+usercontrol_method_i('jsmsgbox', 'ejecutar', [object], []).
 usercontrol_method_i('queryviewer', 'getmetadata', [object], []).
 usercontrol_method_i('queryviewer', 'notifymetadata', [object], []).
 usercontrol_method_i('queryviewer', 'getdata', [object], []).
@@ -1421,8 +2161,78 @@ usercontrol_method_mapping_i('gxscheduler', 'setcurrentview', 'SetCurrentView').
 usercontrol_method_mapping_i('gxscheduler', 'setcurrentview', 'SetCurrentView').
 usercontrol_method_mapping_i('gxscheduler', 'refresh', 'Refresh').
 usercontrol_method_mapping_i('gxspreadsheet', 'setmenu', 'SetMenu').
+usercontrol_method_mapping_i('gxui.eventobject', 'preventdefault', 'PreventDefault').
+usercontrol_method_mapping_i('gxui.eventobject', 'stopevent', 'StopEvent').
+usercontrol_method_mapping_i('gxui.eventobject', 'stoppropagation', 'StopPropagation').
+usercontrol_method_mapping_i('gxui.grid', 'refresh', 'Refresh').
+usercontrol_method_mapping_i('gxui.grid', 'selectrow', 'SelectRow').
+usercontrol_method_mapping_i('gxui.grid', 'selectrow', 'SelectRow').
+usercontrol_method_mapping_i('gxui.grid', 'selectrowbyindex', 'SelectRowByIndex').
+usercontrol_method_mapping_i('gxui.grid', 'selectrowbyindex', 'SelectRowByIndex').
+usercontrol_method_mapping_i('gxui.grid', 'deselectrow', 'DeselectRow').
+usercontrol_method_mapping_i('gxui.grid', 'deselectrowbyindex', 'DeselectRowByIndex').
+usercontrol_method_mapping_i('gxui.grid', 'clearselections', 'ClearSelections').
+usercontrol_method_mapping_i('gxui.gridextension', 'selectrow', 'SelectRow').
+usercontrol_method_mapping_i('gxui.layout', 'hideregion', 'hideRegion').
+usercontrol_method_mapping_i('gxui.layout', 'showregion', 'showRegion').
+usercontrol_method_mapping_i('gxui.layout', 'collapseregion', 'collapseRegion').
+usercontrol_method_mapping_i('gxui.layout', 'collapseregion', 'collapseRegion').
+usercontrol_method_mapping_i('gxui.layout', 'expandregion', 'expandRegion').
+usercontrol_method_mapping_i('gxui.layout', 'expandregion', 'expandRegion').
+usercontrol_method_mapping_i('gxui.menu', 'showmenu', 'ShowMenu').
+usercontrol_method_mapping_i('gxui.menu', 'showmenu', 'ShowMenu').
+usercontrol_method_mapping_i('gxui.menu', 'showmenu', 'ShowMenu').
+usercontrol_method_mapping_i('gxui.menu', 'showmenuxy', 'ShowMenuXY').
+usercontrol_method_mapping_i('gxui.message', 'showmessage', 'ShowMessage').
+usercontrol_method_mapping_i('gxui.message', 'showmessage', 'ShowMessage').
+usercontrol_method_mapping_i('gxui.panel', 'changetoolbar', 'ChangeToolbar').
+usercontrol_method_mapping_i('gxui.panel', 'collapse', 'Collapse').
+usercontrol_method_mapping_i('gxui.panel', 'collapse', 'Collapse').
+usercontrol_method_mapping_i('gxui.panel', 'expand', 'Expand').
+usercontrol_method_mapping_i('gxui.panel', 'expand', 'Expand').
+usercontrol_method_mapping_i('gxui.panel', 'disabletoolbaritem', 'DisableToolbarItem').
+usercontrol_method_mapping_i('gxui.panel', 'enabletoolbaritem', 'EnableToolbarItem').
+usercontrol_method_mapping_i('gxui.panel', 'hidetoolbaritem', 'HideToolbarItem').
+usercontrol_method_mapping_i('gxui.panel', 'showtoolbaritem', 'ShowToolbarItem').
+usercontrol_method_mapping_i('gxui.panel', 'centerwindow', 'CenterWindow').
+usercontrol_method_mapping_i('gxui.settings', 'setlanguage', 'SetLanguage').
+usercontrol_method_mapping_i('gxui.settings', 'setlanguage', 'SetLanguage').
+usercontrol_method_mapping_i('gxui.tabpanel', 'opentab', 'OpenTab').
+usercontrol_method_mapping_i('gxui.tabpanel', 'opentab', 'OpenTab').
+usercontrol_method_mapping_i('gxui.tabpanel', 'closetab', 'CloseTab').
+usercontrol_method_mapping_i('gxui.tabpanel', 'selecttab', 'SelectTab').
+usercontrol_method_mapping_i('gxui.tabpanel', 'istabopen', 'IsTabOpen').
+usercontrol_method_mapping_i('gxui.tabpanel', 'showtab', 'ShowTab').
+usercontrol_method_mapping_i('gxui.tabpanel', 'hidetab', 'HideTab').
+usercontrol_method_mapping_i('gxui.tabpanel', 'settabdirty', 'SetTabDirty').
+usercontrol_method_mapping_i('gxui.tabpanel', 'istabdirty', 'IsTabDirty').
+usercontrol_method_mapping_i('gxui.tabpanel', 'settabtitle', 'SetTabTitle').
+usercontrol_method_mapping_i('gxui.toolbar', 'changetoolbar', 'ChangeToolbar').
+usercontrol_method_mapping_i('gxui.toolbar', 'disableitem', 'DisableItem').
+usercontrol_method_mapping_i('gxui.toolbar', 'enableitem', 'EnableItem').
+usercontrol_method_mapping_i('gxui.toolbar', 'hideitem', 'HideItem').
+usercontrol_method_mapping_i('gxui.toolbar', 'showitem', 'ShowItem').
+usercontrol_method_mapping_i('gxui.treeview', 'selectnode', 'SelectNode').
+usercontrol_method_mapping_i('gxui.treeview', 'expandnode', 'ExpandNode').
+usercontrol_method_mapping_i('gxui.treeview', 'expandallnodes', 'ExpandAllNodes').
+usercontrol_method_mapping_i('gxui.treeview', 'collapsenode', 'CollapseNode').
+usercontrol_method_mapping_i('gxui.treeview', 'collapseallnodes', 'CollapseAllNodes').
+usercontrol_method_mapping_i('gxui.treeview', 'reload', 'Reload').
+usercontrol_method_mapping_i('gxui.treeview', 'reload', 'Reload').
+usercontrol_method_mapping_i('gxui.treeview', 'refresh', 'Refresh').
+usercontrol_method_mapping_i('gxui.treeview', 'show', 'Show').
+usercontrol_method_mapping_i('gxui.treeview', 'hide', 'Hide').
+usercontrol_method_mapping_i('gxui.treeview', 'getnodeparentid', 'GetNodeParentId').
+usercontrol_method_mapping_i('gxui.treeview', 'setnodedata', 'SetNodeData').
+usercontrol_method_mapping_i('gxui.treeview', 'setnodetext', 'SetNodeText').
+usercontrol_method_mapping_i('gxui.treeview', 'startedit', 'StartEdit').
+usercontrol_method_mapping_i('gxui.treeview', 'startedit', 'StartEdit').
+usercontrol_method_mapping_i('gxui.treeview', 'canceledit', 'CancelEdit').
+usercontrol_method_mapping_i('gxui.treeview', 'clearallnodes', 'ClearAllNodes').
 usercontrol_method_mapping_i('historymanager', 'addhistorypoint', 'AddHistoryPoint').
 usercontrol_method_mapping_i('historymanager', 'addhistorypoint', 'AddHistoryPoint').
+usercontrol_method_mapping_i('innewwindow', 'openwindow', 'OpenWindow').
+usercontrol_method_mapping_i('jsmsgbox', 'ejecutar', 'Ejecutar').
 usercontrol_method_mapping_i('queryviewer', 'getmetadata', 'GetMetadata').
 usercontrol_method_mapping_i('queryviewer', 'notifymetadata', 'NotifyMetadata').
 usercontrol_method_mapping_i('queryviewer', 'getdata', 'GetData').
@@ -1493,8 +2303,43 @@ usercontrol_event_mapping_i('gxscheduler', 'Eventadded', 'EventAdded').
 usercontrol_event_mapping_i('gxscheduler', 'Eventdeleted', 'EventDeleted').
 usercontrol_event_mapping_i('gxscheduler', 'Eventupdated', 'EventUpdated').
 usercontrol_event_mapping_i('gxscheduler', 'Eventselected', 'EventSelected').
+usercontrol_event_mapping_i('gxui.grid', 'Rowclick', 'RowClick').
+usercontrol_event_mapping_i('gxui.grid', 'Rowdoubleclick', 'RowDoubleClick').
+usercontrol_event_mapping_i('gxui.grid', 'Cellclick', 'CellClick').
+usercontrol_event_mapping_i('gxui.grid', 'Celldoubleclick', 'CellDoubleClick').
+usercontrol_event_mapping_i('gxui.grid', 'Startdrag', 'StartDrag').
+usercontrol_event_mapping_i('gxui.grid', 'Buttonpressed', 'ButtonPressed').
+usercontrol_event_mapping_i('gxui.grid', 'Loadexception', 'LoadException').
+usercontrol_event_mapping_i('gxui.gridextension', 'Oninitdrag', 'OnInitDrag').
+usercontrol_event_mapping_i('gxui.gridextension', 'Onfirstpage', 'OnFirstPage').
+usercontrol_event_mapping_i('gxui.gridextension', 'Onpreviouspage', 'OnPreviousPage').
+usercontrol_event_mapping_i('gxui.gridextension', 'Onnextpage', 'OnNextPage').
+usercontrol_event_mapping_i('gxui.gridextension', 'Onlastpage', 'OnLastPage').
+usercontrol_event_mapping_i('gxui.gridextension', 'Contextmenu', 'ContextMenu').
+usercontrol_event_mapping_i('gxui.menu', 'Itemclick', 'ItemClick').
+usercontrol_event_mapping_i('gxui.panel', 'Buttonpressed', 'ButtonPressed').
+usercontrol_event_mapping_i('gxui.panel', 'Onclose', 'OnClose').
+usercontrol_event_mapping_i('gxui.tabpanel', 'Tabchanged', 'TabChanged').
+usercontrol_event_mapping_i('gxui.tabpanel', 'Tabclosed', 'TabClosed').
+usercontrol_event_mapping_i('gxui.tabpanel', 'Beforetabclosed', 'BeforeTabClosed').
+usercontrol_event_mapping_i('gxui.tabpanel', 'Tabclick', 'TabClick').
+usercontrol_event_mapping_i('gxui.toolbar', 'Buttonpressed', 'ButtonPressed').
+usercontrol_event_mapping_i('gxui.treeview', 'Click', 'Click').
+usercontrol_event_mapping_i('gxui.treeview', 'Doubleclick', 'DoubleClick').
+usercontrol_event_mapping_i('gxui.treeview', 'Nodeover', 'NodeOver').
+usercontrol_event_mapping_i('gxui.treeview', 'Nodedrop', 'NodeDrop').
+usercontrol_event_mapping_i('gxui.treeview', 'Rowdrop', 'RowDrop').
+usercontrol_event_mapping_i('gxui.treeview', 'Nodeedit', 'NodeEdit').
+usercontrol_event_mapping_i('gxui.treeview', 'Checkchange', 'CheckChange').
+usercontrol_event_mapping_i('gxui.treeview', 'Contextmenu', 'ContextMenu').
 usercontrol_event_mapping_i('historymanager', 'Urlchanged', 'URLChanged').
 usercontrol_event_mapping_i('imagegallery', 'Imagechanged', 'ImageChanged').
+usercontrol_event_mapping_i('jseventhandler', 'Eventhandled', 'EventHandled').
+usercontrol_event_mapping_i('jsmsgbox', 'Onclickok', 'OnClickOk').
+usercontrol_event_mapping_i('jsmsgbox', 'Onclickcancel', 'OnClickCancel').
+usercontrol_event_mapping_i('jsmsgbox', 'Onclickabort', 'OnClickAbort').
+usercontrol_event_mapping_i('jsmsgbox', 'Onclickretry', 'OnClickRetry').
+usercontrol_event_mapping_i('jsmsgbox', 'Onclickignore', 'OnClickIgnore').
 usercontrol_event_mapping_i('queryviewer', 'Draganddrop', 'DragAndDrop').
 usercontrol_event_mapping_i('queryviewer', 'Filterchanged', 'FilterChanged').
 usercontrol_event_mapping_i('queryviewer', 'Itemclick', 'ItemClick').
@@ -1506,6 +2351,7 @@ usercontrol_event_mapping_i('queryviewer', 'Onpreviouspage', 'OnPreviousPage').
 usercontrol_event_mapping_i('queryviewer', 'Onnextpage', 'OnNextPage').
 usercontrol_event_mapping_i('queryviewer', 'Onlastpage', 'OnLastPage').
 usercontrol_event_mapping_i('rating', 'Controlvaluechanged', 'ControlValueChanged').
+usercontrol_event_mapping_i('screendetector', 'Screendetected', 'ScreenDetected').
 usercontrol_event_mapping_i('sdcalendar', 'Controlvaluechanged', 'ControlValueChanged').
 usercontrol_event_mapping_i('sdcalendar', 'Datetap', 'DateTap').
 usercontrol_event_mapping_i('sdchronometer', 'Tick', 'Tick').
@@ -1530,3 +2376,12 @@ usercontrol_event_mapping_i('basictab', 'Tabchanged', 'TabChanged').
 usercontrol_event_mapping_i('tab', 'Tabchanged', 'TabChanged').
 usercontrol_event_mapping_i('treeview', 'Nodeclicked', 'NodeClicked').
 usercontrol_event_mapping_i('treeview', 'Populatenode', 'PopulateNode').
+usercontrol_column_property_i('gxui.gridextension', 'Lock', boolean, 0, any).
+usercontrol_column_property_i('gxui.gridextension', 'Resizable', boolean, 0, any).
+usercontrol_column_property_i('gxui.gridextension', 'Sortable', boolean, 0, any).
+usercontrol_column_property_i('gxui.gridextension', 'Hidden', boolean, 0, any).
+usercontrol_column_property_i('gxui.gridextension', 'Hideable', boolean, 0, any).
+usercontrol_column_property_i('gxui.gridextension', 'Menudisabled', boolean, 0, any).
+usercontrol_column_property_i('gxui.gridextension', 'Autoexpand', boolean, 0, any).
+usercontrol_column_property_mapping_i('gxui.gridextension', 'MenuDisabled', 'Menudisabled', 'Menudisabled', 0).
+usercontrol_column_property_mapping_i('gxui.gridextension', 'AutoExpand', 'Autoexpand', 'Autoexpand', 0).

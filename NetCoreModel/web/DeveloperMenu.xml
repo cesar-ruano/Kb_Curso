@@ -9,4 +9,10 @@
       <ObjDesc>TEmpleado</ObjDesc>
       <ObjLink>templeado.aspx</ObjLink>
    </Object>
+   <Object>
+      <ObjCls>0</ObjCls>
+      <ObjName>TPuestos</ObjName>
+      <ObjDesc>TPuestos</ObjDesc>
+      <ObjLink>tpuestos.aspx</ObjLink>
+   </Object>
 </Objects>

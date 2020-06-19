@@ -2001,6 +2001,29 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "gx0020/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "GeneXus.Programs.Common": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.0.0",
+          "Microsoft.Data.SqlClient": "1.0.19269.1",
+          "Microsoft.Extensions.DependencyModel": "3.0.0",
+          "NetTopologySuite": "2.0.0",
+          "NetTopologySuite.Core": "1.15.3",
+          "Sandwych.GeographicLib": "1.49.3",
+          "System.Configuration.ConfigurationManager": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/gx0020.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/gx0020.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
       "promptmasterpage/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
@@ -2134,6 +2157,29 @@
         },
         "runtime": {
           "bin/placeholder/templeado.dll": {}
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
+      },
+      "tpuestos/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "dependencies": {
+          "GeneXus.Programs.Common": "1.0.0",
+          "Microsoft.AspNetCore.Mvc.NewtonsoftJson": "3.0.0",
+          "Microsoft.Data.SqlClient": "1.0.19269.1",
+          "Microsoft.Extensions.DependencyModel": "3.0.0",
+          "NetTopologySuite": "2.0.0",
+          "NetTopologySuite.Core": "1.15.3",
+          "Sandwych.GeographicLib": "1.49.3",
+          "System.Configuration.ConfigurationManager": "4.5.0"
+        },
+        "compile": {
+          "bin/placeholder/tpuestos.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/tpuestos.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -7031,6 +7077,11 @@
       "path": "../gx0010/gx0010.csproj",
       "msbuildProject": "../gx0010/gx0010.csproj"
     },
+    "gx0020/1.0.0": {
+      "type": "project",
+      "path": "../gx0020/gx0020.csproj",
+      "msbuildProject": "../gx0020/gx0020.csproj"
+    },
     "promptmasterpage/1.0.0": {
       "type": "project",
       "path": "../promptmasterpage/promptmasterpage.csproj",
@@ -7060,6 +7111,11 @@
       "type": "project",
       "path": "../templeado/templeado.csproj",
       "msbuildProject": "../templeado/templeado.csproj"
+    },
+    "tpuestos/1.0.0": {
+      "type": "project",
+      "path": "../tpuestos/tpuestos.csproj",
+      "msbuildProject": "../tpuestos/tpuestos.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -7075,64 +7131,74 @@
       "System.DirectoryServices >= 4.7.0",
       "appmasterpage >= 1.0.0",
       "gx0010 >= 1.0.0",
+      "gx0020 >= 1.0.0",
       "promptmasterpage >= 1.0.0",
       "recentlinks >= 1.0.0",
       "rwdmasterpage >= 1.0.0",
       "rwdpromptmasterpage >= 1.0.0",
       "rwdrecentlinks >= 1.0.0",
-      "templeado >= 1.0.0"
+      "templeado >= 1.0.0",
+      "tpuestos >= 1.0.0"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Desarrollo\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\developermenu\\developermenu.csproj",
+      "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\developermenu\\developermenu.csproj",
       "projectName": "developermenu",
-      "projectPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\developermenu\\developermenu.csproj",
-      "packagesPath": "C:\\Users\\Desarrollo\\.nuget\\packages\\",
-      "outputPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\developermenu\\obj\\",
+      "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\developermenu\\developermenu.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\developermenu\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Desarrollo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj": {
-              "projectPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj"
+            "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj": {
+              "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\appmasterpage\\appmasterpage.csproj"
             },
-            "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
-              "projectPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
+            "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj": {
+              "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\GeneXus.Programs.Common\\GeneXus.Programs.Common.csproj"
             },
-            "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\gx0010\\gx0010.csproj": {
-              "projectPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\gx0010\\gx0010.csproj"
+            "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0010\\gx0010.csproj": {
+              "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0010\\gx0010.csproj"
             },
-            "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj": {
-              "projectPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj"
+            "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0020\\gx0020.csproj": {
+              "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\gx0020\\gx0020.csproj"
             },
-            "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj": {
-              "projectPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj"
+            "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj": {
+              "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\promptmasterpage\\promptmasterpage.csproj"
             },
-            "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj": {
-              "projectPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj"
+            "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj": {
+              "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\recentlinks\\recentlinks.csproj"
             },
-            "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj": {
-              "projectPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj"
+            "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj": {
+              "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdmasterpage\\rwdmasterpage.csproj"
             },
-            "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj": {
-              "projectPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj"
+            "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj": {
+              "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdpromptmasterpage\\rwdpromptmasterpage.csproj"
             },
-            "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\templeado\\templeado.csproj": {
-              "projectPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\templeado\\templeado.csproj"
+            "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj": {
+              "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\rwdrecentlinks\\rwdrecentlinks.csproj"
+            },
+            "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\templeado\\templeado.csproj": {
+              "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\templeado\\templeado.csproj"
+            },
+            "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\tpuestos.csproj": {
+              "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\tpuestos\\tpuestos.csproj"
             }
           }
         }

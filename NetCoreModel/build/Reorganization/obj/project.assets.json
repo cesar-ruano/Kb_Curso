@@ -6824,24 +6824,26 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Desarrollo\\.nuget\\packages\\": {}
+    "C:\\Users\\Admin\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\reorganization\\reorganization.csproj",
+      "projectUniqueName": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\reorganization\\reorganization.csproj",
       "projectName": "Reorganization",
-      "projectPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\reorganization\\reorganization.csproj",
-      "packagesPath": "C:\\Users\\Desarrollo\\.nuget\\packages\\",
-      "outputPath": "D:\\Proyectos\\Curso2\\NetCoreModel\\build\\reorganization\\obj\\",
+      "projectPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\reorganization\\reorganization.csproj",
+      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+      "outputPath": "C:\\Proyectos\\CURSO2\\Kb_Curso\\NetCoreModel\\build\\reorganization\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Desarrollo\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
