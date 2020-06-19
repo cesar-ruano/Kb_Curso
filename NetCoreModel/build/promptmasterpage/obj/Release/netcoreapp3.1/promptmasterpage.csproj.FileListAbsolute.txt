@@ -7,3 +7,12 @@ D:\Proyectos\Curso2\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp3.
 D:\Proyectos\Curso2\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp3.1\staticwebassets\promptmasterpage.StaticWebAssets.xml
 D:\Proyectos\Curso2\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp3.1\promptmasterpage.dll
 D:\Proyectos\Curso2\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp3.1\promptmasterpage.pdb
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\web\bin\promptmasterpage.dll
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\web\bin\promptmasterpage.pdb
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp3.1\promptmasterpage.csprojAssemblyReference.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp3.1\promptmasterpage.csproj.CoreCompileInputs.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp3.1\promptmasterpage.csproj.CopyComplete
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp3.1\staticwebassets\promptmasterpage.StaticWebAssets.Manifest.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp3.1\staticwebassets\promptmasterpage.StaticWebAssets.xml
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp3.1\promptmasterpage.dll
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\promptmasterpage\obj\Release\netcoreapp3.1\promptmasterpage.pdb

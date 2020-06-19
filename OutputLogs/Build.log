@@ -109,3 +109,176 @@
 2020-06-19 08:28:15,696: INFO  – Updating web config ...
 2020-06-19 08:28:15,927: INFO  – Success: Web config update
 2020-06-19 08:28:16,474: INFO  – Success: Build All
+2020-06-19 09:02:08,115: INFO  – ========== Create Database Tables started ==========
+2020-06-19 09:02:08,442: INFO  – ========== Database Creation Analysis started ==========
+2020-06-19 09:02:19,561: INFO  – Processing ... 
+2020-06-19 09:02:19,620: INFO  – Searching for new or changed tables ...
+2020-06-19 09:02:20,514: INFO  – Analyzing   TEmpleado ...
+2020-06-19 09:02:20,517: INFO  – Removing specification files ...
+2020-06-19 09:02:20,519: INFO  – Specification files removed.
+2020-06-19 09:02:26,518: INFO  – Searching for deleted tables ...
+2020-06-19 09:02:26,523: INFO  – Searching redundancy in TEmpleado
+2020-06-19 09:02:26,525: INFO  – Updating redundancy in TEmpleado
+2020-06-19 09:02:27,256: INFO  –  Specifying GXLRED ...
+2020-06-19 09:02:27,261: INFO  – Loading table and attribute properties ...
+2020-06-19 09:02:27,262: INFO  – Saving specifications.
+2020-06-19 09:02:27,294: INFO  – Success: Database Creation Analysis
+2020-06-19 09:03:34,607: ERROR – error: Reorganization was canceled by user
+2020-06-19 09:03:34,614: INFO  – Failed: Create Database Tables
+2020-06-19 09:04:16,040: INFO  – ========== Create Database Tables started ==========
+2020-06-19 09:04:16,337: INFO  – ========== Database Creation Analysis started ==========
+2020-06-19 09:04:16,776: INFO  – Processing ... 
+2020-06-19 09:04:16,784: INFO  – Searching for new or changed tables ...
+2020-06-19 09:04:16,857: INFO  – Analyzing   TEmpleado ...
+2020-06-19 09:04:16,859: INFO  – Removing specification files ...
+2020-06-19 09:04:16,861: INFO  – Specification files removed.
+2020-06-19 09:04:20,505: INFO  – Searching for deleted tables ...
+2020-06-19 09:04:20,506: INFO  – Searching redundancy in TEmpleado
+2020-06-19 09:04:20,510: INFO  – Updating redundancy in TEmpleado
+2020-06-19 09:04:20,524: INFO  –  Specifying GXLRED ...
+2020-06-19 09:04:20,525: INFO  – Loading table and attribute properties ...
+2020-06-19 09:04:20,529: INFO  – Saving specifications.
+2020-06-19 09:04:20,553: INFO  – Success: Database Creation Analysis
+2020-06-19 09:04:27,191: INFO  – Generating Resources...
+2020-06-19 09:04:28,122: INFO  – Success
+2020-06-19 09:04:28,144: INFO  – ========== Default (.NET Core) Generation started ==========
+2020-06-19 09:04:36,335: INFO  – Generating to NetCoreModel\web\reorg.cs
+2020-06-19 09:04:36,695: INFO  – Generating to NetCoreModel\web\ReorganizationScript.txt
+2020-06-19 09:04:36,712: INFO  – Generating to NetCoreModel\web\gxlred.cs
+2020-06-19 09:04:36,759: INFO  – Generating to NetCoreModel\web\gxcfg.js
+2020-06-19 09:04:36,800: INFO  – Generating to NetCoreModel\web\GXCFG.WEB
+2020-06-19 09:04:36,879: INFO  – Generating to NetCoreModel\web\client.exe.config
+2020-06-19 09:04:36,954: INFO  – Generating to NetCoreModel\web\_COPYCLS.GEN
+2020-06-19 09:04:36,961: INFO  – Generating to NetCoreModel\web\REORGPGM.GEN
+2020-06-19 09:04:36,965: INFO  – Generating to NetCoreModel\web\reorganization.cs
+2020-06-19 09:04:36,967: INFO  – Generating to NetCoreModel\web\reorganization.bld
+2020-06-19 09:04:36,969: INFO  – Generating to NetCoreModel\web\bld41.info
+2020-06-19 09:04:37,075: INFO  – Success: Default (.NET Core) Generation
+2020-06-19 09:04:39,488: INFO  – ========== Reorganization started ==========
+2020-06-19 09:04:39,511: INFO  – dotnet build -nologo -c Release /v:q /m  "C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\LastBuild.sln"
+2020-06-19 09:04:52,858: INFO  – Esto es .NET Core 3.1.
+2020-06-19 09:04:52,860: INFO  – ---------------------
+2020-06-19 09:04:52,862: INFO  – Versi¢n del SDK: 3.1.301
+2020-06-19 09:04:52,891: INFO  – Telemetr¡a
+2020-06-19 09:04:52,895: INFO  – ---------
+2020-06-19 09:04:52,897: INFO  – Las herramientas de .NET Core recopilan datos de uso para ayudarnos a mejorar su experiencia. Estos datos son an¢nimos. Microsoft los recopila y comparte con la comunidad. Puede optar por no participar en la telemetr¡a si establece la variable de entorno DOTNET_CLI_TELEMETRY_OPTOUT en "1" o "true" mediante su shell favorito.
+2020-06-19 09:04:52,922: INFO  – Lea m s sobre la telemetr¡a de las herramientas de la CLI de .NET Core: https://aka.ms/dotnet-cli-telemetry
+2020-06-19 09:04:52,935: INFO  – ----------------
+2020-06-19 09:04:52,942: INFO  – Explore la documentaci¢n: https://aka.ms/dotnet-docs
+2020-06-19 09:04:52,945: INFO  – Informe de los problemas y busque c¢digo fuente en GitHub: https://github.com/dotnet/core
+2020-06-19 09:04:52,957: INFO  – Conozca las novedades: https://aka.ms/dotnet-whats-new
+2020-06-19 09:04:52,961: INFO  – M s informaci¢n sobre el certificado de desarrollador HTTPS instalado: https://aka.ms/aspnet-core-https
+2020-06-19 09:04:52,967: INFO  – Use "dotnet --help" para ver los comandos disponibles o visite: https://aka.ms/dotnet-cli-docs
+2020-06-19 09:04:52,972: INFO  – Escriba su primera aplicaci¢n: https://aka.ms/first-net-core-app
+2020-06-19 09:04:52,974: INFO  – --------------------------------------------------------------------------------------
+2020-06-19 09:05:20,115: INFO  – Compilaci¢n correcta.
+2020-06-19 09:05:20,136: INFO  –     0 Advertencia(s)
+2020-06-19 09:05:20,167: INFO  –     0 Errores
+2020-06-19 09:05:20,200: INFO  – Tiempo transcurrido 00:00:25.60
+2020-06-19 09:05:20,310: INFO  – dotnet "C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\web\bin\Reor.dll" -nogui -noverifydatabaseschema
+2020-06-19 09:05:37,971: INFO  – Creando la base de datos Curso2BD
+2020-06-19 09:05:48,868: INFO  – Creando la tabla TEmpleado .
+2020-06-19 09:05:49,228: INFO  – Creando la tabla TEmpleado . Iniciado
+2020-06-19 09:05:49,776: INFO  – Creando la tabla TEmpleado . Terminado
+2020-06-19 09:05:49,784: INFO  – El proceso de reorganizaci¢n ha finalizado con ‚xito.
+2020-06-19 09:05:49,854: INFO  – Success: Reorganization
+2020-06-19 09:05:49,905: INFO  – ========== Target Environment update started ==========
+2020-06-19 09:05:50,376: INFO  – Success: Target Environment update
+2020-06-19 09:05:50,401: INFO  – Success: Create Database Tables
+2020-06-19 09:07:27,333: INFO  – ========== Build All started ==========
+2020-06-19 09:07:27,719: INFO  – ========== Copying Module 'GeneXus' started ==========
+2020-06-19 09:07:28,764: INFO  – Success: Copying Module 'GeneXus'
+2020-06-19 09:07:28,910: INFO  – ========== Database Impact Analysis started ==========
+2020-06-19 09:07:32,472: INFO  – Processing ... 
+2020-06-19 09:07:32,594: INFO  – Searching for new or changed tables ...
+2020-06-19 09:07:33,859: INFO  – Analyzing   TPuestos ...
+2020-06-19 09:07:33,890: INFO  – Removing specification files ...
+2020-06-19 09:07:33,897: INFO  – Specification files removed.
+2020-06-19 09:07:41,258: INFO  – Analyzing   TEmpleado ...
+2020-06-19 09:07:43,067: INFO  –  Specifying TEmpleadoConversion ...
+2020-06-19 09:07:43,255: WARN  – warning: rgz0007: Attribute PuestoId does not allow nulls and does not have an Initial Value. An empty default value will be used.
+2020-06-19 09:07:43,285: WARN  – warning: rgo0001: Table 'TPuestos' is referenced by table 'TEmpleado' and at least one attribute in its foreign key (PuestoId) does not allow nulls. The table will be initialized with a default record if table 'TEmpleado' has records.
+2020-06-19 09:07:43,360: INFO  – Searching for deleted tables ...
+2020-06-19 09:07:43,362: INFO  – Loading table and attribute properties ...
+2020-06-19 09:07:43,364: INFO  – Saving specifications.
+2020-06-19 09:07:43,542: INFO  – Success: Database Impact Analysis
+2020-06-19 09:08:06,085: INFO  – Generating Resources...
+2020-06-19 09:08:06,396: INFO  – Success
+2020-06-19 09:08:06,402: INFO  – ========== Default (.NET Core) Generation started ==========
+2020-06-19 09:08:06,669: INFO  – Generating to NetCoreModel\web\reorg.cs
+2020-06-19 09:08:06,821: INFO  – Generating to NetCoreModel\web\ReorganizationScript.txt
+2020-06-19 09:08:06,826: INFO  – Generating to NetCoreModel\web\gxcfg.js
+2020-06-19 09:08:06,866: INFO  – Generating to NetCoreModel\web\GXCFG.WEB
+2020-06-19 09:08:06,930: INFO  – Generating to NetCoreModel\web\client.exe.config
+2020-06-19 09:08:06,965: INFO  – Generating to NetCoreModel\web\_COPYCLS.GEN
+2020-06-19 09:08:06,967: INFO  – Generating to NetCoreModel\web\REORGPGM.GEN
+2020-06-19 09:08:06,972: INFO  – Generating to NetCoreModel\web\reorganization.cs
+2020-06-19 09:08:06,980: INFO  – Generating to NetCoreModel\web\reorganization.bld
+2020-06-19 09:08:06,982: INFO  – Generating to NetCoreModel\web\bld41.info
+2020-06-19 09:08:07,029: INFO  – Success: Default (.NET Core) Generation
+2020-06-19 09:08:08,204: INFO  – ========== Reorganization started ==========
+2020-06-19 09:08:08,221: INFO  – dotnet build -nologo -c Release /v:q /m  "C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\LastBuild.sln"
+2020-06-19 09:08:11,580: INFO  – Compilaci¢n correcta.
+2020-06-19 09:08:11,583: INFO  –     0 Advertencia(s)
+2020-06-19 09:08:11,585: INFO  –     0 Errores
+2020-06-19 09:08:11,605: INFO  – Tiempo transcurrido 00:00:02.53
+2020-06-19 09:08:11,665: INFO  – dotnet  "C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\web\bin\Reor.dll" -nogui
+2020-06-19 09:08:12,902: INFO  – Tabla TEmpleado tiene 0 registros.
+2020-06-19 09:08:12,905: INFO  – Modificando la tabla TEmpleado .
+2020-06-19 09:08:12,912: INFO  – Creando la tabla TPuestos .
+2020-06-19 09:08:12,943: INFO  – Creando integridad referencial [ITEMPLEADO1].
+2020-06-19 09:08:13,944: INFO  – Modificando la tabla TEmpleado . Iniciado
+2020-06-19 09:08:14,449: INFO  – Modificando la tabla TEmpleado . Terminado
+2020-06-19 09:08:14,451: INFO  – Creando la tabla TPuestos . Terminado
+2020-06-19 09:08:14,466: INFO  – Creando integridad referencial [ITEMPLEADO1]. Iniciado
+2020-06-19 09:08:14,960: INFO  – Creando integridad referencial [ITEMPLEADO1]. Terminado
+2020-06-19 09:08:14,974: INFO  – El proceso de reorganizaci¢n ha finalizado con ‚xito.
+2020-06-19 09:08:14,998: INFO  – Success: Reorganization
+2020-06-19 09:08:15,017: INFO  – ========== Target Environment update started ==========
+2020-06-19 09:08:15,355: INFO  – Success: Target Environment update
+2020-06-19 09:08:16,676: INFO  – ========== Specification started ==========
+2020-06-19 09:08:29,072: INFO  –  Specifying TPuestos ...
+2020-06-19 09:08:30,026: INFO  – Creating prompt 'Gx0020' (for table 'TPuestos')...
+2020-06-19 09:08:37,109: INFO  –  Specifying TEmpleado ...
+2020-06-19 09:08:39,711: INFO  – Creating prompt 'Gx0010' (for table 'TEmpleado')...
+2020-06-19 09:08:40,754: INFO  –  Specifying Gx0020 ...
+2020-06-19 09:08:40,844: INFO  – Generating Resources...
+2020-06-19 09:08:42,832: INFO  – Success
+2020-06-19 09:08:42,946: INFO  – ========== Default (.NET Core) Generation started ==========
+2020-06-19 09:08:43,836: INFO  – Generating to NetCoreModel\web\tpuestos.cs
+2020-06-19 09:08:45,360: INFO  – Generating to NetCoreModel\web\tpuestos.js
+2020-06-19 09:08:47,448: INFO  – Generating to NetCoreModel\web\gx0020.cs
+2020-06-19 09:08:48,623: INFO  – Generating to NetCoreModel\web\gx0020.js
+2020-06-19 09:08:51,471: INFO  –  Specifying Gx0010 ...
+2020-06-19 09:08:53,229: INFO  – Generating to NetCoreModel\web\templeado.cs
+2020-06-19 09:08:53,311: INFO  – Processing inferred calls...
+2020-06-19 09:08:53,561: INFO  – Success: Specification
+2020-06-19 09:08:54,149: INFO  – Generating to NetCoreModel\web\templeado.js
+2020-06-19 09:08:54,268: INFO  – Generating to NetCoreModel\web\gx0010.cs
+2020-06-19 09:08:55,070: INFO  – Generating to NetCoreModel\web\gx0010.js
+2020-06-19 09:08:55,300: INFO  – Generating to NetCoreModel\web\gxlred.cs
+2020-06-19 09:08:55,331: INFO  – Generating to NetCoreModel\web\gxcfg.js
+2020-06-19 09:08:55,347: INFO  – Generating to NetCoreModel\web\GXCFG.WEB
+2020-06-19 09:08:55,520: INFO  – Generating to NetCoreModel\web\Developermenu.bld
+2020-06-19 09:08:55,583: INFO  – Generating to NetCoreModel\web\genexus.programs.common.bld
+2020-06-19 09:08:55,628: INFO  – Generating to NetCoreModel\web\bld41.info
+2020-06-19 09:08:55,634: INFO  – Generating to NetCoreModel\web\DeveloperMenu.xml
+2020-06-19 09:08:55,650: INFO  – Generating to NetCoreModel\web\GxFullTextSearchReindexer.cs
+2020-06-19 09:08:55,704: INFO  – Success: Default (.NET Core) Generation
+2020-06-19 09:08:55,736: INFO  – Compressing static files...
+2020-06-19 09:08:56,925: INFO  – Success
+2020-06-19 09:08:58,420: INFO  – ========== DeveloperMenu Compilation for Default (.NET Core) started ==========
+2020-06-19 09:08:58,427: INFO  – dotnet build -nologo -c Release /v:q /m  "C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\LastBuild.sln"
+2020-06-19 09:09:26,702: INFO  – Compilaci¢n correcta.
+2020-06-19 09:09:26,705: INFO  –     0 Advertencia(s)
+2020-06-19 09:09:26,707: INFO  –     0 Errores
+2020-06-19 09:09:26,739: INFO  – Tiempo transcurrido 00:00:27.27
+2020-06-19 09:09:26,831: INFO  – Success: DeveloperMenu Compilation for Default (.NET Core)
+2020-06-19 09:09:26,847: INFO  – ========== Web config update started ==========
+2020-06-19 09:09:27,363: INFO  – Error connecting to IIS. Check it is installed
+2020-06-19 09:09:27,371: INFO  – Virtual directory couldn't be created
+2020-06-19 09:09:27,713: INFO  – Gx config file: gxcfg.web
+2020-06-19 09:09:27,715: INFO  – Web config file: appsettings.json
+2020-06-19 09:09:27,759: INFO  – Updating web config ...
+2020-06-19 09:09:28,534: INFO  – Success: Web config update
+2020-06-19 09:09:29,878: INFO  – Success: Build All

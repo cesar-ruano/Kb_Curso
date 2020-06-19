@@ -1,0 +1,9 @@
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\web\bin\tpuestos.dll
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\web\bin\tpuestos.pdb
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\tpuestos\obj\Release\netcoreapp3.1\tpuestos.csprojAssemblyReference.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\tpuestos\obj\Release\netcoreapp3.1\tpuestos.csproj.CoreCompileInputs.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\tpuestos\obj\Release\netcoreapp3.1\tpuestos.csproj.CopyComplete
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\tpuestos\obj\Release\netcoreapp3.1\staticwebassets\tpuestos.StaticWebAssets.Manifest.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\tpuestos\obj\Release\netcoreapp3.1\staticwebassets\tpuestos.StaticWebAssets.xml
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\tpuestos\obj\Release\netcoreapp3.1\tpuestos.dll
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\tpuestos\obj\Release\netcoreapp3.1\tpuestos.pdb

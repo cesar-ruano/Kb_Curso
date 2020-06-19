@@ -1,10 +1,10 @@
 ﻿<ConnectionInformation>
-	<DBName>GX_KB_Curso2</DBName>
-	<IntegratedSecurity>False</IntegratedSecurity>
-	<ServerInstance>DESKTOP-URMRLQ4\MSSQLSERVER2016</ServerInstance>
+	<DBName>GX_KB_Curso2_2</DBName>
+	<IntegratedSecurity>True</IntegratedSecurity>
+	<ServerInstance>DESKTOP-A77C4G7</ServerInstance>
 	<CreateDbInKbFolder>True</CreateDbInKbFolder>
-	<Directory>D:\Proyectos\Curso2</Directory>
+	<Directory>C:\Proyectos\CURSO2\Kb_Curso</Directory>
 	<DataFile>GX_KB_Curso2.mdf</DataFile>
 	<LogFile>GX_KB_Curso2_log.ldf</LogFile>
-	<HostName>DESKTOP-URMRLQ4</HostName>
+	<HostName>DESKTOP-A77C4G7</HostName>
 </ConnectionInformation>

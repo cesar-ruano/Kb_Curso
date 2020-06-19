@@ -7,3 +7,12 @@ D:\Proyectos\Curso2\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\s
 D:\Proyectos\Curso2\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\staticwebassets\developermenu.StaticWebAssets.xml
 D:\Proyectos\Curso2\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\developermenu.dll
 D:\Proyectos\Curso2\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\developermenu.pdb
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\web\bin\developermenu.dll
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\web\bin\developermenu.pdb
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\developermenu.csprojAssemblyReference.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\developermenu.csproj.CoreCompileInputs.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\developermenu.csproj.CopyComplete
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\staticwebassets\developermenu.StaticWebAssets.Manifest.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\staticwebassets\developermenu.StaticWebAssets.xml
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\developermenu.dll
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\developermenu\obj\Release\netcoreapp3.1\developermenu.pdb

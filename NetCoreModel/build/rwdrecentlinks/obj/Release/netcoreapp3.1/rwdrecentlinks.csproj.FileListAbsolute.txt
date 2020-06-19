@@ -7,3 +7,12 @@ D:\Proyectos\Curso2\NetCoreModel\build\rwdrecentlinks\obj\Release\netcoreapp3.1\
 D:\Proyectos\Curso2\NetCoreModel\build\rwdrecentlinks\obj\Release\netcoreapp3.1\staticwebassets\rwdrecentlinks.StaticWebAssets.xml
 D:\Proyectos\Curso2\NetCoreModel\build\rwdrecentlinks\obj\Release\netcoreapp3.1\rwdrecentlinks.dll
 D:\Proyectos\Curso2\NetCoreModel\build\rwdrecentlinks\obj\Release\netcoreapp3.1\rwdrecentlinks.pdb
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\web\bin\rwdrecentlinks.dll
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\web\bin\rwdrecentlinks.pdb
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\rwdrecentlinks\obj\Release\netcoreapp3.1\rwdrecentlinks.csprojAssemblyReference.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\rwdrecentlinks\obj\Release\netcoreapp3.1\rwdrecentlinks.csproj.CoreCompileInputs.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\rwdrecentlinks\obj\Release\netcoreapp3.1\rwdrecentlinks.csproj.CopyComplete
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\rwdrecentlinks\obj\Release\netcoreapp3.1\staticwebassets\rwdrecentlinks.StaticWebAssets.Manifest.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\rwdrecentlinks\obj\Release\netcoreapp3.1\staticwebassets\rwdrecentlinks.StaticWebAssets.xml
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\rwdrecentlinks\obj\Release\netcoreapp3.1\rwdrecentlinks.dll
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\rwdrecentlinks\obj\Release\netcoreapp3.1\rwdrecentlinks.pdb

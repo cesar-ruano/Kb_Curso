@@ -38,7 +38,18 @@
 <AttriId>1</AttriId>
 <AttriName>EmpleadoId</AttriName>
 <Description>Empleado Id</Description></Attribute></KeyAttributes>
-<Tables></Tables></Table></NavigationTree>
+<Tables>
+<Table>
+<TableId>2</TableId>
+<TableName>TPuestos</TableName>
+<Description>TPuestos</Description>
+<RecordsToRead>one</RecordsToRead>
+<KeyAttributes>
+<Attribute>
+<AttriId>4</AttriId>
+<AttriName>PuestoId</AttriName>
+<Description>Puesto Id</Description></Attribute></KeyAttributes>
+<Tables></Tables></Table></Tables></Table></NavigationTree>
 <Formulas>
 <VerticalFormulas></VerticalFormulas>
 <AggSelFormulas></AggSelFormulas></Formulas>
@@ -65,7 +76,11 @@
 <Attribute>
 <AttriId>3</AttriId>
 <AttriName>EmpleadoFechaNacimiento</AttriName>
-<Description>Empleado Fecha Nacimiento</Description></Attribute></AttrisToUpdate></TableToUpdate>
+<Description>Empleado Fecha Nacimiento</Description></Attribute>
+<Attribute>
+<AttriId>4</AttriId>
+<AttriName>PuestoId</AttriName>
+<Description>Puesto Id</Description></Attribute></AttrisToUpdate></TableToUpdate>
 <TableToUpdate>
 <Table>
 <TableId>1</TableId>
@@ -80,7 +95,11 @@
 <Attribute>
 <AttriId>3</AttriId>
 <AttriName>EmpleadoFechaNacimiento</AttriName>
-<Description>Empleado Fecha Nacimiento</Description></Attribute></AttrisToUpdate></TableToUpdate>
+<Description>Empleado Fecha Nacimiento</Description></Attribute>
+<Attribute>
+<AttriId>4</AttriId>
+<AttriName>PuestoId</AttriName>
+<Description>Puesto Id</Description></Attribute></AttrisToUpdate></TableToUpdate>
 <TableToUpdate>
 <Table>
 <TableId>1</TableId>
@@ -98,11 +117,30 @@
 <Prompts>
 <Prompt>
 <Table>
+<TableId>2</TableId>
+<TableName>TPuestos</TableName>
+<Description>TPuestos</Description></Table>
+<ProgramName>
+<Token>Gx0020</Token></ProgramName>
+<InputParameters></InputParameters>
+<OutputParameters>
+<Attribute>
+<AttriId>4</AttriId>
+<AttriName>PuestoId</AttriName>
+<Description>Puesto Id</Description></Attribute></OutputParameters>
+<PromptType>System</PromptType></Prompt>
+<Prompt>
+<Table>
 <TableId>1</TableId>
 <TableName>TEmpleado</TableName>
 <Description>TEmpleado</Description></Table>
-<ProgramName>
-<Token>Gx0010</Token></ProgramName>
+<Object>
+<ObjClsGuid>c9584656-94b6-4ccd-890f-332d11fc2c25</ObjClsGuid>
+<ObjCls>13</ObjCls>
+<ObjId>7</ObjId>
+<ObjName>Gx0010</ObjName>
+<ObjPgmName>Gx0010</ObjPgmName>
+<ObjClsName>Web Panel</ObjClsName></Object>
 <InputParameters></InputParameters>
 <OutputParameters>
 <Attribute>

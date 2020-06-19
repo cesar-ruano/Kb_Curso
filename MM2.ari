@@ -34,7 +34,7 @@ datastore_i(1,'PGMLIB','').
 datastore_i(1,'DTALIB','').
 datastore_i(1,'CC_USER_PASS','Vyãu|Ñèlêo').
 datastore_i(1,'CC_USER_ID',sa).
-datastore_i(1,'CC_SERVER','DESKTOP-URMRLQ4\MSSQLSERVER2016').
+datastore_i(1,'CC_SERVER','DESKTOP-A77C4G7').
 datastore_i(1,'CC_DBNAME','Curso2BD').
 datastore_i(1,'RecycleRWMin','30').
 datastore_i(1,'RecycleRWType','1').
@@ -52,7 +52,7 @@ datastore_i(1,'USER_ID',sa).
 datastore_i(1,'TRUSTED_CONNECTION','No').
 datastore_i(1,'CS_CONNECT','First').
 datastore_i(1,'DBMS_PORT','').
-datastore_i(1,'CS_SERVER','DESKTOP-URMRLQ4\MSSQLSERVER2016').
+datastore_i(1,'CS_SERVER','DESKTOP-A77C4G7').
 datastore_i(1,'CS_DBNAME','Curso2BD').
 datastore_i(1,'CS_FLEDSNAME','').
 datastore_i(1,'CS_DRVNAME','sql server').
@@ -85,7 +85,7 @@ lng_prop_i(1,'LangTimeFormat','24',v).
 lng_prop_i(1,'LangDecimalPoint',',',v).
 lng_prop_i(1,'FullyQualifiedName','Spanish',d).
  
-ver_stamp('20200619.132604').
+ver_stamp('20200619.140720').
  
-ver_stamp(date(2020,6,19),time(8,26,21,81)).
+ver_stamp(date(2020,6,19),time(9,7,43,35)).
  

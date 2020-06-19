@@ -1,2 +1,9 @@
-CREATE TABLE [TEmpleado] ([EmpleadoId] smallint NOT NULL , [EmpleadoNombre] nvarchar(30) NOT NULL , [EmpleadoFechaNacimiento] datetime NOT NULL , PRIMARY KEY([EmpleadoId]))
+CREATE TABLE [TPuestos] ([PuestoId] smallint NOT NULL , [PuestoDsc] nvarchar(40) NOT NULL , PRIMARY KEY([PuestoId]))
+
+ALTER TABLE [TEmpleado] ADD [PuestoId] smallint NOT NULL CONSTRAINT PuestoIdTEmpleado_DEFAULT DEFAULT convert(int, 0)
+ALTER TABLE [TEmpleado] DROP CONSTRAINT PuestoIdTEmpleado_DEFAULT
+INSERT INTO [TPuestos] ([PuestoId], [PuestoDsc]) SELECT TOP 1 convert(int, 0), ' ' FROM [TEmpleado]
+CREATE NONCLUSTERED INDEX [ITEMPLEADO1] ON [TEmpleado] ([PuestoId] )
+
+ALTER TABLE [TEmpleado] ADD CONSTRAINT [ITEMPLEADO1] FOREIGN KEY ([PuestoId]) REFERENCES [TPuestos] ([PuestoId])
 

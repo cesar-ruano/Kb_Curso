@@ -1,0 +1,9 @@
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\web\bin\gx0020.dll
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\web\bin\gx0020.pdb
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\gx0020\obj\Release\netcoreapp3.1\gx0020.csprojAssemblyReference.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\gx0020\obj\Release\netcoreapp3.1\gx0020.csproj.CoreCompileInputs.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\gx0020\obj\Release\netcoreapp3.1\gx0020.csproj.CopyComplete
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\gx0020\obj\Release\netcoreapp3.1\staticwebassets\gx0020.StaticWebAssets.Manifest.cache
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\gx0020\obj\Release\netcoreapp3.1\staticwebassets\gx0020.StaticWebAssets.xml
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\gx0020\obj\Release\netcoreapp3.1\gx0020.dll
+C:\Proyectos\CURSO2\Kb_Curso\NetCoreModel\build\gx0020\obj\Release\netcoreapp3.1\gx0020.pdb
