@@ -4,14 +4,14 @@
  
 pgm_prop_i(web,5,'RWDRECENTLINKS','WEB_COMP','Yes').
 pgm_prop_i(web,5,'RWDRECENTLINKS','URLAccess','No').
-pgm_prop_i(proc,11,'MS_EMPLEADOS',idISPRCWEBSERVICE,'-1').
-pgm_prop_i(proc,11,'MS_EMPLEADOS','SOAP','0').
 pgm_prop_i(web,3,'PROMPTMASTERPAGE','WEB_COMP','Master').
 pgm_prop_i(web,1,'APPMASTERPAGE','WEB_COMP','Master').
 pgm_prop_i(web,6,'RWDPROMPTMASTERPAGE','WEB_COMP','Master').
 pgm_prop_i(web,4,'RWDMASTERPAGE','WEB_COMP','Master').
 pgm_prop_i(web,2,'RECENTLINKS','WEB_COMP','Yes').
 pgm_prop_i(web,2,'RECENTLINKS','URLAccess','No').
+pgm_prop_i(proc,11,'MS_EMPLEADOS',idISPRCWEBSERVICE,'-1').
+pgm_prop_i(proc,11,'MS_EMPLEADOS','SOAP','0').
  
 model_wrkinfo_i([ '.NET Core Environment','NetCoreModel' ]).
  

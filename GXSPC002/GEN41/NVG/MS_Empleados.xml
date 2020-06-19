@@ -20,10 +20,10 @@
 <FormClass>Graphic</FormClass>
 <Parameters>
 <Parameter>
-<IO>out</IO>
+<IO>inout</IO>
 <Variable>
-<VarId>Empleadojson</VarId>
-<VarName>&amp;EmpleadoJSON</VarName></Variable></Parameter></Parameters>
+<VarId>Sdtempleados</VarId>
+<VarName>&amp;sdtEMpleados</VarName></Variable></Parameter></Parameters>
 <Levels>
 <Level>
 <LevelNumber>2</LevelNumber>
@@ -62,6 +62,23 @@
 <AttriId>1</AttriId>
 <AttriName>EmpleadoId</AttriName>
 <Description>Empleado Id</Description></Attribute></KeyAttributes>
+<Into>
+<Attribute>
+<AttriId>1</AttriId>
+<AttriName>EmpleadoId</AttriName>
+<Description>Empleado Id</Description></Attribute>
+<Attribute>
+<AttriId>2</AttriId>
+<AttriName>EmpleadoNombre</AttriName>
+<Description>Empleado Nombre</Description></Attribute>
+<Attribute>
+<AttriId>3</AttriId>
+<AttriName>EmpleadoFechaNacimiento</AttriName>
+<Description>Empleado Fecha Nacimiento</Description></Attribute>
+<Attribute>
+<AttriId>4</AttriId>
+<AttriName>PuestoId</AttriName>
+<Description>Puesto Id</Description></Attribute></Into>
 <Tables></Tables></Table></NavigationTree>
 <TablesToUpdate></TablesToUpdate>
 <Formulas>

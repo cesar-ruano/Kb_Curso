@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   title: "Curso2"
-  version: "20200619152336"
+  version: "20200619162746"
 host: localhost:8082
 schemes:
   - http
@@ -15,6 +15,13 @@ paths:
         - MS_Empleados
       operationId: "MS_Empleados"
       summary: "MS_Empleados"
+      parameters:
+        - name: "MS_EmpleadosInput"
+          in: "body"
+          required: false
+          schema:
+            $ref: "#/definitions/MS_EmpleadosInput"
+
 
       responses:
         200:
@@ -26,7 +33,43 @@ paths:
 definitions:
   MS_EmpleadosOutput:
     properties:
-      EmpleadoJSON:
+      sdtEMpleados:
+        description: SDT_Empleado
+        type: array
+        items:
+          $ref: "#/definitions/SDT_Empleado_SDT_EmpleadoItem"
+
+
+  MS_EmpleadosInput:
+    properties:
+      sdtEMpleados:
+        description: SDT_Empleado
+        type: array
+        items:
+          $ref: "#/definitions/SDT_Empleado_SDT_EmpleadoItem"
+
+
+  SDT_Empleado_SDT_EmpleadoItem:
+    properties:
+      EmpleadoId:
+        description: Empleado Id
+        type: "integer"
+        format: "int32"
+
+      EmpleadoNombre:
+        description: Empleado Nombre
         type: "string"
+
+      EmpleadoFechaNacimiento:
+        description: Empleado Fecha Nacimiento
+        type: "string"
+        format: "date"
+
+      PuestoId:
+        description: Puesto Id
+        type: "integer"
+        format: "int32"
+
+
 
 

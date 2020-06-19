@@ -118,8 +118,8 @@ rule_i(0,prop('Folder',o(120,'Root Module'))).
 rule_i(0,prop('ObjDesc','MS_Empleados')).
 rule_i(0,prop('ObjName','MS_Empleados')).
 rule_i(0,maingen(41)).
-rule_i(0,parm([ 'Empleadojson' ],[])).
-rule_i(0,parmio([ [ 'Empleadojson',out ] ])).
+rule_i(0,parm([ 'Sdtempleados' ],[])).
+rule_i(0,parmio([ [ 'Sdtempleados',inout ] ])).
 rule_i(0,output('FIL')).
  
 a_i(1,1,f,'Err',[],[ [],[ t('0',3) ] ]).
@@ -306,8 +306,6 @@ struct_dt_i([ 26,47,73 ],name,'SDT_EmpleadoItem').
 struct_dt_i([ 26,47,73 ],namespace,'Curso2.SDT_Empleado').
 struct_dt_i([ 26,47,0 ],fullname,'SDT_Empleado').
 struct_dt_i([ 26,47,73 ],fullname,'SDT_Empleado.SDT_EmpleadoItem').
-struct_dt_i([ 26,47,0 ],modified,yes).
-struct_dt_i([ 26,47,73 ],modified,yes).
  
 struct_dt_elem_i([ 26,47,73 ],1,name,'Empleadoid').
 struct_dt_elem_i([ 26,47,73 ],1,camelname,'EmpleadoId').

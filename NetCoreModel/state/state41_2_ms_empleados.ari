@@ -22,7 +22,7 @@ current_guid('159017ef-8f10-47be-80a3-add13097c8c8').
 ij_object_dependency(ms_empleados,[],[],[],11).
  
  
-obj_parms_i([ 'String aP0_EmpleadoJSON' ],[ [ 'Empleadojson',out ] ]).
+obj_parms_i([ 'GXBaseCollection<SdtSDT_Empleado_SDT_EmpleadoItem> aP0_sdtEMpleados' ],[ [ 'Sdtempleados',inout ] ]).
  
  
  

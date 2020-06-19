@@ -2,7 +2,7 @@
                File: MS_Empleados
         Description: MS_Empleados
              Author: GeneXus .NET Core Generator version 16_0_2-131213
-       Generated on: 6/19/2020 10:23:24.34
+       Generated on: 6/19/2020 11:27:45.73
        Program type: Callable routine
           Main DBMS: SQL Server
 */
@@ -52,32 +52,32 @@ namespace GeneXus.Programs {
       {
       }
 
-      public void execute( out String aP0_EmpleadoJSON )
+      public void execute( ref GXBaseCollection<SdtSDT_Empleado_SDT_EmpleadoItem> aP0_sdtEMpleados )
       {
-         this.AV10EmpleadoJSON = "" ;
+         this.AV8sdtEMpleados = aP0_sdtEMpleados;
          initialize();
          executePrivate();
-         aP0_EmpleadoJSON=this.AV10EmpleadoJSON;
+         aP0_sdtEMpleados=this.AV8sdtEMpleados;
       }
 
-      public String executeUdp( )
+      public GXBaseCollection<SdtSDT_Empleado_SDT_EmpleadoItem> executeUdp( )
       {
-         this.AV10EmpleadoJSON = "" ;
+         this.AV8sdtEMpleados = aP0_sdtEMpleados;
          initialize();
          executePrivate();
-         aP0_EmpleadoJSON=this.AV10EmpleadoJSON;
-         return AV10EmpleadoJSON ;
+         aP0_sdtEMpleados=this.AV8sdtEMpleados;
+         return AV8sdtEMpleados ;
       }
 
-      public void executeSubmit( out String aP0_EmpleadoJSON )
+      public void executeSubmit( ref GXBaseCollection<SdtSDT_Empleado_SDT_EmpleadoItem> aP0_sdtEMpleados )
       {
          ms_empleados objms_empleados;
          objms_empleados = new ms_empleados();
-         objms_empleados.AV10EmpleadoJSON = "" ;
+         objms_empleados.AV8sdtEMpleados = aP0_sdtEMpleados;
          objms_empleados.context.SetSubmitInitialConfig(context);
          objms_empleados.initialize();
          ThreadPool.QueueUserWorkItem( PropagateCulture(new WaitCallback( executePrivateCatch )),objms_empleados);
-         aP0_EmpleadoJSON=this.AV10EmpleadoJSON;
+         aP0_sdtEMpleados=this.AV8sdtEMpleados;
       }
 
       void executePrivateCatch( object stateInfo )
@@ -142,7 +142,7 @@ namespace GeneXus.Programs {
          A2EmpleadoNombre = "";
          A3EmpleadoFechaNacimiento = DateTime.MinValue;
          AV9sdtEMpleadosItem = new SdtSDT_Empleado_SDT_EmpleadoItem(context);
-         AV8sdtEMpleados = new GXBaseCollection<SdtSDT_Empleado_SDT_EmpleadoItem>( context, "SDT_EmpleadoItem", "Curso2");
+         AV10EmpleadoJSON = "";
          pr_default = new DataStoreProvider(context, new GeneXus.Programs.ms_empleados__default(),
             new Object[][] {
                 new Object[] {
@@ -158,15 +158,15 @@ namespace GeneXus.Programs {
       private short A4PuestoId ;
       private String scmdbuf ;
       private DateTime A3EmpleadoFechaNacimiento ;
-      private String AV10EmpleadoJSON ;
       private String A2EmpleadoNombre ;
+      private String AV10EmpleadoJSON ;
       private IGxDataStore dsDefault ;
+      private GXBaseCollection<SdtSDT_Empleado_SDT_EmpleadoItem> aP0_sdtEMpleados ;
       private IDataStoreProvider pr_default ;
       private short[] P000B2_A1EmpleadoId ;
       private String[] P000B2_A2EmpleadoNombre ;
       private DateTime[] P000B2_A3EmpleadoFechaNacimiento ;
       private short[] P000B2_A4PuestoId ;
-      private String aP0_EmpleadoJSON ;
       private GXBaseCollection<SdtSDT_Empleado_SDT_EmpleadoItem> AV8sdtEMpleados ;
       private SdtSDT_Empleado_SDT_EmpleadoItem AV9sdtEMpleadosItem ;
    }
